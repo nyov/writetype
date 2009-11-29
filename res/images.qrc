@@ -1,0 +1,21 @@
+<RCC>
+  <qresource prefix="Images" >
+    <file>configure.png</file>
+    <file>editcopy.png</file>
+    <file>editcut.png</file>
+    <file>editdelete.png</file>
+    <file>editpaste.png</file>
+    <file>exit.png</file>
+    <file>fileclose.png</file>
+    <file>fileopen.png</file>
+    <file>filesave.png</file>
+    <file>filesaveas.png</file>
+    <file>help.png</file>
+    <file>idea.png</file>
+    <file>text_bold.png</file>
+    <file>text_italic.png</file>
+    <file>text_under.png</file>
+    <file>text.png</file>
+    <file>voicecall.png</file>
+  </qresource>
+</RCC>
