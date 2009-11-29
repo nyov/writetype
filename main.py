@@ -46,6 +46,8 @@ class MainApplication(QtGui.QMainWindow):
 		#printer
 		self.printer = QtGui.QPrinter()
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
+		self.filename = ""
+		self.filetitle = "Untitled Document"
 
 
 		#create the settings dialog box
@@ -68,25 +70,27 @@ class MainApplication(QtGui.QMainWindow):
 		if isfile(self.filename):
 			text = open(self.filename).read()
 			self.ui.textArea.setText(text)
-		self.setWindowTitle("WriteType - " + self.filename)
+			self.filetitle = str(self.filename).split(platformSettings.ds).pop()
+			self.setWindowTitle("WriteType - " + self.filetitle)
 
 	def saveFile(self):
 		from os.path import isfile
 		if isfile(self.filename):
 			file = open(self.filename, 'w')
 			file.write(self.ui.textArea.toHtml())
+			self.filetitle = str(self.filename).split(platformSettings.ds).pop()
+			self.setWindowTitle("WriteType - " + self.filetitle)
 			file.close()
-		self.setWindowTitle("WriteType - " + self.filename)
 	def saveFileAs(self):
 		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", platformSettings.defaultOpenDirectory, "Formatted Text (*.html)")
-		if not self.filename.find('.html'):
+		if not str(self.filename).find('.html'):
 			self.filename += '.html'
-		from os.path import isfile
-		if not isfile(self.filename) and self.filename:
-			file = open(self.filename, 'w+')
-			file.write(self.ui.textArea.toHtml())
-			file.close()
-		self.setWindowTitle("WriteType - " + self.filename)
+		
+		file = open(self.filename, 'w+')
+		file.write(self.ui.textArea.toHtml())
+		file.close()
+		self.filetitle = str(self.filename).split(platformSettings.ds).pop()
+		self.setWindowTitle("WriteType - " + self.filetitle)
 	def readAloud(self):
 		if self.ui.textArea.textCursor().selectedText():
 			text = self.ui.textArea.textCursor().selectedText()
