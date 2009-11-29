@@ -41,13 +41,15 @@ class spellCheckEdit(QTextEdit):
 			#If that word isn't in the dictionary
 			if not self.dictionary.check(text):
 				menu.addSeparator()
-				menu.addAction("Spelling:")
+				spellingMenuItem = menu.addAction("Spelling:")
+				spellingMenuItem.setEnabled(False)
 				for word in self.dictionary.suggest(text):
 					action = QAction(word, menu)
 					self.connect(action, SIGNAL("triggered()"), lambda targ=word: self.correctWord(targ, cursor))
 					menu.addAction(action)
 				if len(self.dictionary.suggest(text)) == 0:
-					menu.addAction("None")
+					noneMenuItem = menu.addAction("None")
+					noneMenuItem.setEnabled(False)
 
 		
 		menu.exec_(event.globalPos())

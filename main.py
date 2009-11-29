@@ -43,6 +43,10 @@ class MainApplication(QtGui.QMainWindow):
 
 		#Word list for autocompletion
 		self.wl = wordsList()
+		#printer
+		self.printer = QtGui.QPrinter()
+		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
+
 
 		#create the settings dialog box
 		self.settings_box = settingsDialogBox(self)
@@ -164,6 +168,14 @@ class MainApplication(QtGui.QMainWindow):
 		QtGui.QMessageBox.about(self, "About this program", """<h1>WriteType</h1><h2>Created by: Max Shinn </h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a>""")
 	def openHelpPage(self):
 		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com"))
+	def openPrintDialog(self):
+		printer = QtGui.QPrinter()
+		printer.setDocName("writetype_" + self.filename)
+		printDialog = QtGui.QPrintDialog(printer)
+		printDialog.setModal(True)
+		printDialog.setWindowTitle("WriteType - Print")
+		if printDialog.exec_():
+			self.ui.textArea.document().print_(printer)
 
 class speakerThread(threading.Thread):
 	def __init__(self, text):

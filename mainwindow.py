@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Sat Nov 28 16:35:53 2009
+# Created: Sun Nov 29 09:37:30 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -15,8 +15,8 @@ class Ui_MainWindow(object):
         MainWindow.resize(803, 600)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_2 = QtGui.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.gridLayout = QtGui.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
         self.spinBoxFontSize = QtGui.QSpinBox(self.centralwidget)
@@ -28,18 +28,17 @@ class Ui_MainWindow(object):
         self.sizeLabel = QtGui.QLabel(self.centralwidget)
         self.sizeLabel.setObjectName("sizeLabel")
         self.gridLayout.addWidget(self.sizeLabel, 0, 0, 1, 1)
-        self.verticalLayout_2.addLayout(self.gridLayout)
-        self.horizontalLayout_2 = QtGui.QHBoxLayout()
-        self.horizontalLayout_2.setSizeConstraint(QtGui.QLayout.SetDefaultConstraint)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.textArea = spellCheckEdit(self.centralwidget)
+        self.verticalLayout.addLayout(self.gridLayout)
+        self.splitter = QtGui.QSplitter(self.centralwidget)
+        self.splitter.setOrientation(QtCore.Qt.Horizontal)
+        self.splitter.setObjectName("splitter")
+        self.textArea = spellCheckEdit(self.splitter)
         font = QtGui.QFont()
         font.setFamily("DejaVu Sans")
         font.setPointSize(12)
         self.textArea.setFont(font)
         self.textArea.setObjectName("textArea")
-        self.horizontalLayout_2.addWidget(self.textArea)
-        self.spellingSuggestionsList = QtGui.QListWidget(self.centralwidget)
+        self.spellingSuggestionsList = QtGui.QListWidget(self.splitter)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -48,8 +47,7 @@ class Ui_MainWindow(object):
         self.spellingSuggestionsList.setMaximumSize(QtCore.QSize(300, 16777215))
         self.spellingSuggestionsList.setSelectionMode(QtGui.QAbstractItemView.NoSelection)
         self.spellingSuggestionsList.setObjectName("spellingSuggestionsList")
-        self.horizontalLayout_2.addWidget(self.spellingSuggestionsList)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+        self.verticalLayout.addWidget(self.splitter)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 22))
@@ -153,9 +151,15 @@ class Ui_MainWindow(object):
         self.actionAbout.setObjectName("actionAbout")
         self.actionAboutQt = QtGui.QAction(MainWindow)
         self.actionAboutQt.setObjectName("actionAboutQt")
+        self.actionPrint = QtGui.QAction(MainWindow)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap("res/fileprint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionPrint.setIcon(icon11)
+        self.actionPrint.setObjectName("actionPrint")
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
+        self.menuFile.addAction(self.actionPrint)
         self.menuFile.addAction(self.actionSettings)
         self.menuFile.addAction(self.actionClose)
         self.menuEdit.addAction(self.actionUndo)
@@ -180,6 +184,7 @@ class Ui_MainWindow(object):
         self.fileToolBar.addAction(self.actionOpen)
         self.fileToolBar.addAction(self.actionSave)
         self.fileToolBar.addAction(self.actionSave_As)
+        self.fileToolBar.addAction(self.actionPrint)
         self.editToolBar.addAction(self.actionBold)
         self.editToolBar.addAction(self.actionItalic)
         self.editToolBar.addAction(self.actionUnderline)
@@ -188,13 +193,13 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QObject.connect(self.actionClose, QtCore.SIGNAL("triggered()"), MainWindow.close)
-        QtCore.QObject.connect(self.actionUndo, QtCore.SIGNAL("triggered()"), self.textArea.undo)
-        QtCore.QObject.connect(self.actionRedo, QtCore.SIGNAL("triggered()"), self.textArea.redo)
         QtCore.QObject.connect(self.actionEnableEditToolbar, QtCore.SIGNAL("toggled(bool)"), self.editToolBar.setVisible)
         QtCore.QObject.connect(self.actionEnableFileToolbar, QtCore.SIGNAL("toggled(bool)"), self.fileToolBar.setVisible)
+        QtCore.QObject.connect(self.actionEnableSpeakerToolbar, QtCore.SIGNAL("toggled(bool)"), self.speakToolBar.setVisible)
+        QtCore.QObject.connect(self.actionUndo, QtCore.SIGNAL("triggered()"), self.textArea.undo)
+        QtCore.QObject.connect(self.actionRedo, QtCore.SIGNAL("triggered()"), self.textArea.redo)
         QtCore.QObject.connect(self.textArea, QtCore.SIGNAL("undoAvailable(bool)"), self.actionUndo.setEnabled)
         QtCore.QObject.connect(self.textArea, QtCore.SIGNAL("redoAvailable(bool)"), self.actionRedo.setEnabled)
-        QtCore.QObject.connect(self.actionEnableSpeakerToolbar, QtCore.SIGNAL("toggled(bool)"), self.speakToolBar.setVisible)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -240,7 +245,11 @@ class Ui_MainWindow(object):
         self.actionEnableSpeakerToolbar.setText(QtGui.QApplication.translate("MainWindow", "Speaker Toolbar", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEnableSpeakerToolbar.setToolTip(QtGui.QApplication.translate("MainWindow", "Enable Speaker Toolbar", None, QtGui.QApplication.UnicodeUTF8))
         self.actionDocumentation.setText(QtGui.QApplication.translate("MainWindow", "Documentation", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "About", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "About WriteType", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAbout.setToolTip(QtGui.QApplication.translate("MainWindow", "About WriteType", None, QtGui.QApplication.UnicodeUTF8))
         self.actionAboutQt.setText(QtGui.QApplication.translate("MainWindow", "About Qt", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionPrint.setText(QtGui.QApplication.translate("MainWindow", "Print", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionPrint.setToolTip(QtGui.QApplication.translate("MainWindow", "Print", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionPrint.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+P", None, QtGui.QApplication.UnicodeUTF8))
 
 from spellCheckEdit import spellCheckEdit
