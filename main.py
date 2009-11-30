@@ -189,6 +189,9 @@ class MainApplication(QtGui.QMainWindow):
 		titlestring = "WriteType - " + self.filetitle
 		if modified:
 			titlestring += " *"
+			self.ui.actionSave.setDisabled(False)
+		else:
+			self.ui.actionSave.setDisabled(True)
 		self.setWindowTitle(titlestring)
 		print "here2"
 class speakerThread(threading.Thread):
