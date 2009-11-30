@@ -7,3 +7,4 @@ class platformSettings:
 	#default open directory
 	defaultOpenDirectory = "/home/max/My Scripts/"
 	ds = "/"
+	pathToRes = "res"
