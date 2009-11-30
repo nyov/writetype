@@ -117,13 +117,7 @@
      <addaction name="actionEnableEditToolbar"/>
      <addaction name="actionEnableSpeakerToolbar"/>
     </widget>
-    <widget class="QMenu" name="menuType_Here">
-     <property name="title">
-      <string>Type Here</string>
-     </property>
-    </widget>
     <addaction name="menuToolbars"/>
-    <addaction name="menuType_Here"/>
    </widget>
    <widget class="QMenu" name="menuHelo">
     <property name="title">
@@ -181,6 +175,9 @@
    <addaction name="actionSpeak"/>
   </widget>
   <action name="actionSave">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normaloff>res/filesave.png</normaloff>res/filesave.png</iconset>

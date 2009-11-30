@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Mon Nov 30 16:15:23 2009
+# Created: Mon Nov 30 16:45:59 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -81,6 +81,7 @@ class Ui_MainWindow(object):
         self.speakToolBar.setObjectName("speakToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.speakToolBar)
         self.actionSave = QtGui.QAction(MainWindow)
+        self.actionSave.setEnabled(False)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("res/filesave.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionSave.setIcon(icon1)
