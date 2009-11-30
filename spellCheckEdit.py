@@ -18,8 +18,6 @@ class spellCheckEdit(QTextEdit):
 		self.setFontPointSize(12)
 		self.highlighter.setDict(self.dictionary)
 		#Set the stuff up to ask for a save on exit
-		self.modified = False
-		QtCore.QObject.connect(self, QtCore.SIGNAL("wordEdited"), self.setModified)
 		
 		
 	def mousePressEvent(self, event):
@@ -88,7 +86,8 @@ class spellCheckEdit(QTextEdit):
 			text = unicode(cursor.selectedText() + event.text())
 		else:
 			text = unicode(event.text())
-		self.emit(SIGNAL("wordEdited"), text)		
+		self.emit(SIGNAL("wordEdited"), text)
+		self.emit(SIGNAL("keyPressed"))
 		QTextEdit.keyPressEvent(self, event)
 		
 	#def italicSelectedText(self):
@@ -126,10 +125,6 @@ class spellCheckEdit(QTextEdit):
 		print "here"
 		self.setFontUnderline(not self.fontUnderline())
 		self.setFocus()
-	def setModified(self, *args):
-		self.modified = True
-	def unsetModified(self):
-		self.modified = False
 
 
 

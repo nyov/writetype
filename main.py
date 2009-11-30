@@ -35,6 +35,8 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontComboBoxValue)
 		QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setCurrentFont)
 
+
+
 		#about boxes
 		QtCore.QObject.connect(self.ui.actionAboutQt, QtCore.SIGNAL("triggered()"), self.showAboutQt)
 		QtCore.QObject.connect(self.ui.actionAbout, QtCore.SIGNAL("triggered()"), self.showAbout)
@@ -48,6 +50,9 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
 		self.filename = ""
 		self.filetitle = "Untitled Document"
+		
+		#modified
+		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("keyPressed"), self.updateTitle)
 
 
 		#create the settings dialog box
@@ -71,7 +76,7 @@ class MainApplication(QtGui.QMainWindow):
 			text = open(self.filename).read()
 			self.ui.textArea.setText(text)
 			self.filetitle = str(self.filename).split(platformSettings.ds).pop()
-			self.setWindowTitle("WriteType - " + self.filetitle)
+			self.updateTitle(False)
 
 	def saveFile(self):
 		from os.path import isfile
@@ -79,18 +84,17 @@ class MainApplication(QtGui.QMainWindow):
 			file = open(self.filename, 'w')
 			file.write(self.ui.textArea.toHtml())
 			self.filetitle = str(self.filename).split(platformSettings.ds).pop()
-			self.setWindowTitle("WriteType - " + self.filetitle)
+			self.updateTitle(False)
 			file.close()
 	def saveFileAs(self):
 		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", platformSettings.defaultOpenDirectory, "Formatted Text (*.html)")
 		if not str(self.filename).find('.html'):
 			self.filename += '.html'
-		
+			self.updateTitle(False)
 		file = open(self.filename, 'w+')
 		file.write(self.ui.textArea.toHtml())
 		file.close()
 		self.filetitle = str(self.filename).split(platformSettings.ds).pop()
-		self.setWindowTitle("WriteType - " + self.filetitle)
 	def readAloud(self):
 		if self.ui.textArea.textCursor().selectedText():
 			text = self.ui.textArea.textCursor().selectedText()
@@ -180,7 +184,13 @@ class MainApplication(QtGui.QMainWindow):
 		printDialog.setWindowTitle("WriteType - Print")
 		if printDialog.exec_():
 			self.ui.textArea.document().print_(printer)
-
+	def updateTitle(self, modified=True):
+		print "here"
+		titlestring = "WriteType - " + self.filetitle
+		if modified:
+			titlestring += " *"
+		self.setWindowTitle(titlestring)
+		print "here2"
 class speakerThread(threading.Thread):
 	def __init__(self, text):
 		self.text = text
