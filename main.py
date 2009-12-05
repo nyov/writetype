@@ -45,6 +45,7 @@ class MainApplication(QtGui.QMainWindow):
 
 		#Word list for autocompletion
 		self.wl = wordsList()
+		self.tokenizer = get_tokenizer("en_US")
 		#printer
 		self.printer = QtGui.QPrinter()
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
@@ -70,13 +71,18 @@ class MainApplication(QtGui.QMainWindow):
 
 	
 	def openDialog(self):
-		self.filename = QtGui.QFileDialog.getOpenFileName(self, "Open file", platformSettings.defaultOpenDirectory, "Formatted Text (*.html)")
+		self.filename = QtGui.QFileDialog.getOpenFileName(self, "Open file", platformSettings.defaultOpenDirectory, "Formatted Text (*.html *.htm);;Plain Text (*)")
 		from os.path import isfile
 		if isfile(self.filename):
 			text = open(self.filename).read()
 			self.ui.textArea.setText(text)
 			self.filetitle = str(self.filename).split(platformSettings.ds).pop()
 			self.updateTitle(False)
+			
+			#Add the words in the document to the custom words list
+			for token in self.tokenizer(str(self.ui.textArea.toPlainText())):
+				self.wl.addCustomWord(token[0].lower())
+				print token[0].lower()
 
 	def saveFile(self):
 		from os.path import isfile
@@ -109,9 +115,8 @@ class MainApplication(QtGui.QMainWindow):
 			if dictionary.check(word) == False:
 				pass
 	def correctWordList(self, wordItem):
-		print "Here2"
 		word = wordItem.text()
-		#Replace the selected word with another word
+		#Replace the selected word with another word the user selected
 		cursor = self.ui.textArea.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
 		cursor.removeSelectedText()
@@ -119,10 +124,16 @@ class MainApplication(QtGui.QMainWindow):
 		cursor.endEditBlock()
 		self.ui.textArea.setFocus()
 	def createButtons(self, text):
+		self.ui.spellingSuggestionsList.clear()
+		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
+		if text[len(text)-1] in (" ", ".", ",", "!", "?"):
+			self.wl.addCustomWord(text.lower()[0:len(text)-1])
+			return
+		
+		#Search the custom words
 		words = self.wl.search(text, True)
 		print text
 			#i = 0
-		self.ui.spellingSuggestionsList.clear()
 		customWords = False
 		for word in words:
 			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
@@ -130,15 +141,14 @@ class MainApplication(QtGui.QMainWindow):
 			#self.ui.spellingSuggestionsList.addItem(item)
 			
 			
-		
+		#Search the normal words
 		words = self.wl.search(text, False)
 		for word in words:
 			
-			#self.ui.spellingSuggestionsList.addItem(word)
+			#Gray them if there are any custom words
 			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
 			if customWords:
 				item.setForeground(QtGui.QBrush(QtCore.Qt.darkGray))
-			#self.ui.spellingSuggestionsList.addItem(item)
 			
 			
 			
@@ -194,6 +204,19 @@ class MainApplication(QtGui.QMainWindow):
 			self.ui.actionSave.setDisabled(True)
 		self.setWindowTitle(titlestring)
 		print "here2"
+	def closeEvent(self, event):
+		print "Quitting"
+		if self.ui.actionSave.isEnabled():
+			response =  QtGui.QMessageBox.question(self, "Quit?", "You have unsaved work.  Do you want to save?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No, QtGui.QMessageBox.Cancel)
+			if response == QtGui.QMessageBox.Yes:
+				self.saveFileAs()
+				return
+			elif response == QtGui.QMessageBox.No:
+				pass
+			elif response == QtGui.QMessageBox.Cancel:
+				event.ignore()
+				return 
+		QtGui.QMainWindow.closeEvent(self, event)
 class speakerThread(threading.Thread):
 	def __init__(self, text):
 		self.text = text

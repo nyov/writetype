@@ -9,11 +9,12 @@ import re
 import enchant
 import enchant.checker
 from enchant.tokenize import get_tokenizer
+from platformSettings import platformSettings
 
 class spellCheckEdit(QTextEdit):
 	def __init__(self, *args):
 		QTextEdit.__init__(self, *args)
-		self.dictionary = enchant.Dict()
+		self.dictionary = enchant.DictWithPWL('en_us')
 		self.highlighter = Highlighter(self.document())
 		self.setFontPointSize(12)
 		self.highlighter.setDict(self.dictionary)
@@ -48,7 +49,9 @@ class spellCheckEdit(QTextEdit):
 				if len(self.dictionary.suggest(text)) == 0:
 					noneMenuItem = menu.addAction("None")
 					noneMenuItem.setEnabled(False)
-
+				addToDictionary = QAction("Add to dictionary", menu)
+				self.connect(addToDictionary, SIGNAL("triggered()"), lambda targ=text: self.addToDictionary(targ))
+				menu.addAction(addToDictionary)
 		
 		menu.exec_(event.globalPos())
 		
@@ -60,6 +63,8 @@ class spellCheckEdit(QTextEdit):
 		cursor.removeSelectedText()
 		cursor.insertText(word)
 		cursor.endEditBlock()
+	def addToDictionary(self, word):
+		self.dictionary.add(word)
 		
 	def correctWordList(self, wordItem):
 		word = wordItem.text()
