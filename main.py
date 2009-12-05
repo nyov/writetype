@@ -45,7 +45,7 @@ class MainApplication(QtGui.QMainWindow):
 
 		#Word list for autocompletion
 		self.wl = wordsList()
-		self.tokenizer = get_tokenizer("en_US")
+		self.tokenizer = get_tokenizer(platformSettings.language)
 		#printer
 		self.printer = QtGui.QPrinter()
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
@@ -82,7 +82,6 @@ class MainApplication(QtGui.QMainWindow):
 			#Add the words in the document to the custom words list
 			for token in self.tokenizer(str(self.ui.textArea.toPlainText())):
 				self.wl.addCustomWord(token[0].lower())
-				print token[0].lower()
 
 	def saveFile(self):
 		from os.path import isfile
@@ -92,8 +91,15 @@ class MainApplication(QtGui.QMainWindow):
 			self.filetitle = str(self.filename).split(platformSettings.ds).pop()
 			self.updateTitle(False)
 			file.close()
+			return True
+		else:
+			return self.saveFileAs()
 	def saveFileAs(self):
+		oldfilename = self.filename
 		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", platformSettings.defaultOpenDirectory, "Formatted Text (*.html)")
+		if self.filename != oldfilename:
+			self.filename = oldfilename
+			return False
 		if not str(self.filename).find('.html'):
 			self.filename += '.html'
 			self.updateTitle(False)
@@ -101,6 +107,8 @@ class MainApplication(QtGui.QMainWindow):
 		file.write(self.ui.textArea.toHtml())
 		file.close()
 		self.filetitle = str(self.filename).split(platformSettings.ds).pop()
+		self.updateTitle(False)
+		return True
 	def readAloud(self):
 		if self.ui.textArea.textCursor().selectedText():
 			text = self.ui.textArea.textCursor().selectedText()
@@ -109,8 +117,8 @@ class MainApplication(QtGui.QMainWindow):
 		speaker = speakerThread(text)
 		speaker.start()
 	def spellcheck(self):
-		dictionary = enchant.Dict("en_US")
-		tokenizer = get_tokenizer("en_US")
+		dictionary = enchant.Dict(platformSettings.language)
+		tokenizer = get_tokenizer(platformSettings.language)
 		for word in tokenizer(self.ui.textArea.toPlainText()):
 			if dictionary.check(word) == False:
 				pass
@@ -132,7 +140,6 @@ class MainApplication(QtGui.QMainWindow):
 		
 		#Search the custom words
 		words = self.wl.search(text, True)
-		print text
 			#i = 0
 		customWords = False
 		for word in words:
@@ -195,7 +202,6 @@ class MainApplication(QtGui.QMainWindow):
 		if printDialog.exec_():
 			self.ui.textArea.document().print_(printer)
 	def updateTitle(self, modified=True):
-		print "here"
 		titlestring = "WriteType - " + self.filetitle
 		if modified:
 			titlestring += " *"
@@ -203,13 +209,13 @@ class MainApplication(QtGui.QMainWindow):
 		else:
 			self.ui.actionSave.setDisabled(True)
 		self.setWindowTitle(titlestring)
-		print "here2"
 	def closeEvent(self, event):
 		print "Quitting"
 		if self.ui.actionSave.isEnabled():
 			response =  QtGui.QMessageBox.question(self, "Quit?", "You have unsaved work.  Do you want to save?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No, QtGui.QMessageBox.Cancel)
 			if response == QtGui.QMessageBox.Yes:
-				self.saveFileAs()
+				if not self.saveFile():
+					event.ignore()
 				return
 			elif response == QtGui.QMessageBox.No:
 				pass

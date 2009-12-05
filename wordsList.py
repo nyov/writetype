@@ -21,19 +21,7 @@ class wordsList:
 			self.wordsCustom.append(word)
 		if word in self.words:
 			self.words.pop(self.words.index(word))
-		
-	def bubbleSort(self, tosort):
-		i = 1
-		while i > 0:
-			i = 0
-			for num in range(1, len(tosort)-1):
-				if cmp(tosort[num], tosort[num-1]) < 0:
-					tmp = tosort[num]
-					tosort[num] = tosort[num-1]
-					tosort[num-1] = tmp
-					i += 1
-		return tosort
-				
+
 	@staticmethod
 	def quicksort(tosort):
 		if len(tosort) == 0:

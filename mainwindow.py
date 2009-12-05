@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Mon Nov 30 16:45:59 2009
+# Created: Sat Dec  5 11:30:02 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -63,8 +63,6 @@ class Ui_MainWindow(object):
         self.menuView.setObjectName("menuView")
         self.menuToolbars = QtGui.QMenu(self.menuView)
         self.menuToolbars.setObjectName("menuToolbars")
-        self.menuType_Here = QtGui.QMenu(self.menuView)
-        self.menuType_Here.setObjectName("menuType_Here")
         self.menuHelo = QtGui.QMenu(self.menubar)
         self.menuHelo.setObjectName("menuHelo")
         MainWindow.setMenuBar(self.menubar)
@@ -177,7 +175,6 @@ class Ui_MainWindow(object):
         self.menuToolbars.addAction(self.actionEnableEditToolbar)
         self.menuToolbars.addAction(self.actionEnableSpeakerToolbar)
         self.menuView.addAction(self.menuToolbars.menuAction())
-        self.menuView.addAction(self.menuType_Here.menuAction())
         self.menuHelo.addAction(self.actionDocumentation)
         self.menuHelo.addAction(self.actionAbout)
         self.menuHelo.addAction(self.actionAboutQt)
@@ -196,6 +193,7 @@ class Ui_MainWindow(object):
         self.sizeLabel.setBuddy(self.spinBoxFontSize)
 
         self.retranslateUi(MainWindow)
+        QtCore.QObject.connect(self.actionClose, QtCore.SIGNAL("triggered()"), MainWindow.close)
         QtCore.QObject.connect(self.actionEnableEditToolbar, QtCore.SIGNAL("toggled(bool)"), self.editToolBar.setVisible)
         QtCore.QObject.connect(self.actionEnableFileToolbar, QtCore.SIGNAL("toggled(bool)"), self.fileToolBar.setVisible)
         QtCore.QObject.connect(self.actionEnableSpeakerToolbar, QtCore.SIGNAL("toggled(bool)"), self.speakToolBar.setVisible)
@@ -212,7 +210,6 @@ class Ui_MainWindow(object):
         self.menuEdit.setTitle(QtGui.QApplication.translate("MainWindow", "Edit", None, QtGui.QApplication.UnicodeUTF8))
         self.menuView.setTitle(QtGui.QApplication.translate("MainWindow", "View", None, QtGui.QApplication.UnicodeUTF8))
         self.menuToolbars.setTitle(QtGui.QApplication.translate("MainWindow", "Toolbars", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuType_Here.setTitle(QtGui.QApplication.translate("MainWindow", "Type Here", None, QtGui.QApplication.UnicodeUTF8))
         self.menuHelo.setTitle(QtGui.QApplication.translate("MainWindow", "Helo", None, QtGui.QApplication.UnicodeUTF8))
         self.fileToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.editToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar_2", None, QtGui.QApplication.UnicodeUTF8))
