@@ -210,7 +210,6 @@ class MainApplication(QtGui.QMainWindow):
 			self.ui.actionSave.setDisabled(True)
 		self.setWindowTitle(titlestring)
 	def closeEvent(self, event):
-		print "Quitting"
 		if self.ui.actionSave.isEnabled():
 			response =  QtGui.QMessageBox.question(self, "Quit?", "You have unsaved work.  Do you want to save?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No, QtGui.QMessageBox.Cancel)
 			if response == QtGui.QMessageBox.Yes:

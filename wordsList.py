@@ -11,7 +11,6 @@ class wordsList:
 		self.words = self.loadWords(platformSettings.pathToStandardWords)
 	def refreshWordsCustom(self):
 		self.wordsCustom = self.loadWords(platformSettings.pathToCustomWords)
-		print "refreshing custom words"
 	def loadWords(self, filePath):
 		fileHandle = open(filePath, 'r')
 		return fileHandle.read().split("\n")
@@ -51,7 +50,6 @@ class wordsList:
 		else:
 			wordsList = self.words
 		results = []
-		print firstLetters.lower()
 		for num in range(0, len(wordsList)):
 			if wordsList[num].find(firstLetters.lower()) == 0:
 				results.append(wordsList[num])

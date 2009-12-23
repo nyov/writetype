@@ -114,7 +114,6 @@ class spellCheckEdit(QTextEdit):
 			#self.setFontPointSize()
 		#self.setFocus()
 	def boldSelectedText(self):
-		print "here"
 		if self.fontWeight() == QFont.Bold:
 			newweight = QFont.Normal
 		else:
@@ -123,11 +122,9 @@ class spellCheckEdit(QTextEdit):
 		self.setFocus()
 		
 	def italicSelectedText(self):
-		print "here"
 		self.setFontItalic(not self.fontItalic())
 		self.setFocus()
 	def underlineSelectedText(self):
-		print "here"
 		self.setFontUnderline(not self.fontUnderline())
 		self.setFocus()
 
