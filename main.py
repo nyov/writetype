@@ -95,11 +95,7 @@ class MainApplication(QtGui.QMainWindow):
 		else:
 			return self.saveFileAs()
 	def saveFileAs(self):
-		oldfilename = self.filename
 		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", platformSettings.defaultOpenDirectory, "Formatted Text (*.html)")
-		if self.filename != oldfilename:
-			self.filename = oldfilename
-			return False
 		if not str(self.filename).find('.html'):
 			self.filename += '.html'
 			self.updateTitle(False)
@@ -108,6 +104,7 @@ class MainApplication(QtGui.QMainWindow):
 		file.close()
 		self.filetitle = str(self.filename).split(platformSettings.ds).pop()
 		self.updateTitle(False)
+		file.close()
 		return True
 	def readAloud(self):
 		if self.ui.textArea.textCursor().selectedText():
