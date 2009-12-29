@@ -60,7 +60,7 @@
        <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Please select the </string>
+          <string>Please select the size of the word completion database:</string>
          </property>
         </widget>
        </item>

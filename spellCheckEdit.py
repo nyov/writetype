@@ -34,49 +34,7 @@ class spellCheckEdit(QTextEdit):
 	def mouseReleaseEvent(self, event):
 		#Highlight on click?
 		if self.highlighting:
-			cursor = self.textCursor()
-
-			print cursor.charFormat().background().color().blue()
-			if cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
-				format_highlight = QTextCharFormat()
-				format_highlight.setBackground(QColor.fromRgb(255, 255, 255))
-				#cursor.mergeCharFormat(format_highlight)
-				#Wow this is ugly.  Why isn't there some "select by text format" method?  It recurses backwards to find if the characters are highlighted, and then forwards.  Eeeww...
-				pos = cursor.position()
-				i = 0
-				while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
-					i -= 1
-					cursor.setPosition(pos + i)
-					if pos + i == 0:
-						break
-				start = i + pos
-				i = 0
-				cursor.setPosition(pos)
-				while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
-					i += 1
-					cursor.setPosition(pos + i)
-					if i+pos == len(self.toPlainText()):
-						break
-				end = i + pos
-				cursor.setPosition(start)
-				cursor.setPosition(end, QTextCursor.KeepAnchor)
-				cursor.mergeCharFormat(format_highlight)
-			else:
-				if not cursor.hasSelection():
-					cursor.select(QTextCursor.WordUnderCursor)
-				else:
-					#Don't visually represent highlighted text on the screen
-					cursorToApply = self.textCursor()
-					#cursorToApply.movePosition(QTextCursor.NextCharacter)
-					cursorToApply.clearSelection()
-					self.setTextCursor(cursorToApply)
-					
-				format_highlight = QTextCharFormat()
-				format_highlight.setBackground(QColor.fromRgb(255, 255, 0))
-				cursor.mergeCharFormat(format_highlight)
-
-
-
+			self.highlightAction()
 		else:
 			QTextEdit.mousePressEvent(self, event)
 
@@ -186,6 +144,45 @@ class spellCheckEdit(QTextEdit):
 			self.setReadOnly(True)
 		else:
 			self.setReadOnly(False)
+	def highlightAction(self):
+		cursor = self.textCursor()
+		if cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
+			format_highlight = QTextCharFormat()
+			format_highlight.setBackground(QColor.fromRgb(255, 255, 255))
+			#cursor.mergeCharFormat(format_highlight)
+			#Wow this is ugly.  Why isn't there some "select by text format" method?  It recurses backwards to find if the characters are highlighted, and then forwards.  Eeeww...
+			pos = cursor.position()
+			i = 0
+			while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
+				i -= 1
+				cursor.setPosition(pos + i)
+				if pos + i == 0:
+					break
+			start = i + pos
+			i = 0
+			cursor.setPosition(pos)
+			while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
+				i += 1
+				cursor.setPosition(pos + i)
+				if i + pos == len(self.toPlainText()):
+					break
+			end = i + pos
+			cursor.setPosition(start)
+			cursor.setPosition(end, QTextCursor.KeepAnchor)
+			cursor.mergeCharFormat(format_highlight)
+		else:
+			if not cursor.hasSelection():
+				cursor.select(QTextCursor.WordUnderCursor)
+			else:
+				#Don't visually represent highlighted text on the screen
+				cursorToApply = self.textCursor()
+				#cursorToApply.movePosition(QTextCursor.NextCharacter)
+				cursorToApply.clearSelection()
+				self.setTextCursor(cursorToApply)
+				
+			format_highlight = QTextCharFormat()
+			format_highlight.setBackground(QColor.fromRgb(255, 255, 0))
+			cursor.mergeCharFormat(format_highlight)
 
 
 

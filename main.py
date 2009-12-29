@@ -8,6 +8,7 @@ from wordsList import wordsList
 import threading
 from platformSettings import platformSettings
 from settingsDialog import Ui_settingsDialog
+import re
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
@@ -27,7 +28,8 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionBold, QtCore.SIGNAL("triggered()"), self.ui.textArea.boldSelectedText)
 		QtCore.QObject.connect(self.ui.actionItalic, QtCore.SIGNAL("triggered()"), self.ui.textArea.italicSelectedText)
 		QtCore.QObject.connect(self.ui.actionUnderline, QtCore.SIGNAL("triggered()"), self.ui.textArea.underlineSelectedText)
-		QtCore.QObject.connect(self.ui.actionHighlight, QtCore.SIGNAL("toggled(bool)"), self.ui.textArea.toggleHighlight)
+		QtCore.QObject.connect(self.ui.actionHighlightMode, QtCore.SIGNAL("toggled(bool)"), self.ui.textArea.toggleHighlight)
+		QtCore.QObject.connect(self.ui.actionHighlight, QtCore.SIGNAL("triggered()"), self.ui.textArea.highlightAction)
 		#Font point size
 		QtCore.QObject.connect(self.ui.spinBoxFontSize, QtCore.SIGNAL("valueChanged(int)"), self.ui.textArea.setFontPointSize)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
@@ -132,29 +134,30 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.textArea.setFocus()
 	def createButtons(self, text):
 		self.ui.spellingSuggestionsList.clear()
+		text = str(text)
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[len(text)-1] in (" ", ".", ",", "!", "?"):
 			self.wl.addCustomWord(text.lower()[0:len(text)-1])
 			return
 		
 		#Search the custom words
-		words = self.wl.search(text, True)
+		wordsC = self.wl.search(text, True)
 			#i = 0
 		customWords = False
-		for word in words:
+		for word in wordsC:
 			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
 			customWords = True
 			#self.ui.spellingSuggestionsList.addItem(item)
 			
 			
 		#Search the normal words
-		words = self.wl.search(str(text), False)
-		for word in words:
+		wordsN = self.wl.search(str(text), False)
+		for word in wordsN:
 			
 			#Gray them if there are any custom words
 			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
 			if customWords:
-				item.setForeground(QtGui.QBrush(QtCore.Qt.darkGray))
+				item.setForeground(QtGui.QBrush(QtGui.Qt.darkGray))
 			
 			
 			
@@ -177,6 +180,33 @@ class MainApplication(QtGui.QMainWindow):
 					#break
 				#else:
 					#i += 1
+		if len(wordsC) == 0 and len(wordsN) == 0:
+			#This is where things get trickier.  It MUST be a mispeling.  Fun fun fun!
+			possibilities = []
+			##Replace double letters with a single letter and look
+			#for cluster in re.findall(u'[a-z]\1', text):
+				#possibilities += self.wl.search(text.replace(cluster, cluster[0]))
+			#Replace "l" with "ll" and "s" with "ss", etc.
+			possibilities +=  self.wl.search(text.replace("l", "ll"))
+			possibilities +=  self.wl.search(text.replace("s", "ss"))
+			possibilities +=  self.wl.search(text.replace("t", "tt"))
+			#Some more confusions
+			possibilities +=  self.wl.search(text.replace("t", "d"))
+			possibilities +=  self.wl.search(text.replace("d", "tt"))
+			#Vowel confusions
+			possibilities +=  self.wl.search(text.replace("i", "ee"))
+			possibilities +=  self.wl.search(text.replace("ee", "i"))
+			possibilities +=  self.wl.search(text.replace("e", "i"))
+			possibilities +=  self.wl.search(text.replace("a", "e"))
+			possibilities +=  self.wl.search(text.replace("e", "a"))
+			possibilities +=  self.wl.search(text.replace("u", "oo"))
+
+
+			for word in possibilities:
+				item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
+
+
+			
 	def updateFontSizeSpinBoxValue(self):
 		if not self.ui.textArea.textCursor().selectedText():
 			self.ui.spinBoxFontSize.setValue(int(self.ui.textArea.fontPointSize()))

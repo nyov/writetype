@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'settings.ui'
 #
-# Created: Mon Dec 28 14:22:03 2009
+# Created: Tue Dec 29 10:48:45 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -93,7 +93,7 @@ class Ui_settingsDialog(object):
         settingsDialog.setWindowTitle(QtGui.QApplication.translate("settingsDialog", "Settings", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("settingsDialog", "Please enter any custom words you would like to appear in the spell check, one per line.", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.customWordlistTab), QtGui.QApplication.translate("settingsDialog", "Custom Words", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("settingsDialog", "Please select the ", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(QtGui.QApplication.translate("settingsDialog", "Please select the size of the word completion database:", None, QtGui.QApplication.UnicodeUTF8))
         self.wordListSize1.setText(QtGui.QApplication.translate("settingsDialog", "Big", None, QtGui.QApplication.UnicodeUTF8))
         self.wordListSize2.setText(QtGui.QApplication.translate("settingsDialog", "Really Big", None, QtGui.QApplication.UnicodeUTF8))
         self.wordListSize3.setText(QtGui.QApplication.translate("settingsDialog", "Huge", None, QtGui.QApplication.UnicodeUTF8))

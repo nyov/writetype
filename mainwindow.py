@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Mon Dec 28 18:56:25 2009
+# Created: Tue Dec 29 10:48:39 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -158,11 +158,16 @@ class Ui_MainWindow(object):
         icon12.addPixmap(QtGui.QPixmap("res/fileprint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionPrint.setIcon(icon12)
         self.actionPrint.setObjectName("actionPrint")
-        self.actionHighlight = QtGui.QAction(MainWindow)
-        self.actionHighlight.setCheckable(True)
+        self.actionHighlightMode = QtGui.QAction(MainWindow)
+        self.actionHighlightMode.setCheckable(True)
         icon13 = QtGui.QIcon()
         icon13.addPixmap(QtGui.QPixmap("res/highlight.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionHighlight.setIcon(icon13)
+        self.actionHighlightMode.setIcon(icon13)
+        self.actionHighlightMode.setObjectName("actionHighlightMode")
+        self.actionHighlight = QtGui.QAction(MainWindow)
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap("res/highlight_single.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionHighlight.setIcon(icon14)
         self.actionHighlight.setObjectName("actionHighlight")
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
@@ -196,6 +201,7 @@ class Ui_MainWindow(object):
         self.editToolBar.addAction(self.actionItalic)
         self.editToolBar.addAction(self.actionUnderline)
         self.editToolBar.addAction(self.actionHighlight)
+        self.editToolBar.addAction(self.actionHighlightMode)
         self.speakToolBar.addAction(self.actionSpeak)
         self.sizeLabel.setBuddy(self.spinBoxFontSize)
 
@@ -258,7 +264,9 @@ class Ui_MainWindow(object):
         self.actionPrint.setText(QtGui.QApplication.translate("MainWindow", "Print", None, QtGui.QApplication.UnicodeUTF8))
         self.actionPrint.setToolTip(QtGui.QApplication.translate("MainWindow", "Print", None, QtGui.QApplication.UnicodeUTF8))
         self.actionPrint.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+P", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionHighlightMode.setText(QtGui.QApplication.translate("MainWindow", "Highlight Mode", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionHighlightMode.setToolTip(QtGui.QApplication.translate("MainWindow", "Highlight Mode", None, QtGui.QApplication.UnicodeUTF8))
         self.actionHighlight.setText(QtGui.QApplication.translate("MainWindow", "Highlight", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionHighlight.setToolTip(QtGui.QApplication.translate("MainWindow", "Highlighter", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionHighlight.setToolTip(QtGui.QApplication.translate("MainWindow", "Highlight", None, QtGui.QApplication.UnicodeUTF8))
 
 from spellCheckEdit import spellCheckEdit

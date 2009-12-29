@@ -162,6 +162,7 @@
    <addaction name="actionItalic"/>
    <addaction name="actionUnderline"/>
    <addaction name="actionHighlight"/>
+   <addaction name="actionHighlightMode"/>
   </widget>
   <widget class="QToolBar" name="speakToolBar">
    <property name="windowTitle">
@@ -394,7 +395,7 @@
     <string>Ctrl+P</string>
    </property>
   </action>
-  <action name="actionHighlight">
+  <action name="actionHighlightMode">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -403,10 +404,22 @@
      <normaloff>res/highlight.png</normaloff>res/highlight.png</iconset>
    </property>
    <property name="text">
+    <string>Highlight Mode</string>
+   </property>
+   <property name="toolTip">
+    <string>Highlight Mode</string>
+   </property>
+  </action>
+  <action name="actionHighlight">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/highlight_single.png</normaloff>res/highlight_single.png</iconset>
+   </property>
+   <property name="text">
     <string>Highlight</string>
    </property>
    <property name="toolTip">
-    <string>Highlighter</string>
+    <string>Highlight</string>
    </property>
   </action>
  </widget>
