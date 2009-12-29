@@ -180,27 +180,37 @@ class MainApplication(QtGui.QMainWindow):
 					#break
 				#else:
 					#i += 1
-		if len(wordsC) == 0 and len(wordsN) == 0:
+		if platformSettings.getSetting("guessmisspellings", True).toBool() and len(wordsC) + len(wordsN) <= platformSettings.getSetting("threshold", 0).toInt()[0]:
 			#This is where things get trickier.  It MUST be a mispeling.  Fun fun fun!
 			possibilities = []
 			##Replace double letters with a single letter and look
 			#for cluster in re.findall(u'[a-z]\1', text):
 				#possibilities += self.wl.search(text.replace(cluster, cluster[0]))
 			#Replace "l" with "ll" and "s" with "ss", etc.
-			possibilities +=  self.wl.search(text.replace("l", "ll"))
-			possibilities +=  self.wl.search(text.replace("s", "ss"))
-			possibilities +=  self.wl.search(text.replace("t", "tt"))
+			possibilities +=  self.wl.search(text.replace("l", "ll"), False, True)
+			possibilities +=  self.wl.search(text.replace("s", "ss"), False, True)
+			possibilities +=  self.wl.search(text.replace("t", "tt"), False, True)
+			possibilities +=  self.wl.search(text.replace("d", "dd"), False, True)
 			#Some more confusions
-			possibilities +=  self.wl.search(text.replace("t", "d"))
-			possibilities +=  self.wl.search(text.replace("d", "tt"))
+			possibilities +=  self.wl.search(text.replace("t", "d"), False, True)
+			possibilities +=  self.wl.search(text.replace("d", "tt"), False, True)
+			possibilities +=  self.wl.search(text.replace("k", "ck"), False, True)
+			possibilities +=  self.wl.search(text.replace("k", "c"), False, True)
+			possibilities +=  self.wl.search(text.replace("s", "c"), False, True)
 			#Vowel confusions
-			possibilities +=  self.wl.search(text.replace("i", "ee"))
-			possibilities +=  self.wl.search(text.replace("ee", "i"))
-			possibilities +=  self.wl.search(text.replace("e", "i"))
-			possibilities +=  self.wl.search(text.replace("a", "e"))
-			possibilities +=  self.wl.search(text.replace("e", "a"))
-			possibilities +=  self.wl.search(text.replace("u", "oo"))
+			possibilities +=  self.wl.search(text.replace("i", "ee"), False, True)
+			possibilities +=  self.wl.search(text.replace("ee", "i"), False, True)
+			possibilities +=  self.wl.search(text.replace("e", "i"), False, True)
+			possibilities +=  self.wl.search(text.replace("e", "ie"), False, True)
+			possibilities +=  self.wl.search(text.replace("a", "e"), False, True)
+			possibilities +=  self.wl.search(text.replace("e", "a"), False, True)
+			possibilities +=  self.wl.search(text.replace("u", "oo"), False, True)
 
+			possibilities = self.wl.quicksort(possibilities)
+			if wordsN:
+				for i in range(0, len(possibilities)):
+					if possibilities[0] in wordsN:
+						del possibilities[0]
 
 			for word in possibilities:
 				item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
@@ -282,6 +292,11 @@ class settingsDialogBox(QtGui.QDialog):
 		self.wordListButtonGroup.addButton(self.ui.wordListSize4, 4)
 		self.wordListButtonGroup.addButton(self.ui.wordListSize5, 5)
 		self.wordListButtonGroup.setExclusive(True)
+		
+		#Load the word completion settings
+		self.ui.guessMisspellingsCheckbox.setChecked(platformSettings.getSetting("guessmisspellings", True).toBool())
+		self.ui.thresholdSpinbox.setValue(platformSettings.getSetting("threshold", 3).toInt()[0])
+		self.ui.advancedSubstitutionsCheckbox.setChecked(platformSettings.getSetting("advancedsubstitutions", True).toBool())
 
 		
 		#Now actually select the correct button
@@ -291,6 +306,10 @@ class settingsDialogBox(QtGui.QDialog):
 	def applyClicked(self):
 		platformSettings.setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())
 		platformSettings.setSetting("wordlist", self.wordListButtonGroup.checkedId())
+		platformSettings.setSetting("guessmisspellings", self.ui.guessMisspellingsCheckbox.isChecked())
+		platformSettings.setSetting("threshold", self.ui.thresholdSpinbox.value())
+		platformSettings.setSetting("advancedsubstitutions", self.ui.advancedSubstitutionsCheckbox.isChecked())
+
 		self.emit(QtCore.SIGNAL("dialogSaved"))
 
 	def okayClicked(self):

@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="customWordlistTab">
       <attribute name="title">
@@ -120,6 +120,98 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="wordCompletionTab">
+      <attribute name="title">
+       <string>Word Completion</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>View settings for the custom word completion</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="guessMisspellingsCheckbox">
+         <property name="text">
+          <string>Try to guess misspellings</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="misspellingSettings">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Misspelling Settings</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="thresholdSpinbox">
+            <property name="toolTip">
+             <string>How many entries need to be displayed, at the minimum, before WriteType will attempt to guess the spelling?</string>
+            </property>
+            <property name="maximum">
+             <number>25</number>
+            </property>
+            <property name="value">
+             <number>2</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Thrshold:</string>
+            </property>
+            <property name="buddy">
+             <cstring>thresholdSpinbox</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="advancedSubstitutionsCheckbox">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Advanced Substitutions?</string>
+            </property>
+            <property name="buddy">
+             <cstring>advancedSubstitutionsCheckbox</cstring>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="settingsTab">
       <attribute name="title">
        <string>Settings</string>
@@ -191,6 +283,22 @@
     <hint type="destinationlabel">
      <x>199</x>
      <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>guessMisspellingsCheckbox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>misspellingSettings</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>135</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>148</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>

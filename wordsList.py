@@ -43,7 +43,7 @@ class wordsList:
 			else:
 				list2.append(item)
 		return wordsList.quicksort(list1) + [pivot] + wordsList.quicksort(list2)
-	def search(self, firstLetters, customWords=False):
+	def search(self, firstLetters, customWords=False, noSort=False):
 		if customWords:
 			wordsList = self.wordsCustom
 		else:
@@ -52,5 +52,7 @@ class wordsList:
 		for num in range(0, len(wordsList)):
 			if wordsList[num].find(firstLetters.lower()) == 0:
 				results.append(wordsList[num])
+		if noSort:
+			return results
 		return self.quicksort(results)
 			
