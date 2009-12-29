@@ -1,4 +1,4 @@
-from PyQt4.Qt import QTextEdit, QMouseEvent, QTextCursor, QSyntaxHighlighter, QKeyEvent, QFont
+from PyQt4.Qt import QTextEdit, QMouseEvent, QTextCursor, QSyntaxHighlighter, QKeyEvent, QFont, QColor
 from PyQt4.Qt import Qt
 from PyQt4.Qt import QEvent
 from PyQt4.Qt import QAction
@@ -12,6 +12,9 @@ from enchant.tokenize import get_tokenizer
 from platformSettings import platformSettings
 
 class spellCheckEdit(QTextEdit):
+	#To support the highlighting feature
+	highlighting = False
+	
 	def __init__(self, *args):
 		QTextEdit.__init__(self, *args)
 		self.dictionary = enchant.DictWithPWL('en_us')
@@ -22,17 +25,67 @@ class spellCheckEdit(QTextEdit):
 		
 		
 	def mousePressEvent(self, event):
+		#This will move the cursor to the appropriate position
 		if event.button() == Qt.RightButton:
-			#This will move the cursor to the appropriate position
 			event = QMouseEvent(QEvent.MouseButtonPress, event.pos(), Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
+
 		QTextEdit.mousePressEvent(self, event)
+	
+	def mouseReleaseEvent(self, event):
+		#Highlight on click?
+		if self.highlighting:
+			cursor = self.textCursor()
+
+			print cursor.charFormat().background().color().blue()
+			if cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
+				format_highlight = QTextCharFormat()
+				format_highlight.setBackground(QColor.fromRgb(255, 255, 255))
+				#cursor.mergeCharFormat(format_highlight)
+				#Wow this is ugly.  Why isn't there some "select by text format" method?  It recurses backwards to find if the characters are highlighted, and then forwards.  Eeeww...
+				pos = cursor.position()
+				i = 0
+				while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
+					i -= 1
+					cursor.setPosition(pos + i)
+					if pos + i == 0:
+						break
+				start = i + pos
+				i = 0
+				cursor.setPosition(pos)
+				while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
+					i += 1
+					cursor.setPosition(pos + i)
+					if i+pos == len(self.toPlainText()):
+						break
+				end = i + pos
+				cursor.setPosition(start)
+				cursor.setPosition(end, QTextCursor.KeepAnchor)
+				cursor.mergeCharFormat(format_highlight)
+			else:
+				if not cursor.hasSelection():
+					cursor.select(QTextCursor.WordUnderCursor)
+				else:
+					#Don't visually represent highlighted text on the screen
+					cursorToApply = self.textCursor()
+					#cursorToApply.movePosition(QTextCursor.NextCharacter)
+					cursorToApply.clearSelection()
+					self.setTextCursor(cursorToApply)
+					
+				format_highlight = QTextCharFormat()
+				format_highlight.setBackground(QColor.fromRgb(255, 255, 0))
+				cursor.mergeCharFormat(format_highlight)
+
+
+
+		else:
+			QTextEdit.mousePressEvent(self, event)
+
 	
 	def contextMenuEvent(self, event):
 		menu = self.createStandardContextMenu()
 		#Select the word under the cursor
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
-		#self.setTextCursor(cursor)
 		
 		#If there is a word highlighted
 		if cursor.hasSelection():
@@ -127,6 +180,12 @@ class spellCheckEdit(QTextEdit):
 	def underlineSelectedText(self):
 		self.setFontUnderline(not self.fontUnderline())
 		self.setFocus()
+	def toggleHighlight(self, isSet):
+		self.highlighting = isSet
+		if isSet:
+			self.setReadOnly(True)
+		else:
+			self.setReadOnly(False)
 
 
 

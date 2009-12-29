@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Sat Dec  5 11:30:02 2009
+# Created: Mon Dec 28 18:56:25 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -158,6 +158,12 @@ class Ui_MainWindow(object):
         icon12.addPixmap(QtGui.QPixmap("res/fileprint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionPrint.setIcon(icon12)
         self.actionPrint.setObjectName("actionPrint")
+        self.actionHighlight = QtGui.QAction(MainWindow)
+        self.actionHighlight.setCheckable(True)
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap("res/highlight.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionHighlight.setIcon(icon13)
+        self.actionHighlight.setObjectName("actionHighlight")
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
@@ -189,6 +195,7 @@ class Ui_MainWindow(object):
         self.editToolBar.addAction(self.actionBold)
         self.editToolBar.addAction(self.actionItalic)
         self.editToolBar.addAction(self.actionUnderline)
+        self.editToolBar.addAction(self.actionHighlight)
         self.speakToolBar.addAction(self.actionSpeak)
         self.sizeLabel.setBuddy(self.spinBoxFontSize)
 
@@ -251,5 +258,7 @@ class Ui_MainWindow(object):
         self.actionPrint.setText(QtGui.QApplication.translate("MainWindow", "Print", None, QtGui.QApplication.UnicodeUTF8))
         self.actionPrint.setToolTip(QtGui.QApplication.translate("MainWindow", "Print", None, QtGui.QApplication.UnicodeUTF8))
         self.actionPrint.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+P", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionHighlight.setText(QtGui.QApplication.translate("MainWindow", "Highlight", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionHighlight.setToolTip(QtGui.QApplication.translate("MainWindow", "Highlighter", None, QtGui.QApplication.UnicodeUTF8))
 
 from spellCheckEdit import spellCheckEdit

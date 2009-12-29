@@ -27,6 +27,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionBold, QtCore.SIGNAL("triggered()"), self.ui.textArea.boldSelectedText)
 		QtCore.QObject.connect(self.ui.actionItalic, QtCore.SIGNAL("triggered()"), self.ui.textArea.italicSelectedText)
 		QtCore.QObject.connect(self.ui.actionUnderline, QtCore.SIGNAL("triggered()"), self.ui.textArea.underlineSelectedText)
+		QtCore.QObject.connect(self.ui.actionHighlight, QtCore.SIGNAL("toggled(bool)"), self.ui.textArea.toggleHighlight)
 		#Font point size
 		QtCore.QObject.connect(self.ui.spinBoxFontSize, QtCore.SIGNAL("valueChanged(int)"), self.ui.textArea.setFontPointSize)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
@@ -207,6 +208,7 @@ class MainApplication(QtGui.QMainWindow):
 		else:
 			self.ui.actionSave.setDisabled(True)
 		self.setWindowTitle(titlestring)
+
 	def closeEvent(self, event):
 		if self.ui.actionSave.isEnabled():
 			response =  QtGui.QMessageBox.question(self, "Quit?", "You have unsaved work.  Do you want to save?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No, QtGui.QMessageBox.Cancel)
