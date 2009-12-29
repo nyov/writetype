@@ -62,6 +62,7 @@ class MainApplication(QtGui.QMainWindow):
 		#Set up the settings box
 		QtCore.QObject.connect(self.ui.actionSettings, QtCore.SIGNAL("triggered()"), self.settings_box.show)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWordsCustom)
+		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWords)
 		
 		#Add some more widgets to the toolbar
 		self.ui.editToolBar.addWidget(self.ui.sizeLabel)
@@ -146,7 +147,7 @@ class MainApplication(QtGui.QMainWindow):
 			
 			
 		#Search the normal words
-		words = self.wl.search(text, False)
+		words = self.wl.search(str(text), False)
 		for word in words:
 			
 			#Gray them if there are any custom words
@@ -235,16 +236,31 @@ class settingsDialogBox(QtGui.QDialog):
 		self.ui.setupUi(self)
 		
 		#Load words into textarea
-		fileHandle = open(platformSettings.pathToCustomWords, 'r')
-		self.ui.customWordsTextEdit.setPlainText(fileHandle.read())
-		fileHandle.close()
+		self.ui.customWordsTextEdit.setPlainText(platformSettings.getSetting("customwords", "").toString())
 		QtCore.QObject.connect(self.ui.okayButton, QtCore.SIGNAL("clicked()"), self.okayClicked)
 		QtCore.QObject.connect(self.ui.applyButton, QtCore.SIGNAL("clicked()"), self.applyClicked)
+		
+		#Maybe I can load the word lists from an XML file one day if I have nothing better to do
+		
+		#Load the radio button settings
+		self.wordListButtonGroup = QtGui.QButtonGroup()
+		self.wordListButtonGroup.addButton(self.ui.wordListSize1, 1)
+		self.wordListButtonGroup.addButton(self.ui.wordListSize2, 2)
+		self.wordListButtonGroup.addButton(self.ui.wordListSize3, 3)
+		self.wordListButtonGroup.addButton(self.ui.wordListSize4, 4)
+		self.wordListButtonGroup.addButton(self.ui.wordListSize5, 5)
+		self.wordListButtonGroup.setExclusive(True)
+
+		
+		#Now actually select the correct button
+		self.wordListButtonGroup.buttons()[platformSettings.getSetting("wordlist", 2).toInt()[0]-1].setChecked(True)
+
+		
 	def applyClicked(self):
-		fileHandle = open(platformSettings.pathToCustomWords, "w")
-		fileHandle.write(self.ui.customWordsTextEdit.toPlainText())
-		fileHandle.close()
+		platformSettings.setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())
+		platformSettings.setSetting("wordlist", self.wordListButtonGroup.checkedId())
 		self.emit(QtCore.SIGNAL("dialogSaved"))
+
 	def okayClicked(self):
 		self.applyClicked()
 		self.close()

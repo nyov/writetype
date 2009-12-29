@@ -52,6 +52,74 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Word lists</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Please select the </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="wordListSize1">
+         <property name="text">
+          <string>Big</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="wordListSize2">
+         <property name="text">
+          <string>Really Big</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="wordListSize3">
+         <property name="text">
+          <string>Huge</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="wordListSize4">
+         <property name="text">
+          <string>Super Huge</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="wordListSize5">
+         <property name="text">
+          <string>Ginormous</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="settingsTab">
       <attribute name="title">
        <string>Settings</string>

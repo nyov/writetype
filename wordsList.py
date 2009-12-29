@@ -3,14 +3,13 @@ from sys import getrecursionlimit, setrecursionlimit
 
 class wordsList:
 	def __init__(self):
-		self.filename = platformSettings.pathToStandardWords
 		self.refreshWords()
 		self.refreshWordsCustom()
 		#self.words = self.bubbleSort(self.words)
 	def refreshWords(self):
-		self.words = self.loadWords(platformSettings.pathToStandardWords)
+		self.words = self.loadWords(platformSettings.pathToWordlists + "/list" + str(platformSettings.getSetting("wordlist", 2).toString()) + ".txt")
 	def refreshWordsCustom(self):
-		self.wordsCustom = self.loadWords(platformSettings.pathToCustomWords)
+		self.wordsCustom = str(platformSettings.getSetting("customwords", "").toString()).split("\n")
 	def loadWords(self, filePath):
 		fileHandle = open(filePath, 'r')
 		return fileHandle.read().split("\n")
@@ -33,7 +32,7 @@ class wordsList:
 			else:
 				return [tosort[1], tosort[0]]
 		if(getrecursionlimit() < len(tosort)):
-			setrecursionlimit(len(torosrt))
+			setrecursionlimit(len(tosort))
 		pivot = tosort.pop()
 		list1 = []
 		list2 = []
