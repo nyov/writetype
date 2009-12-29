@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'settings.ui'
 #
-# Created: Tue Dec 29 12:48:26 2009
+# Created: Tue Dec 29 14:46:33 2009
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -98,9 +98,9 @@ class Ui_settingsDialog(object):
         self.settingsTab.setObjectName("settingsTab")
         self.gridLayout_2 = QtGui.QGridLayout(self.settingsTab)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.label_2 = QtGui.QLabel(self.settingsTab)
-        self.label_2.setObjectName("label_2")
-        self.gridLayout_2.addWidget(self.label_2, 0, 0, 1, 1)
+        self.usageStatisticsCheckbox = QtGui.QCheckBox(self.settingsTab)
+        self.usageStatisticsCheckbox.setObjectName("usageStatisticsCheckbox")
+        self.gridLayout_2.addWidget(self.usageStatisticsCheckbox, 1, 0, 1, 1)
         self.tabWidget.addTab(self.settingsTab, "")
         self.verticalLayout_2.addWidget(self.tabWidget)
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
@@ -122,7 +122,7 @@ class Ui_settingsDialog(object):
         self.label_6.setBuddy(self.advancedSubstitutionsCheckbox)
 
         self.retranslateUi(settingsDialog)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL("clicked()"), settingsDialog.close)
         QtCore.QObject.connect(self.guessMisspellingsCheckbox, QtCore.SIGNAL("toggled(bool)"), self.misspellingSettings.setVisible)
         QtCore.QMetaObject.connectSlotsByName(settingsDialog)
@@ -145,7 +145,7 @@ class Ui_settingsDialog(object):
         self.label_5.setText(QtGui.QApplication.translate("settingsDialog", "Thrshold:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("settingsDialog", "Advanced Substitutions?", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.wordCompletionTab), QtGui.QApplication.translate("settingsDialog", "Word Completion", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("settingsDialog", "No more settings for now...", None, QtGui.QApplication.UnicodeUTF8))
+        self.usageStatisticsCheckbox.setText(QtGui.QApplication.translate("settingsDialog", "Send usage statistics to help improve the program", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.settingsTab), QtGui.QApplication.translate("settingsDialog", "Settings", None, QtGui.QApplication.UnicodeUTF8))
         self.okayButton.setText(QtGui.QApplication.translate("settingsDialog", "Okay", None, QtGui.QApplication.UnicodeUTF8))
         self.applyButton.setText(QtGui.QApplication.translate("settingsDialog", "Apply", None, QtGui.QApplication.UnicodeUTF8))

@@ -5,7 +5,7 @@ class wordsList:
 	def __init__(self):
 		self.refreshWords()
 		self.refreshWordsCustom()
-		#self.words = self.bubbleSort(self.words)
+
 	def refreshWords(self):
 		self.words = self.loadWords(platformSettings.pathToWordlists + "/list" + str(platformSettings.getSetting("wordlist", 2).toString()) + ".txt")
 	def refreshWordsCustom(self):

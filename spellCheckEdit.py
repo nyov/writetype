@@ -10,6 +10,11 @@ import enchant
 import enchant.checker
 from enchant.tokenize import get_tokenizer
 from platformSettings import platformSettings
+#For logger
+import urllib
+import urllib2
+
+
 
 class spellCheckEdit(QTextEdit):
 	#To support the highlighting feature
@@ -21,8 +26,8 @@ class spellCheckEdit(QTextEdit):
 		self.highlighter = Highlighter(self.document())
 		self.setFontPointSize(12)
 		self.highlighter.setDict(self.dictionary)
-		#Set the stuff up to ask for a save on exit
-		
+			##Logging... for me :)
+		self.log = logger()
 		
 	def mousePressEvent(self, event):
 		#This will move the cursor to the appropriate position
@@ -82,6 +87,7 @@ class spellCheckEdit(QTextEdit):
 		#Replace the selected word with another word
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
+		oldword = cursor.selectedText()
 		#Make sure the last word is selected
 		while not cursor.selectedText():
 			cursor.deletePreviousChar()
@@ -94,6 +100,8 @@ class spellCheckEdit(QTextEdit):
 		cursor.endEditBlock()
 		self.keyPressEvent(QKeyEvent(QEvent.KeyPress, 0, Qt.NoModifier))
 		self.setFocus()
+		#Log it
+		self.log.log(oldword + " -> " + str(word))
 		
 	def keyPressEvent(self, event):
 		cursor = self.textCursor()
@@ -227,3 +235,18 @@ class Highlighter(QSyntaxHighlighter):
 				self.setFormat(word_object.start(), word_object.end() - word_object.start(), format_capital)
 		for word_object in re.finditer(self.SENTENCE_STARTS, text):
 				self.setFormat(word_object.start(), word_object.end() - word_object.start(), format_capital)
+				
+		
+class logger:
+	logText = ""
+	def log(self, text):
+		self.logText += text
+		self.logText += "<br />\n"
+	def send(self):
+		if not self.logText:
+			return
+		if platformSettings.getSetting("sendusagestatistics", True).toBool() == True:
+			data = urllib.urlencode({"log": self.logText})
+			request = urllib2.Request(platformSettings.statsUrl, data)
+			urllib2.urlopen(request)
+		

@@ -6,6 +6,7 @@ class platformSettings:
 	defaultOpenDirectory = "/home/max/My Scripts/"
 	pathToRes = "res"
 	pathToWordlists = "wordlists"
+	statsUrl = "http://BernsteinForPresident.com/writetypelog.php"
 	
 	language = "en_US"
 	

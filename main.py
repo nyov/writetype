@@ -1,5 +1,5 @@
 import sys
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtCore, QtGui, Qt
 from mainwindow import Ui_MainWindow
 import enchant
 import enchant.checker
@@ -72,7 +72,6 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.editToolBar.addWidget(self.ui.spinBoxFontSize)
 		self.ui.editToolBar.addWidget(self.ui.fontComboBox)
 
-
 	
 	def openDialog(self):
 		self.filename = QtGui.QFileDialog.getOpenFileName(self, "Open file", platformSettings.defaultOpenDirectory, "Formatted Text (*.html *.htm);;Plain Text (*)")
@@ -124,17 +123,25 @@ class MainApplication(QtGui.QMainWindow):
 			if dictionary.check(word) == False:
 				pass
 	def correctWordList(self, wordItem):
+		print "entering correct word list"
 		word = wordItem.text()
 		#Replace the selected word with another word the user selected
 		cursor = self.ui.textArea.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
+		oldword = str(cursor.selectedText())
 		cursor.removeSelectedText()
 		cursor.insertText(word)
 		cursor.endEditBlock()
 		self.ui.textArea.setFocus()
+		
+		#now log it
+		print "about to log"
+		print "Logged " + oldword + " -> " + str(word)
 	def createButtons(self, text):
 		self.ui.spellingSuggestionsList.clear()
 		text = str(text)
+		if not text:
+			return
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[len(text)-1] in (" ", ".", ",", "!", "?"):
 			self.wl.addCustomWord(text.lower()[0:len(text)-1])
@@ -157,7 +164,7 @@ class MainApplication(QtGui.QMainWindow):
 			#Gray them if there are any custom words
 			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
 			if customWords:
-				item.setForeground(QtGui.QBrush(QtGui.Qt.darkGray))
+				item.setForeground(QtGui.QColor.fromRgb(50, 50, 50))
 			
 			
 			
@@ -199,12 +206,14 @@ class MainApplication(QtGui.QMainWindow):
 			possibilities +=  self.wl.search(text.replace("s", "c"), False, True)
 			#Vowel confusions
 			possibilities +=  self.wl.search(text.replace("i", "ee"), False, True)
+			possibilities +=  self.wl.search(text.replace("ea", "ee"), False, True)
 			possibilities +=  self.wl.search(text.replace("ee", "i"), False, True)
 			possibilities +=  self.wl.search(text.replace("e", "i"), False, True)
 			possibilities +=  self.wl.search(text.replace("e", "ie"), False, True)
 			possibilities +=  self.wl.search(text.replace("a", "e"), False, True)
 			possibilities +=  self.wl.search(text.replace("e", "a"), False, True)
 			possibilities +=  self.wl.search(text.replace("u", "oo"), False, True)
+			possibilities +=  self.wl.search(text.replace("u", "ou"), False, True)
 
 			possibilities = self.wl.quicksort(possibilities)
 			if wordsN:
@@ -250,6 +259,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.setWindowTitle(titlestring)
 
 	def closeEvent(self, event):
+		#Set the stuff up to ask for a save on exit
 		if self.ui.actionSave.isEnabled():
 			response =  QtGui.QMessageBox.question(self, "Quit?", "You have unsaved work.  Do you want to save?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No, QtGui.QMessageBox.Cancel)
 			if response == QtGui.QMessageBox.Yes:
@@ -261,6 +271,7 @@ class MainApplication(QtGui.QMainWindow):
 			elif response == QtGui.QMessageBox.Cancel:
 				event.ignore()
 				return 
+		self.ui.textArea.log.send()
 		QtGui.QMainWindow.closeEvent(self, event)
 class speakerThread(threading.Thread):
 	def __init__(self, text):
@@ -292,15 +303,16 @@ class settingsDialogBox(QtGui.QDialog):
 		self.wordListButtonGroup.addButton(self.ui.wordListSize4, 4)
 		self.wordListButtonGroup.addButton(self.ui.wordListSize5, 5)
 		self.wordListButtonGroup.setExclusive(True)
+		#Now actually select the correct button
+		self.wordListButtonGroup.buttons()[platformSettings.getSetting("wordlist", 2).toInt()[0]-1].setChecked(True)
 		
 		#Load the word completion settings
 		self.ui.guessMisspellingsCheckbox.setChecked(platformSettings.getSetting("guessmisspellings", True).toBool())
 		self.ui.thresholdSpinbox.setValue(platformSettings.getSetting("threshold", 3).toInt()[0])
 		self.ui.advancedSubstitutionsCheckbox.setChecked(platformSettings.getSetting("advancedsubstitutions", True).toBool())
 
-		
-		#Now actually select the correct button
-		self.wordListButtonGroup.buttons()[platformSettings.getSetting("wordlist", 2).toInt()[0]-1].setChecked(True)
+		#Usage statistics
+		self.ui.usageStatisticsCheckbox.setChecked(platformSettings.getSetting("sendusagestatistics", True).toBool())
 
 		
 	def applyClicked(self):
@@ -309,14 +321,14 @@ class settingsDialogBox(QtGui.QDialog):
 		platformSettings.setSetting("guessmisspellings", self.ui.guessMisspellingsCheckbox.isChecked())
 		platformSettings.setSetting("threshold", self.ui.thresholdSpinbox.value())
 		platformSettings.setSetting("advancedsubstitutions", self.ui.advancedSubstitutionsCheckbox.isChecked())
+		platformSettings.setSetting("sendusagestatistics", self.ui.usageStatisticsCheckbox.isChecked())
 
 		self.emit(QtCore.SIGNAL("dialogSaved"))
 
 	def okayClicked(self):
 		self.applyClicked()
 		self.close()
-		
-		
+
 application = QtGui.QApplication(sys.argv)
 app = MainApplication()
 app.show()
