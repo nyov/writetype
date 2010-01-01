@@ -214,15 +214,18 @@ class MainApplication(QtGui.QMainWindow):
 			possibilities +=  self.wl.search(text.replace("e", "a"), False, True)
 			possibilities +=  self.wl.search(text.replace("u", "oo"), False, True)
 			possibilities +=  self.wl.search(text.replace("u", "ou"), False, True)
+			possibilities +=  self.wl.search(text.replace("u", "o"), False, True)
 
-			possibilities = self.wl.quicksort(possibilities)
-			if wordsN:
-				for i in range(0, len(possibilities)):
-					if possibilities[0] in wordsN:
-						del possibilities[0]
+			#possibilities = self.wl.quicksort(possibilities)
+			#Remove duplicates
+			#if wordsN:
+				#for i in range(len(possibilities)):
+					#if possibilities[0] in wordsN:
+						#del possibilities[0]
 
-			for word in possibilities:
+			for word in filter(lambda x:x not in wordsN, possibilities):
 				item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
+				item.setForeground(QtGui.QColor.fromRgb(80, 80, 80))
 
 
 			

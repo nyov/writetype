@@ -16,7 +16,7 @@ class wordsList:
 	def addCustomWord(self, word):
 		word = word.lower()
 		if not word in self.wordsCustom:
-			self.wordsCustom.append(word)
+			self.wordsCustom = self.mergesort(self.wordsCustom, word)
 		if word in self.words:
 			self.words.pop(self.words.index(word))
 
@@ -43,16 +43,31 @@ class wordsList:
 			else:
 				list2.append(item)
 		return wordsList.quicksort(list1) + [pivot] + wordsList.quicksort(list2)
+	@staticmethod
+	def mergesort(baselist, mergelist):
+		if not type(mergelist) == type([]):
+			mergelist = [mergelist]
+		#This assumes the base list is already sorted - no need to bother checking otherwise.
+		for i in range(0, len(mergelist)):
+			for j in range(0, len(baselist)):
+				set = False
+				if baselist[j] > mergelist[i]:
+					baselist = baselist[:j] + [mergelist[i]] + baselist[j:]
+					set = True
+					break
+			if not set:
+				baselist += [mergelist[i]]
+		return baselist
 	def search(self, firstLetters, customWords=False, noSort=False):
 		if customWords:
 			wordsList = self.wordsCustom
 		else:
 			wordsList = self.words
 		results = []
-		for num in range(0, len(wordsList)):
-			if wordsList[num].find(firstLetters.lower()) == 0:
-				results.append(wordsList[num])
+		results = filter(lambda x:x.startswith(firstLetters.lower()), wordsList)
+		#for num in range(0, len(wordsList)):
+			#if wordsList[num].find(firstLetters.lower()) == 0:
+				#results.append(wordsList[num])
 		if noSort:
 			return results
 		return self.quicksort(results)
-			
