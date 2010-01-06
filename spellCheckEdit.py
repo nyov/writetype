@@ -104,7 +104,7 @@ class spellCheckEdit(QTextEdit):
 		self.log.log(oldword + " -> " + str(word))
 		
 	def keyPressEvent(self, event):
-		if event.text() in ["", "\b", " ", "\t"]:
+		if not event.text() in ["", "\b", " ", "\t"]:
 			print "'" + event.text() + "'"
 			cursor = self.textCursor()
 			cursor.select(QTextCursor.WordUnderCursor)

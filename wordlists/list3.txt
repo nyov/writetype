@@ -1,4 +1,3 @@
-
 a
 aardvark
 aardvark's
@@ -871,7 +870,6 @@ asleep
 aspect
 aspects
 aspect's
-ass
 assault
 assault's
 assemble
@@ -888,8 +886,6 @@ asserting
 assertion
 assertion's
 asserts
-asses
-asses
 assess
 assessed
 assesses
@@ -1204,9 +1200,6 @@ basket's
 bass
 basses
 bass's
-bastard
-bastards
-bastard's
 bat
 batch
 batch's
@@ -3480,12 +3473,6 @@ damaged
 damages
 damage's
 damaging
-damn
-damnation
-damnation's
-damned
-damning
-damns
 damp
 dance
 danced
@@ -6654,12 +6641,8 @@ height's
 held
 helicopter
 helicopter's
-hell
-helled
-helled
 hello
 hello's
-hell's
 helmet
 helmet's
 help

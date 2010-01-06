@@ -1,4 +1,3 @@
-
 a
 aardvark
 aardvarks
@@ -2262,7 +2261,6 @@ aspirates
 aspirating
 asps
 asp's
-ass
 assailable
 assault
 assault's
@@ -2295,8 +2293,6 @@ assertively
 assertiveness
 assertiveness's
 asserts
-asses
-asses
 assess
 assessed
 assesses
@@ -2309,8 +2305,6 @@ asseverate
 asseverated
 asseverates
 asseverating
-asshole
-assholes
 assiduous
 assiduously
 assiduousness
@@ -3210,13 +3204,6 @@ bassos
 basso's
 bass's
 bast
-bastard
-bastardize
-bastardized
-bastardizes
-bastardizing
-bastards
-bastard's
 bastion
 bastions
 bastion's
@@ -3965,9 +3952,6 @@ bistro
 bistros
 bistro's
 bit
-bitchier
-bitchiest
-bitchy
 bite
 bites
 biting
@@ -5016,11 +5000,6 @@ bullring
 bullrings
 bullring's
 bull's
-bullshit
-bullshits
-bullshit's
-bullshitted
-bullshitting
 bulrush
 bulrushes
 bulrush's
@@ -9638,9 +9617,6 @@ cuneiform
 cunnilingus
 cunnilingus's
 cunning
-cunt
-cunts
-cunt's
 cup
 cupboard
 cupboard's
@@ -9918,14 +9894,6 @@ damasked
 damasking
 damasks
 damask's
-damn
-damnable
-damnably
-damnation
-damnation's
-damned
-damning
-damns
 damp
 dampers
 damper's
@@ -11230,7 +11198,6 @@ dichotomy
 dichotomy's
 dicier
 diciest
-dick
 dicker
 dickered
 dickering
@@ -11240,8 +11207,6 @@ dickeys
 dickey's
 dickier
 dickiest
-dicks
-dick's
 dicky's
 dicta
 dicta's
@@ -16390,13 +16355,6 @@ frying
 fuchsia
 fuchsias
 fuchsia's
-fuck
-fucked
-fucker
-fuckers
-fucker's
-fucking
-fucks
 fuddle
 fuddled
 fuddles
@@ -18533,7 +18491,6 @@ heliotropes
 heliotrope's
 helix
 helix's
-hell
 hellebore
 hellebore's
 helled
@@ -18547,7 +18504,6 @@ hellion's
 hellishly
 hello
 hello's
-hell's
 helmet
 helmet's
 helmsman
@@ -25739,10 +25695,6 @@ mote's
 mother
 motherboard
 motherboards
-motherfucker
-motherfuckers
-motherfucker's
-motherfucking
 motherland
 motherlands
 motherland's
@@ -36286,12 +36238,6 @@ shirttails
 shirtwaist
 shirtwaists
 shirtwaist's
-shit
-shits
-shittier
-shittiest
-shitting
-shitty
 shivery
 shock
 shocked

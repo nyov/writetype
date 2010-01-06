@@ -147,12 +147,17 @@ class MainApplication(QtGui.QMainWindow):
 			self.wl.addCustomWord(text.lower()[0:len(text)-1])
 			return
 		
+		#Create the font for the list
+		font = QtGui.QFont()
+		font.setPointSize(12)
+			
 		#Search the custom words
 		wordsC = self.wl.search(text, True)
 			#i = 0
 		customWords = False
 		for word in wordsC:
 			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
+			item.setFont(font)
 			customWords = True
 			#self.ui.spellingSuggestionsList.addItem(item)
 			
@@ -163,6 +168,7 @@ class MainApplication(QtGui.QMainWindow):
 			
 			#Gray them if there are any custom words
 			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
+			item.setFont(font)
 			if customWords:
 				item.setForeground(QtGui.QColor.fromRgb(50, 50, 50))
 			
@@ -226,6 +232,7 @@ class MainApplication(QtGui.QMainWindow):
 			for word in filter(lambda x:x not in wordsN, possibilities):
 				item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
 				item.setForeground(QtGui.QColor.fromRgb(80, 80, 80))
+				item.setFont(font)
 
 
 			

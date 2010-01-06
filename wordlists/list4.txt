@@ -1,4 +1,3 @@
-
 a
 aardvark
 aardvark's
@@ -1101,7 +1100,6 @@ asleep
 aspect
 aspects
 aspect's
-ass
 assault
 assault's
 assemble
@@ -1126,8 +1124,6 @@ assertively
 assertiveness
 assertiveness's
 asserts
-asses
-asses
 assess
 assessed
 assesses
@@ -1136,8 +1132,6 @@ assessment
 assessment's
 asset
 assets
-asshole
-assholes
 assign
 assigned
 assigning
@@ -1547,9 +1541,6 @@ bassist
 bassists
 bassist's
 bass's
-bastard
-bastards
-bastard's
 bat
 batch
 batch's
@@ -1855,9 +1846,6 @@ bisection's
 bishop
 bishop's
 bit
-bitchier
-bitchiest
-bitchy
 bite
 bites
 biting
@@ -2336,11 +2324,6 @@ bullfighting
 bullfighting's
 bullish
 bull's
-bullshit
-bullshits
-bullshit's
-bullshitted
-bullshitting
 bumble
 bumbled
 bumbles
@@ -4738,12 +4721,6 @@ damaged
 damages
 damage's
 damaging
-damn
-damnation
-damnation's
-damned
-damning
-damns
 damp
 dampers
 damper's
@@ -5366,9 +5343,6 @@ dichotomy
 dichotomy's
 dicier
 diciest
-dick
-dicks
-dick's
 dictate
 dictator
 dictator's
@@ -8090,13 +8064,6 @@ frustration
 frustration's
 fry
 frying
-fuck
-fucked
-fucker
-fuckers
-fucker's
-fucking
-fucks
 fudge
 fudge's
 fuel
@@ -9165,12 +9132,10 @@ heist's
 held
 helicopter
 helicopter's
-hell
 helled
 helled
 hello
 hello's
-hell's
 helmet
 helmet's
 help
@@ -12603,9 +12568,6 @@ mostly
 mother
 motherboard
 motherboards
-motherfucker
-motherfuckers
-motherfucker's
 mothers
 mother's
 motion
@@ -17705,12 +17667,6 @@ shirt's
 shirtsleeve
 shirtsleeves
 shirtsleeve's
-shit
-shits
-shittier
-shittiest
-shitting
-shitty
 shock
 shocked
 shocking
