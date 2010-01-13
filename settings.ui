@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>Max Shinn</author>
  <class>settingsDialog</class>
  <widget class="QDialog" name="settingsDialog">
   <property name="geometry">

@@ -1,3 +1,23 @@
+#!/usr/bin/python
+
+# Copyright 2010 Max Shinn
+
+# This file is part of WriteType.
+
+# WriteType is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# WriteType is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
+
+
 import sys
 from PyQt4 import QtCore, QtGui, Qt
 from mainwindow import Ui_MainWindow
@@ -248,7 +268,7 @@ class MainApplication(QtGui.QMainWindow):
 	def showAboutQt(self):
 		QtGui.QMessageBox.aboutQt(self)
 	def showAbout(self):
-		QtGui.QMessageBox.about(self, "About this program", """<h1>WriteType</h1><h2>Created by: Max Shinn </h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a>""")
+		QtGui.QMessageBox.about(self, "About this program", """<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later.  For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>""")
 	def openHelpPage(self):
 		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com"))
 	def openPrintDialog(self):
