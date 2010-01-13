@@ -270,7 +270,7 @@ class MainApplication(QtGui.QMainWindow):
 	def showAbout(self):
 		QtGui.QMessageBox.about(self, "About this program", """<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later.  For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>""")
 	def openHelpPage(self):
-		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com"))
+		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype"))
 	def openPrintDialog(self):
 		printer = QtGui.QPrinter()
 		printer.setDocName("writetype_" + self.filename)
