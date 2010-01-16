@@ -5296,16 +5296,6 @@ factually
 faculties
 faculty
 faculty's
-fagot
-fagot
-fagoted
-fagoted
-fagoting
-fagoting
-fagots
-fagots
-fagot's
-fagot's
 fail
 failed
 failing
@@ -6746,7 +6736,6 @@ hit
 hitherto
 hits
 hitting
-ho
 hobby
 hobby's
 hog
@@ -10690,8 +10679,6 @@ populations
 population's
 pork
 pork's
-pornography
-pornography's
 port
 portability
 portable

@@ -6007,7 +6007,6 @@ hit
 hitherto
 hits
 hitting
-ho
 hobby
 hobby's
 hog
@@ -9303,8 +9302,6 @@ populations
 population's
 pork
 pork's
-pornography
-pornography's
 port
 portability
 portable
