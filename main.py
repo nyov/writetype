@@ -26,7 +26,7 @@ import enchant.checker
 from enchant.tokenize import get_tokenizer
 from wordsList import wordsList
 import threading
-from platformSettings import platformSettings
+from platformSettings import PlatformSettings
 from settingsDialog import Ui_settingsDialog
 import re
 
@@ -57,6 +57,8 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setCurrentFont)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontComboBoxValue)
 		QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setCurrentFont)
+		#Clear the word list if a space is pressed
+		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("whiteSpacePressed"), self.ui.spellingSuggestionsList.clear)
 
 
 
@@ -68,7 +70,7 @@ class MainApplication(QtGui.QMainWindow):
 
 		#Word list for autocompletion
 		self.wl = wordsList()
-		self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
+		self.tokenizer = get_tokenizer(PlatformSettings.getPlatformSetting('language'))
 		#printer
 		self.printer = QtGui.QPrinter()
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
@@ -80,7 +82,7 @@ class MainApplication(QtGui.QMainWindow):
 
 
 		#create the settings dialog box
-		self.settings_box = settingsDialogBox(self)
+		self.settings_box = SettingsDialogBox(self)
 		
 		#Set up the settings box
 		QtCore.QObject.connect(self.ui.actionSettings, QtCore.SIGNAL("triggered()"), self.settings_box.show)
@@ -94,12 +96,12 @@ class MainApplication(QtGui.QMainWindow):
 
 	
 	def openDialog(self):
-		self.filename = QtGui.QFileDialog.getOpenFileName(self, "Open file", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html *.htm);;Plain Text (*)")
+		self.filename = QtGui.QFileDialog.getOpenFileName(self, "Open file", PlatformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html *.htm);;Plain Text (*)")
 		from os.path import isfile
 		if isfile(self.filename):
 			text = open(self.filename).read()
 			self.ui.textArea.setText(text)
-			self.filetitle = str(self.filename).split(platformSettings.getPlatformSetting('ds')).pop()
+			self.filetitle = str(self.filename).split(PlatformSettings.getPlatformSetting('ds')).pop()
 			self.updateTitle(False)
 			
 			#Add the words in the document to the custom words list
@@ -111,21 +113,21 @@ class MainApplication(QtGui.QMainWindow):
 		if isfile(self.filename):
 			file = open(self.filename, 'w')
 			file.write(self.ui.textArea.toHtml())
-			self.filetitle = str(self.filename).split(platformSettings.getPlatformSetting('ds')).pop()
+			self.filetitle = str(self.filename).split(PlatformSettings.getPlatformSetting('ds')).pop()
 			self.updateTitle(False)
 			file.close()
 			return True
 		else:
 			return self.saveFileAs()
 	def saveFileAs(self):
-		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html)")
+		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", PlatformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html)")
 		if not str(self.filename).find('.html'):
 			self.filename += '.html'
 			self.updateTitle(False)
 		file = open(self.filename, 'w+')
 		file.write(self.ui.textArea.toHtml())
 		file.close()
-		self.filetitle = str(self.filename).split(platformSettings.getPlatformSetting('ds')).pop()
+		self.filetitle = str(self.filename).split(PlatformSettings.getPlatformSetting('ds')).pop()
 		self.updateTitle(False)
 		file.close()
 		return True
@@ -134,11 +136,11 @@ class MainApplication(QtGui.QMainWindow):
 			text = self.ui.textArea.textCursor().selectedText()
 		else:
 			text = self.ui.textArea.toPlainText()
-		speaker = speakerThread(text)
+		speaker = SpeakerThread(text)
 		speaker.start()
 	def spellcheck(self):
-		dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
-		tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
+		dictionary = enchant.Dict(PlatformSettings.getPlatformSetting('language'))
+		tokenizer = get_tokenizer(PlatformSettings.getPlatformSetting('language'))
 		for word in tokenizer(self.ui.textArea.toPlainText()):
 			if dictionary.check(word) == False:
 				pass
@@ -213,7 +215,7 @@ class MainApplication(QtGui.QMainWindow):
 					#break
 				#else:
 					#i += 1
-		if platformSettings.getSetting("guessmisspellings", True).toBool() and len(wordsC) + len(wordsN) <= platformSettings.getSetting("threshold", 0).toInt()[0]:
+		if PlatformSettings.getSetting("guessmisspellings", True).toBool() and len(wordsC) + len(wordsN) <= PlatformSettings.getSetting("threshold", 0).toInt()[0]:
 			#This is where things get trickier.  It MUST be a mispeling.  Fun fun fun!
 			possibilities = []
 			##Replace double letters with a single letter and look
@@ -303,7 +305,7 @@ class MainApplication(QtGui.QMainWindow):
 				return 
 		self.ui.textArea.log.send()
 		QtGui.QMainWindow.closeEvent(self, event)
-class speakerThread(threading.Thread):
+class SpeakerThread(threading.Thread):
 	def __init__(self, text):
 		self.text = text
 		threading.Thread.__init__(self)
@@ -312,14 +314,14 @@ class speakerThread(threading.Thread):
 		speaker = pyttsx.init()
 		speaker.say(self.text)
 		speaker.runAndWait()
-class settingsDialogBox(QtGui.QDialog):
+class SettingsDialogBox(QtGui.QDialog):
 	def __init__(self, parent=None):
 		QtGui.QWidget.__init__(self, parent)
 		self.ui = Ui_settingsDialog()
 		self.ui.setupUi(self)
 		
 		#Load words into textarea
-		self.ui.customWordsTextEdit.setPlainText(platformSettings.getSetting("customwords", "").toString())
+		self.ui.customWordsTextEdit.setPlainText(PlatformSettings.getSetting("customwords", "").toString())
 		QtCore.QObject.connect(self.ui.okayButton, QtCore.SIGNAL("clicked()"), self.okayClicked)
 		QtCore.QObject.connect(self.ui.applyButton, QtCore.SIGNAL("clicked()"), self.applyClicked)
 		
@@ -334,24 +336,24 @@ class settingsDialogBox(QtGui.QDialog):
 		self.wordListButtonGroup.addButton(self.ui.wordListSize5, 5)
 		self.wordListButtonGroup.setExclusive(True)
 		#Now actually select the correct button
-		self.wordListButtonGroup.buttons()[platformSettings.getSetting("wordlist", 2).toInt()[0]-1].setChecked(True)
+		self.wordListButtonGroup.buttons()[PlatformSettings.getSetting("wordlist", 2).toInt()[0]-1].setChecked(True)
 		
 		#Load the word completion settings
-		self.ui.guessMisspellingsCheckbox.setChecked(platformSettings.getSetting("guessmisspellings", True).toBool())
-		self.ui.thresholdSpinbox.setValue(platformSettings.getSetting("threshold", 3).toInt()[0])
-		self.ui.advancedSubstitutionsCheckbox.setChecked(platformSettings.getSetting("advancedsubstitutions", True).toBool())
+		self.ui.guessMisspellingsCheckbox.setChecked(PlatformSettings.getSetting("guessmisspellings", True).toBool())
+		self.ui.thresholdSpinbox.setValue(PlatformSettings.getSetting("threshold", 3).toInt()[0])
+		self.ui.advancedSubstitutionsCheckbox.setChecked(PlatformSettings.getSetting("advancedsubstitutions", True).toBool())
 
 		#Usage statistics
-		self.ui.usageStatisticsCheckbox.setChecked(platformSettings.getSetting("sendusagestatistics", True).toBool())
+		self.ui.usageStatisticsCheckbox.setChecked(PlatformSettings.getSetting("sendusagestatistics", True).toBool())
 
 		
 	def applyClicked(self):
-		platformSettings.setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())
-		platformSettings.setSetting("wordlist", self.wordListButtonGroup.checkedId())
-		platformSettings.setSetting("guessmisspellings", self.ui.guessMisspellingsCheckbox.isChecked())
-		platformSettings.setSetting("threshold", self.ui.thresholdSpinbox.value())
-		platformSettings.setSetting("advancedsubstitutions", self.ui.advancedSubstitutionsCheckbox.isChecked())
-		platformSettings.setSetting("sendusagestatistics", self.ui.usageStatisticsCheckbox.isChecked())
+		PlatformSettings.setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())
+		PlatformSettings.setSetting("wordlist", self.wordListButtonGroup.checkedId())
+		PlatformSettings.setSetting("guessmisspellings", self.ui.guessMisspellingsCheckbox.isChecked())
+		PlatformSettings.setSetting("threshold", self.ui.thresholdSpinbox.value())
+		PlatformSettings.setSetting("advancedsubstitutions", self.ui.advancedSubstitutionsCheckbox.isChecked())
+		PlatformSettings.setSetting("sendusagestatistics", self.ui.usageStatisticsCheckbox.isChecked())
 
 		self.emit(QtCore.SIGNAL("dialogSaved"))
 

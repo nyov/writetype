@@ -27,7 +27,7 @@ import re
 import enchant
 import enchant.checker
 from enchant.tokenize import get_tokenizer
-from platformSettings import platformSettings
+from platformSettings import PlatformSettings
 #For logger
 import urllib
 import urllib2
@@ -132,6 +132,8 @@ class spellCheckEdit(QTextEdit):
 				text = unicode(event.text())
 			self.emit(SIGNAL("wordEdited"), text)
 			self.emit(SIGNAL("keyPressed"))
+		else:
+			self.emit(SIGNAL("whiteSpacePressed"))
 		QTextEdit.keyPressEvent(self, event)
 		
 	#def italicSelectedText(self):
@@ -265,8 +267,8 @@ class logger:
 	def send(self):
 		if not self.logText:
 			return
-		if platformSettings.getSetting("sendusagestatistics", True).toBool() == True:
+		if PlatformSettings.getSetting("sendusagestatistics", True).toBool() == True:
 			data = urllib.urlencode({"log": self.logText})
-			request = urllib2.Request(platformSettings.getPlatformSetting('statsUrl'), data)
+			request = urllib2.Request(PlatformSettings.getPlatformSetting('statsUrl'), data)
 			urllib2.urlopen(request)
 		

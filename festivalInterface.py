@@ -15,23 +15,16 @@
 # You should have received a copy of the GNU General Public License
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
+import subprocess
 
-from PyQt4.QtCore import QSettings
-from ConfigParser import SafeConfigParser
-#Some defines
-class PlatformSettings:
-	@staticmethod
-	def getPlatformSetting(key):
-		parser = SafeConfigParser()
-		parser.read('platformSettings.ini')
-		parser.read('platformSettings.ini')
-		return parser.get('General', key)
-	@staticmethod
-	def getSetting(key, default=None):
-		settingsHandle = QSettings("BernsteinForPresident", "WriteType")
-		return settingsHandle.value(key, default)
-	@staticmethod
-	def setSetting(key, value):
-		settingsHandle = QSettings("BernsteinForPresident", "WriteType")
-		settingsHandle.setValue(key, value)
-		
+class FestivalInterface:
+	def __init__(self, executableName, libPath=None):
+		self.executableName = executableName
+		self.libPath = libPath
+	def speak(self, text):
+		call = [self.executableName, "--tts", "-"]
+		if self.libPath:
+			call.append("--libpath")
+			call.append(self.libPath)
+		self.proc = subprocess.Popen(call, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+		stdout, stderr = self.proc.communicate(input=text)
