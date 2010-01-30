@@ -17,17 +17,15 @@
 
 
 from PyQt4.QtCore import QSettings
+from ConfigParser import SafeConfigParser
 #Some defines
 class platformSettings:
-	
-	#default open directory
-	defaultOpenDirectory = "/home/max/My Scripts/"
-	pathToRes = "res"
-	pathToWordlists = "wordlists"
-	statsUrl = "http://BernsteinForPresident.com/writetypelog.php"
-	
-	language = "en_US"
-	
+	@staticmethod
+	def getPlatformSetting(key):
+		parser = SafeConfigParser()
+		parser.read('platformSettings.ini')
+		parser.read('platformSettings.ini')
+		return parser.get('General', key)
 	@staticmethod
 	def getSetting(key, default=None):
 		settingsHandle = QSettings("BernsteinForPresident", "WriteType")

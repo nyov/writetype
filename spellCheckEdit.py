@@ -267,6 +267,6 @@ class logger:
 			return
 		if platformSettings.getSetting("sendusagestatistics", True).toBool() == True:
 			data = urllib.urlencode({"log": self.logText})
-			request = urllib2.Request(platformSettings.statsUrl, data)
+			request = urllib2.Request(platformSettings.getPlatformSetting('statsUrl'), data)
 			urllib2.urlopen(request)
 		

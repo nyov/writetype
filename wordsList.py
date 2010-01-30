@@ -25,7 +25,7 @@ class wordsList:
 		self.refreshWordsCustom()
 
 	def refreshWords(self):
-		self.words = self.loadWords(platformSettings.pathToWordlists + "/list" + str(platformSettings.getSetting("wordlist", 2).toString()) + ".txt")
+		self.words = self.loadWords(platformSettings.getPlatformSetting('pathToWordlists') + "/list" + str(platformSettings.getSetting("wordlist", 2).toString()) + ".txt")
 	def refreshWordsCustom(self):
 		self.wordsCustom = str(platformSettings.getSetting("customwords", "").toString()).split("\n")
 	def loadWords(self, filePath):

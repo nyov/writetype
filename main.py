@@ -68,7 +68,7 @@ class MainApplication(QtGui.QMainWindow):
 
 		#Word list for autocompletion
 		self.wl = wordsList()
-		self.tokenizer = get_tokenizer(platformSettings.language)
+		self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
 		#printer
 		self.printer = QtGui.QPrinter()
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
@@ -94,12 +94,12 @@ class MainApplication(QtGui.QMainWindow):
 
 	
 	def openDialog(self):
-		self.filename = QtGui.QFileDialog.getOpenFileName(self, "Open file", platformSettings.defaultOpenDirectory, "Formatted Text (*.html *.htm);;Plain Text (*)")
+		self.filename = QtGui.QFileDialog.getOpenFileName(self, "Open file", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html *.htm);;Plain Text (*)")
 		from os.path import isfile
 		if isfile(self.filename):
 			text = open(self.filename).read()
 			self.ui.textArea.setText(text)
-			self.filetitle = str(self.filename).split(platformSettings.ds).pop()
+			self.filetitle = str(self.filename).split(platformSettings.getPlatformSetting('ds')).pop()
 			self.updateTitle(False)
 			
 			#Add the words in the document to the custom words list
@@ -111,21 +111,21 @@ class MainApplication(QtGui.QMainWindow):
 		if isfile(self.filename):
 			file = open(self.filename, 'w')
 			file.write(self.ui.textArea.toHtml())
-			self.filetitle = str(self.filename).split(platformSettings.ds).pop()
+			self.filetitle = str(self.filename).split(platformSettings.getPlatformSetting('ds')).pop()
 			self.updateTitle(False)
 			file.close()
 			return True
 		else:
 			return self.saveFileAs()
 	def saveFileAs(self):
-		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", platformSettings.defaultOpenDirectory, "Formatted Text (*.html)")
+		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html)")
 		if not str(self.filename).find('.html'):
 			self.filename += '.html'
 			self.updateTitle(False)
 		file = open(self.filename, 'w+')
 		file.write(self.ui.textArea.toHtml())
 		file.close()
-		self.filetitle = str(self.filename).split(platformSettings.ds).pop()
+		self.filetitle = str(self.filename).split(platformSettings.getPlatformSetting('ds')).pop()
 		self.updateTitle(False)
 		file.close()
 		return True
@@ -137,8 +137,8 @@ class MainApplication(QtGui.QMainWindow):
 		speaker = speakerThread(text)
 		speaker.start()
 	def spellcheck(self):
-		dictionary = enchant.Dict(platformSettings.language)
-		tokenizer = get_tokenizer(platformSettings.language)
+		dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
+		tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
 		for word in tokenizer(self.ui.textArea.toPlainText()):
 			if dictionary.check(word) == False:
 				pass
