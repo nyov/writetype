@@ -98,6 +98,8 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.editToolBar.addWidget(self.ui.spinBoxFontSize)
 		self.ui.editToolBar.addWidget(self.ui.fontComboBox)
 
+		self.wordsC = []
+		self.wordsN = []
 	
 	def openDialog(self):
 		self.filename = QtGui.QFileDialog.getOpenFileName(self, "Open file", PlatformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html *.htm);;Plain Text (*)")
@@ -164,38 +166,41 @@ class MainApplication(QtGui.QMainWindow):
 		print "about to log"
 		print "Logged " + oldword + " -> " + str(word)
 	def createButtons(self, text):
+		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
+		if text[len(text)-1] in (" ", ".", ",", "!", "?", "\b", "\t"):
+			print "adding custom word"
+			self.wl.addCustomWord(text.lower()[0:len(text)-1])
+			return
+		
+		#Don't bother continuing if there are no words remaining
+		if len(self.wordsC) == 0 and len(self.wordsN) == 0 and len(text) > 1:
+			return
 		self.ui.spellingSuggestionsList.clear()
 		text = str(text)
 		if not text:
 			return
-		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
-		if text[len(text)-1] in (" ", ".", ",", "!", "?"):
-			self.wl.addCustomWord(text.lower()[0:len(text)-1])
-			return
-		
+
 		#Create the font for the list
 		font = QtGui.QFont()
 		font.setPointSize(12)
 			
 		#Search the custom words
-		wordsC = self.wl.search(text, True)
+		self.wordsC = self.wl.search(text, True)
 			#i = 0
-		customWords = False
-		for word in wordsC:
+		for word in self.wordsC:
 			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
 			item.setFont(font)
-			customWords = True
 			#self.ui.spellingSuggestionsList.addItem(item)
 			
 			
 		#Search the normal words
-		wordsN = self.wl.search(str(text), False)
-		for word in wordsN:
+		self.wordsN = self.wl.search(str(text), False)
+		for word in self.wordsN:
 			
 			#Gray them if there are any custom words
 			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
 			item.setFont(font)
-			if customWords:
+			if len(self.wordsC) != 0:
 				item.setForeground(QtGui.QColor.fromRgb(50, 50, 50))
 			
 			
@@ -219,7 +224,7 @@ class MainApplication(QtGui.QMainWindow):
 					#break
 				#else:
 					#i += 1
-		if PlatformSettings.getSetting("guessmisspellings", True).toBool() and len(wordsC) + len(wordsN) <= PlatformSettings.getSetting("threshold", 0).toInt()[0]:
+		if PlatformSettings.getSetting("guessmisspellings", True).toBool() and len(self.wordsC) + len(self.wordsN) <= PlatformSettings.getSetting("threshold", 0).toInt()[0]:
 			#This is where things get trickier.  It MUST be a mispeling.  Fun fun fun!
 			possibilities = []
 			##Replace double letters with a single letter and look
@@ -255,7 +260,7 @@ class MainApplication(QtGui.QMainWindow):
 					#if possibilities[0] in wordsN:
 						#del possibilities[0]
 
-			for word in filter(lambda x:x not in wordsN, possibilities):
+			for word in filter(lambda x:x not in self.wordsN, possibilities):
 				item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
 				item.setForeground(QtGui.QColor.fromRgb(80, 80, 80))
 				item.setFont(font)

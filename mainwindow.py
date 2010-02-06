@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Tue Dec 29 13:32:18 2009
+# Created: Sat Feb  6 09:41:41 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,6 +23,7 @@ class Ui_MainWindow(object):
         self.gridLayout = QtGui.QGridLayout()
         self.gridLayout.setObjectName("gridLayout")
         self.spinBoxFontSize = QtGui.QSpinBox(self.centralwidget)
+        self.spinBoxFontSize.setProperty("value", 12)
         self.spinBoxFontSize.setObjectName("spinBoxFontSize")
         self.gridLayout.addWidget(self.spinBoxFontSize, 0, 1, 1, 1)
         self.fontComboBox = QtGui.QFontComboBox(self.centralwidget)

@@ -122,18 +122,18 @@ class spellCheckEdit(QTextEdit):
 		self.log.log(oldword + " -> " + str(word))
 		
 	def keyPressEvent(self, event):
-		if not event.text() in ["", "\b", " ", "\t"]:
-			print "'" + event.text() + "'"
-			cursor = self.textCursor()
-			cursor.select(QTextCursor.WordUnderCursor)
-			if cursor.hasSelection():
-				text = unicode(cursor.selectedText() + event.text())
-			else:
-				text = unicode(event.text())
-			self.emit(SIGNAL("wordEdited"), text)
-			self.emit(SIGNAL("keyPressed"))
+		#if not event.text() in ["", "\b", " ", "\t"]:
+		print "'" + event.text() + "'"
+		cursor = self.textCursor()
+		cursor.select(QTextCursor.WordUnderCursor)
+		if cursor.hasSelection():
+			text = unicode(cursor.selectedText() + event.text())
 		else:
-			self.emit(SIGNAL("whiteSpacePressed"))
+			text = unicode(event.text())
+		self.emit(SIGNAL("wordEdited"), text)
+		self.emit(SIGNAL("keyPressed"))
+		#else:
+			#self.emit(SIGNAL("whiteSpacePressed"))
 		QTextEdit.keyPressEvent(self, event)
 		
 	#def italicSelectedText(self):
