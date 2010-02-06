@@ -225,7 +225,7 @@
        <string>Other</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="1">
+       <item row="2" column="1">
         <widget class="QCheckBox" name="usageStatisticsCheckbox">
          <property name="text">
           <string>Send usage statistics to help improve the program</string>
@@ -233,7 +233,7 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QFontComboBox" name="fontComboBox"/>
+        <widget class="QFontComboBox" name="defaultFont"/>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_2">
@@ -242,14 +242,14 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="label_7">
          <property name="text">
           <string>Options:</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
+       <item row="3" column="1">
         <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -264,6 +264,13 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="useDefaultFont">
+         <property name="text">
+          <string>System Default</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -340,6 +347,22 @@
     <hint type="destinationlabel">
      <x>148</x>
      <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useDefaultFont</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>defaultFont</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>162</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>166</x>
+     <y>47</y>
     </hint>
    </hints>
   </connection>

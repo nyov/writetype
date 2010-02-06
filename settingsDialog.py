@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'settings.ui'
 #
-# Created: Tue Dec 29 14:46:33 2009
+# Created: Sat Feb  6 09:08:24 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,6 +37,11 @@ class Ui_settingsDialog(object):
         self.verticalLayout_7 = QtGui.QVBoxLayout(self.tab)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.label_3 = QtGui.QLabel(self.tab)
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        font.setWeight(50)
+        font.setBold(False)
+        self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_7.addWidget(self.label_3)
         self.wordListSize1 = QtGui.QRadioButton(self.tab)
@@ -100,13 +105,27 @@ class Ui_settingsDialog(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.usageStatisticsCheckbox = QtGui.QCheckBox(self.settingsTab)
         self.usageStatisticsCheckbox.setObjectName("usageStatisticsCheckbox")
-        self.gridLayout_2.addWidget(self.usageStatisticsCheckbox, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.usageStatisticsCheckbox, 2, 1, 1, 1)
+        self.defaultFont = QtGui.QFontComboBox(self.settingsTab)
+        self.defaultFont.setObjectName("defaultFont")
+        self.gridLayout_2.addWidget(self.defaultFont, 0, 1, 1, 1)
+        self.label_2 = QtGui.QLabel(self.settingsTab)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout_2.addWidget(self.label_2, 0, 0, 1, 1)
+        self.label_7 = QtGui.QLabel(self.settingsTab)
+        self.label_7.setObjectName("label_7")
+        self.gridLayout_2.addWidget(self.label_7, 2, 0, 1, 1)
+        spacerItem2 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout_2.addItem(spacerItem2, 3, 1, 1, 1)
+        self.useDefaultFont = QtGui.QCheckBox(self.settingsTab)
+        self.useDefaultFont.setObjectName("useDefaultFont")
+        self.gridLayout_2.addWidget(self.useDefaultFont, 1, 1, 1, 1)
         self.tabWidget.addTab(self.settingsTab, "")
         self.verticalLayout_2.addWidget(self.tabWidget)
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem2)
+        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
         self.okayButton = QtGui.QPushButton(settingsDialog)
         self.okayButton.setObjectName("okayButton")
         self.horizontalLayout_3.addWidget(self.okayButton)
@@ -125,6 +144,7 @@ class Ui_settingsDialog(object):
         self.tabWidget.setCurrentIndex(0)
         QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL("clicked()"), settingsDialog.close)
         QtCore.QObject.connect(self.guessMisspellingsCheckbox, QtCore.SIGNAL("toggled(bool)"), self.misspellingSettings.setVisible)
+        QtCore.QObject.connect(self.useDefaultFont, QtCore.SIGNAL("toggled(bool)"), self.defaultFont.setDisabled)
         QtCore.QMetaObject.connectSlotsByName(settingsDialog)
 
     def retranslateUi(self, settingsDialog):
@@ -146,7 +166,10 @@ class Ui_settingsDialog(object):
         self.label_6.setText(QtGui.QApplication.translate("settingsDialog", "Advanced Substitutions?", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.wordCompletionTab), QtGui.QApplication.translate("settingsDialog", "Word Completion", None, QtGui.QApplication.UnicodeUTF8))
         self.usageStatisticsCheckbox.setText(QtGui.QApplication.translate("settingsDialog", "Send usage statistics to help improve the program", None, QtGui.QApplication.UnicodeUTF8))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.settingsTab), QtGui.QApplication.translate("settingsDialog", "Settings", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("settingsDialog", "Default Font:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_7.setText(QtGui.QApplication.translate("settingsDialog", "Options:", None, QtGui.QApplication.UnicodeUTF8))
+        self.useDefaultFont.setText(QtGui.QApplication.translate("settingsDialog", "System Default", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.settingsTab), QtGui.QApplication.translate("settingsDialog", "Other", None, QtGui.QApplication.UnicodeUTF8))
         self.okayButton.setText(QtGui.QApplication.translate("settingsDialog", "Okay", None, QtGui.QApplication.UnicodeUTF8))
         self.applyButton.setText(QtGui.QApplication.translate("settingsDialog", "Apply", None, QtGui.QApplication.UnicodeUTF8))
         self.cancelButton.setText(QtGui.QApplication.translate("settingsDialog", "Cancel", None, QtGui.QApplication.UnicodeUTF8))

@@ -89,6 +89,10 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWordsCustom)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWords)
 		
+		#Apply some settings
+		if PlatformSettings.getSetting("defaultfont", ""):
+			self.ui.fontComboBox.setCurrentFont(QtGui.QFont(PlatformSettings.getSetting("defaultfont").toString()))
+		
 		#Add some more widgets to the toolbar
 		self.ui.editToolBar.addWidget(self.ui.sizeLabel)
 		self.ui.editToolBar.addWidget(self.ui.spinBoxFontSize)
@@ -345,7 +349,13 @@ class SettingsDialogBox(QtGui.QDialog):
 
 		#Usage statistics
 		self.ui.usageStatisticsCheckbox.setChecked(PlatformSettings.getSetting("sendusagestatistics", True).toBool())
-
+		
+		#Set the correct default font
+		if PlatformSettings.getSetting("defaultfont", "").toString():
+			self.ui.defaultFont.setCurrentFont(QtGui.QFont(PlatformSettings.getSetting("defaultfont").toString()))
+		else:
+			self.ui.useDefaultFont.setChecked(True)
+			self.ui.defaultFont.setDisabled(True)
 		
 	def applyClicked(self):
 		PlatformSettings.setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())
@@ -354,6 +364,10 @@ class SettingsDialogBox(QtGui.QDialog):
 		PlatformSettings.setSetting("threshold", self.ui.thresholdSpinbox.value())
 		PlatformSettings.setSetting("advancedsubstitutions", self.ui.advancedSubstitutionsCheckbox.isChecked())
 		PlatformSettings.setSetting("sendusagestatistics", self.ui.usageStatisticsCheckbox.isChecked())
+		if self.ui.useDefaultFont.isChecked():
+			PlatformSettings.setSetting("defaultfont", "")
+		else:
+			PlatformSettings.setSetting("defaultfont", self.ui.defaultFont.currentFont())
 
 		self.emit(QtCore.SIGNAL("dialogSaved"))
 
