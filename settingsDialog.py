@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'settings.ui'
 #
-# Created: Sat Feb  6 09:08:24 2010
+# Created: Sat Feb  6 11:51:03 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -71,6 +71,15 @@ class Ui_settingsDialog(object):
         self.label_4 = QtGui.QLabel(self.wordCompletionTab)
         self.label_4.setObjectName("label_4")
         self.verticalLayout_8.addWidget(self.label_4)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.label_8 = QtGui.QLabel(self.wordCompletionTab)
+        self.label_8.setObjectName("label_8")
+        self.horizontalLayout_2.addWidget(self.label_8)
+        self.minimumLetters = QtGui.QSpinBox(self.wordCompletionTab)
+        self.minimumLetters.setObjectName("minimumLetters")
+        self.horizontalLayout_2.addWidget(self.minimumLetters)
+        self.verticalLayout_8.addLayout(self.horizontalLayout_2)
         self.guessMisspellingsCheckbox = QtGui.QCheckBox(self.wordCompletionTab)
         self.guessMisspellingsCheckbox.setChecked(True)
         self.guessMisspellingsCheckbox.setObjectName("guessMisspellingsCheckbox")
@@ -159,10 +168,11 @@ class Ui_settingsDialog(object):
         self.wordListSize5.setText(QtGui.QApplication.translate("settingsDialog", "Ginormous", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("settingsDialog", "Word lists", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("settingsDialog", "View settings for the custom word completion", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_8.setText(QtGui.QApplication.translate("settingsDialog", "Minimum letters:", None, QtGui.QApplication.UnicodeUTF8))
         self.guessMisspellingsCheckbox.setText(QtGui.QApplication.translate("settingsDialog", "Try to guess misspellings", None, QtGui.QApplication.UnicodeUTF8))
         self.misspellingSettings.setTitle(QtGui.QApplication.translate("settingsDialog", "Misspelling Settings", None, QtGui.QApplication.UnicodeUTF8))
         self.thresholdSpinbox.setToolTip(QtGui.QApplication.translate("settingsDialog", "How many entries need to be displayed, at the minimum, before WriteType will attempt to guess the spelling?", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_5.setText(QtGui.QApplication.translate("settingsDialog", "Thrshold:", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_5.setText(QtGui.QApplication.translate("settingsDialog", "Misspelling Threshold:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("settingsDialog", "Advanced Substitutions?", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.wordCompletionTab), QtGui.QApplication.translate("settingsDialog", "Word Completion", None, QtGui.QApplication.UnicodeUTF8))
         self.usageStatisticsCheckbox.setText(QtGui.QApplication.translate("settingsDialog", "Send usage statistics to help improve the program", None, QtGui.QApplication.UnicodeUTF8))

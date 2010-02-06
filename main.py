@@ -166,6 +166,7 @@ class MainApplication(QtGui.QMainWindow):
 		print "about to log"
 		print "Logged " + oldword + " -> " + str(word)
 	def createButtons(self, text):
+		text = str(text)
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[len(text)-1] in (" ", ".", ",", "!", "?", "\b", "\t"):
 			print "adding custom word"
@@ -173,10 +174,14 @@ class MainApplication(QtGui.QMainWindow):
 			return
 		
 		#Don't bother continuing if there are no words remaining
-		if len(self.wordsC) == 0 and len(self.wordsN) == 0 and len(text) > 1:
+		if len(self.wordsC) == 0 and len(self.wordsN) == 0 and len(text) > PlatformSettings.getSetting("minimumletters", 0).toInt()[0] + 1:
 			return
+		
 		self.ui.spellingSuggestionsList.clear()
-		text = str(text)
+		
+		if len(text) <= PlatformSettings.getSetting("minimumletters", 0).toInt()[0]:
+			return
+
 		if not text:
 			return
 
@@ -334,7 +339,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		QtCore.QObject.connect(self.ui.okayButton, QtCore.SIGNAL("clicked()"), self.okayClicked)
 		QtCore.QObject.connect(self.ui.applyButton, QtCore.SIGNAL("clicked()"), self.applyClicked)
 		
-		#Maybe I can load the word lists from an XML file one day if I have nothing better to do
+		#NOTE TO SELF: Maybe I can load the word lists from an XML file one day if I have nothing better to do
 		
 		#Load the radio button settings
 		self.wordListButtonGroup = QtGui.QButtonGroup()
@@ -351,6 +356,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		self.ui.guessMisspellingsCheckbox.setChecked(PlatformSettings.getSetting("guessmisspellings", True).toBool())
 		self.ui.thresholdSpinbox.setValue(PlatformSettings.getSetting("threshold", 3).toInt()[0])
 		self.ui.advancedSubstitutionsCheckbox.setChecked(PlatformSettings.getSetting("advancedsubstitutions", True).toBool())
+		self.ui.minimumLetters.setValue(PlatformSettings.getSetting("minimumletters", 0).toInt()[0])
 
 		#Usage statistics
 		self.ui.usageStatisticsCheckbox.setChecked(PlatformSettings.getSetting("sendusagestatistics", True).toBool())
@@ -369,6 +375,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		PlatformSettings.setSetting("threshold", self.ui.thresholdSpinbox.value())
 		PlatformSettings.setSetting("advancedsubstitutions", self.ui.advancedSubstitutionsCheckbox.isChecked())
 		PlatformSettings.setSetting("sendusagestatistics", self.ui.usageStatisticsCheckbox.isChecked())
+		PlatformSettings.setSetting("minimumletters", self.ui.minimumLetters.value())
 		if self.ui.useDefaultFont.isChecked():
 			PlatformSettings.setSetting("defaultfont", "")
 		else:

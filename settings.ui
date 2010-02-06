@@ -141,6 +141,20 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Minimum letters:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="minimumLetters"/>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QCheckBox" name="guessMisspellingsCheckbox">
          <property name="text">
           <string>Try to guess misspellings</string>
@@ -178,7 +192,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_5">
             <property name="text">
-             <string>Thrshold:</string>
+             <string>Misspelling Threshold:</string>
             </property>
             <property name="buddy">
              <cstring>thresholdSpinbox</cstring>
