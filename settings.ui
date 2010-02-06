@@ -60,6 +60,13 @@
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
         <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Please select the size of the word completion database:</string>
          </property>
@@ -215,15 +222,48 @@
      </widget>
      <widget class="QWidget" name="settingsTab">
       <attribute name="title">
-       <string>Settings</string>
+       <string>Other</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="0">
+       <item row="1" column="1">
         <widget class="QCheckBox" name="usageStatisticsCheckbox">
          <property name="text">
           <string>Send usage statistics to help improve the program</string>
          </property>
         </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QFontComboBox" name="fontComboBox"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Default Font:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Options:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -294,8 +334,8 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>135</x>
-     <y>151</y>
+     <x>143</x>
+     <y>77</y>
     </hint>
     <hint type="destinationlabel">
      <x>148</x>
