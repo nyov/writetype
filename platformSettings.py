@@ -16,22 +16,27 @@
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from PyQt4.QtCore import QSettings
+from PyQt4.QtCore import QSettings, QVariant
 from ConfigParser import SafeConfigParser
+
+
 #Some defines
-class PlatformSettings:
-	@staticmethod
-	def getPlatformSetting(key):
-		parser = SafeConfigParser()
-		parser.read('platformSettings.ini')
-		parser.read('platformSettings.ini')
-		return parser.get('General', key)
-	@staticmethod
-	def getSetting(key, default=None):
-		settingsHandle = QSettings("BernsteinForPresident", "WriteType")
-		return settingsHandle.value(key, default)
-	@staticmethod
-	def setSetting(key, value):
-		settingsHandle = QSettings("BernsteinForPresident", "WriteType")
-		settingsHandle.setValue(key, value)
-		
+parser = SafeConfigParser()
+parser.read('platformSettings.ini')
+cache = {} #A dictionary
+settingsHandle = QSettings("BernsteinForPresident", "WriteType")
+
+def getPlatformSetting(key):
+	return parser.get('General', key)
+
+def getSetting(key, default=None):
+	if key in cache: #Check to see if it is in the cache
+		return QVariant(cache[key]) #Why doesn't it store as a QVariant in the first place?
+	else:
+		val = settingsHandle.value(key, default)
+		cache[key] = val
+		return val
+
+def setSetting(key, value):
+       	settingsHandle.setValue(key, value)
+       	cache[key] = value

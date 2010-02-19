@@ -16,7 +16,7 @@
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from platformSettings import PlatformSettings
+import platformSettings
 from sys import getrecursionlimit, setrecursionlimit
 
 class wordsList:
@@ -25,9 +25,9 @@ class wordsList:
 		self.refreshWordsCustom()
 
 	def refreshWords(self):
-		self.words = self.loadWords(PlatformSettings.getPlatformSetting('pathToWordlists') + "/list" + str(PlatformSettings.getSetting("wordlist", 2).toString()) + ".txt")
+		self.words = self.loadWords(platformSettings.getPlatformSetting('pathToWordlists') + "/list" + str(platformSettings.getSetting("wordlist", 2).toString()) + ".txt")
 	def refreshWordsCustom(self):
-		self.wordsCustom = str(PlatformSettings.getSetting("customwords", "").toString()).split("\n")
+		self.wordsCustom = str(platformSettings.getSetting("customwords", "").toString()).split("\n")
 	def loadWords(self, filePath):
 		fileHandle = open(filePath, 'r')
 		return fileHandle.read().split("\n")

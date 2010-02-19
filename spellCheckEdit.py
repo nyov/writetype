@@ -27,7 +27,7 @@ import re
 import enchant
 import enchant.checker
 from enchant.tokenize import get_tokenizer
-from platformSettings import PlatformSettings
+import platformSettings
 #For logger
 import urllib
 import urllib2
@@ -267,8 +267,8 @@ class logger:
 	def send(self):
 		if not self.logText:
 			return
-		if PlatformSettings.getSetting("sendusagestatistics", True).toBool() == True:
+		if platformSettings.getSetting("sendusagestatistics", True).toBool() == True:
 			data = urllib.urlencode({"log": self.logText})
-			request = urllib2.Request(PlatformSettings.getPlatformSetting('statsUrl'), data)
+			request = urllib2.Request(platformSettings.getPlatformSetting('statsUrl'), data)
 			urllib2.urlopen(request)
 		
