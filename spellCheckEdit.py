@@ -183,15 +183,13 @@ class spellCheckEdit(QTextEdit):
 			#Wow this is ugly.  Why isn't there some "select by text format" method?  It recurses backwards to find if the characters are highlighted, and then forwards.  Eeeww...
 			pos = cursor.position()
 			i = 0
-			while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
+			while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0) and pos + i > 0:
 				i -= 1
 				cursor.setPosition(pos + i)
-				if pos + i == 0:
-					break
 			start = i + pos
 			i = 0
 			cursor.setPosition(pos)
-			while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
+			while cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0) and pos + i < len(self.toPlainText()):
 				i += 1
 				cursor.setPosition(pos + i)
 				if i + pos == len(self.toPlainText()):

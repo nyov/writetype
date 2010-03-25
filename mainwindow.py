@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Tue Feb 16 14:33:26 2010
+# Created: Tue Mar 23 14:55:01 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -52,9 +52,12 @@ class Ui_MainWindow(object):
         self.spellingSuggestionsList.setSelectionMode(QtGui.QAbstractItemView.NoSelection)
         self.spellingSuggestionsList.setObjectName("spellingSuggestionsList")
         self.verticalLayout.addWidget(self.splitter)
+        self.distractionButton = QtGui.QPushButton(self.centralwidget)
+        self.distractionButton.setObjectName("distractionButton")
+        self.verticalLayout.addWidget(self.distractionButton)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 25))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtGui.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -170,6 +173,8 @@ class Ui_MainWindow(object):
         icon14.addPixmap(QtGui.QPixmap("res/highlight_single.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionHighlight.setIcon(icon14)
         self.actionHighlight.setObjectName("actionHighlight")
+        self.actionDistractionFree = QtGui.QAction(MainWindow)
+        self.actionDistractionFree.setObjectName("actionDistractionFree")
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
@@ -187,6 +192,7 @@ class Ui_MainWindow(object):
         self.menuToolbars.addAction(self.actionEnableEditToolbar)
         self.menuToolbars.addAction(self.actionEnableSpeakerToolbar)
         self.menuView.addAction(self.menuToolbars.menuAction())
+        self.menuView.addAction(self.actionDistractionFree)
         self.menuHelo.addAction(self.actionDocumentation)
         self.menuHelo.addAction(self.actionAbout)
         self.menuHelo.addAction(self.actionAboutQt)
@@ -220,6 +226,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "MainWindow", None, QtGui.QApplication.UnicodeUTF8))
         self.sizeLabel.setText(QtGui.QApplication.translate("MainWindow", "Size:", None, QtGui.QApplication.UnicodeUTF8))
+        self.distractionButton.setText(QtGui.QApplication.translate("MainWindow", "Go Back ", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFile.setTitle(QtGui.QApplication.translate("MainWindow", "File", None, QtGui.QApplication.UnicodeUTF8))
         self.menuEdit.setTitle(QtGui.QApplication.translate("MainWindow", "Edit", None, QtGui.QApplication.UnicodeUTF8))
         self.menuView.setTitle(QtGui.QApplication.translate("MainWindow", "View", None, QtGui.QApplication.UnicodeUTF8))
@@ -269,5 +276,7 @@ class Ui_MainWindow(object):
         self.actionHighlightMode.setToolTip(QtGui.QApplication.translate("MainWindow", "Highlight Mode", None, QtGui.QApplication.UnicodeUTF8))
         self.actionHighlight.setText(QtGui.QApplication.translate("MainWindow", "Highlight", None, QtGui.QApplication.UnicodeUTF8))
         self.actionHighlight.setToolTip(QtGui.QApplication.translate("MainWindow", "Highlight", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionDistractionFree.setText(QtGui.QApplication.translate("MainWindow", "Distraction Free", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionDistractionFree.setToolTip(QtGui.QApplication.translate("MainWindow", "Distraction Free Mode", None, QtGui.QApplication.UnicodeUTF8))
 
 from spellCheckEdit import spellCheckEdit

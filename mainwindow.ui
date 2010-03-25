@@ -76,6 +76,13 @@
       </widget>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="distractionButton">
+      <property name="text">
+       <string>Go Back </string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -84,7 +91,7 @@
      <x>0</x>
      <y>0</y>
      <width>803</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -123,6 +130,7 @@
      <addaction name="actionEnableSpeakerToolbar"/>
     </widget>
     <addaction name="menuToolbars"/>
+    <addaction name="actionDistractionFree"/>
    </widget>
    <widget class="QMenu" name="menuHelo">
     <property name="title">
@@ -427,6 +435,14 @@
     <string>Highlight</string>
    </property>
   </action>
+  <action name="actionDistractionFree">
+   <property name="text">
+    <string>Distraction Free</string>
+   </property>
+   <property name="toolTip">
+    <string>Distraction Free Mode</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -464,8 +480,8 @@
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>468</x>
-     <y>35</y>
+     <x>342</x>
+     <y>60</y>
     </hint>
    </hints>
   </connection>

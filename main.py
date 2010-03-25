@@ -28,7 +28,9 @@ from wordsList import wordsList
 import threading
 import platformSettings
 from settingsDialog import Ui_settingsDialog
+from distractionFree import Ui_distractionFree
 import re
+
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
@@ -83,11 +85,18 @@ class MainApplication(QtGui.QMainWindow):
 
 		#create the settings dialog box
 		self.settings_box = SettingsDialogBox(self)
+		self.distractionFree_box = DistractionFreeWindow(self)
 		
 		#Set up the settings box
 		QtCore.QObject.connect(self.ui.actionSettings, QtCore.SIGNAL("triggered()"), self.settings_box.show)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWordsCustom)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWords)
+
+		#Distraction free
+		QtCore.QObject.connect(self.ui.actionDistractionFree, QtCore.SIGNAL("triggered()"), self.openDistractionFreeMode)
+		QtCore.QObject.connect(self.distractionFree_box, QtCore.SIGNAL("rejected()"), self.closeDistractionFreeMode)
+		QtCore.QObject.connect(self.ui.distractionButton, QtCore.SIGNAL("clicked()"), self.closeDistractionFreeMode)
+		self.ui.distractionButton.hide()
 		
 		#Apply some settings
 		if platformSettings.getSetting("defaultfont", ""):
@@ -137,6 +146,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.updateTitle(False)
 		file.close()
 		return True
+	
 	def readAloud(self):
 		if self.ui.textArea.textCursor().selectedText():
 			text = self.ui.textArea.textCursor().selectedText()
@@ -144,12 +154,14 @@ class MainApplication(QtGui.QMainWindow):
 			text = self.ui.textArea.toPlainText()
 		speaker = SpeakerThread(text)
 		speaker.start()
+		
 	def spellcheck(self):
 		dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
 		tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
 		for word in tokenizer(self.ui.textArea.toPlainText()):
 			if dictionary.check(word) == False:
 				pass
+			
 	def correctWordList(self, wordItem):
 		print "entering correct word list"
 		word = wordItem.text()
@@ -236,27 +248,27 @@ class MainApplication(QtGui.QMainWindow):
 			#for cluster in re.findall(u'[a-z]\1', text):
 				#possibilities += self.wl.search(text.replace(cluster, cluster[0]))
 			#Replace "l" with "ll" and "s" with "ss", etc.
-			possibilities +=  self.wl.search(text.replace("l", "ll"), False, True)
-			possibilities +=  self.wl.search(text.replace("s", "ss"), False, True)
-			possibilities +=  self.wl.search(text.replace("t", "tt"), False, True)
-			possibilities +=  self.wl.search(text.replace("d", "dd"), False, True)
+			possibilities += self.wl.search(text.replace("l", "ll"), False, True)
+			possibilities += self.wl.search(text.replace("s", "ss"), False, True)
+			possibilities += self.wl.search(text.replace("t", "tt"), False, True)
+			possibilities += self.wl.search(text.replace("d", "dd"), False, True)
 			#Some more confusions
-			possibilities +=  self.wl.search(text.replace("t", "d"), False, True)
-			possibilities +=  self.wl.search(text.replace("d", "tt"), False, True)
-			possibilities +=  self.wl.search(text.replace("k", "ck"), False, True)
-			possibilities +=  self.wl.search(text.replace("k", "c"), False, True)
-			possibilities +=  self.wl.search(text.replace("s", "c"), False, True)
+			possibilities += self.wl.search(text.replace("t", "d"), False, True)
+			possibilities += self.wl.search(text.replace("d", "tt"), False, True)
+			possibilities += self.wl.search(text.replace("k", "ck"), False, True)
+			possibilities += self.wl.search(text.replace("k", "c"), False, True)
+			possibilities += self.wl.search(text.replace("s", "c"), False, True)
 			#Vowel confusions
-			possibilities +=  self.wl.search(text.replace("i", "ee"), False, True)
-			possibilities +=  self.wl.search(text.replace("ea", "ee"), False, True)
-			possibilities +=  self.wl.search(text.replace("ee", "i"), False, True)
-			possibilities +=  self.wl.search(text.replace("e", "i"), False, True)
-			possibilities +=  self.wl.search(text.replace("e", "ie"), False, True)
-			possibilities +=  self.wl.search(text.replace("a", "e"), False, True)
-			possibilities +=  self.wl.search(text.replace("e", "a"), False, True)
-			possibilities +=  self.wl.search(text.replace("u", "oo"), False, True)
-			possibilities +=  self.wl.search(text.replace("u", "ou"), False, True)
-			possibilities +=  self.wl.search(text.replace("u", "o"), False, True)
+			possibilities += self.wl.search(text.replace("i", "ee"), False, True)
+			possibilities += self.wl.search(text.replace("ea", "ee"), False, True)
+			possibilities += self.wl.search(text.replace("ee", "i"), False, True)
+			possibilities += self.wl.search(text.replace("e", "i"), False, True)
+			possibilities += self.wl.search(text.replace("e", "ie"), False, True)
+			possibilities += self.wl.search(text.replace("a", "e"), False, True)
+			possibilities += self.wl.search(text.replace("e", "a"), False, True)
+			possibilities += self.wl.search(text.replace("u", "oo"), False, True)
+			possibilities += self.wl.search(text.replace("u", "ou"), False, True)
+			possibilities += self.wl.search(text.replace("u", "o"), False, True)
 
 			#possibilities = self.wl.quicksort(possibilities)
 			#Remove duplicates
@@ -270,7 +282,6 @@ class MainApplication(QtGui.QMainWindow):
 				item.setForeground(QtGui.QColor.fromRgb(80, 80, 80))
 				item.setFont(font)
 
-
 			
 	def updateFontSizeSpinBoxValue(self):
 		if not self.ui.textArea.textCursor().selectedText():
@@ -281,12 +292,16 @@ class MainApplication(QtGui.QMainWindow):
 		if not self.ui.textArea.textCursor().selectedText():
 			self.ui.fontComboBox.setCurrentFont(self.ui.textArea.currentFont())
 		self.ui.textArea.setFocus()
+		
 	def showAboutQt(self):
 		QtGui.QMessageBox.aboutQt(self)
+		
 	def showAbout(self):
-		QtGui.QMessageBox.about(self, "About this program", """<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later.  For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>""")
+		QtGui.QMessageBox.about(self, "About this program", """<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>""")
+		
 	def openHelpPage(self):
 		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype/documentation"))
+		
 	def openPrintDialog(self):
 		printer = QtGui.QPrinter()
 		printer.setDocName("writetype_" + self.filename)
@@ -295,6 +310,21 @@ class MainApplication(QtGui.QMainWindow):
 		printDialog.setWindowTitle("WriteType - Print")
 		if printDialog.exec_():
 			self.ui.textArea.document().print_(printer)
+
+	def openDistractionFreeMode(self):
+		self.distractionFree_box.ui.verticalLayout_2.addWidget(self.ui.centralwidget)
+		self.distractionFree_box.show()
+		self.ui.distractionButton.show()
+		self.distractionFree_box.showFullScreen()
+#		self.ui.splitter.setParent(None)
+#		self.ui.splitter.showFullScreen()
+
+	def closeDistractionFreeMode(self):
+		self.distractionFree_box.hide()
+		self.ui.centralwidget.setParent(self)
+		self.setCentralWidget(self.ui.centralwidget)
+		self.ui.distractionButton.hide()
+			
 	def updateTitle(self, modified=True):
 		titlestring = "WriteType - " + self.filetitle
 		if modified:
@@ -319,6 +349,7 @@ class MainApplication(QtGui.QMainWindow):
 				return 
 		self.ui.textArea.log.send()
 		QtGui.QMainWindow.closeEvent(self, event)
+
 class SpeakerThread(threading.Thread):
 	def __init__(self, text):
 		self.text = text
@@ -328,6 +359,7 @@ class SpeakerThread(threading.Thread):
 		speaker = pyttsx.init()
 		speaker.say(self.text)
 		speaker.runAndWait()
+
 class SettingsDialogBox(QtGui.QDialog):
 	def __init__(self, parent=None):
 		QtGui.QWidget.__init__(self, parent)
@@ -338,6 +370,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		self.ui.customWordsTextEdit.setPlainText(platformSettings.getSetting("customwords", "").toString())
 		QtCore.QObject.connect(self.ui.okayButton, QtCore.SIGNAL("clicked()"), self.okayClicked)
 		QtCore.QObject.connect(self.ui.applyButton, QtCore.SIGNAL("clicked()"), self.applyClicked)
+
 		
 		#NOTE TO SELF: Maybe I can load the word lists from an XML file one day if I have nothing better to do
 		
@@ -386,6 +419,14 @@ class SettingsDialogBox(QtGui.QDialog):
 	def okayClicked(self):
 		self.applyClicked()
 		self.close()
+
+class DistractionFreeWindow(QtGui.QDialog):
+	def __init__(self, parent=None):
+		QtGui.QWidget.__init__(self, parent)
+		self.ui = Ui_distractionFree()
+		self.ui.setupUi(self)
+#		self.layout = QtGui.QHBoxLayout(self)
+#		self.setLayout(self.layout)
 
 application = QtGui.QApplication(sys.argv)
 app = MainApplication()

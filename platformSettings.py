@@ -21,11 +21,15 @@ from ConfigParser import SafeConfigParser
 
 
 #Some defines
-parser = SafeConfigParser()
-parser.read('platformSettings.ini')
-cache = {} #A dictionary
-settingsHandle = QSettings("BernsteinForPresident", "WriteType")
-
+try:
+	parser = SafeConfigParser()
+	parser.read('platformSettings.ini')
+	cache = {} #A dictionary
+	settingsHandle = QSettings("BernsteinForPresident", "WriteType")
+	settingsError = False
+except:
+	print "Error loading settings file!"
+	settingsError = True
 def getPlatformSetting(key):
 	return parser.get('General', key)
 
@@ -33,10 +37,14 @@ def getSetting(key, default=None):
 	if key in cache: #Check to see if it is in the cache
 		return QVariant(cache[key]) #Why doesn't it store as a QVariant in the first place?
 	else:
-		val = settingsHandle.value(key, default)
-		cache[key] = val
-		return val
+		if settingsError == False:
+			val = settingsHandle.value(key, default)
+			cache[key] = val
+			return val
+		else:
+			return QVariant(default)
 
 def setSetting(key, value):
-       	settingsHandle.setValue(key, value)
-       	cache[key] = value
+	if settingsError == False:
+		settingsHandle.setValue(key, value)
+		cache[key] = value
