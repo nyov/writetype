@@ -4,7 +4,7 @@ import py2exe
 import enchant
 
 setup(
-	console=['main.py'],
+	windows=['main.py'],
 	data_files = enchant.utils.win32_data_files(),
 	options = {"py2exe": {
 		"includes":["sip"], 
