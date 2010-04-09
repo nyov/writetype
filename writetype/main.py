@@ -20,6 +20,7 @@
 
 import sys
 from PyQt4 import QtCore, QtGui, Qt
+import resources_rc
 from mainwindow import Ui_MainWindow
 import enchant
 import enchant.checker
@@ -134,6 +135,7 @@ class MainApplication(QtGui.QMainWindow):
 			return True
 		else:
 			return self.saveFileAs()
+
 	def saveFileAs(self):
 		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html)")
 		if not str(self.filename).find('.html'):
@@ -177,6 +179,7 @@ class MainApplication(QtGui.QMainWindow):
 		#now log it
 		print "about to log"
 		print "Logged " + oldword + " -> " + str(word)
+
 	def createButtons(self, text):
 		text = str(text)
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
@@ -288,6 +291,7 @@ class MainApplication(QtGui.QMainWindow):
 			self.ui.spinBoxFontSize.setValue(int(self.ui.textArea.fontPointSize()))
 		if self.ui.spinBoxFontSize.value() == 0:
 			self.ui.spinBoxFontSize.setValue(12)
+
 	def updateFontComboBoxValue(self):
 		if not self.ui.textArea.textCursor().selectedText():
 			self.ui.fontComboBox.setCurrentFont(self.ui.textArea.currentFont())
@@ -354,6 +358,7 @@ class SpeakerThread(threading.Thread):
 	def __init__(self, text):
 		self.text = text
 		threading.Thread.__init__(self)
+
 	def run(self):
 		import pyttsx
 		speaker = pyttsx.init()

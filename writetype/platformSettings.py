@@ -18,12 +18,20 @@
 
 from PyQt4.QtCore import QSettings, QVariant
 from ConfigParser import SafeConfigParser
+import os
+import sys
 
+prefix = os.path.join(sys.prefix, 'share', 'writetype')
+if not os.path.exists(prefix):
+	prefix = ".."
+	print "setting prefix"
+print "passed path"
 
 #Some defines
 try:
 	parser = SafeConfigParser()
-	parser.read('platformSettings.ini')
+	
+	parser.read(os.path.join(prefix, 'platformSettings.ini'))
 	cache = {} #A dictionary
 	settingsHandle = QSettings("BernsteinForPresident", "WriteType")
 	settingsError = False
@@ -31,9 +39,16 @@ except:
 	print "Error loading settings file!"
 	settingsError = True
 def getPlatformSetting(key):
+	global prefix
+	if key == "pathToWordlists":
+		return os.path.join(prefix, 'wordlists')
+	elif key == "pathToRes":
+		return os.path.join(prefix, 'res')
+
 	return parser.get('General', key)
 
 def getSetting(key, default=None):
+	
 	if key in cache: #Check to see if it is in the cache
 		return QVariant(cache[key]) #Why doesn't it store as a QVariant in the first place?
 	else:
