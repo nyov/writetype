@@ -18,19 +18,29 @@
 
 import platformSettings
 from sys import getrecursionlimit, setrecursionlimit
+from os import path
 
 class wordsList:
 	def __init__(self):
 		self.refreshWords()
 		self.refreshWordsCustom()
+		self.refreshReplacementTable()
 
 	def refreshWords(self):
 		self.words = self.loadWords(platformSettings.getPlatformSetting('pathToWordlists') + "/list" + str(platformSettings.getSetting("wordlist", 2).toString()) + ".txt")
+
 	def refreshWordsCustom(self):
 		self.wordsCustom = str(platformSettings.getSetting("customwords", "").toString()).split("\n")
+
+	def refreshReplacementTable(self):
+		self.replacementTable = {}
+		for line in self.loadWords(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt")):
+			self.replacementTable[line.split(",")[0]] = line.split(",")[1]
+
 	def loadWords(self, filePath):
 		fileHandle = open(filePath, 'r')
 		return fileHandle.read().split("\n")
+
 	def addCustomWord(self, word):
 		word = word.lower()
 		if not word in self.wordsCustom:
@@ -61,6 +71,7 @@ class wordsList:
 			else:
 				list2.append(item)
 		return wordsList.quicksort(list1) + [pivot] + wordsList.quicksort(list2)
+	
 	@staticmethod
 	def mergesort(baselist, mergelist):
 		if not type(mergelist) == type([]):
@@ -76,6 +87,7 @@ class wordsList:
 			if not set:
 				baselist += [mergelist[i]]
 		return baselist
+	
 	def search(self, firstLetters, customWords=False, noSort=False):
 		if customWords:
 			wordsList = self.wordsCustom
@@ -89,3 +101,14 @@ class wordsList:
 		if noSort:
 			return results
 		return self.quicksort(results)
+
+	def correctWord(self, word):
+		if platformSettings.getSetting("autocompletion", True).toBool():
+			if word.strip().lower() in self.replacementTable:
+				return self.replacementTable[word.strip().lower()]
+			else:
+				print "'" + word + "'"
+				return False
+		else:
+			return False
+		

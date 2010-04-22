@@ -396,6 +396,9 @@ class SettingsDialogBox(QtGui.QDialog):
 		self.ui.advancedSubstitutionsCheckbox.setChecked(platformSettings.getSetting("advancedsubstitutions", True).toBool())
 		self.ui.minimumLetters.setValue(platformSettings.getSetting("minimumletters", 0).toInt()[0])
 
+		#Autocompletion
+		self.ui.autocompletionCheckBox.setChecked(platformSettings.getSetting("autocompletion", True).toBool())
+
 		#Usage statistics
 		self.ui.usageStatisticsCheckbox.setChecked(platformSettings.getSetting("sendusagestatistics", True).toBool())
 		
@@ -414,6 +417,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		platformSettings.setSetting("advancedsubstitutions", self.ui.advancedSubstitutionsCheckbox.isChecked())
 		platformSettings.setSetting("sendusagestatistics", self.ui.usageStatisticsCheckbox.isChecked())
 		platformSettings.setSetting("minimumletters", self.ui.minimumLetters.value())
+		platformSettings.setSetting("autocompletion", self.ui.autocompletionCheckBox.isChecked())
 		if self.ui.useDefaultFont.isChecked():
 			platformSettings.setSetting("defaultfont", "")
 		else:

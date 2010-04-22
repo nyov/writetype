@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/settings.ui'
 #
-# Created: Fri Apr  9 14:56:03 2010
+# Created: Thu Apr 22 14:56:22 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PyQt4 import QtCore, QtGui
 class Ui_settingsDialog(object):
     def setupUi(self, settingsDialog):
         settingsDialog.setObjectName("settingsDialog")
-        settingsDialog.resize(400, 300)
+        settingsDialog.resize(432, 300)
         self.verticalLayout_2 = QtGui.QVBoxLayout(settingsDialog)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.tabWidget = QtGui.QTabWidget(settingsDialog)
@@ -108,6 +108,12 @@ class Ui_settingsDialog(object):
         spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout_8.addItem(spacerItem1)
         self.tabWidget.addTab(self.wordCompletionTab, "")
+        self.autocompletions = QtGui.QWidget()
+        self.autocompletions.setObjectName("autocompletions")
+        self.autocompletionCheckBox = QtGui.QCheckBox(self.autocompletions)
+        self.autocompletionCheckBox.setGeometry(QtCore.QRect(70, 20, 211, 20))
+        self.autocompletionCheckBox.setObjectName("autocompletionCheckBox")
+        self.tabWidget.addTab(self.autocompletions, "")
         self.settingsTab = QtGui.QWidget()
         self.settingsTab.setObjectName("settingsTab")
         self.gridLayout_2 = QtGui.QGridLayout(self.settingsTab)
@@ -150,7 +156,7 @@ class Ui_settingsDialog(object):
         self.label_6.setBuddy(self.advancedSubstitutionsCheckbox)
 
         self.retranslateUi(settingsDialog)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
         QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL("clicked()"), settingsDialog.close)
         QtCore.QObject.connect(self.guessMisspellingsCheckbox, QtCore.SIGNAL("toggled(bool)"), self.misspellingSettings.setVisible)
         QtCore.QObject.connect(self.useDefaultFont, QtCore.SIGNAL("toggled(bool)"), self.defaultFont.setDisabled)
@@ -175,6 +181,8 @@ class Ui_settingsDialog(object):
         self.label_5.setText(QtGui.QApplication.translate("settingsDialog", "Misspelling Threshold:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("settingsDialog", "Advanced Substitutions?", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.wordCompletionTab), QtGui.QApplication.translate("settingsDialog", "Word Completion", None, QtGui.QApplication.UnicodeUTF8))
+        self.autocompletionCheckBox.setText(QtGui.QApplication.translate("settingsDialog", "Use auto-completion", None, QtGui.QApplication.UnicodeUTF8))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.autocompletions), QtGui.QApplication.translate("settingsDialog", "Auto-completions", None, QtGui.QApplication.UnicodeUTF8))
         self.usageStatisticsCheckbox.setText(QtGui.QApplication.translate("settingsDialog", "Send usage statistics to help improve the program", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("settingsDialog", "Default Font:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setText(QtGui.QApplication.translate("settingsDialog", "Options:", None, QtGui.QApplication.UnicodeUTF8))

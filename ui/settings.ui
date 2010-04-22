@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>432</width>
     <height>300</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="customWordlistTab">
       <attribute name="title">
@@ -233,6 +233,24 @@
         </spacer>
        </item>
       </layout>
+     </widget>
+     <widget class="QWidget" name="autocompletions">
+      <attribute name="title">
+       <string>Auto-completions</string>
+      </attribute>
+      <widget class="QCheckBox" name="autocompletionCheckBox">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>211</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Use auto-completion</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="settingsTab">
       <attribute name="title">

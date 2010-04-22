@@ -31,6 +31,7 @@ import platformSettings
 #For logger
 import urllib
 import urllib2
+import wordsList
 
 
 
@@ -46,6 +47,8 @@ class spellCheckEdit(QTextEdit):
 		self.highlighter.setDict(self.dictionary)
 			##Logging... for me :)
 		self.log = logger()
+		self.wordList = wordsList.wordsList()
+
 		
 	def mousePressEvent(self, event):
 		#This will move the cursor to the appropriate position
@@ -102,6 +105,8 @@ class spellCheckEdit(QTextEdit):
 		
 	def correctWordList(self, wordItem):
 		word = wordItem.text()
+		self.replaceWord(word)
+	def replaceWord(self, word):
 		#Replace the selected word with another word
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
@@ -122,7 +127,6 @@ class spellCheckEdit(QTextEdit):
 		self.log.log(oldword + " -> " + str(word))
 		
 	def keyPressEvent(self, event):
-		#if not event.text() in ["", "\b", " ", "\t"]:
 		print "'" + event.text() + "'"
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
@@ -134,6 +138,9 @@ class spellCheckEdit(QTextEdit):
 		self.emit(SIGNAL("keyPressed"))
 		#else:
 			#self.emit(SIGNAL("whiteSpacePressed"))
+		if event.text() in ["", "\b", " ", "\t"]:
+			if self.wordList.correctWord(text) != False:
+				self.replaceWord(self.wordList.correctWord(text))
 		QTextEdit.keyPressEvent(self, event)
 		
 	#def italicSelectedText(self):
@@ -270,3 +277,4 @@ class logger:
 			request = urllib2.Request(platformSettings.getPlatformSetting('statsUrl'), data)
 			urllib2.urlopen(request)
 		
+	
