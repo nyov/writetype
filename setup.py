@@ -6,10 +6,10 @@ import sys
 
 setup(
     name = 'WriteType',
-    version = '0.0.1',
+    version = '0.0.3',
     description = 'A program to help people type more easily.',
     author = 'Max Shinn',
-    author_email = 'admin@BernsteinForPresident.com',
+    author_email = 'trombonechamp@gmail.com',
     url = 'http://bernsteinforpresident.com/software/writetype',
     packages = ['writetype'],
     scripts = ['scripts/writetype'],

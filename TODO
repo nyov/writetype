@@ -1,1 +1,4 @@
 TODO:
+-Caching in settings
+-Don't fail to start if the config file has errors
+-Distraction-free mode
