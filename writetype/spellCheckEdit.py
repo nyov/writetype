@@ -100,12 +100,14 @@ class spellCheckEdit(QTextEdit):
 		cursor.removeSelectedText()
 		cursor.insertText(word)
 		cursor.endEditBlock()
+
 	def addToDictionary(self, word):
 		self.dictionary.add(word)
 		
 	def correctWordList(self, wordItem):
 		word = wordItem.text()
 		self.replaceWord(word)
+
 	def replaceWord(self, word):
 		#Replace the selected word with another word
 		cursor = self.textCursor()
@@ -138,9 +140,7 @@ class spellCheckEdit(QTextEdit):
 		self.emit(SIGNAL("keyPressed"))
 		#else:
 			#self.emit(SIGNAL("whiteSpacePressed"))
-		if event.text() in ["", "\b", " ", "\t"]:
-			if self.wordList.correctWord(text) != False:
-				self.replaceWord(self.wordList.correctWord(text))
+		#Autocompletions
 		QTextEdit.keyPressEvent(self, event)
 		
 	#def italicSelectedText(self):
@@ -161,6 +161,7 @@ class spellCheckEdit(QTextEdit):
 		#else:
 			#self.setFontPointSize()
 		#self.setFocus()
+
 	def boldSelectedText(self):
 		if self.fontWeight() == QFont.Bold:
 			newweight = QFont.Normal
@@ -172,15 +173,18 @@ class spellCheckEdit(QTextEdit):
 	def italicSelectedText(self):
 		self.setFontItalic(not self.fontItalic())
 		self.setFocus()
+
 	def underlineSelectedText(self):
 		self.setFontUnderline(not self.fontUnderline())
 		self.setFocus()
+
 	def toggleHighlight(self, isSet):
 		self.highlighting = isSet
 		if isSet:
 			self.setReadOnly(True)
 		else:
 			self.setReadOnly(False)
+
 	def highlightAction(self):
 		cursor = self.textCursor()
 		if cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):

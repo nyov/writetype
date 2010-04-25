@@ -34,7 +34,14 @@ class wordsList:
 
 	def refreshReplacementTable(self):
 		self.replacementTable = {}
-		for line in self.loadWords(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt")):
+		if not platformSettings.getSetting('autocompletion').toBool():
+			return
+		if platformSettings.getSetting('autocompletioncontractions').toBool():
+			for line in self.loadWords(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt")):
+				if not line or line == ",": continue
+				self.replacementTable[line.split(",")[0]] = line.split(",")[1]
+		for line in str(platformSettings.getSetting("customAutocompletions").toString()).split("\n"):
+			if not line or line == ",": continue
 			self.replacementTable[line.split(",")[0]] = line.split(",")[1]
 
 	def loadWords(self, filePath):
@@ -103,12 +110,9 @@ class wordsList:
 		return self.quicksort(results)
 
 	def correctWord(self, word):
-		if platformSettings.getSetting("autocompletion", True).toBool():
-			if word.strip().lower() in self.replacementTable:
-				return self.replacementTable[word.strip().lower()]
-			else:
-				print "'" + word + "'"
-				return False
+		if word.strip().lower() in self.replacementTable:
+			return self.replacementTable[word.strip().lower()]
 		else:
+			print "'" + word + "'"
 			return False
 		

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/settings.ui'
 #
-# Created: Thu Apr 22 14:56:22 2010
+# Created: Sat Apr 24 13:39:41 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -110,9 +110,34 @@ class Ui_settingsDialog(object):
         self.tabWidget.addTab(self.wordCompletionTab, "")
         self.autocompletions = QtGui.QWidget()
         self.autocompletions.setObjectName("autocompletions")
+        self.verticalLayout = QtGui.QVBoxLayout(self.autocompletions)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.autocompletionCheckBox = QtGui.QCheckBox(self.autocompletions)
-        self.autocompletionCheckBox.setGeometry(QtCore.QRect(70, 20, 211, 20))
+        self.autocompletionCheckBox.setChecked(True)
         self.autocompletionCheckBox.setObjectName("autocompletionCheckBox")
+        self.verticalLayout.addWidget(self.autocompletionCheckBox)
+        self.autocorrectionGroupBox = QtGui.QGroupBox(self.autocompletions)
+        self.autocorrectionGroupBox.setObjectName("autocorrectionGroupBox")
+        self.verticalLayout_3 = QtGui.QVBoxLayout(self.autocorrectionGroupBox)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.autocompletionsTable = QtGui.QTableWidget(self.autocorrectionGroupBox)
+        self.autocompletionsTable.setRowCount(1)
+        self.autocompletionsTable.setColumnCount(2)
+        self.autocompletionsTable.setObjectName("autocompletionsTable")
+        self.autocompletionsTable.setColumnCount(2)
+        self.autocompletionsTable.setRowCount(1)
+        self.autocompletionsTable.horizontalHeader().setDefaultSectionSize(150)
+        self.autocompletionsTable.horizontalHeader().setMinimumSectionSize(34)
+        self.autocompletionsTable.horizontalHeader().setStretchLastSection(True)
+        self.autocompletionsTable.verticalHeader().setVisible(False)
+        self.verticalLayout_3.addWidget(self.autocompletionsTable)
+        self.contractionsCheckbox = QtGui.QCheckBox(self.autocorrectionGroupBox)
+        self.contractionsCheckbox.setChecked(True)
+        self.contractionsCheckbox.setObjectName("contractionsCheckbox")
+        self.verticalLayout_3.addWidget(self.contractionsCheckbox)
+        self.verticalLayout.addWidget(self.autocorrectionGroupBox)
+        spacerItem2 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem2)
         self.tabWidget.addTab(self.autocompletions, "")
         self.settingsTab = QtGui.QWidget()
         self.settingsTab.setObjectName("settingsTab")
@@ -130,8 +155,8 @@ class Ui_settingsDialog(object):
         self.label_7 = QtGui.QLabel(self.settingsTab)
         self.label_7.setObjectName("label_7")
         self.gridLayout_2.addWidget(self.label_7, 2, 0, 1, 1)
-        spacerItem2 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout_2.addItem(spacerItem2, 3, 1, 1, 1)
+        spacerItem3 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout_2.addItem(spacerItem3, 3, 1, 1, 1)
         self.useDefaultFont = QtGui.QCheckBox(self.settingsTab)
         self.useDefaultFont.setObjectName("useDefaultFont")
         self.gridLayout_2.addWidget(self.useDefaultFont, 1, 1, 1, 1)
@@ -139,8 +164,8 @@ class Ui_settingsDialog(object):
         self.verticalLayout_2.addWidget(self.tabWidget)
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem3)
+        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem4)
         self.okayButton = QtGui.QPushButton(settingsDialog)
         self.okayButton.setObjectName("okayButton")
         self.horizontalLayout_3.addWidget(self.okayButton)
@@ -160,6 +185,7 @@ class Ui_settingsDialog(object):
         QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL("clicked()"), settingsDialog.close)
         QtCore.QObject.connect(self.guessMisspellingsCheckbox, QtCore.SIGNAL("toggled(bool)"), self.misspellingSettings.setVisible)
         QtCore.QObject.connect(self.useDefaultFont, QtCore.SIGNAL("toggled(bool)"), self.defaultFont.setDisabled)
+        QtCore.QObject.connect(self.autocompletionCheckBox, QtCore.SIGNAL("toggled(bool)"), self.autocorrectionGroupBox.setVisible)
         QtCore.QMetaObject.connectSlotsByName(settingsDialog)
 
     def retranslateUi(self, settingsDialog):
@@ -182,6 +208,8 @@ class Ui_settingsDialog(object):
         self.label_6.setText(QtGui.QApplication.translate("settingsDialog", "Advanced Substitutions?", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.wordCompletionTab), QtGui.QApplication.translate("settingsDialog", "Word Completion", None, QtGui.QApplication.UnicodeUTF8))
         self.autocompletionCheckBox.setText(QtGui.QApplication.translate("settingsDialog", "Use auto-completion", None, QtGui.QApplication.UnicodeUTF8))
+        self.autocorrectionGroupBox.setTitle(QtGui.QApplication.translate("settingsDialog", "Auto-correction settings", None, QtGui.QApplication.UnicodeUTF8))
+        self.contractionsCheckbox.setText(QtGui.QApplication.translate("settingsDialog", "Contractions", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.autocompletions), QtGui.QApplication.translate("settingsDialog", "Auto-completions", None, QtGui.QApplication.UnicodeUTF8))
         self.usageStatisticsCheckbox.setText(QtGui.QApplication.translate("settingsDialog", "Send usage statistics to help improve the program", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("settingsDialog", "Default Font:", None, QtGui.QApplication.UnicodeUTF8))

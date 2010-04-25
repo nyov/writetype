@@ -31,7 +31,7 @@ import platformSettings
 from settingsDialog import Ui_settingsDialog
 from distractionFree import Ui_distractionFree
 import re
-
+from os import path
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
@@ -74,6 +74,10 @@ class MainApplication(QtGui.QMainWindow):
 		#Word list for autocompletion
 		self.wl = wordsList()
 		self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
+
+		#Connections for autocorrect
+		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutoreplacement)
+		
 		#printer
 		self.printer = QtGui.QPrinter()
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
@@ -92,6 +96,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionSettings, QtCore.SIGNAL("triggered()"), self.settings_box.show)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWordsCustom)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWords)
+		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshReplacementTable)
 
 		#Distraction free
 		QtCore.QObject.connect(self.ui.actionDistractionFree, QtCore.SIGNAL("triggered()"), self.openDistractionFreeMode)
@@ -163,6 +168,12 @@ class MainApplication(QtGui.QMainWindow):
 		for word in tokenizer(self.ui.textArea.toPlainText()):
 			if dictionary.check(word) == False:
 				pass
+
+	def checkForAutoreplacement(self, word):
+		if word[-1:] in ["", "\b", " ", "\t"]:
+			if self.wl.correctWord(word) != False:
+				self.ui.textArea.replaceWord(self.wl.correctWord(word))
+
 			
 	def correctWordList(self, wordItem):
 		print "entering correct word list"
@@ -183,7 +194,7 @@ class MainApplication(QtGui.QMainWindow):
 	def createButtons(self, text):
 		text = str(text)
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
-		if text[len(text)-1] in (" ", ".", ",", "!", "?", "\b", "\t"):
+		if text[-1:] in (" ", ".", ",", "!", "?", "\b", "\t"):
 			print "adding custom word"
 			self.wl.addCustomWord(text.lower()[0:len(text)-1])
 			return
@@ -398,6 +409,22 @@ class SettingsDialogBox(QtGui.QDialog):
 
 		#Autocompletion
 		self.ui.autocompletionCheckBox.setChecked(platformSettings.getSetting("autocompletion", True).toBool())
+		self.ui.contractionsCheckbox.setChecked(platformSettings.getSetting("autocompletioncontractions", True).toBool())
+		self.ui.autocompletionsTable.setHorizontalHeaderItem(0, QtGui.QTableWidgetItem("Replace:"))
+		self.ui.autocompletionsTable.setHorizontalHeaderItem(1, QtGui.QTableWidgetItem("With:"))
+		i = 0
+		for line in platformSettings.getSetting("customAutocompletions").toString().split("\n"):
+			if not line: break
+			self.ui.autocompletionsTable.insertRow(i+1)
+			item1 = QtGui.QTableWidgetItem(line.split(',')[0])
+			item2 = QtGui.QTableWidgetItem(line.split(',')[1])
+			self.ui.autocompletionsTable.setItem(i, 0, item1)
+			self.ui.autocompletionsTable.setItem(i, 1, item2)
+			i += 1
+		def autoAddRows(row, col):
+			if row + 1 == self.ui.autocompletionsTable.rowCount():
+				self.ui.autocompletionsTable.insertRow(row + 1)
+		QtCore.QObject.connect(self.ui.autocompletionsTable, QtCore.SIGNAL("cellDoubleClicked(int,int)"), autoAddRows)
 
 		#Usage statistics
 		self.ui.usageStatisticsCheckbox.setChecked(platformSettings.getSetting("sendusagestatistics", True).toBool())
@@ -418,16 +445,29 @@ class SettingsDialogBox(QtGui.QDialog):
 		platformSettings.setSetting("sendusagestatistics", self.ui.usageStatisticsCheckbox.isChecked())
 		platformSettings.setSetting("minimumletters", self.ui.minimumLetters.value())
 		platformSettings.setSetting("autocompletion", self.ui.autocompletionCheckBox.isChecked())
+		platformSettings.setSetting("autocompletioncontractions", self.ui.contractionsCheckbox.isChecked())
 		if self.ui.useDefaultFont.isChecked():
 			platformSettings.setSetting("defaultfont", "")
 		else:
 			platformSettings.setSetting("defaultfont", self.ui.defaultFont.currentFont())
 
+		autocorrectionsList = ""
+		for i in range(0, self.ui.autocompletionsTable.rowCount()):
+			cell1 = self.ui.autocompletionsTable.item(i, 0)
+			cell2 = self.ui.autocompletionsTable.item(i, 1)
+			if cell1 and cell2:
+				if cell1.text() and cell2.text():
+					autocorrectionsList += cell1.text() + "," + cell2.text() + "\n"
+		print autocorrectionsList
+		platformSettings.setSetting("customAutocompletions", autocorrectionsList)
+		
+		
 		self.emit(QtCore.SIGNAL("dialogSaved"))
 
 	def okayClicked(self):
 		self.applyClicked()
 		self.close()
+
 
 class DistractionFreeWindow(QtGui.QDialog):
 	def __init__(self, parent=None):
