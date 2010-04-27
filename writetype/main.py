@@ -170,9 +170,11 @@ class MainApplication(QtGui.QMainWindow):
 				pass
 
 	def checkForAutoreplacement(self, word):
-		if word[-1:] in ["", "\b", " ", "\t"]:
-			if self.wl.correctWord(word) != False:
-				self.ui.textArea.replaceWord(self.wl.correctWord(word))
+		print "To autoreplace: '", word, "'"
+		if word[-1:] in ["", "\b", " ", "\t", ".", "?", ":", "!", ",", ";", ")"]:
+			if self.wl.correctWord(word[:-1]) != False:
+				print "Correcting", word[:-1]
+				self.ui.textArea.replaceWord(self.wl.correctWord(word[:-1]))
 
 			
 	def correctWordList(self, wordItem):
