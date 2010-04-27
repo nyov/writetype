@@ -274,6 +274,8 @@ class MainApplication(QtGui.QMainWindow):
 			possibilities += self.wl.search(text.replace("k", "ck"), False, True)
 			possibilities += self.wl.search(text.replace("k", "c"), False, True)
 			possibilities += self.wl.search(text.replace("s", "c"), False, True)
+			possibilities += self.wl.search(text.replace("l", "le"), False, True)
+
 			#Vowel confusions
 			possibilities += self.wl.search(text.replace("i", "ee"), False, True)
 			possibilities += self.wl.search(text.replace("ea", "ee"), False, True)
@@ -281,10 +283,13 @@ class MainApplication(QtGui.QMainWindow):
 			possibilities += self.wl.search(text.replace("e", "i"), False, True)
 			possibilities += self.wl.search(text.replace("e", "ie"), False, True)
 			possibilities += self.wl.search(text.replace("a", "e"), False, True)
-			possibilities += self.wl.search(text.replace("e", "a"), False, True)
-			possibilities += self.wl.search(text.replace("u", "oo"), False, True)
-			possibilities += self.wl.search(text.replace("u", "ou"), False, True)
 			possibilities += self.wl.search(text.replace("u", "o"), False, True)
+
+			if platformSettings.getSetting("advancedsubstitutions", False).toBool():
+				possibilities += self.wl.search(text.replace("u", "oo"), False, True)
+				possibilities += self.wl.search(text.replace("u", "ou"), False, True)
+				possibilities += self.wl.search(text.replace("e", "a"), False, True)
+				
 
 			#possibilities = self.wl.quicksort(possibilities)
 			#Remove duplicates
