@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Sat Apr 24 13:39:40 2010
+# Created: Mon May  3 14:57:37 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -82,6 +82,9 @@ class Ui_MainWindow(object):
         self.speakToolBar = QtGui.QToolBar(MainWindow)
         self.speakToolBar.setObjectName("speakToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.speakToolBar)
+        self.imageToolBar = QtGui.QToolBar(MainWindow)
+        self.imageToolBar.setObjectName("imageToolBar")
+        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.imageToolBar)
         self.actionSave = QtGui.QAction(MainWindow)
         self.actionSave.setEnabled(False)
         icon1 = QtGui.QIcon()
@@ -175,6 +178,21 @@ class Ui_MainWindow(object):
         self.actionHighlight.setObjectName("actionHighlight")
         self.actionDistractionFree = QtGui.QAction(MainWindow)
         self.actionDistractionFree.setObjectName("actionDistractionFree")
+        self.actionInsert_Image = QtGui.QAction(MainWindow)
+        icon15 = QtGui.QIcon()
+        icon15.addPixmap(QtGui.QPixmap(":/res/key120x120.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionInsert_Image.setIcon(icon15)
+        self.actionInsert_Image.setObjectName("actionInsert_Image")
+        self.actionAlign_Image_Left = QtGui.QAction(MainWindow)
+        self.actionAlign_Image_Left.setIcon(icon15)
+        self.actionAlign_Image_Left.setObjectName("actionAlign_Image_Left")
+        self.actionAlign_Image_Right = QtGui.QAction(MainWindow)
+        self.actionAlign_Image_Right.setIcon(icon15)
+        self.actionAlign_Image_Right.setObjectName("actionAlign_Image_Right")
+        self.actionEnableImageToolbar = QtGui.QAction(MainWindow)
+        self.actionEnableImageToolbar.setCheckable(True)
+        self.actionEnableImageToolbar.setChecked(True)
+        self.actionEnableImageToolbar.setObjectName("actionEnableImageToolbar")
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
@@ -191,6 +209,7 @@ class Ui_MainWindow(object):
         self.menuToolbars.addAction(self.actionEnableFileToolbar)
         self.menuToolbars.addAction(self.actionEnableEditToolbar)
         self.menuToolbars.addAction(self.actionEnableSpeakerToolbar)
+        self.menuToolbars.addAction(self.actionEnableImageToolbar)
         self.menuView.addAction(self.menuToolbars.menuAction())
         self.menuView.addAction(self.actionDistractionFree)
         self.menuHelo.addAction(self.actionDocumentation)
@@ -210,6 +229,9 @@ class Ui_MainWindow(object):
         self.editToolBar.addAction(self.actionHighlight)
         self.editToolBar.addAction(self.actionHighlightMode)
         self.speakToolBar.addAction(self.actionSpeak)
+        self.imageToolBar.addAction(self.actionInsert_Image)
+        self.imageToolBar.addAction(self.actionAlign_Image_Left)
+        self.imageToolBar.addAction(self.actionAlign_Image_Right)
         self.sizeLabel.setBuddy(self.spinBoxFontSize)
 
         self.retranslateUi(MainWindow)
@@ -221,6 +243,7 @@ class Ui_MainWindow(object):
         QtCore.QObject.connect(self.actionRedo, QtCore.SIGNAL("triggered()"), self.textArea.redo)
         QtCore.QObject.connect(self.textArea, QtCore.SIGNAL("undoAvailable(bool)"), self.actionUndo.setEnabled)
         QtCore.QObject.connect(self.textArea, QtCore.SIGNAL("redoAvailable(bool)"), self.actionRedo.setEnabled)
+        QtCore.QObject.connect(self.actionEnableImageToolbar, QtCore.SIGNAL("toggled(bool)"), self.imageToolBar.setVisible)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -235,6 +258,7 @@ class Ui_MainWindow(object):
         self.fileToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.editToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar_2", None, QtGui.QApplication.UnicodeUTF8))
         self.speakToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
+        self.imageToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSave.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSave.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+S", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSave_As.setText(QtGui.QApplication.translate("MainWindow", "Save As...", None, QtGui.QApplication.UnicodeUTF8))
@@ -278,6 +302,10 @@ class Ui_MainWindow(object):
         self.actionHighlight.setToolTip(QtGui.QApplication.translate("MainWindow", "Highlight", None, QtGui.QApplication.UnicodeUTF8))
         self.actionDistractionFree.setText(QtGui.QApplication.translate("MainWindow", "Distraction Free", None, QtGui.QApplication.UnicodeUTF8))
         self.actionDistractionFree.setToolTip(QtGui.QApplication.translate("MainWindow", "Distraction Free Mode", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionInsert_Image.setText(QtGui.QApplication.translate("MainWindow", "Insert Image", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAlign_Image_Left.setText(QtGui.QApplication.translate("MainWindow", "Align Image Left", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAlign_Image_Right.setText(QtGui.QApplication.translate("MainWindow", "Align Image Right", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionEnableImageToolbar.setText(QtGui.QApplication.translate("MainWindow", "Image Toolbar", None, QtGui.QApplication.UnicodeUTF8))
 
 from spellCheckEdit import spellCheckEdit
 import resources_rc

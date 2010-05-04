@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/settings.ui'
 #
-# Created: Sat Apr 24 13:39:41 2010
+# Created: Mon May  3 14:57:39 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -132,7 +132,6 @@ class Ui_settingsDialog(object):
         self.autocompletionsTable.verticalHeader().setVisible(False)
         self.verticalLayout_3.addWidget(self.autocompletionsTable)
         self.contractionsCheckbox = QtGui.QCheckBox(self.autocorrectionGroupBox)
-        self.contractionsCheckbox.setChecked(True)
         self.contractionsCheckbox.setObjectName("contractionsCheckbox")
         self.verticalLayout_3.addWidget(self.contractionsCheckbox)
         self.verticalLayout.addWidget(self.autocorrectionGroupBox)

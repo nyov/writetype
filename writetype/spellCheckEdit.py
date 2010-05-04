@@ -32,7 +32,7 @@ import platformSettings
 import urllib
 import urllib2
 import wordsList
-
+from PyQt4.QtGui import QFileDialog
 
 
 class spellCheckEdit(QTextEdit):
@@ -55,6 +55,12 @@ class spellCheckEdit(QTextEdit):
 		if event.button() == Qt.RightButton:
 			event = QMouseEvent(QEvent.MouseButtonPress, event.pos(), Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
 
+		#Highlight an image if it is clicked
+		cursor = self.textCursor()
+		cursor.select(QTextCursor.WordUnderCursor)
+		if str(cursor.selection().toHtml()).find("img") != False:
+			self.setTextCursor(cursor)
+
 		QTextEdit.mousePressEvent(self, event)
 	
 	def mouseReleaseEvent(self, event):
@@ -70,9 +76,23 @@ class spellCheckEdit(QTextEdit):
 		#Select the word under the cursor
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
+
+		print str(cursor.selection().toHtml())
+		#Check to see if an image is under the cursor
+		if str(cursor.selection().toHtml()).find("img") != False:
+			self.setTextCursor(cursor) #show the image highlighed
+			menu.addSeparator()
+			action = QAction("Align Left", menu)
+			self.connect(action, SIGNAL("triggered()"), self.alignImageLeft)
+			menu.addAction(action)
+			self.addAction(action)
+			action = QAction("Align Right", menu)
+			self.connect(action, SIGNAL("triggered()"), self.alignImageRight)
+			menu.addAction(action)
+
 		
 		#If there is a word highlighted
-		if cursor.hasSelection():
+		elif cursor.hasSelection():
 			text = unicode(cursor.selectedText())
 			#If that word isn't in the dictionary
 			if not self.dictionary.check(text):
@@ -223,7 +243,33 @@ class spellCheckEdit(QTextEdit):
 			format_highlight.setBackground(QColor.fromRgb(255, 255, 0))
 			cursor.mergeCharFormat(format_highlight)
 
+	def insertImage(self):
+		imageurl = QFileDialog.getOpenFileName(self, "Insert image", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Image file (*.jpg *.jpeg *.gif *.png)")
+		self.insertImageByUrl(imageurl)
 
+	def insertImageByUrl(self, url):
+		#cursor = self.textCursor()
+		self.insertHtml('<img src="{0}" style="float:right" />'.format(url))
+		
+	def alignImageRight(self):
+		cursor = self.textCursor()
+		cursor.select(QTextCursor.WordUnderCursor)
+		selection = str(cursor.selection().toHtml())
+		selection = selection[selection.find("<img"):selection.find("/>")+len("/>")]
+		selection = selection.replace("float: left", "float: right")
+		selection = selection.replace("float: none", "float: right")
+		cursor.removeSelectedText()
+		cursor.insertHtml(selection)
+		
+	def alignImageLeft(self):
+		cursor = self.textCursor()
+		cursor.select(QTextCursor.WordUnderCursor)
+		selection = cursor.selection().toHtml()
+		print "'", selection, "'"
+		selection = selection.replace("float: right", "float: left")
+		selection = selection.replace("float: none", "float: left")
+		cursor.removeSelectedText()
+		cursor.insertHtml(selection)
 
 class Highlighter(QSyntaxHighlighter):
 
