@@ -79,7 +79,7 @@ class spellCheckEdit(QTextEdit):
 
 		print str(cursor.selection().toHtml())
 		#Check to see if an image is under the cursor
-		if str(cursor.selection().toHtml()).find("img") != False:
+		if str(cursor.selection().toHtml()).find("<img") != -1:
 			self.setTextCursor(cursor) #show the image highlighed
 			menu.addSeparator()
 			action = QAction("Align Left", menu)
@@ -249,17 +249,17 @@ class spellCheckEdit(QTextEdit):
 
 	def insertImageByUrl(self, url):
 		#cursor = self.textCursor()
-		self.insertHtml('<img src="{0}" style="float:right" />'.format(url))
+		self.insertHtml('&nbsp;<img src="{0}" style="float:right" />&nbsp;'.format(url))
 		
 	def alignImageRight(self):
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
 		selection = str(cursor.selection().toHtml())
-		selection = selection[selection.find("<img"):selection.find("/>")+len("/>")]
 		selection = selection.replace("float: left", "float: right")
 		selection = selection.replace("float: none", "float: right")
 		cursor.removeSelectedText()
 		cursor.insertHtml(selection)
+		self.setHtml(self.toHtml()) #framework bugs are not cute
 		
 	def alignImageLeft(self):
 		cursor = self.textCursor()
@@ -270,6 +270,7 @@ class spellCheckEdit(QTextEdit):
 		selection = selection.replace("float: none", "float: left")
 		cursor.removeSelectedText()
 		cursor.insertHtml(selection)
+		self.setHtml(self.toHtml()) #see above for bad pun
 
 class Highlighter(QSyntaxHighlighter):
 
