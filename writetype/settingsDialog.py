@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/settings.ui'
 #
-# Created: Mon May  3 14:57:39 2010
-#      by: PyQt4 UI code generator 4.6
+# Created: Sat May  8 13:07:26 2010
+#      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,7 +12,7 @@ from PyQt4 import QtCore, QtGui
 class Ui_settingsDialog(object):
     def setupUi(self, settingsDialog):
         settingsDialog.setObjectName("settingsDialog")
-        settingsDialog.resize(432, 300)
+        settingsDialog.resize(471, 300)
         self.verticalLayout_2 = QtGui.QVBoxLayout(settingsDialog)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.tabWidget = QtGui.QTabWidget(settingsDialog)
@@ -99,6 +99,7 @@ class Ui_settingsDialog(object):
         self.label_5.setObjectName("label_5")
         self.gridLayout_4.addWidget(self.label_5, 0, 0, 1, 1)
         self.advancedSubstitutionsCheckbox = QtGui.QCheckBox(self.misspellingSettings)
+        self.advancedSubstitutionsCheckbox.setText("")
         self.advancedSubstitutionsCheckbox.setObjectName("advancedSubstitutionsCheckbox")
         self.gridLayout_4.addWidget(self.advancedSubstitutionsCheckbox, 1, 1, 1, 1)
         self.label_6 = QtGui.QLabel(self.misspellingSettings)
@@ -155,10 +156,31 @@ class Ui_settingsDialog(object):
         self.label_7.setObjectName("label_7")
         self.gridLayout_2.addWidget(self.label_7, 2, 0, 1, 1)
         spacerItem3 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout_2.addItem(spacerItem3, 3, 1, 1, 1)
+        self.gridLayout_2.addItem(spacerItem3, 6, 1, 1, 1)
         self.useDefaultFont = QtGui.QCheckBox(self.settingsTab)
         self.useDefaultFont.setObjectName("useDefaultFont")
         self.gridLayout_2.addWidget(self.useDefaultFont, 1, 1, 1, 1)
+        self.label_9 = QtGui.QLabel(self.settingsTab)
+        self.label_9.setObjectName("label_9")
+        self.gridLayout_2.addWidget(self.label_9, 3, 0, 1, 1)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.speedSlider = QtGui.QSlider(self.settingsTab)
+        self.speedSlider.setMinimum(-90)
+        self.speedSlider.setMaximum(90)
+        self.speedSlider.setSingleStep(10)
+        self.speedSlider.setProperty("value", 0)
+        self.speedSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.speedSlider.setObjectName("speedSlider")
+        self.horizontalLayout.addWidget(self.speedSlider)
+        self.spinBox = QtGui.QSpinBox(self.settingsTab)
+        self.spinBox.setMinimum(-90)
+        self.spinBox.setMaximum(90)
+        self.spinBox.setSingleStep(10)
+        self.spinBox.setProperty("value", 0)
+        self.spinBox.setObjectName("spinBox")
+        self.horizontalLayout.addWidget(self.spinBox)
+        self.gridLayout_2.addLayout(self.horizontalLayout, 3, 1, 1, 1)
         self.tabWidget.addTab(self.settingsTab, "")
         self.verticalLayout_2.addWidget(self.tabWidget)
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
@@ -180,11 +202,13 @@ class Ui_settingsDialog(object):
         self.label_6.setBuddy(self.advancedSubstitutionsCheckbox)
 
         self.retranslateUi(settingsDialog)
-        self.tabWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(4)
         QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL("clicked()"), settingsDialog.close)
         QtCore.QObject.connect(self.guessMisspellingsCheckbox, QtCore.SIGNAL("toggled(bool)"), self.misspellingSettings.setVisible)
         QtCore.QObject.connect(self.useDefaultFont, QtCore.SIGNAL("toggled(bool)"), self.defaultFont.setDisabled)
         QtCore.QObject.connect(self.autocompletionCheckBox, QtCore.SIGNAL("toggled(bool)"), self.autocorrectionGroupBox.setVisible)
+        QtCore.QObject.connect(self.speedSlider, QtCore.SIGNAL("valueChanged(int)"), self.spinBox.setValue)
+        QtCore.QObject.connect(self.spinBox, QtCore.SIGNAL("valueChanged(int)"), self.speedSlider.setValue)
         QtCore.QMetaObject.connectSlotsByName(settingsDialog)
 
     def retranslateUi(self, settingsDialog):
@@ -214,6 +238,8 @@ class Ui_settingsDialog(object):
         self.label_2.setText(QtGui.QApplication.translate("settingsDialog", "Default Font:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setText(QtGui.QApplication.translate("settingsDialog", "Options:", None, QtGui.QApplication.UnicodeUTF8))
         self.useDefaultFont.setText(QtGui.QApplication.translate("settingsDialog", "System Default", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_9.setText(QtGui.QApplication.translate("settingsDialog", "Reading speed:", None, QtGui.QApplication.UnicodeUTF8))
+        self.spinBox.setSuffix(QtGui.QApplication.translate("settingsDialog", "%", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.settingsTab), QtGui.QApplication.translate("settingsDialog", "Other", None, QtGui.QApplication.UnicodeUTF8))
         self.okayButton.setText(QtGui.QApplication.translate("settingsDialog", "Okay", None, QtGui.QApplication.UnicodeUTF8))
         self.applyButton.setText(QtGui.QApplication.translate("settingsDialog", "Apply", None, QtGui.QApplication.UnicodeUTF8))

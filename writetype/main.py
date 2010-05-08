@@ -32,6 +32,7 @@ from settingsDialog import Ui_settingsDialog
 from distractionFree import Ui_distractionFree
 import re
 from os import path
+from speaker import Speaker
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
@@ -43,10 +44,15 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionOpen, QtCore.SIGNAL("triggered()"), self.openDialog)
 		QtCore.QObject.connect(self.ui.actionSave, QtCore.SIGNAL("triggered()"), self.saveFile)
 		QtCore.QObject.connect(self.ui.actionSave_As, QtCore.SIGNAL("triggered()"), self.saveFileAs)
-		QtCore.QObject.connect(self.ui.actionSpeak, QtCore.SIGNAL("triggered()"), self.readAloud)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.createButtons)
 		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.ui.textArea.correctWordList)
-		
+
+		#Set up the TTS
+		self.speaker = Speaker("festival")
+		QtCore.QObject.connect(self.ui.actionSpeak, QtCore.SIGNAL("triggered()"), self.readAloud)
+		QtCore.QObject.connect(self.ui.actionStop, QtCore.SIGNAL("triggered()"), self.speaker.stop)
+
+
 		#Bold and garbage
 		QtCore.QObject.connect(self.ui.actionBold, QtCore.SIGNAL("triggered()"), self.ui.textArea.boldSelectedText)
 		QtCore.QObject.connect(self.ui.actionItalic, QtCore.SIGNAL("triggered()"), self.ui.textArea.italicSelectedText)
@@ -165,8 +171,7 @@ class MainApplication(QtGui.QMainWindow):
 			text = self.ui.textArea.textCursor().selectedText()
 		else:
 			text = self.ui.textArea.toPlainText()
-		speaker = SpeakerThread(text)
-		speaker.start()
+		self.speaker.say(text)
 		
 	def spellcheck(self):
 		dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
@@ -378,17 +383,6 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.textArea.log.send()
 		QtGui.QMainWindow.closeEvent(self, event)
 
-class SpeakerThread(threading.Thread):
-	def __init__(self, text):
-		self.text = text
-		threading.Thread.__init__(self)
-
-	def run(self):
-		import pyttsx
-		speaker = pyttsx.init()
-		speaker.say(self.text)
-		speaker.runAndWait()
-
 class SettingsDialogBox(QtGui.QDialog):
 	def __init__(self, parent=None):
 		QtGui.QWidget.__init__(self, parent)
@@ -448,6 +442,9 @@ class SettingsDialogBox(QtGui.QDialog):
 		else:
 			self.ui.useDefaultFont.setChecked(True)
 			self.ui.defaultFont.setDisabled(True)
+
+		#Reading speed
+		self.ui.speedSlider.setValue(platformSettings.getSetting("readingspeed", 100).toInt()[0])
 		
 	def applyClicked(self):
 		platformSettings.setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())
@@ -459,6 +456,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		platformSettings.setSetting("minimumletters", self.ui.minimumLetters.value())
 		platformSettings.setSetting("autocompletion", self.ui.autocompletionCheckBox.isChecked())
 		platformSettings.setSetting("autocompletioncontractions", self.ui.contractionsCheckbox.isChecked())
+		platformSettings.setSetting("readingspeed", self.ui.speedSlider.value())
 		if self.ui.useDefaultFont.isChecked():
 			platformSettings.setSetting("defaultfont", "")
 		else:

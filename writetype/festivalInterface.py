@@ -18,12 +18,13 @@
 
 import subprocess
 from tempfile import mkstemp
-from os import unlink
+from os import unlink, uname
 
 class FestivalInterface:
 	def __init__(self, executableName, libPath=None):
 		self.executableName = executableName
 		self.libPath = libPath
+		self.proc = None
 ## 	def speak(self, text):
 ## 		call = [self.executableName, "--tts", "-"]
 ## 		if self.libPath:
@@ -37,13 +38,18 @@ class FestivalInterface:
 		tmpfile = mkstemp(suffix=".sable", prefix="wt_")
 		print tmpfile
 		tmpfileHandle = open(tmpfile[1], 'w')
-		tmpfileHandle.write("<SABLE>"+text+"</SABLE>")
-#		tmpfileHandle.close()
+		tmpfileHandle.write(text)
+		tmpfileHandle.close()
 		call = [self.executableName, "--tts", tmpfile[1]]
  		self.proc = subprocess.Popen(call)
 		
 #		unlink(tmpfile[1])
 
+	def stop(self):
+		if self.proc:
+			self.proc.terminate()
+		#This only works on GNU/Linux for now, I think
+		if uname()[0] == "Linux":
+			subprocess.Popen(['pkill', 'audsp'])
 
-fi = FestivalInterface("festival")
-fi.speak("hello <BREAK />world")
+

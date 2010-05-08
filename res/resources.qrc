@@ -1,5 +1,6 @@
 <RCC>
-  <qresource prefix="res" >
+  <qresource prefix="res">
+    <file>player_stop.png</file>
     <file>button_cancel.png</file>
     <file>button_ok.png</file>
     <file>configure.png</file>

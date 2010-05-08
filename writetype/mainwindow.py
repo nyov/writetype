@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Mon May  3 14:57:37 2010
-#      by: PyQt4 UI code generator 4.6
+# Created: Sat May  8 13:07:26 2010
+#      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.distractionButton)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 21))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtGui.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -75,16 +75,16 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.fileToolBar = QtGui.QToolBar(MainWindow)
         self.fileToolBar.setObjectName("fileToolBar")
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.fileToolBar)
+        MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.fileToolBar)
         self.editToolBar = QtGui.QToolBar(MainWindow)
         self.editToolBar.setObjectName("editToolBar")
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.editToolBar)
+        MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.editToolBar)
         self.speakToolBar = QtGui.QToolBar(MainWindow)
         self.speakToolBar.setObjectName("speakToolBar")
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.speakToolBar)
+        MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.speakToolBar)
         self.imageToolBar = QtGui.QToolBar(MainWindow)
         self.imageToolBar.setObjectName("imageToolBar")
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.imageToolBar)
+        MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.imageToolBar)
         self.actionSave = QtGui.QAction(MainWindow)
         self.actionSave.setEnabled(False)
         icon1 = QtGui.QIcon()
@@ -193,6 +193,11 @@ class Ui_MainWindow(object):
         self.actionEnableImageToolbar.setCheckable(True)
         self.actionEnableImageToolbar.setChecked(True)
         self.actionEnableImageToolbar.setObjectName("actionEnableImageToolbar")
+        self.actionStop = QtGui.QAction(MainWindow)
+        icon16 = QtGui.QIcon()
+        icon16.addPixmap(QtGui.QPixmap(":/res/player_stop.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionStop.setIcon(icon16)
+        self.actionStop.setObjectName("actionStop")
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
@@ -229,6 +234,7 @@ class Ui_MainWindow(object):
         self.editToolBar.addAction(self.actionHighlight)
         self.editToolBar.addAction(self.actionHighlightMode)
         self.speakToolBar.addAction(self.actionSpeak)
+        self.speakToolBar.addAction(self.actionStop)
         self.imageToolBar.addAction(self.actionInsert_Image)
         self.imageToolBar.addAction(self.actionAlign_Image_Left)
         self.imageToolBar.addAction(self.actionAlign_Image_Right)
@@ -306,6 +312,7 @@ class Ui_MainWindow(object):
         self.actionAlign_Image_Left.setText(QtGui.QApplication.translate("MainWindow", "Align Image Left", None, QtGui.QApplication.UnicodeUTF8))
         self.actionAlign_Image_Right.setText(QtGui.QApplication.translate("MainWindow", "Align Image Right", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEnableImageToolbar.setText(QtGui.QApplication.translate("MainWindow", "Image Toolbar", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionStop.setText(QtGui.QApplication.translate("MainWindow", "Stop", None, QtGui.QApplication.UnicodeUTF8))
 
 from spellCheckEdit import spellCheckEdit
 import resources_rc
