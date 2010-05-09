@@ -118,7 +118,7 @@ class MainApplication(QtGui.QMainWindow):
 		
 		#Apply some settings
 		if platformSettings.getSetting("defaultfont", ""):
-			self.ui.fontComboBox.setCurrentFont(QtGui.QFont(platformSettings.getSetting("defaultfont").toString()))
+			self.ui.fontComboBox.setCurrentFont(QtGui.QFont(platformSettings.getSetting("defaultfont")))
 		
 		#Add some more widgets to the toolbar
 		self.ui.editToolBar.addWidget(self.ui.sizeLabel)
@@ -213,12 +213,12 @@ class MainApplication(QtGui.QMainWindow):
 			return
 		
 		#Don't bother continuing if there are no words remaining
-		if len(self.wordsC) == 0 and len(self.wordsN) == 0 and len(text) > platformSettings.getSetting("minimumletters", 0).toInt()[0] + 1:
+		if len(self.wordsC) == 0 and len(self.wordsN) == 0 and len(text) > platformSettings.getSetting("minimumletters", 0) + 1:
 			return
 		
 		self.ui.spellingSuggestionsList.clear()
 		
-		if len(text) <= platformSettings.getSetting("minimumletters", 0).toInt()[0]:
+		if len(text) <= platformSettings.getSetting("minimumletters", 0):
 			return
 
 		if not text:
@@ -268,7 +268,7 @@ class MainApplication(QtGui.QMainWindow):
 					#break
 				#else:
 					#i += 1
-		if platformSettings.getSetting("guessmisspellings", True).toBool() and len(self.wordsC) + len(self.wordsN) <= platformSettings.getSetting("threshold", 0).toInt()[0]:
+		if platformSettings.getSetting("guessmisspellings", True) and len(self.wordsC) + len(self.wordsN) <= platformSettings.getSetting("threshold", 0):
 			#This is where things get trickier.  It MUST be a mispeling.  Fun fun fun!
 			possibilities = []
 			##Replace double letters with a single letter and look
@@ -296,7 +296,7 @@ class MainApplication(QtGui.QMainWindow):
 			possibilities += self.wl.search(text.replace("a", "e"), False, True)
 			possibilities += self.wl.search(text.replace("u", "o"), False, True)
 
-			if platformSettings.getSetting("advancedsubstitutions", False).toBool():
+			if platformSettings.getSetting("advancedsubstitutions", False):
 				possibilities += self.wl.search(text.replace("u", "oo"), False, True)
 				possibilities += self.wl.search(text.replace("u", "ou"), False, True)
 				possibilities += self.wl.search(text.replace("e", "a"), False, True)
@@ -390,7 +390,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		self.ui.setupUi(self)
 		
 		#Load words into textarea
-		self.ui.customWordsTextEdit.setPlainText(platformSettings.getSetting("customwords", "").toString())
+		self.ui.customWordsTextEdit.setPlainText(platformSettings.getSetting("customwords", ""))
 		QtCore.QObject.connect(self.ui.okayButton, QtCore.SIGNAL("clicked()"), self.okayClicked)
 		QtCore.QObject.connect(self.ui.applyButton, QtCore.SIGNAL("clicked()"), self.applyClicked)
 
@@ -406,21 +406,21 @@ class SettingsDialogBox(QtGui.QDialog):
 		self.wordListButtonGroup.addButton(self.ui.wordListSize5, 5)
 		self.wordListButtonGroup.setExclusive(True)
 		#Now actually select the correct button
-		self.wordListButtonGroup.buttons()[platformSettings.getSetting("wordlist", 2).toInt()[0]-1].setChecked(True)
+		self.wordListButtonGroup.buttons()[int(platformSettings.getSetting("wordlist", 2))-1].setChecked(True)
 		
 		#Load the word completion settings
-		self.ui.guessMisspellingsCheckbox.setChecked(platformSettings.getSetting("guessmisspellings", True).toBool())
-		self.ui.thresholdSpinbox.setValue(platformSettings.getSetting("threshold", 3).toInt()[0])
-		self.ui.advancedSubstitutionsCheckbox.setChecked(platformSettings.getSetting("advancedsubstitutions", True).toBool())
-		self.ui.minimumLetters.setValue(platformSettings.getSetting("minimumletters", 0).toInt()[0])
+		self.ui.guessMisspellingsCheckbox.setChecked(platformSettings.getSetting("guessmisspellings", True))
+		self.ui.thresholdSpinbox.setValue(platformSettings.getSetting("threshold", 3))
+		self.ui.advancedSubstitutionsCheckbox.setChecked(platformSettings.getSetting("advancedsubstitutions", True))
+		self.ui.minimumLetters.setValue(platformSettings.getSetting("minimumletters", 0))
 
 		#Autocompletion
-		self.ui.autocompletionCheckBox.setChecked(platformSettings.getSetting("autocompletion", True).toBool())
-		self.ui.contractionsCheckbox.setChecked(platformSettings.getSetting("autocompletioncontractions", True).toBool())
+		self.ui.autocompletionCheckBox.setChecked(platformSettings.getSetting("autocompletion", True))
+		self.ui.contractionsCheckbox.setChecked(platformSettings.getSetting("autocompletioncontractions", True))
 		self.ui.autocompletionsTable.setHorizontalHeaderItem(0, QtGui.QTableWidgetItem("Replace:"))
 		self.ui.autocompletionsTable.setHorizontalHeaderItem(1, QtGui.QTableWidgetItem("With:"))
 		i = 0
-		for line in platformSettings.getSetting("customAutocompletions").toString().split("\n"):
+		for line in platformSettings.getSetting("customAutocompletions").split("\n"):
 			if not line: break
 			self.ui.autocompletionsTable.insertRow(i+1)
 			item1 = QtGui.QTableWidgetItem(line.split(',')[0])
@@ -434,17 +434,17 @@ class SettingsDialogBox(QtGui.QDialog):
 		QtCore.QObject.connect(self.ui.autocompletionsTable, QtCore.SIGNAL("cellDoubleClicked(int,int)"), autoAddRows)
 
 		#Usage statistics
-		self.ui.usageStatisticsCheckbox.setChecked(platformSettings.getSetting("sendusagestatistics", True).toBool())
+		self.ui.usageStatisticsCheckbox.setChecked(platformSettings.getSetting("sendusagestatistics", True))
 		
 		#Set the correct default font
-		if platformSettings.getSetting("defaultfont", "").toString():
-			self.ui.defaultFont.setCurrentFont(QtGui.QFont(platformSettings.getSetting("defaultfont").toString()))
+		if platformSettings.getSetting("defaultfont", ""):
+			self.ui.defaultFont.setCurrentFont(QtGui.QFont(platformSettings.getSetting("defaultfont")))
 		else:
 			self.ui.useDefaultFont.setChecked(True)
 			self.ui.defaultFont.setDisabled(True)
 
 		#Reading speed
-		self.ui.speedSlider.setValue(platformSettings.getSetting("readingspeed", 100).toInt()[0])
+		self.ui.speedSlider.setValue(platformSettings.getSetting("readingspeed", 100))
 		
 	def applyClicked(self):
 		platformSettings.setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())

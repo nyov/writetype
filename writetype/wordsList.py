@@ -27,20 +27,21 @@ class wordsList:
 		self.refreshReplacementTable()
 
 	def refreshWords(self):
-		self.words = self.loadWords(platformSettings.getPlatformSetting('pathToWordlists') + "/list" + str(platformSettings.getSetting("wordlist", 2).toString()) + ".txt")
+		self.words = self.loadWords(platformSettings.getPlatformSetting('pathToWordlists') + "/list" + str(platformSettings.getSetting("wordlist", 2)) + ".txt")
 
 	def refreshWordsCustom(self):
-		self.wordsCustom = str(platformSettings.getSetting("customwords", "").toString()).split("\n")
+		self.wordsCustom = str(platformSettings.getSetting("customwords", "")).split("\n")
 
 	def refreshReplacementTable(self):
 		self.replacementTable = {}
-		if not platformSettings.getSetting('autocompletion').toBool():
+		if not platformSettings.getSetting('autocompletion'):
 			return
-		if platformSettings.getSetting('autocompletioncontractions').toBool():
+		if platformSettings.getSetting('autocompletioncontractions'):
 			for line in self.loadWords(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt")):
 				if not line or line == ",": continue
 				self.replacementTable[line.split(",")[0]] = line.split(",")[1]
-		for line in str(platformSettings.getSetting("customAutocompletions").toString()).split("\n"):
+		for line in str(platformSettings.getSetting("customAutocompletions", "")).split("\n"):
+			print line
 			if not line or line == ",": continue
 			self.replacementTable[line.split(",")[0]] = line.split(",")[1]
 

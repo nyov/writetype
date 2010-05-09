@@ -48,18 +48,32 @@ def getPlatformSetting(key):
 	return parser.get('General', key)
 
 def getSetting(key, default=None):
-	
 	if key in cache: #Check to see if it is in the cache
-		return QVariant(cache[key]) #Why doesn't it store as a QVariant in the first place?
+		return correctType(cache[key], default)
 	else:
 		if settingsError == False:
-			val = settingsHandle.value(key, default)
+			val = settingsHandle.value(key, QVariant(default))
+#			val = val.toPyObject()
+			#Dynamic type casting to the default's type
 			cache[key] = val
-			return val
+			return correctType(val, default)
 		else:
-			return QVariant(default)
+			return default
+
+def correctType(val, default):
+	if isinstance(default, int):
+		val = val.toInt()[0]
+	elif isinstance(default, str):
+		val = str(val.toString())
+	elif isinstance(default, bool):
+		val = val.toBoolean()
+	elif isinstance(default, float):
+		val = val.toFloat()
+	else:
+		val = val.toPyObject()
+	return val
 
 def setSetting(key, value):
 	if settingsError == False:
 		settingsHandle.setValue(key, value)
-		cache[key] = value
+		cache[key] = QVariant(value)

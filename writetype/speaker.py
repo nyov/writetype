@@ -17,6 +17,7 @@
 
 from festivalInterface import FestivalInterface
 import platformSettings
+import re
 
 #This will do more in the future... I guess...
 class Speaker:
@@ -34,8 +35,9 @@ class Speaker:
 			text = text.replace('"', "</PITCH>", 1)
 			print text
 		text = text.replace("\n", '<BREAK LEVEL="large" />')
+		text = re.sub(re.compile(re.escape("writetype"), re.I), '<PRON SUB="right type">writetype</PRON>', text, 0)
 		#Set the speed to the user preference
-		speed = platformSettings.getSetting("readingspeed", 100).toInt()[0]
+		speed = platformSettings.getSetting("readingspeed", 100)
 		text = '<RATE SPEED="' + str(speed) + '%">' + text + "</RATE>"
 		self.festival.speak("<SABLE>"+text+"</SABLE>")
 

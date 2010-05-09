@@ -323,7 +323,7 @@ class logger:
 	def send(self):
 		if not self.logText:
 			return
-		if platformSettings.getSetting("sendusagestatistics", True).toBool() == True:
+		if platformSettings.getSetting("sendusagestatistics", True) == True:
 			data = urllib.urlencode({"log": self.logText, "id": platformSettings.getPlatformSetting("statsId")})
 			request = urllib2.Request(platformSettings.getPlatformSetting('statsUrl'), data)
 			urllib2.urlopen(request)
