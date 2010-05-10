@@ -103,6 +103,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWordsCustom)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWords)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshReplacementTable)
+		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.speaker.setDriver)
 
 		#Distraction free
 		QtCore.QObject.connect(self.ui.actionDistractionFree, QtCore.SIGNAL("triggered()"), self.openDistractionFreeMode)

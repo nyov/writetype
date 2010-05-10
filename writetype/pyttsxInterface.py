@@ -10,37 +10,50 @@
 
 # WriteType is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
 # GNU General Public License for more details.
 
 # You should have received a copy of the GNU General Public License
-# along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
+# along with WriteType.	 If not, see <http://www.gnu.org/licenses/>.
 
 import pyttsx
 from threading import Thread, Event
 
-class pyttsxInterface:
-    def speak(self, text):
-        self.stopEvent = Event()
-        self.st = SpeakerThread(text, self.stopEvent)
+class PyttsxInterface:
+	def __init__(self, rate=0):
+		self.rate = rate
+		self.stopEvent = Event()
+	def speak(self, text):
+		self.st = SpeakerThread(text, self.stopEvent, self.rate)
+		self.st.start()
 
-    def stop(self):
-        self.stopEvent.set()
+	def stop(self):
+		self.stopEvent.set()
+
+	def setReadingSpeed(self, rate):
+		self.rate = rate
 
 class SpeakerThread(Thread):
-    def __init__(self, text, stopEvent):
-        self.stopEvent = stopEvent
-        self.text = text
-        threading.Thread.__init__(self)
+	def __init__(self, text, stopEvent, rate=0):
+		self.rate = 200 + rate
+		self.stopEvent = stopEvent
+		self.text = text
+		Thread.__init__(self)
 
-    def run(self):
-        def onWord(name, location, length):
-            if self.stopEvent.isSet():
-                speaker.stop()
-        speaker = pyttsx.init()
-        speaker.say(self.text)
-        speaker.runAndWait()
-                
+	def run(self):
+		def onWord(name, location, length):
+			print "in subroutine"
+			if self.stopEvent.isSet():
+				speaker.stop()
+		speaker = pyttsx.init()
+		speaker.connect('started-word', onWord)
+		speaker.setProperty('rate', self.rate)
+		speaker.say(self.text)
+		speaker.runAndWait()
+				
 if __name__ == "__main__":
-    interface = pyttsxInterface()
-    interface.speak("Hello, this should take some time to say.")
+	interface = pyttsxInterface()
+	interface.speak("Hello, this should take some time to say, but I don't quite know how long at this moment.")
+	import time
+	time.sleep(2)
+	interface.stop()

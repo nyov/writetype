@@ -18,28 +18,58 @@
 from festivalInterface import FestivalInterface
 import platformSettings
 import re
+from platform import system
 
 #This will do more in the future... I guess...
 class Speaker:
 	def __init__(self, text):
-		self.festival = FestivalInterface(platformSettings.getPlatformSetting("pathToFestival"))
+		self.setDriver()
 		#self.text = text
 		#threading.Thread.__init__(self)
 
 	def say(self, text):
-		text = str(text)
-		self.festival.stop()
-		#Do some things to make text sound more realistic
-		while text.find('"') != text.rfind('"'):
-			text = text.replace('"', "<PITCH BASE='20%'>", 1)
-			text = text.replace('"', "</PITCH>", 1)
-			print text
-		text = text.replace("\n", '<BREAK LEVEL="large" />')
-		text = re.sub(re.compile(re.escape("writetype"), re.I), '<PRON SUB="right type">writetype</PRON>', text, 0)
-		#Set the speed to the user preference
-		speed = platformSettings.getSetting("readingspeed", 100)
-		text = '<RATE SPEED="' + str(speed) + '%">' + text + "</RATE>"
-		self.festival.speak("<SABLE>"+text+"</SABLE>")
+		print "selecting driver"
+		if self.driver == "festival":
+			print "festival"
+			text = str(text)
+			self.ttsdriver.stop()
+			#Do some things to make text sound more realistic
+			while text.find('"') != text.rfind('"'):
+				text = text.replace('"', "<PITCH BASE='20%'>", 1)
+				text = text.replace('"', "</PITCH>", 1)
+				print text
+			text = text.replace("\n", '<BREAK LEVEL="large" />')
+			text = re.sub(re.compile(re.escape("writetype"), re.I), '<PRON SUB="right type">writetype</PRON>', text, 0)
+			#Set the speed to the user preference
+			speed = platformSettings.getSetting("readingspeed", 0)
+			text = '<RATE SPEED="' + str(speed) + '%">' + text + "</RATE>"
+			self.ttsdriver.speak("<SABLE>"+text+"</SABLE>")
 
+		elif self.driver == "pyttsx":
+			print "pyttsx"
+			text = str(text)
+			self.ttsdriver.setReadingSpeed(platformSettings.getSetting("readingspeed", 0))
+			self.ttsdriver.speak(text)
+			
 	def stop(self):
-		self.festival.stop()
+   		self.ttsdriver.stop()
+
+	def setDriver(self, driver=None):
+		if not driver:
+			driver = platformSettings.getSetting("ttsengine", "")
+
+		self.driver = driver
+		#Defaults per platform
+		if not self.driver in platformSettings.getPlatformSetting("ttsEngines"):
+			print "Driver error!  Driver not found!  Selecting default."
+			if system() == "Linux":
+				self.driver = "festival"
+			else:
+				self.driver = "pyttsx"
+		#Import
+		if self.driver == "festival":
+			from festivalInterface import FestivalInterface
+			self.ttsdriver = FestivalInterface(platformSettings.getPlatformSetting("pathToFestival"))
+		elif self.driver == "pyttsx":
+			from pyttsxInterface import PyttsxInterface
+			self.ttsdriver = PyttsxInterface() # This will make a bug, I'll fix it later
