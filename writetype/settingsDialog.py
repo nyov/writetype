@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/settings.ui'
 #
-# Created: Sat May  8 13:07:26 2010
-#      by: PyQt4 UI code generator 4.7.2
+# Created: Mon May 10 14:53:25 2010
+#      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -99,7 +99,6 @@ class Ui_settingsDialog(object):
         self.label_5.setObjectName("label_5")
         self.gridLayout_4.addWidget(self.label_5, 0, 0, 1, 1)
         self.advancedSubstitutionsCheckbox = QtGui.QCheckBox(self.misspellingSettings)
-        self.advancedSubstitutionsCheckbox.setText("")
         self.advancedSubstitutionsCheckbox.setObjectName("advancedSubstitutionsCheckbox")
         self.gridLayout_4.addWidget(self.advancedSubstitutionsCheckbox, 1, 1, 1, 1)
         self.label_6 = QtGui.QLabel(self.misspellingSettings)
@@ -181,6 +180,13 @@ class Ui_settingsDialog(object):
         self.spinBox.setObjectName("spinBox")
         self.horizontalLayout.addWidget(self.spinBox)
         self.gridLayout_2.addLayout(self.horizontalLayout, 3, 1, 1, 1)
+        self.label_10 = QtGui.QLabel(self.settingsTab)
+        self.label_10.setObjectName("label_10")
+        self.gridLayout_2.addWidget(self.label_10, 4, 0, 1, 1)
+        self.ttsEngineBox = QtGui.QComboBox(self.settingsTab)
+        self.ttsEngineBox.setEditable(False)
+        self.ttsEngineBox.setObjectName("ttsEngineBox")
+        self.gridLayout_2.addWidget(self.ttsEngineBox, 4, 1, 1, 1)
         self.tabWidget.addTab(self.settingsTab, "")
         self.verticalLayout_2.addWidget(self.tabWidget)
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
@@ -240,6 +246,7 @@ class Ui_settingsDialog(object):
         self.useDefaultFont.setText(QtGui.QApplication.translate("settingsDialog", "System Default", None, QtGui.QApplication.UnicodeUTF8))
         self.label_9.setText(QtGui.QApplication.translate("settingsDialog", "Reading speed:", None, QtGui.QApplication.UnicodeUTF8))
         self.spinBox.setSuffix(QtGui.QApplication.translate("settingsDialog", "%", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_10.setText(QtGui.QApplication.translate("settingsDialog", "TTS Engine", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.settingsTab), QtGui.QApplication.translate("settingsDialog", "Other", None, QtGui.QApplication.UnicodeUTF8))
         self.okayButton.setText(QtGui.QApplication.translate("settingsDialog", "Okay", None, QtGui.QApplication.UnicodeUTF8))
         self.applyButton.setText(QtGui.QApplication.translate("settingsDialog", "Apply", None, QtGui.QApplication.UnicodeUTF8))

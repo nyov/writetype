@@ -443,8 +443,16 @@ class SettingsDialogBox(QtGui.QDialog):
 			self.ui.useDefaultFont.setChecked(True)
 			self.ui.defaultFont.setDisabled(True)
 
-		#Reading speed
+		#TTS
 		self.ui.speedSlider.setValue(platformSettings.getSetting("readingspeed", 100))
+		engines = platformSettings.getPlatformSetting("ttsEngines").split(",")
+		for engine in engines:
+			self.ui.ttsEngineBox.addItem(engine)
+		currentValue = platformSettings.getSetting("ttsengine", "")
+		if currentValue in engines:
+			index = engines.index(currentValue)
+			self.ui.ttsEngineBox.setCurrentIndex(index)
+		
 		
 	def applyClicked(self):
 		platformSettings.setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())
@@ -457,6 +465,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		platformSettings.setSetting("autocompletion", self.ui.autocompletionCheckBox.isChecked())
 		platformSettings.setSetting("autocompletioncontractions", self.ui.contractionsCheckbox.isChecked())
 		platformSettings.setSetting("readingspeed", self.ui.speedSlider.value())
+		platformSettings.setSetting("ttsengine", self.ui.ttsEngineBox.currentText())
 		if self.ui.useDefaultFont.isChecked():
 			platformSettings.setSetting("defaultfont", "")
 		else:
