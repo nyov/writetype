@@ -45,6 +45,22 @@ class Speaker:
 			text = '<RATE SPEED="' + str(speed) + '%">' + text + "</RATE>"
 			self.ttsdriver.speak("<SABLE>"+text+"</SABLE>")
 
+		if self.driver == "espeak":
+			print "espeak"
+			text = str(text)
+			self.ttsdriver.stop()
+			#Do some things to make text sound more realistic
+			while text.find('"') != text.rfind('"'):
+				text = text.replace('"', '<prosody pitch="+20%">', 1)
+				text = text.replace('"', "</prosody>", 1)
+				print text
+			text = text.replace("\n", '.<break strength="x-large" time="1s" />')
+			text = re.sub(re.compile(re.escape("writetype"), re.I), 'write type', text, 0)
+			#Set the speed to the user preference
+			speed = platformSettings.getSetting("readingspeed", 0)
+			text = '<prosody speed="' + str(speed) + '%">' + text + "</prosody>"
+			self.ttsdriver.speak("<speak>"+text+"</speak>")
+
 		elif self.driver == "pyttsx":
 			print "pyttsx"
 			text = str(text)
@@ -73,3 +89,6 @@ class Speaker:
 		elif self.driver == "pyttsx":
 			from pyttsxInterface import PyttsxInterface
 			self.ttsdriver = PyttsxInterface() # This will make a bug, I'll fix it later
+		elif self.driver == "espeak":
+			from espeakInterface import EspeakInterface
+			self.ttsdriver = EspeakInterface(platformSettings.getPlatformSetting("pathToEspeak"))
