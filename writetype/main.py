@@ -69,13 +69,10 @@ class MainApplication(QtGui.QMainWindow):
 		#Clear the word list if a space is pressed
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("whiteSpacePressed"), self.ui.spellingSuggestionsList.clear)
 
-
-
 		#about boxes
 		QtCore.QObject.connect(self.ui.actionAboutQt, QtCore.SIGNAL("triggered()"), self.showAboutQt)
 		QtCore.QObject.connect(self.ui.actionAbout, QtCore.SIGNAL("triggered()"), self.showAbout)
 		QtCore.QObject.connect(self.ui.actionDocumentation, QtCore.SIGNAL("triggered()"), self.openHelpPage)
-
 
 		#Word list for autocompletion
 		self.wl = wordsList()
@@ -92,7 +89,6 @@ class MainApplication(QtGui.QMainWindow):
 		
 		#modified
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("keyPressed"), self.updateTitle)
-
 
 		#create the settings dialog box
 		self.settings_box = SettingsDialogBox(self)
@@ -115,7 +111,9 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionInsert_Image, QtCore.SIGNAL("triggered()"), self.ui.textArea.insertImage)
 		QtCore.QObject.connect(self.ui.actionAlign_Image_Right, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignImageRight)
 		QtCore.QObject.connect(self.ui.actionAlign_Image_Left, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignImageLeft)
-
+		#Lets disable image support for now.  Yeah... I think that would be a wise idea.
+		self.ui.imageToolBar.setVisible(False)
+		self.ui.actionEnableImageToolbar.setVisible(False)
 		
 		#Apply some settings
 		if platformSettings.getSetting("defaultfont", ""):
@@ -182,7 +180,7 @@ class MainApplication(QtGui.QMainWindow):
 				pass
 
 	def checkForAutoreplacement(self, word):
-		print "To autoreplace: '", word, "'"
+		#print "To autoreplace: '", word, "'"
 		if word[-1:] in ["", "\b", " ", "\t", ".", "?", ":", "!", ",", ";", ")"]:
 			if self.wl.correctWord(word[:-1]) != False:
 				print "Correcting", word[:-1]
@@ -214,8 +212,9 @@ class MainApplication(QtGui.QMainWindow):
 			return
 		
 		#Don't bother continuing if there are no words remaining
-		if len(self.wordsC) == 0 and len(self.wordsN) == 0 and len(text) > platformSettings.getSetting("minimumletters", 0) + 1:
-			return
+		#if len(self.wordsC) == 0 and len(self.wordsN) == 0 and len(text) > platformSettings.getSetting("minimumletters", 0) + 1:
+			#return
+		#YES bother because it could have been a typo
 		
 		self.ui.spellingSuggestionsList.clear()
 		
@@ -237,7 +236,6 @@ class MainApplication(QtGui.QMainWindow):
 			item.setFont(font)
 			#self.ui.spellingSuggestionsList.addItem(item)
 			
-			
 		#Search the normal words
 		self.wordsN = self.wl.search(str(text), False)
 		for word in self.wordsN:
@@ -247,7 +245,6 @@ class MainApplication(QtGui.QMainWindow):
 			item.setFont(font)
 			if len(self.wordsC) != 0:
 				item.setForeground(QtGui.QColor.fromRgb(50, 50, 50))
-			
 			
 			
 			#action = QtGui.QAction(self)

@@ -149,7 +149,7 @@ class spellCheckEdit(QTextEdit):
 		self.log.log(oldword + " -> " + str(word))
 		
 	def keyPressEvent(self, event):
-		print "'" + event.text() + "'"
+		#print "'" + event.text() + "'"
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
 		if cursor.hasSelection():
@@ -162,25 +162,6 @@ class spellCheckEdit(QTextEdit):
 			#self.emit(SIGNAL("whiteSpacePressed"))
 		#Autocompletions
 		QTextEdit.keyPressEvent(self, event)
-		
-	#def italicSelectedText(self):
-		#if self.fontItalic():
-			#self.setFontItalic(0)
-		#else:
-			#self.setFontItalic(1)
-		#self.setFocus()
-	#def underlineSelectedText(self):
-		#if self.fontUnderline():
-			#self.setFontUnderline(0)
-		#else:
-			#self.setFontUnderline(1)
-		#self.setFocus()
-	#def titleSelectedText(self):
-		#if self.fontPointSize() == 10:
-			#self.setFontPointSize(24)
-		#else:
-			#self.setFontPointSize()
-		#self.setFocus()
 
 	def boldSelectedText(self):
 		if self.fontWeight() == QFont.Bold:

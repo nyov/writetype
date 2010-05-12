@@ -16,10 +16,11 @@
 # You should have received a copy of the GNU General Public License
 # along with WriteType.	 If not, see <http://www.gnu.org/licenses/>.
 
+from ttsInterface import TtsInterface
 import pyttsx
 from threading import Thread, Event
 
-class PyttsxInterface:
+class PyttsxInterface(TtsInterface):
 	def __init__(self, rate=0):
 		self.rate = rate
 		self.stopEvent = Event()

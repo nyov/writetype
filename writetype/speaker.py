@@ -28,10 +28,13 @@ class Speaker:
 		#threading.Thread.__init__(self)
 
 	def say(self, text):
+		text = str(text)
+		#Sanitize input
+		text.replace("<", "")
+		text.replace(">", "")
 		print "selecting driver"
 		if self.driver == "festival":
 			print "festival"
-			text = str(text)
 			self.ttsdriver.stop()
 			#Do some things to make text sound more realistic
 			while text.find('"') != text.rfind('"'):
@@ -47,7 +50,6 @@ class Speaker:
 
 		if self.driver == "espeak":
 			print "espeak"
-			text = str(text)
 			self.ttsdriver.stop()
 			#Do some things to make text sound more realistic
 			while text.find('"') != text.rfind('"'):
@@ -63,7 +65,6 @@ class Speaker:
 
 		elif self.driver == "pyttsx":
 			print "pyttsx"
-			text = str(text)
 			self.ttsdriver.setReadingSpeed(platformSettings.getSetting("readingspeed", 0))
 			self.ttsdriver.speak(text)
 			
@@ -83,12 +84,19 @@ class Speaker:
 			else:
 				self.driver = "pyttsx"
 		#Import
-		if self.driver == "festival":
-			from festivalInterface import FestivalInterface
-			self.ttsdriver = FestivalInterface(platformSettings.getPlatformSetting("pathToFestival"))
-		elif self.driver == "pyttsx":
-			from pyttsxInterface import PyttsxInterface
-			self.ttsdriver = PyttsxInterface() # This will make a bug, I'll fix it later
-		elif self.driver == "espeak":
-			from espeakInterface import EspeakInterface
-			self.ttsdriver = EspeakInterface(platformSettings.getPlatformSetting("pathToEspeak"))
+		try:
+			if self.driver == "festival":
+				from festivalInterface import FestivalInterface
+				self.ttsdriver = FestivalInterface(platformSettings.getPlatformSetting("pathToFestival"))
+			elif self.driver == "pyttsx":
+				from pyttsxInterface import PyttsxInterface
+				self.ttsdriver = PyttsxInterface() # This will make a bug, I'll fix it later
+			elif self.driver == "espeak":
+				from espeakInterface import EspeakInterface
+				self.ttsdriver = EspeakInterface(platformSettings.getPlatformSetting("pathToEspeak"))
+		except ImportError:
+			from ttsInterface import TtsInterface
+			self.ttsdriver = TtsInterface()
+			self.driver = "null"
+			print "===========ERROR!===========\nInvalid TTS Driver\nRunning without TTS support"
+			

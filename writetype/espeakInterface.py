@@ -16,11 +16,12 @@
 # You should have received a copy of the GNU General Public License
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
+from ttsInterface import TtsInterface
 import subprocess
 from tempfile import mkstemp
 from os import unlink, uname
 
-class EspeakInterface:
+class EspeakInterface(TtsInterface):
 	def __init__(self, executableName, libPath=None):
 		self.executableName = executableName
 		self.libPath = libPath
