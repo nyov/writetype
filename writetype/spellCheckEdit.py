@@ -77,22 +77,22 @@ class spellCheckEdit(QTextEdit):
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
 
-		print str(cursor.selection().toHtml())
-		#Check to see if an image is under the cursor
-		if str(cursor.selection().toHtml()).find("<img") != -1:
-			self.setTextCursor(cursor) #show the image highlighed
-			menu.addSeparator()
-			action = QAction("Align Left", menu)
-			self.connect(action, SIGNAL("triggered()"), self.alignImageLeft)
-			menu.addAction(action)
-			self.addAction(action)
-			action = QAction("Align Right", menu)
-			self.connect(action, SIGNAL("triggered()"), self.alignImageRight)
-			menu.addAction(action)
+		## print str(cursor.selection().toHtml())
+		## #Check to see if an image is under the cursor
+		## if str(cursor.selection().toHtml()).find("<img") != -1:
+		## 	self.setTextCursor(cursor) #show the image highlighed
+		## 	menu.addSeparator()
+		## 	action = QAction("Align Left", menu)
+		## 	self.connect(action, SIGNAL("triggered()"), self.alignImageLeft)
+		## 	menu.addAction(action)
+		## 	self.addAction(action)
+		## 	action = QAction("Align Right", menu)
+		## 	self.connect(action, SIGNAL("triggered()"), self.alignImageRight)
+		## 	menu.addAction(action)
 
 		
 		#If there is a word highlighted
-		elif cursor.hasSelection():
+		if cursor.hasSelection():
 			text = unicode(cursor.selectedText())
 			#If that word isn't in the dictionary
 			if not self.dictionary.check(text):

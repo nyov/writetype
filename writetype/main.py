@@ -31,7 +31,7 @@ import platformSettings
 from settingsDialog import Ui_settingsDialog
 from distractionFree import Ui_distractionFree
 import re
-from os import path
+from os import path, sep
 from speaker import Speaker
 
 class MainApplication(QtGui.QMainWindow):
@@ -133,7 +133,7 @@ class MainApplication(QtGui.QMainWindow):
 		if isfile(self.filename):
 			text = open(self.filename).read()
 			self.ui.textArea.setText(text)
-			self.filetitle = str(self.filename).split(platformSettings.getPlatformSetting('ds')).pop()
+			self.filetitle = str(self.filename).split(sep).pop()
 			self.updateTitle(False)
 			
 			#Add the words in the document to the custom words list
@@ -145,7 +145,7 @@ class MainApplication(QtGui.QMainWindow):
 		if isfile(self.filename):
 			file = open(self.filename, 'w')
 			file.write(self.ui.textArea.toHtml())
-			self.filetitle = str(self.filename).split(platformSettings.getPlatformSetting('ds')).pop()
+			self.filetitle = str(self.filename).split(sep).pop()
 			self.updateTitle(False)
 			file.close()
 			return True
@@ -160,7 +160,7 @@ class MainApplication(QtGui.QMainWindow):
 		file = open(self.filename, 'w+')
 		file.write(self.ui.textArea.toHtml())
 		file.close()
-		self.filetitle = str(self.filename).split(platformSettings.getPlatformSetting('ds')).pop()
+		self.filetitle = str(self.filename).split(sep).pop()
 		self.updateTitle(False)
 		file.close()
 		return True
@@ -418,7 +418,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		self.ui.autocompletionsTable.setHorizontalHeaderItem(0, QtGui.QTableWidgetItem("Replace:"))
 		self.ui.autocompletionsTable.setHorizontalHeaderItem(1, QtGui.QTableWidgetItem("With:"))
 		i = 0
-		for line in platformSettings.getSetting("customAutocompletions").split("\n"):
+		for line in platformSettings.getSetting("customAutocompletions", "").split("\n"):
 			if not line: break
 			self.ui.autocompletionsTable.insertRow(i+1)
 			item1 = QtGui.QTableWidgetItem(line.split(',')[0])
@@ -442,7 +442,7 @@ class SettingsDialogBox(QtGui.QDialog):
 			self.ui.defaultFont.setDisabled(True)
 
 		#TTS
-		self.ui.speedSlider.setValue(platformSettings.getSetting("readingspeed", 100))
+		self.ui.speedSlider.setValue(platformSettings.getSetting("readingspeed", 0))
 		engines = platformSettings.getPlatformSetting("ttsEngines").split(",")
 		for engine in engines:
 			self.ui.ttsEngineBox.addItem(engine)

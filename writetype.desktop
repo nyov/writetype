@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Writetype
+GenericName=WriteType
+Comment=A word processor to make typing easier
+Exec=writetype
+Icon=/usr/share/writetype/res/key120x120.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Education;
