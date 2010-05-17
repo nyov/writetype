@@ -42,15 +42,18 @@ class FestivalInterface(TtsInterface):
 		tmpfileHandle.write(text)
 		tmpfileHandle.close()
 		call = [self.executableName, "--tts", tmpfile[1]]
- 		self.proc = subprocess.Popen(call)
+		try:
+			self.proc = subprocess.Popen(call)
+		except OSError:
+			QMessageBox.warning(None, "Feature unavailable", "Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.")
 		
 #		unlink(tmpfile[1])
 
 	def stop(self):
 		if self.proc:
 			self.proc.terminate()
-		#This only works on GNU/Linux for now, I think
-		if uname()[0] == "Linux":
-			subprocess.Popen(['pkill', 'audsp'])
+			#This only works on GNU/Linux for now, I think
+			if uname()[0] == "Linux":
+				subprocess.Popen(['pkill', 'audsp'])
 
 
