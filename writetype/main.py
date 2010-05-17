@@ -206,7 +206,7 @@ class MainApplication(QtGui.QMainWindow):
 	def createButtons(self, text):
 		text = str(text)
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
-		if text[-1:] in (" ", ".", ",", "!", "?", "\b", "\t"):
+		if text[-1:] in (" ", ".", ",", "!", "?", "\t"):
 			print "adding custom word"
 			self.wl.addCustomWord(text.lower()[0:len(text)-1])
 			return
