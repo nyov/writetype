@@ -6,7 +6,7 @@ import sys
 
 setup(
     name = 'WriteType',
-    version = '0.1.52',
+    version = '0.1.53',
     description = 'A program to help people type more easily.',
     author = 'Max Shinn',
     author_email = 'trombonechamp@gmail.com',

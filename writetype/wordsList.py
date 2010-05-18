@@ -27,7 +27,7 @@ class wordsList:
 		self.refreshReplacementTable()
 
 	def refreshWords(self):
-		self.words = self.loadWords(platformSettings.getPlatformSetting('pathToWordlists') + "/list" + str(platformSettings.getSetting("wordlist", 2)) + ".txt")
+		self.words = self.loadWords(os.path.join(platformSettings.getPlatformSetting('pathToWordlists'),  "list" + str(platformSettings.getSetting("wordlist", 2)) + ".txt"))
 
 	def refreshWordsCustom(self):
 		self.wordsCustom = str(platformSettings.getSetting("customwords", "")).split("\n")
