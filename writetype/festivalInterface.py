@@ -20,6 +20,7 @@ from ttsInterface import TtsInterface
 import subprocess
 from tempfile import mkstemp
 from os import unlink, uname
+from PyQt4.QtGui import QMessageBox
 
 class FestivalInterface(TtsInterface):
 	def __init__(self, executableName, libPath=None):

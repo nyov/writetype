@@ -15,7 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
-from festivalInterface import FestivalInterface
 import platformSettings
 import re
 from platform import system
@@ -48,7 +47,7 @@ class Speaker:
 			text = '<RATE SPEED="' + str(speed) + '%">' + text + "</RATE>"
 			self.ttsdriver.speak("<SABLE>"+text+"</SABLE>")
 
-		if self.driver == "espeak":
+		elif self.driver == "espeak":
 			print "espeak"
 			self.ttsdriver.stop()
 			#Do some things to make text sound more realistic
@@ -67,6 +66,8 @@ class Speaker:
 			print "pyttsx"
 			self.ttsdriver.setReadingSpeed(platformSettings.getSetting("readingspeed", 0))
 			self.ttsdriver.speak(text)
+		else:
+			return True
 			
 	def stop(self):
    		self.ttsdriver.stop()

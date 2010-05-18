@@ -19,6 +19,8 @@
 from ttsInterface import TtsInterface
 import pyttsx
 from threading import Thread, Event
+from PyQt4.QtGui import QMessageBox
+
 
 class PyttsxInterface(TtsInterface):
 	def __init__(self, rate=0):
@@ -51,10 +53,3 @@ class SpeakerThread(Thread):
 		speaker.setProperty('rate', self.rate)
 		speaker.say(self.text)
 		speaker.runAndWait()
-				
-if __name__ == "__main__":
-	interface = pyttsxInterface()
-	interface.speak("Hello, this should take some time to say, but I don't quite know how long at this moment.")
-	import time
-	time.sleep(2)
-	interface.stop()

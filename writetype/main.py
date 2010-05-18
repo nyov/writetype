@@ -33,6 +33,7 @@ from distractionFree import Ui_distractionFree
 import re
 from os import path, sep
 from speaker import Speaker
+from PyQt4.QtGui import QMessageBox
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
@@ -51,7 +52,6 @@ class MainApplication(QtGui.QMainWindow):
 		self.speaker = Speaker("festival")
 		QtCore.QObject.connect(self.ui.actionSpeak, QtCore.SIGNAL("triggered()"), self.readAloud)
 		QtCore.QObject.connect(self.ui.actionStop, QtCore.SIGNAL("triggered()"), self.speaker.stop)
-
 
 		#Bold and garbage
 		QtCore.QObject.connect(self.ui.actionBold, QtCore.SIGNAL("triggered()"), self.ui.textArea.boldSelectedText)
@@ -100,6 +100,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWords)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshReplacementTable)
 		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.speaker.setDriver)
+		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.refreshAfterSettingsDialog)
 
 		#Distraction free
 		QtCore.QObject.connect(self.ui.actionDistractionFree, QtCore.SIGNAL("triggered()"), self.openDistractionFreeMode)
@@ -170,7 +171,17 @@ class MainApplication(QtGui.QMainWindow):
 			text = self.ui.textArea.textCursor().selectedText()
 		else:
 			text = self.ui.textArea.toPlainText()
-		self.speaker.say(text)
+		#Disable the buttons if there was a failure
+		if self.speaker.say(text) == True:
+			self.ui.actionSpeak.setDisabled(True)
+			self.ui.actionStop.setDisabled(True)
+			QMessageBox.warning(None, "Feature unavailable", "The current TTS driver is invalid.  Read-back is unavailable for this session.")
+		
+	def refreshAfterSettingsDialog(self):
+		self.ui.actionSpeak.setDisabled(False)
+		self.ui.actionStop.setDisabled(False)
+
+
 		
 	def spellcheck(self):
 		dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
@@ -356,6 +367,9 @@ class MainApplication(QtGui.QMainWindow):
 		self.setCentralWidget(self.ui.centralwidget)
 		self.ui.distractionButton.hide()
 			
+	def disableSpeakButton(self):
+		self.ui.actionSpeak.disable()
+
 	def updateTitle(self, modified=True):
 		titlestring = "WriteType - " + self.filetitle
 		if modified:
