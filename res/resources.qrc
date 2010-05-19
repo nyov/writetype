@@ -1,5 +1,10 @@
 <RCC>
-  <qresource prefix="res">
+  <qresource prefix="res" >
+    <file>format-line-spacing-normal.png</file>
+    <file>format-justify-center.png</file>
+    <file>format-justify-left.png</file>
+    <file>format-justify-right.png</file>
+    <file>format-line-spacing-double.png</file>
     <file>player_stop.png</file>
     <file>button_cancel.png</file>
     <file>button_ok.png</file>

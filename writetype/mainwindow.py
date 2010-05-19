@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Mon May 10 14:53:21 2010
+# Created: Wed May 19 12:52:41 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.distractionButton)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 25))
         self.menubar.setObjectName("menubar")
         self.menuEdit = QtGui.QMenu(self.menubar)
         self.menuEdit.setObjectName("menuEdit")
@@ -198,12 +198,39 @@ class Ui_MainWindow(object):
         icon16.addPixmap(QtGui.QPixmap(":/res/player_stop.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionStop.setIcon(icon16)
         self.actionStop.setObjectName("actionStop")
+        self.actionAlignLeft = QtGui.QAction(MainWindow)
+        icon17 = QtGui.QIcon()
+        icon17.addPixmap(QtGui.QPixmap(":/res/format-justify-left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionAlignLeft.setIcon(icon17)
+        self.actionAlignLeft.setObjectName("actionAlignLeft")
+        self.actionAlignCenter = QtGui.QAction(MainWindow)
+        icon18 = QtGui.QIcon()
+        icon18.addPixmap(QtGui.QPixmap(":/res/format-justify-center.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionAlignCenter.setIcon(icon18)
+        self.actionAlignCenter.setObjectName("actionAlignCenter")
+        self.actionAlignRight = QtGui.QAction(MainWindow)
+        icon19 = QtGui.QIcon()
+        icon19.addPixmap(QtGui.QPixmap(":/res/format-justify-right.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionAlignRight.setIcon(icon19)
+        self.actionAlignRight.setObjectName("actionAlignRight")
+        self.actionDoubleSpace = QtGui.QAction(MainWindow)
+        icon20 = QtGui.QIcon()
+        icon20.addPixmap(QtGui.QPixmap(":/res/format-line-spacing-double.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionDoubleSpace.setIcon(icon20)
+        self.actionDoubleSpace.setObjectName("actionDoubleSpace")
+        self.actionSingleSpace = QtGui.QAction(MainWindow)
+        icon21 = QtGui.QIcon()
+        icon21.addPixmap(QtGui.QPixmap(":/res/format-line-spacing-normal.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionSingleSpace.setIcon(icon21)
+        self.actionSingleSpace.setObjectName("actionSingleSpace")
         self.menuEdit.addAction(self.actionUndo)
         self.menuEdit.addAction(self.actionRedo)
         self.menuEdit.addSeparator()
         self.menuEdit.addAction(self.actionBold)
         self.menuEdit.addAction(self.actionItalic)
         self.menuEdit.addAction(self.actionUnderline)
+        self.menuEdit.addAction(self.actionDoubleSpace)
+        self.menuEdit.addAction(self.actionSingleSpace)
         self.menuEdit.addAction(self.actionSpeak)
         self.menuToolbars.addAction(self.actionEnableFileToolbar)
         self.menuToolbars.addAction(self.actionEnableEditToolbar)
@@ -231,6 +258,9 @@ class Ui_MainWindow(object):
         self.editToolBar.addAction(self.actionBold)
         self.editToolBar.addAction(self.actionItalic)
         self.editToolBar.addAction(self.actionUnderline)
+        self.editToolBar.addAction(self.actionAlignLeft)
+        self.editToolBar.addAction(self.actionAlignCenter)
+        self.editToolBar.addAction(self.actionAlignRight)
         self.editToolBar.addAction(self.actionHighlight)
         self.editToolBar.addAction(self.actionHighlightMode)
         self.speakToolBar.addAction(self.actionSpeak)
@@ -313,6 +343,11 @@ class Ui_MainWindow(object):
         self.actionAlign_Image_Right.setText(QtGui.QApplication.translate("MainWindow", "Align Image Right", None, QtGui.QApplication.UnicodeUTF8))
         self.actionEnableImageToolbar.setText(QtGui.QApplication.translate("MainWindow", "Image Toolbar", None, QtGui.QApplication.UnicodeUTF8))
         self.actionStop.setText(QtGui.QApplication.translate("MainWindow", "Stop", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAlignLeft.setText(QtGui.QApplication.translate("MainWindow", "Align Left", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAlignCenter.setText(QtGui.QApplication.translate("MainWindow", "Align Center", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAlignRight.setText(QtGui.QApplication.translate("MainWindow", "Align Right", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionDoubleSpace.setText(QtGui.QApplication.translate("MainWindow", "Double Space", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionSingleSpace.setText(QtGui.QApplication.translate("MainWindow", "Single Space", None, QtGui.QApplication.UnicodeUTF8))
 
 from spellCheckEdit import spellCheckEdit
 import resources_rc

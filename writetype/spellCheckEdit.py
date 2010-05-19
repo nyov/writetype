@@ -179,6 +179,22 @@ class spellCheckEdit(QTextEdit):
 		self.setFontUnderline(not self.fontUnderline())
 		self.setFocus()
 
+	def alignLeft(self):
+		self.setAlignment(Qt.AlignLeft)
+		
+	def alignCenter(self):
+		self.setAlignment(Qt.AlignCenter)
+
+	def alignRight(self):
+		self.setAlignment(Qt.AlignRight)
+
+	def doubleSpace(self):
+		#self.document().setDefaultStyleSheet("line-height: 2em;")
+		pass
+
+	def singleSpace(self):
+		pass
+
 	def toggleHighlight(self, isSet):
 		self.highlighting = isSet
 		if isSet:

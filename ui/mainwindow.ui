@@ -91,7 +91,7 @@
      <x>0</x>
      <y>0</y>
      <width>803</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuEdit">
@@ -104,6 +104,8 @@
     <addaction name="actionBold"/>
     <addaction name="actionItalic"/>
     <addaction name="actionUnderline"/>
+    <addaction name="actionDoubleSpace"/>
+    <addaction name="actionSingleSpace"/>
     <addaction name="actionSpeak"/>
    </widget>
    <widget class="QMenu" name="menuView">
@@ -175,6 +177,9 @@
    <addaction name="actionBold"/>
    <addaction name="actionItalic"/>
    <addaction name="actionUnderline"/>
+   <addaction name="actionAlignLeft"/>
+   <addaction name="actionAlignCenter"/>
+   <addaction name="actionAlignRight"/>
    <addaction name="actionHighlight"/>
    <addaction name="actionHighlightMode"/>
   </widget>
@@ -504,6 +509,51 @@
    </property>
    <property name="text">
     <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionAlignLeft">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/format-justify-left.png</normaloff>:/res/format-justify-left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align Left</string>
+   </property>
+  </action>
+  <action name="actionAlignCenter">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/format-justify-center.png</normaloff>:/res/format-justify-center.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align Center</string>
+   </property>
+  </action>
+  <action name="actionAlignRight">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/format-justify-right.png</normaloff>:/res/format-justify-right.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align Right</string>
+   </property>
+  </action>
+  <action name="actionDoubleSpace">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/format-line-spacing-double.png</normaloff>:/res/format-line-spacing-double.png</iconset>
+   </property>
+   <property name="text">
+    <string>Double Space</string>
+   </property>
+  </action>
+  <action name="actionSingleSpace">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/format-line-spacing-normal.png</normaloff>:/res/format-line-spacing-normal.png</iconset>
+   </property>
+   <property name="text">
+    <string>Single Space</string>
    </property>
   </action>
  </widget>
