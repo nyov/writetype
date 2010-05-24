@@ -37,7 +37,7 @@ class EspeakInterface(TtsInterface):
 		try:
 			self.proc = subprocess.Popen(call)
 		except OSError:
-			QMessageBox.warning(None, "Feature unavailable", "eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.")
+			QMessageBox.warning(None, self.tr("Feature unavailable", "eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box."))
 		
 	def stop(self):
 		if self.proc:

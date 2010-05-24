@@ -34,14 +34,14 @@ import re
 from os import path, sep
 from speaker import Speaker
 from PyQt4.QtGui import QMessageBox
+from PyQt4.QtCore import QTranslator, QLocale
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
-		
 		QtGui.QWidget.__init__(self, parent)
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
-		self.setWindowTitle("WriteType - Untitled Document")
+		self.setWindowTitle("WriteType - " + self.tr("Untitled Document"))
 		QtCore.QObject.connect(self.ui.actionOpen, QtCore.SIGNAL("triggered()"), self.openDialog)
 		QtCore.QObject.connect(self.ui.actionSave, QtCore.SIGNAL("triggered()"), self.saveFile)
 		QtCore.QObject.connect(self.ui.actionSave_As, QtCore.SIGNAL("triggered()"), self.saveFileAs)
@@ -93,7 +93,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.printer = QtGui.QPrinter()
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
 		self.filename = ""
-		self.filetitle = "Untitled Document"
+		self.filetitle = self.tr("Untitled Document")
 		
 		#modified
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("keyPressed"), self.updateTitle)
@@ -137,7 +137,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.wordsN = []
 	
 	def openDialog(self):
-		self.filename = QtGui.QFileDialog.getOpenFileName(self, "Open file", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html *.htm);;Plain Text (*)")
+		self.filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html *.htm);;Plain Text (*)")
 		from os.path import isfile
 		if isfile(self.filename):
 			text = open(self.filename).read()
@@ -162,7 +162,7 @@ class MainApplication(QtGui.QMainWindow):
 			return self.saveFileAs()
 
 	def saveFileAs(self):
-		self.filename = QtGui.QFileDialog.getSaveFileName(self, "Save file", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html)")
+		self.filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html)")
 		if not str(self.filename).find('.html'):
 			self.filename += '.html'
 			self.updateTitle(False)
@@ -183,7 +183,7 @@ class MainApplication(QtGui.QMainWindow):
 		if self.speaker.say(text) == True:
 			self.ui.actionSpeak.setDisabled(True)
 			self.ui.actionStop.setDisabled(True)
-			QMessageBox.warning(None, "Feature unavailable", "The current TTS driver is invalid.  Read-back is unavailable for this session.")
+			QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("The current TTS driver is invalid.  Read-back is unavailable for this session."))
 		
 	def refreshAfterSettingsDialog(self):
 		self.ui.actionSpeak.setDisabled(False)
@@ -313,6 +313,14 @@ class MainApplication(QtGui.QMainWindow):
 			possibilities += self.wl.search(text.replace("a", "e"), False, True)
 			possibilities += self.wl.search(text.replace("u", "o"), False, True)
 
+			#Based on data analysis
+			possibilities += self.wl.search(text.replace("o", "a"), False, True) # becouse 
+			possibilities += self.wl.search(text.replace("a", "o"), False, True) # peaple 
+			possibilities += self.wl.search(text.replace("xs", "x"), False, True) # exsperience, exsplosion
+			possibilities += self.wl.search(text.replace("ei", "i"), False, True) # writeing, exciteing
+
+			
+
 			if platformSettings.getSetting("advancedsubstitutions", False):
 				possibilities += self.wl.search(text.replace("u", "oo"), False, True)
 				possibilities += self.wl.search(text.replace("u", "ou"), False, True)
@@ -347,7 +355,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtGui.QMessageBox.aboutQt(self)
 		
 	def showAbout(self):
-		QtGui.QMessageBox.about(self, "About this program", """<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>""")
+		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>"""))
 		
 	def openHelpPage(self):
 		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype/documentation"))
@@ -357,7 +365,7 @@ class MainApplication(QtGui.QMainWindow):
 		printer.setDocName("writetype_" + self.filename)
 		printDialog = QtGui.QPrintDialog(printer)
 		printDialog.setModal(True)
-		printDialog.setWindowTitle("WriteType - Print")
+		printDialog.setWindowTitle("WriteType - " + self.tr("Print"))
 		if printDialog.exec_():
 			self.ui.textArea.document().print_(printer)
 
@@ -390,7 +398,7 @@ class MainApplication(QtGui.QMainWindow):
 	def closeEvent(self, event):
 		#Set the stuff up to ask for a save on exit
 		if self.ui.actionSave.isEnabled():
-			response =  QtGui.QMessageBox.question(self, "Quit?", "You have unsaved work.  Do you want to save?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No, QtGui.QMessageBox.Cancel)
+			response =  QtGui.QMessageBox.question(self, self.tr("Quit?"), self.tr("You have unsaved work.  Do you want to save?"), QtGui.QMessageBox.Yes, QtGui.QMessageBox.No, QtGui.QMessageBox.Cancel)
 			if response == QtGui.QMessageBox.Yes:
 				if not self.saveFile():
 					event.ignore()
@@ -437,8 +445,8 @@ class SettingsDialogBox(QtGui.QDialog):
 		#Autocompletion
 		self.ui.autocompletionCheckBox.setChecked(platformSettings.getSetting("autocompletion", True))
 		self.ui.contractionsCheckbox.setChecked(platformSettings.getSetting("autocompletioncontractions", True))
-		self.ui.autocompletionsTable.setHorizontalHeaderItem(0, QtGui.QTableWidgetItem("Replace:"))
-		self.ui.autocompletionsTable.setHorizontalHeaderItem(1, QtGui.QTableWidgetItem("With:"))
+		self.ui.autocompletionsTable.setHorizontalHeaderItem(0, QtGui.QTableWidgetItem(self.tr("Replace:")))
+		self.ui.autocompletionsTable.setHorizontalHeaderItem(1, QtGui.QTableWidgetItem(self.tr("With:")))
 		i = 0
 		for line in platformSettings.getSetting("customAutocompletions", "").split("\n"):
 			if not line: break
@@ -518,6 +526,10 @@ class DistractionFreeWindow(QtGui.QDialog):
 #		self.setLayout(self.layout)
 
 application = QtGui.QApplication(sys.argv)
+#translation
+trans = QTranslator()
+trans.load("qt_" + QLocale.system().name())
+application.installTranslator(trans)
 app = MainApplication()
 app.show()
 application.exec_()
