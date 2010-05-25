@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/settings.ui'
 #
-# Created: Fri May 21 14:39:15 2010
+# Created: Tue May 25 14:54:54 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,23 +44,9 @@ class Ui_settingsDialog(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_7.addWidget(self.label_3)
-        self.wordListSize1 = QtGui.QRadioButton(self.tab)
-        self.wordListSize1.setObjectName("wordListSize1")
-        self.verticalLayout_7.addWidget(self.wordListSize1)
-        self.wordListSize2 = QtGui.QRadioButton(self.tab)
-        self.wordListSize2.setObjectName("wordListSize2")
-        self.verticalLayout_7.addWidget(self.wordListSize2)
-        self.wordListSize3 = QtGui.QRadioButton(self.tab)
-        self.wordListSize3.setChecked(True)
-        self.wordListSize3.setObjectName("wordListSize3")
-        self.verticalLayout_7.addWidget(self.wordListSize3)
-        self.wordListSize4 = QtGui.QRadioButton(self.tab)
-        self.wordListSize4.setObjectName("wordListSize4")
-        self.verticalLayout_7.addWidget(self.wordListSize4)
-        self.wordListSize5 = QtGui.QRadioButton(self.tab)
-        self.wordListSize5.setChecked(False)
-        self.wordListSize5.setObjectName("wordListSize5")
-        self.verticalLayout_7.addWidget(self.wordListSize5)
+        self.verticalLayout_4 = QtGui.QVBoxLayout()
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.verticalLayout_7.addLayout(self.verticalLayout_4)
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout_7.addItem(spacerItem)
         self.tabWidget.addTab(self.tab, "")
@@ -208,7 +194,7 @@ class Ui_settingsDialog(object):
         self.label_6.setBuddy(self.advancedSubstitutionsCheckbox)
 
         self.retranslateUi(settingsDialog)
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL("clicked()"), settingsDialog.close)
         QtCore.QObject.connect(self.guessMisspellingsCheckbox, QtCore.SIGNAL("toggled(bool)"), self.misspellingSettings.setVisible)
         QtCore.QObject.connect(self.useDefaultFont, QtCore.SIGNAL("toggled(bool)"), self.defaultFont.setDisabled)
@@ -222,11 +208,6 @@ class Ui_settingsDialog(object):
         self.label.setText(QtGui.QApplication.translate("settingsDialog", "Please enter any custom words you would like to appear in the spell check, one per line.", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.customWordlistTab), QtGui.QApplication.translate("settingsDialog", "Custom Words", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("settingsDialog", "Please select the size of the word completion database:", None, QtGui.QApplication.UnicodeUTF8))
-        self.wordListSize1.setText(QtGui.QApplication.translate("settingsDialog", "Big", None, QtGui.QApplication.UnicodeUTF8))
-        self.wordListSize2.setText(QtGui.QApplication.translate("settingsDialog", "Really Big", None, QtGui.QApplication.UnicodeUTF8))
-        self.wordListSize3.setText(QtGui.QApplication.translate("settingsDialog", "Huge", None, QtGui.QApplication.UnicodeUTF8))
-        self.wordListSize4.setText(QtGui.QApplication.translate("settingsDialog", "Super Huge", None, QtGui.QApplication.UnicodeUTF8))
-        self.wordListSize5.setText(QtGui.QApplication.translate("settingsDialog", "Ginormous", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("settingsDialog", "Word lists", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("settingsDialog", "View settings for the custom word completion", None, QtGui.QApplication.UnicodeUTF8))
         self.label_8.setText(QtGui.QApplication.translate("settingsDialog", "Minimum letters:", None, QtGui.QApplication.UnicodeUTF8))

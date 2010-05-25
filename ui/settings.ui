@@ -18,7 +18,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="customWordlistTab">
       <attribute name="title">
@@ -73,45 +73,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="wordListSize1">
-         <property name="text">
-          <string>Big</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="wordListSize2">
-         <property name="text">
-          <string>Really Big</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="wordListSize3">
-         <property name="text">
-          <string>Huge</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="wordListSize4">
-         <property name="text">
-          <string>Super Huge</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="wordListSize5">
-         <property name="text">
-          <string>Ginormous</string>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
+        <layout class="QVBoxLayout" name="verticalLayout_4"/>
        </item>
        <item>
         <spacer name="verticalSpacer">

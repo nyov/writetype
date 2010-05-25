@@ -35,13 +35,14 @@ from os import path, sep
 from speaker import Speaker
 from PyQt4.QtGui import QMessageBox
 from PyQt4.QtCore import QTranslator, QLocale
+from xml.dom import minidom
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
 		QtGui.QWidget.__init__(self, parent)
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
-		self.setWindowTitle("WriteType - " + self.tr("Untitled Document"))
+		self.setWindowTitle(self.tr("WriteType - ") + self.tr("Untitled Document"))
 		QtCore.QObject.connect(self.ui.actionOpen, QtCore.SIGNAL("triggered()"), self.openDialog)
 		QtCore.QObject.connect(self.ui.actionSave, QtCore.SIGNAL("triggered()"), self.saveFile)
 		QtCore.QObject.connect(self.ui.actionSave_As, QtCore.SIGNAL("triggered()"), self.saveFileAs)
@@ -389,7 +390,7 @@ class MainApplication(QtGui.QMainWindow):
 		printer.setDocName("writetype_" + self.filename)
 		printDialog = QtGui.QPrintDialog(printer)
 		printDialog.setModal(True)
-		printDialog.setWindowTitle("WriteType - " + self.tr("Print"))
+		printDialog.setWindowTitle(self.tr("WriteType - ") + self.tr("Print"))
 		if printDialog.exec_():
 			self.ui.textArea.document().print_(printer)
 
@@ -455,14 +456,22 @@ class SettingsDialogBox(QtGui.QDialog):
 
 		
 		#NOTE TO SELF: Maybe I can load the word lists from an XML file one day if I have nothing better to do
+		self.wordListButtonGroup = QtGui.QButtonGroup()
+		filepath = path.join(platformSettings.getPlatformSetting("pathToWordlists"), "wordlists.xml")
+		dom = minidom.parse(filepath)
+		#Don't forget to sort these by sortweight!
+		for node in dom.getElementsByTagName("wordlist"):
+			button = QtGui.QRadioButton(node.getAttribute("name"), self.ui.tab)
+			self.ui.verticalLayout_4.addWidget(button)
+			self.wordListButtonGroup.addButton(button, int(node.getAttribute("id")))
 		
 		#Load the radio button settings
-		self.wordListButtonGroup = QtGui.QButtonGroup()
-		self.wordListButtonGroup.addButton(self.ui.wordListSize1, 1)
-		self.wordListButtonGroup.addButton(self.ui.wordListSize2, 2)
-		self.wordListButtonGroup.addButton(self.ui.wordListSize3, 3)
-		self.wordListButtonGroup.addButton(self.ui.wordListSize4, 4)
-		self.wordListButtonGroup.addButton(self.ui.wordListSize5, 5)
+## 		self.wordListButtonGroup = QtGui.QButtonGroup()
+## 		self.wordListButtonGroup.addButton(self.ui.wordListSize1, 1)
+## 		self.wordListButtonGroup.addButton(self.ui.wordListSize2, 2)
+## 		self.wordListButtonGroup.addButton(self.ui.wordListSize3, 3)
+## 		self.wordListButtonGroup.addButton(self.ui.wordListSize4, 4)
+## 		self.wordListButtonGroup.addButton(self.ui.wordListSize5, 5)
 		self.wordListButtonGroup.setExclusive(True)
 		#Now actually select the correct button
 		self.wordListButtonGroup.buttons()[int(platformSettings.getSetting("wordlist", 2))-1].setChecked(True)
