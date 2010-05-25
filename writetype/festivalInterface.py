@@ -46,7 +46,7 @@ class FestivalInterface(TtsInterface):
 		try:
 			self.proc = subprocess.Popen(call)
 		except OSError:
-			QMessageBox.warning(None, self.tr("Feature unavailable", "Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box."))
+			QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box."))
 		
 #		unlink(tmpfile[1])
 

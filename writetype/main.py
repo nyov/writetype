@@ -135,6 +135,19 @@ class MainApplication(QtGui.QMainWindow):
 
 		self.wordsC = []
 		self.wordsN = []
+
+		#Check to see if there is unsaved work
+		if platformSettings.getSetting("autosavepath", ""):
+			response = QtGui.QMessageBox.question(self, self.tr("Crash recovery"), self.tr("WriteType found unsaved work from a crash.  Would you like to recover it?"), QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+			if response == QtGui.QMessageBox.Yes:
+				text = open(platformSettings.getSetting("autosavepath", "")).read()
+				self.ui.textArea.setText(text)
+				self.filetitle = self.tr("Recovered file")
+				self.updateTitle()
+				#Add the words in the document to the custom words list
+				for token in self.tokenizer(str(self.ui.textArea.toPlainText())):
+					self.wl.addCustomWord(token[0].lower())
+
 	
 	def openDialog(self):
 		self.filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html *.htm);;Plain Text (*)")
@@ -174,6 +187,17 @@ class MainApplication(QtGui.QMainWindow):
 		file.close()
 		return True
 	
+	def autoSave(self):
+		#This function should be called whenever an autosave is desired
+		path = platformSettings.getSetting("autosavepath", "")
+		if not path:
+			from tempfile import mkstemp
+			path = mkstemp()[1]
+			platformSettings.setSetting("autosavepath", path)
+		handle = open(path, 'w')
+		handle.write(self.ui.textArea.toHtml())
+		handle.close()
+
 	def readAloud(self):
 		if self.ui.textArea.textCursor().selectedText():
 			text = self.ui.textArea.textCursor().selectedText()
@@ -188,8 +212,6 @@ class MainApplication(QtGui.QMainWindow):
 	def refreshAfterSettingsDialog(self):
 		self.ui.actionSpeak.setDisabled(False)
 		self.ui.actionStop.setDisabled(False)
-
-
 		
 	def spellcheck(self):
 		dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
@@ -204,7 +226,9 @@ class MainApplication(QtGui.QMainWindow):
 			if self.wl.correctWord(word[:-1]) != False:
 				print "Correcting", word[:-1]
 				self.ui.textArea.replaceWord(self.wl.correctWord(word[:-1]))
-
+		if word[-1:] in [".", "!", "?"]:
+			print "Autosaving"
+			self.autoSave()
 			
 	def correctWordList(self, wordItem):
 		print "entering correct word list"
@@ -387,7 +411,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.actionSpeak.disable()
 
 	def updateTitle(self, modified=True):
-		titlestring = "WriteType - " + self.filetitle
+		titlestring = self.tr("WriteType - ") + self.filetitle
 		if modified:
 			titlestring += " *"
 			self.ui.actionSave.setDisabled(False)
@@ -407,8 +431,15 @@ class MainApplication(QtGui.QMainWindow):
 				pass
 			elif response == QtGui.QMessageBox.Cancel:
 				event.ignore()
-				return 
+				return
+		#Send the log
 		self.ui.textArea.log.send()
+		#Purge the autosaves
+		path = platformSettings.getSetting("autosavepath", "")
+		if path:
+			from os import unlink
+			platformSettings.setSetting("autosavepath", "")
+			unlink(path)
 		QtGui.QMainWindow.closeEvent(self, event)
 
 class SettingsDialogBox(QtGui.QDialog):
