@@ -1,0 +1,143 @@
+* Things to change
+
+** Force a space after a period
+   In other words, don't allow things like "... said Joe.Then he"
+
+** Delete multiple spaces 
+
+** Make sure there are no spaces before periods and after commas
+
+** Don't print the wavy lines
+
+* Things to see if I can fix automatically 
+
+** Suggestions for apostrophes
+
+** Is vs. are
+
+** Plurals
+
+** Capitalization in the middle of sentences
+
+** a vs. an
+
+* Spelling errors
+
+| SID | Error        | Correction    |
+|-----+--------------+---------------|
+|   1 | Illonois     | Illinois      |
+|   1 | a lot        | a lot         |
+|   1 | a            | an            |
+|   1 | confrence    | conference    |
+|   1 | awsome       | awesome       |
+|   2 | favoriet     | favorite      |
+|   2 | choclitte    | chocolate     |
+|   2 | intasting    | interesting   |
+|   2 | faveriet     | favorite      |
+|   2 | writeing     | writing       |
+|   2 | exciteing    | exciting      |
+|   2 | comeing      | coming        |
+|   2 | thoes        | those         |
+|   2 | interasting  | interesting   |
+|   2 | adault       | adult         |
+|   2 | immportant   | important     |
+|   2 | happend      | happened      |
+|   2 | exsplosion   | explosion     |
+|   2 | sucsessful   | successful    |
+|   2 | exspierences | experiences   |
+|   2 | verry        | very          |
+|   2 | interasting  | interesting   |
+|   3 | theacher     | teacher       |
+|   3 | paricularly  | particularly  |
+|   3 | eduction     | education     |
+|   3 | whe          | when          |
+|   3 | sucesful     | successful    |
+|   3 | extrodinary  | extraordinary |
+|   4 | diferent     | different     |
+|   4 | contrys      | countries     |
+|   4 | happen       | happened      |
+|   4 | contiuing    | continuing    |
+|   5 | becouse      | because       |
+|   5 | peaple       | people        |
+|   5 | seryisly     | seriously     |
+|   5 | becouse      | because       |
+|   5 | seryisly     | seriously     |
+|   5 | thouse       | those         |
+|   5 | seryisly     | seriously     |
+|   6 | cathloic     | catholic      |
+|   7 | intrests     | interests     |
+|   8 | intervewied  | interviewed   |
+|   8 | because      | because       |
+|   8 | awsome       | awesome       |
+|   8 | awsome       | awesome       |
+|   8 | favriot      | favorite      |
+|   8 | favriot      | favorite      |
+|   8 | favriot      | favorite      |
+|   8 | awsome       | awesome       |
+|   8 | awsome       | awesome       |
+|   8 | to           | too           |
+|   9 | partent      | parent        |
+|   9 | intesting    | interesting   |
+|   9 | alot         | a lot         |
+|   9 | intresting   | interesting   |
+|  10 | psycology    | psychology    |
+|  10 | buisness     | business      |
+|  10 | exstrodinary | extraordinary |
+|  11 | freind       | friend        |
+|  11 | appealling   | appealing     |
+|  11 | h            | he            |
+|  12 | elemantary   | elementary    |
+|  12 | exiting      | exciting      |
+|  12 | emporer      | emperor       |
+|  13 | exiting      | exciting      |
+|  14 | collage      | college       |
+|  14 | collage      | college       |
+|  14 | alot         | a lot         |
+|  14 | where        | were          |
+|  14 | extroidenary | extraordinary |
+|  14 | happend      | happened      |
+|  14 | extroidnary  | extraordinary |
+|  14 | exausting    | exhausting    |
+|  15 | alot         | a lot         |
+|  15 | habbits      | habits        |
+|  15 | alot         | a lot         |
+|  15 | relize       | realize       |
+|  15 | alot         | a lot         |
+|  15 | sacrafies    | sacrifices    |
+|  15 | financilly   | financially   |
+|  15 | piolet       | pilot         |
+|  15 | extrodinary  | extraordinary |
+|  15 | spanish      | Spanish       |
+|  15 | nocked       | knocked       |
+|  15 | fasinating   | fascinating   |
+|  16 | posistion    | position      |
+|  16 | thair        | there         |
+|  17 | class's      | class'        |
+|  18 | pacient      | patient       |
+|  18 | intresting   | interesting   |
+|  18 | alot         | a lot         |
+|  18 | intresting   | interesting   |
+|  19 | favriot      | favorite      |
+|  19 | favriot      | favorite      |
+|  19 | awsome       | awesome       |
+|  19 | awsome       | awesome       |
+|  19 | to           | too           |
+|  20 | intrests     | interests     |
+|  21 | servers      | serves        |
+|  21 | too          | to            |
+|  22 | vary         | very          |
+|  22 | vary         | very          |
+|  23 | fells        | feels         |
+|  24 | beacause     | because       |
+|  24 | beacause     | because       |
+|  24 | delicius     | delicious     |
+|  24 | happend      | happened      |
+|  24 | buetiful     | beautiful     |
+|  24 | farther      | father        |
+|  25 | travled      | traveled      |
+|  25 | momment      | moment        |
+
+
+- Who used Writetype?
+  - 22
+  - 21
