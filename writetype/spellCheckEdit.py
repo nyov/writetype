@@ -271,15 +271,32 @@ class spellCheckEdit(QTextEdit):
 
 class Highlighter(QSyntaxHighlighter):
 
-	WORDS = u'((?iu)[\w\']+)([\s\n .?!])'
-	SENTENCE_ENDS = u'[.?!][\s]*[a-z]'
-	SENTENCE_STARTS = u'^[a-z]'
+	WORDS = re.compile(u'((?iu)[\w\']+)([\s\n .?!])')
+	SENTENCE_ENDS = re.compile(u'[.?!][\s]*[a-z]')
+	SENTENCE_STARTS = re.compile(u'^[a-z]')
+	SPACE_AFTER_PUNCTUATION = re.compile(u'[A-Za-z][.?!,][A-Z]')
+	MULTIPLE_SPACES_PUNCTUATION = re.compile(u'[.?!][ ]{3,}')
+	MULTIPLE_SPACES = re.compile(u'[^[.?!][ ]{2,}[A-Za-z]')
+	SPACE_BEFORE_PUNCTUATION = re.compile(u' [.?!]')
 	#A vs An?
-	
+
+
+
 	
 	def __init__(self, *args):
 		QSyntaxHighlighter.__init__(self, *args)
 	
+		self.format_spelling = QTextCharFormat()
+		self.format_spelling.setUnderlineColor(Qt.red)
+		self.format_spelling.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
+		self.format_spelling.setToolTip("Spelling error")
+
+		self.format_grammar = QTextCharFormat()
+		self.format_grammar.setUnderlineColor(Qt.blue)
+		self.format_grammar.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
+		self.format_grammar.setToolTip("Capitalize the first letter in the sentence.")
+
+
 		self.dict = None
 	
 	def setDict(self, dict):
@@ -290,26 +307,25 @@ class Highlighter(QSyntaxHighlighter):
 			return
 	
 		text = unicode(text)
-	
-		format_spelling = QTextCharFormat()
-		format_spelling.setUnderlineColor(Qt.red)
-		format_spelling.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
-		format_spelling.setToolTip("Spelling error")
-		
-		format_capital = QTextCharFormat()
-		format_capital.setUnderlineColor(Qt.blue)
-		format_capital.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
-		format_capital.setToolTip("Capitalize the first letter in the sentence.")
 		
 		for word_object in re.finditer(self.WORDS, text):
 			#word_object = re.search(self.WORDS, word_object_extra.group())
 			
 			if not self.dict.check(word_object.group(1)):
-				self.setFormat(word_object.start(), (word_object.end() - len(word_object.group(2))) - word_object.start(), format_spelling)
+				self.setFormat(word_object.start(), (word_object.end() - len(word_object.group(2))) - word_object.start(), self.format_spelling)
 		for word_object in re.finditer(self.SENTENCE_ENDS, text):
-				self.setFormat(word_object.start(), word_object.end() - word_object.start(), format_capital)
+				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
 		for word_object in re.finditer(self.SENTENCE_STARTS, text):
-				self.setFormat(word_object.start(), word_object.end() - word_object.start(), format_capital)
+				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+		for word_object in re.finditer(self.SPACE_AFTER_PUNCTUATION, text):
+				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+		for word_object in re.finditer(self.MULTIPLE_SPACES_PUNCTUATION, text):
+				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+		for word_object in re.finditer(self.MULTIPLE_SPACES, text):
+				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+		for word_object in re.finditer(self.SPACE_BEFORE_PUNCTUATION, text):
+				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+
 				
 		
 class logger:

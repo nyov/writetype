@@ -25,6 +25,8 @@ if system() == "Windows":
                     "typelibs" : [('{C866CA3A-32F7-11D2-9602-00C04F8EE628}', 0, 5, 0)]
     }}
     windows_value += ['main.py']
+
+#Setup!
 setup(
     name = 'WriteType',
     version = '0.1.53',
@@ -49,4 +51,3 @@ setup(
         ],
     requires = ['PyQt4', 'pyttsx', 'enchant']
     )
-

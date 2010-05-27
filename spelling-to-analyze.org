@@ -1,25 +1,32 @@
 * Things to change
 
-** Force a space after a period
+** DONE Force a space after a period
    In other words, don't allow things like "... said Joe.Then he"
 
-** Delete multiple spaces 
+** DONE Delete multiple spaces
 
-** Make sure there are no spaces before periods and after commas
+** DONE Make sure there are no spaces before periods and after commas
 
-** Don't print the wavy lines
+** TODO Don't print the wavy lines
+
+** TODO Improve startup time
+
+** Fix grammar [ ]
+*** [ ] Right click tells which grammar mistake was made
+*** [ ] Don't print the grammar mistakes
+*** [ ] Everything should return to the state it was in before a save
 
 * Things to see if I can fix automatically 
 
-** Suggestions for apostrophes
+** TODO Suggestions for apostrophes
 
-** Is vs. are
+** TODO Is vs. are
 
-** Plurals
+** TODO Plurals
 
-** Capitalization in the middle of sentences
+** TODO Capitalization in the middle of sentences
 
-** a vs. an
+** TODO a vs. an
 
 * Spelling errors
 

@@ -7,3 +7,6 @@ pyuic4 ui/settings.ui -o writetype/settingsDialog.py
 
 #Update qrc file
 pyrcc4 res/resources.qrc -o writetype/resources_rc.py
+
+#Translations
+pylupdate4 writetype/*.py -ts translations/writetype.ts
