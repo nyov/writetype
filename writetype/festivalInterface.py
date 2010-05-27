@@ -19,7 +19,8 @@
 from ttsInterface import TtsInterface
 import subprocess
 from tempfile import mkstemp
-from os import unlink, uname
+from os import unlink
+from platform import system
 from PyQt4.QtGui import QMessageBox
 
 class FestivalInterface(TtsInterface):
@@ -54,7 +55,7 @@ class FestivalInterface(TtsInterface):
 		if self.proc:
 			self.proc.terminate()
 			#This only works on GNU/Linux for now, I think
-			if uname()[0] == "Linux":
+			if system() == "Linux":
 				subprocess.Popen(['pkill', 'audsp'])
 
 
