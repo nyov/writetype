@@ -392,7 +392,18 @@ class MainApplication(QtGui.QMainWindow):
 		printDialog.setModal(True)
 		printDialog.setWindowTitle(self.tr("WriteType - ") + self.tr("Print"))
 		if printDialog.exec_():
+			currentGrammarColor = self.ui.textArea.highlighter.format_grammar.underlineColor()
+			self.ui.textArea.highlighter.format_grammar.setUnderlineColor(Qt.Qt.transparent)
+			currentSpellingColor = self.ui.textArea.highlighter.format_spelling.underlineColor()
+			self.ui.textArea.highlighter.format_spelling.setUnderlineColor(Qt.Qt.transparent)
+			self.ui.textArea.highlighter.rehighlight()
+
 			self.ui.textArea.document().print_(printer)
+			self.ui.textArea.highlighter.format_grammar.setUnderlineColor(currentGrammarColor)
+			self.ui.textArea.highlighter.format_grammar.setUnderlineColor(currentSpellingColor)
+			self.ui.textArea.highlighter.rehighlight()
+
+			
 
 	def openDistractionFreeMode(self):
 		self.distractionFree_box.ui.verticalLayout_2.addWidget(self.ui.centralwidget)

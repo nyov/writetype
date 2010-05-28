@@ -33,7 +33,7 @@ import urllib
 import urllib2
 import wordsList
 from PyQt4.QtGui import QFileDialog
-
+from PyQt4.QtGui import QTextBlockUserData
 
 class spellCheckEdit(QTextEdit):
 	#To support the highlighting feature
@@ -76,6 +76,7 @@ class spellCheckEdit(QTextEdit):
 		#Select the word under the cursor
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
+
 
 		## print str(cursor.selection().toHtml())
 		## #Check to see if an image is under the cursor
@@ -280,8 +281,6 @@ class Highlighter(QSyntaxHighlighter):
 	SPACE_BEFORE_PUNCTUATION = re.compile(u' [.?!]')
 	#A vs An?
 
-
-
 	
 	def __init__(self, *args):
 		QSyntaxHighlighter.__init__(self, *args)
@@ -326,7 +325,6 @@ class Highlighter(QSyntaxHighlighter):
 		for word_object in re.finditer(self.SPACE_BEFORE_PUNCTUATION, text):
 				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
 
-				
 		
 class logger:
 	logText = ""

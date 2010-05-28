@@ -11,10 +11,10 @@
 
 ** TODO Improve startup time
 
-** Fix grammar [ ]
-*** [ ] Right click tells which grammar mistake was made
-*** [ ] Don't print the grammar mistakes
-*** [ ] Everything should return to the state it was in before a save
+** TODO Fix grammar [2/3]
+   - [ ] Right click tells which grammar mistake was made
+   - [X] Don't print the grammar mistakes
+   - [X] Everything should return to the state it was in before a save
 
 * Things to see if I can fix automatically 
 
