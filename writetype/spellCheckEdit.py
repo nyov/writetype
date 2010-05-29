@@ -75,7 +75,7 @@ class spellCheckEdit(QTextEdit):
 		menu = self.createStandardContextMenu()
 		#Select the word under the cursor
 		cursor = self.textCursor()
-		cursor.select(QTextCursor.WordUnderCursor)
+		position = cursor.position()
 
 
 		## print str(cursor.selection().toHtml())
@@ -91,8 +91,18 @@ class spellCheckEdit(QTextEdit):
 		## 	self.connect(action, SIGNAL("triggered()"), self.alignImageRight)
 		## 	menu.addAction(action)
 
-		
-		#If there is a word highlighted
+		#grammar check
+		if self.highlighter.getDescriptionText(cursor.position(), self.toPlainText()):
+			menu.addSeparator()
+			for mistake in self.highlighter.getDescriptionText(cursor.position(), self.toPlainText()):
+				print mistake
+				action = QAction(mistake["description"], menu)
+				self.connect(action, SIGNAL("triggered()"), lambda targ=mistake["new"], l=mistake["left"], r=mistake["right"]: self.correctWord(targ, l, r))
+				menu.addAction(action)
+
+	
+		cursor.select(QTextCursor.WordUnderCursor)
+		#If there is a word highlighted fix the spelling
 		if cursor.hasSelection():
 			text = unicode(cursor.selectedText())
 			#If that word isn't in the dictionary
@@ -102,7 +112,7 @@ class spellCheckEdit(QTextEdit):
 				spellingMenuItem.setEnabled(False)
 				for word in self.dictionary.suggest(text):
 					action = QAction(word, menu)
-					self.connect(action, SIGNAL("triggered()"), lambda targ=word: self.correctWord(targ, cursor))
+					self.connect(action, SIGNAL("triggered()"), lambda targ=word, l=cursor.selectionStart(), r=cursor.selectionEnd(): self.correctWord(targ, l, r))
 					menu.addAction(action)
 				if len(self.dictionary.suggest(text)) == 0:
 					noneMenuItem = menu.addAction("None")
@@ -113,10 +123,11 @@ class spellCheckEdit(QTextEdit):
 		
 		menu.exec_(event.globalPos())
 		
-	def correctWord(self, word, cursor=0):
+	def correctWord(self, word, begin, end):
 		#Replace the selected word with another word
-		if cursor == 0:
-			cursor = self.textCursor()
+		cursor = self.textCursor()
+		cursor.setPosition(begin)
+		cursor.setPosition(end, QTextCursor.KeepAnchor)
 		cursor.beginEditBlock()
 		cursor.removeSelectedText()
 		cursor.insertText(word)
@@ -281,6 +292,36 @@ class Highlighter(QSyntaxHighlighter):
 	SPACE_BEFORE_PUNCTUATION = re.compile(u' [.?!]')
 	#A vs An?
 
+	corrections = [
+		{
+			"description": "Sentence starts without a capital letter",
+			"re": re.compile(u'([.?!])([\s]*)([a-z])'),
+			"fix": lambda m: m.group(1) + m.group(2) + m.group(3).capitalize() },
+		{
+			"description": "Sentence starts without a capital letter",
+			"re": re.compile(u'^[a-z]'),
+			"fix": lambda m: m.group(0).capitalize() },
+		{
+			"description": "No space after punctuation",
+			"re": re.compile(u'([.?!,])([A-Za-z])'),
+			"fix": u'\\1 \\2' },
+		{
+			"description": "Too many spaces", 
+			"re": re.compile(u'([^[.?!])[ ]{2,}([A-Za-z])'), #This accounts for the fact that mny people (myself included) use two spaces after punctuation.
+			"fix": u'\\1 \\2' },
+		{
+			"description": "Spaces before punctuation",
+			"re": re.compile(u'[ ]+([.?!])'),
+			"fix": u'\\1' },
+		{
+			"description": "Use 'an' instead of 'a'",
+			"re": re.compile(u' a ([AEIOUaeiou])'),
+			"fix": ' an \\1' },
+		{
+			"description": "Use 'a' instead of 'an'",
+			"re": re.compile(u' an ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
+			"fix": ' a \\1' }]
+	
 	
 	def __init__(self, *args):
 		QSyntaxHighlighter.__init__(self, *args)
@@ -288,12 +329,10 @@ class Highlighter(QSyntaxHighlighter):
 		self.format_spelling = QTextCharFormat()
 		self.format_spelling.setUnderlineColor(Qt.red)
 		self.format_spelling.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
-		self.format_spelling.setToolTip("Spelling error")
 
 		self.format_grammar = QTextCharFormat()
 		self.format_grammar.setUnderlineColor(Qt.blue)
 		self.format_grammar.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
-		self.format_grammar.setToolTip("Capitalize the first letter in the sentence.")
 
 
 		self.dict = None
@@ -306,26 +345,46 @@ class Highlighter(QSyntaxHighlighter):
 			return
 	
 		text = unicode(text)
-		
+
+		#Spellcheck
 		for word_object in re.finditer(self.WORDS, text):
 			#word_object = re.search(self.WORDS, word_object_extra.group())
 			
 			if not self.dict.check(word_object.group(1)):
 				self.setFormat(word_object.start(), (word_object.end() - len(word_object.group(2))) - word_object.start(), self.format_spelling)
-		for word_object in re.finditer(self.SENTENCE_ENDS, text):
-				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		for word_object in re.finditer(self.SENTENCE_STARTS, text):
-				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		for word_object in re.finditer(self.SPACE_AFTER_PUNCTUATION, text):
-				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		for word_object in re.finditer(self.MULTIPLE_SPACES_PUNCTUATION, text):
-				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		for word_object in re.finditer(self.MULTIPLE_SPACES, text):
-				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		for word_object in re.finditer(self.SPACE_BEFORE_PUNCTUATION, text):
-				self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
 
-		
+		#Grammar
+		for rule in self.corrections:
+			for word_object in re.finditer(rule["re"], text):
+					self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+			
+		## for word_object in re.finditer(self.SENTENCE_ENDS, text):
+		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+		## for word_object in re.finditer(self.SENTENCE_STARTS, text):
+		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+		## for word_object in re.finditer(self.SPACE_AFTER_PUNCTUATION, text):
+		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+		## for word_object in re.finditer(self.MULTIPLE_SPACES_PUNCTUATION, text):
+		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+		## for word_object in re.finditer(self.MULTIPLE_SPACES, text):
+		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+		## for word_object in re.finditer(self.SPACE_BEFORE_PUNCTUATION, text):
+		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+
+	def getDescriptionText(self, pos, text):
+		text = unicode(text)
+		results = []
+		for rule in self.corrections:
+			for word_object in re.finditer(rule["re"], text):
+				if word_object.start() <= pos and pos <= word_object.end():
+					results.append({
+						"description": rule["description"],
+						"left": word_object.start(),
+						"right": word_object.end(),
+						"text": word_object.group(0),
+						"new": re.sub(rule["re"], rule["fix"], word_object.group(0)) })
+		return results
+					
 class logger:
 	logText = ""
 	def log(self, text):
