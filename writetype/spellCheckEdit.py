@@ -207,6 +207,15 @@ class spellCheckEdit(QTextEdit):
 	def singleSpace(self):
 		pass
 
+	#Don't allow multiple fonts in one document
+	def setFont(self, font):
+		cursor = self.textCursor()
+		cursor.setPosition(0)
+		cursor.setPosition(len(self.toPlainText()), cursor.KeepAnchor)
+		fontFormat = QTextCharFormat()
+		fontFormat.setFont(font)
+		cursor.setCharFormat(fontFormat)
+
 	def toggleHighlight(self, isSet):
 		self.highlighting = isSet
 		if isSet:

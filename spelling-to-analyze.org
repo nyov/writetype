@@ -2,31 +2,27 @@
 
 ** DONE Force a space after a period
    In other words, don't allow things like "... said Joe.Then he"
-
 ** DONE Delete multiple spaces
-
 ** DONE Make sure there are no spaces before periods and after commas
-
-** TODO Don't print the wavy lines
-
+** DONE Don't print the wavy lines
+   CLOSED: [2010-05-29 Sat 11:51]
 ** TODO Improve startup time
-
-** TODO Fix grammar [2/3]
-   - [ ] Right click tells which grammar mistake was made
+** TODO Simplify the interface
+** TODO Font changes apply to the full document, not just selected text
+** DONE Fix grammar [3/3]
+   CLOSED: [2010-05-29 Sat 11:51]
+   - [X] Right click tells which grammar mistake was made
    - [X] Don't print the grammar mistakes
    - [X] Everything should return to the state it was in before a save
 
 * Things to see if I can fix automatically 
 
 ** TODO Suggestions for apostrophes
-
 ** TODO Is vs. are
-
 ** TODO Plurals
-
 ** TODO Capitalization in the middle of sentences
-
-** TODO a vs. an
+** DONE a vs. an
+   CLOSED: [2010-05-29 Sat 11:50]
 
 * Spelling errors
 
