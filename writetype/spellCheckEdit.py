@@ -31,7 +31,6 @@ import platformSettings
 #For logger
 import urllib
 import urllib2
-import wordsList
 from PyQt4.QtGui import QFileDialog
 from PyQt4.QtGui import QTextBlockUserData
 
@@ -47,8 +46,6 @@ class spellCheckEdit(QTextEdit):
 		self.highlighter.setDict(self.dictionary)
 			##Logging... for me :)
 		self.log = logger()
-		self.wordList = wordsList.wordsList()
-
 		
 	def mousePressEvent(self, event):
 		#This will move the cursor to the appropriate position
@@ -227,7 +224,7 @@ class spellCheckEdit(QTextEdit):
 		cursor = self.textCursor()
 		if cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
 			format_highlight = QTextCharFormat()
-			format_highlight.setBackground(QColor.fromRgb(255, 255, 255))
+			format_highlight.setBackground(Qt.transparent)
 			#cursor.mergeCharFormat(format_highlight)
 			#Wow this is ugly.  Why isn't there some "select by text format" method?  It recurses backwards to find if the characters are highlighted, and then forwards.  Eeeww...
 			pos = cursor.position()
@@ -293,13 +290,6 @@ class spellCheckEdit(QTextEdit):
 class Highlighter(QSyntaxHighlighter):
 
 	WORDS = re.compile(u'((?iu)[\w\']+)([\s\n .?!])')
-	SENTENCE_ENDS = re.compile(u'[.?!][\s]*[a-z]')
-	SENTENCE_STARTS = re.compile(u'^[a-z]')
-	SPACE_AFTER_PUNCTUATION = re.compile(u'[A-Za-z][.?!,][A-Z]')
-	MULTIPLE_SPACES_PUNCTUATION = re.compile(u'[.?!][ ]{3,}')
-	MULTIPLE_SPACES = re.compile(u'[^[.?!][ ]{2,}[A-Za-z]')
-	SPACE_BEFORE_PUNCTUATION = re.compile(u' [.?!]')
-	#A vs An?
 
 	corrections = [
 		{
@@ -324,12 +314,20 @@ class Highlighter(QSyntaxHighlighter):
 			"fix": u'\\1' },
 		{
 			"description": "Use 'an' instead of 'a'",
-			"re": re.compile(u' a ([AEIOUaeiou])'),
-			"fix": ' an \\1' },
+			"re": re.compile(u' ([Aa]) ([AEIOUaeiou])'),
+			"fix": ' \\1n \\2' },
+		{
+			"description": "Use 'an' instead of 'a'",
+			"re": re.compile(u'^([Aa]) ([AEIOUaeiou])'),
+			"fix": '\\1n \\2' },
 		{
 			"description": "Use 'a' instead of 'an'",
-			"re": re.compile(u' an ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
-			"fix": ' a \\1' }]
+			"re": re.compile(u' ([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
+			"fix": ' \\1 \\2' },
+		{
+			"description": "Use 'a' instead of 'an'",
+			"re": re.compile(u'^([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
+			"fix": '\\1 \\2' }]
 	
 	
 	def __init__(self, *args):
@@ -385,7 +383,7 @@ class Highlighter(QSyntaxHighlighter):
 		results = []
 		for rule in self.corrections:
 			for word_object in re.finditer(rule["re"], text):
-				if word_object.start() <= pos and pos <= word_object.end():
+				if int(word_object.start()) <= pos and pos <= int(word_object.end()):
 					results.append({
 						"description": rule["description"],
 						"left": word_object.start(),

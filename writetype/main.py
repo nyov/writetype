@@ -91,7 +91,6 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutoreplacement)
 		
 		#printer
-		self.printer = QtGui.QPrinter()
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
 		self.filename = ""
 		self.filetitle = self.tr("Untitled Document")
