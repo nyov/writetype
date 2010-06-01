@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Thu May 27 14:05:02 2010
+# Created: Tue Jun  1 14:18:05 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -74,15 +74,19 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.fileToolBar = QtGui.QToolBar(MainWindow)
+        self.fileToolBar.setMovable(False)
         self.fileToolBar.setObjectName("fileToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.fileToolBar)
         self.editToolBar = QtGui.QToolBar(MainWindow)
+        self.editToolBar.setMovable(False)
         self.editToolBar.setObjectName("editToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.editToolBar)
         self.speakToolBar = QtGui.QToolBar(MainWindow)
+        self.speakToolBar.setMovable(False)
         self.speakToolBar.setObjectName("speakToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.speakToolBar)
         self.imageToolBar = QtGui.QToolBar(MainWindow)
+        self.imageToolBar.setMovable(False)
         self.imageToolBar.setObjectName("imageToolBar")
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.imageToolBar)
         self.actionSave = QtGui.QAction(MainWindow)

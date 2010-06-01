@@ -18,7 +18,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="customWordlistTab">
       <attribute name="title">
@@ -272,6 +272,23 @@
        <string>Other</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
+       <item row="5" column="1">
+        <widget class="QFontComboBox" name="defaultFont"/>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Default Font:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Options:</string>
+         </property>
+        </widget>
+       </item>
        <item row="2" column="1">
         <widget class="QCheckBox" name="usageStatisticsCheckbox">
          <property name="text">
@@ -279,24 +296,7 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QFontComboBox" name="defaultFont"/>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Default Font:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Options:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
+       <item row="7" column="1">
         <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -311,13 +311,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-       <item row="1" column="1">
-        <widget class="QCheckBox" name="useDefaultFont">
-         <property name="text">
-          <string>System Default</string>
-         </property>
-        </widget>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_9">
@@ -379,6 +372,23 @@
         <widget class="QComboBox" name="ttsEngineBox">
          <property name="editable">
           <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QCheckBox" name="useDefaultFont">
+         <property name="text">
+          <string>System Default</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="grammarCheckbox">
+         <property name="text">
+          <string>Check document for grammar mistakes</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

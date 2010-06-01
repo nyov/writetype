@@ -158,7 +158,18 @@ class spellCheckEdit(QTextEdit):
 		self.log.log(oldword + " -> " + str(word))
 		
 	def keyPressEvent(self, event):
-		#print "'" + event.text() + "'"
+		#Auto-repeats shouldn't be needed
+		if event.isAutoRepeat():
+			return
+
+		#Tabs should scroll through the words
+		if event.key() == Qt.Key_Tab or event.key() == Qt.Key_Down:
+			self.emit(SIGNAL("tabEvent"))
+			return
+		if (event.key() == Qt.Key_Tab and event.modifiers() == Qt.Key_Shift) or event.key() == Qt.Key_Up:
+			self.emit(SIGNAL("tabBackEvent"))
+			return
+
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
 		if cursor.hasSelection():
@@ -340,8 +351,6 @@ class Highlighter(QSyntaxHighlighter):
 		self.format_grammar = QTextCharFormat()
 		self.format_grammar.setUnderlineColor(Qt.blue)
 		self.format_grammar.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
-
-
 		self.dict = None
 	
 	def setDict(self, dict):
@@ -360,6 +369,8 @@ class Highlighter(QSyntaxHighlighter):
 			if not self.dict.check(word_object.group(1)):
 				self.setFormat(word_object.start(), (word_object.end() - len(word_object.group(2))) - word_object.start(), self.format_spelling)
 
+		if not platformSettings.getSetting("grammarcheck", True):
+			return
 		#Grammar
 		for rule in self.corrections:
 			for word_object in re.finditer(rule["re"], text):

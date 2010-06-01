@@ -86,6 +86,9 @@ class MainApplication(QtGui.QMainWindow):
 		#Word list for autocompletion
 		self.wl = wordsList()
 		self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
+		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabEvent"), self.tabEvent)
+		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabBackEvent"), self.tabBackEvent)
+		self.wlPointer = None
 
 		#Connections for autocorrect
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutoreplacement)
@@ -231,8 +234,16 @@ class MainApplication(QtGui.QMainWindow):
 			print "Autosaving"
 			self.autoSave()
 
+		if word[-1:] == ' ':
+			self.wlPointer = None
+
 	def populateWordList(self, text):
 		text = str(text)
+
+		#This way, the word list won't keep changing if the user tabs to select a new word
+		if self.wlPointer != None:
+			return
+		
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[-1:] in (" ", ".", ",", "!", "?", "\t"):
 			print "adding custom word"
@@ -404,6 +415,21 @@ class MainApplication(QtGui.QMainWindow):
 			self.ui.actionSave.setDisabled(True)
 		self.setWindowTitle(titlestring)
 
+
+	def tabEvent(self):
+		if self.wlPointer == None:
+			self.wlPointer = 0
+		else:
+			self.wlPointer += 1
+		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])
+
+	def tabBackEvent(self):
+		if self.wlPointer == None or self.wlPointer == 0:
+			self.wlPointer = 0
+		else:
+			self.wlPointer -= 1
+		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])
+
 	def closeEvent(self, event):
 		#Set the stuff up to ask for a save on exit
 		if self.ui.actionSave.isEnabled():
@@ -471,6 +497,10 @@ class SettingsDialogBox(QtGui.QDialog):
 		self.ui.contractionsCheckbox.setChecked(platformSettings.getSetting("autocompletioncontractions", True))
 		self.ui.autocompletionsTable.setHorizontalHeaderItem(0, QtGui.QTableWidgetItem(self.tr("Replace:")))
 		self.ui.autocompletionsTable.setHorizontalHeaderItem(1, QtGui.QTableWidgetItem(self.tr("With:")))
+
+		#Other
+		self.ui.grammarCheckbox.setChecked(platformSettings.getSetting("grammarcheck", True))
+		
 		i = 0
 		for line in platformSettings.getSetting("customAutocompletions", "").split("\n"):
 			if not line: break
@@ -518,6 +548,8 @@ class SettingsDialogBox(QtGui.QDialog):
 		platformSettings.setSetting("autocompletioncontractions", self.ui.contractionsCheckbox.isChecked())
 		platformSettings.setSetting("readingspeed", self.ui.speedSlider.value())
 		platformSettings.setSetting("ttsengine", self.ui.ttsEngineBox.currentText())
+		platformSettings.setSetting("grammarcheck", self.ui.grammarCheckbox.isChecked())
+
 		if self.ui.useDefaultFont.isChecked():
 			platformSettings.setSetting("defaultfont", "")
 		else:

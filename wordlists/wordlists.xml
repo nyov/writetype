@@ -1,0 +1,7 @@
+<xml>
+<wordlist name="Big" file="list1.txt" lang="en" id="1" />
+<wordlist name="Really Big" file="list2.txt" lang="en" id="2" />
+<wordlist name="Huge" file="list3.txt" lang="en" id="3" />
+<wordlist name="Super Huge" file="list4.txt" lang="en" id="4" />
+<wordlist name="Ginormous" file="list5.txt" lang="en" id="5" />
+</xml>
