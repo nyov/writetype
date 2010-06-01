@@ -15,6 +15,10 @@
    - [X] Don't print the grammar mistakes
    - [X] Everything should return to the state it was in before a save
 
+** TODO Create an option in settings to enable/disable grammar check
+** TODO Don't allow toolbars to be moved
+** TODO Add a scoring system so that each word in the list is a tuple with the word and its importance score
+** TODO Make tab scroll through the list of completions
 * Things to see if I can fix automatically 
 
 ** TODO Suggestions for apostrophes

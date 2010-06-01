@@ -30,14 +30,21 @@ class wordsList:
 		self.words = self.loadWords(path.join(platformSettings.getPlatformSetting('pathToWordlists'),  "list" + str(platformSettings.getSetting("wordlist", 2)) + ".txt"))
 
 	def refreshWordsCustom(self):
-		self.wordsCustom = str(platformSettings.getSetting("customwords", "")).split("\n")
+		customwords = platformSettings.getSetting("customwords", "").lower().split("\n")
+		wordsfinal = []
+		for word in customwords:
+			wordsfinal.append((word, 5))
+		self.words += wordsfinal
+
+	## def refreshWordsCustom(self):
+	## 	self.wordsCustom = str(platformSettings.getSetting("customwords", "")).lower().split("\n")
 
 	def refreshReplacementTable(self):
 		self.replacementTable = {}
 		if not platformSettings.getSetting('autocompletion'):
 			return
 		if platformSettings.getSetting('autocompletioncontractions'):
-			for line in self.loadWords(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt")):
+			for line in self.loadAutocompletions(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt")):
 				if not line or line == ",": continue
 				self.replacementTable[line.split(",")[0]] = line.split(",")[1]
 		for line in str(platformSettings.getSetting("customAutocompletions", "")).split("\n"):
@@ -46,18 +53,30 @@ class wordsList:
 			self.replacementTable[line.split(",")[0]] = line.split(",")[1]
 
 	def loadWords(self, filePath):
+		print "Loading words"
+		fileHandle = open(filePath, 'r')
+		words = fileHandle.read().split("\n")
+		finalwords = []
+		for word in words:
+			finalwords.append((word, 0))
+		return finalwords
+
+	def loadAutocompletions(self, filePath):
 		fileHandle = open(filePath, 'r')
 		return fileHandle.read().split("\n")
 
 	def addCustomWord(self, word):
 		word = word.lower()
-		if not word in self.wordsCustom:
-			#self.wordsCustom = self.mergesort(self.wordsCustom, word)
-			self.wordsCustom.append(word)
-			self.wordsCustom.sort()
-		if word in self.words:
-			self.words.pop(self.words.index(word))
+		if not filter(lambda x, w=word: x[0] == w, self.words):
+			self.words.append((word, 1))
+			self.words.sort(lambda x,y : cmp(x[0], y[0]))
+		else:
+			for item in self.words:
+				if item[0] == word:
+					pos = self.words.index(item)
+					self.words[pos] = (item[0], item[1]+1)
 
+   
 ## 	@staticmethod
 ## 	def quicksort(tosort):
 ## 		if len(tosort) == 0:
@@ -104,13 +123,13 @@ class wordsList:
 		else:
 			wordsList = self.words
 		results = []
-		results = filter(lambda x:x.startswith(firstLetters.lower()), wordsList)
+		results = filter(lambda x:x[0].startswith(firstLetters.lower()), wordsList)
 		#for num in range(0, len(wordsList)):
 			#if wordsList[num].find(firstLetters.lower()) == 0:
 				#results.append(wordsList[num])
 		if noSort:
 			return results
-		results.sort()
+		results.sort(lambda x,y : cmp(x[0], y[0]))
 		return results
 
 	def correctWord(self, word):

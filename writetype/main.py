@@ -46,8 +46,8 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionOpen, QtCore.SIGNAL("triggered()"), self.openDialog)
 		QtCore.QObject.connect(self.ui.actionSave, QtCore.SIGNAL("triggered()"), self.saveFile)
 		QtCore.QObject.connect(self.ui.actionSave_As, QtCore.SIGNAL("triggered()"), self.saveFileAs)
-		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.createButtons)
-		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.ui.textArea.correctWordList)
+		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.populateWordList)
+		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.ui.textArea.correctWordFromListItem)
 
 		#Set up the TTS
 		self.speaker = Speaker("festival")
@@ -79,7 +79,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("whiteSpacePressed"), self.ui.spellingSuggestionsList.clear)
 
 		#about boxes
-		QtCore.QObject.connect(self.ui.actionAboutQt, QtCore.SIGNAL("triggered()"), self.showAboutQt)
+		QtCore.QObject.connect(self.ui.actionAboutQt, QtCore.SIGNAL("triggered()"), lambda : QtGui.QMessageBox.aboutQt(self))
 		QtCore.QObject.connect(self.ui.actionAbout, QtCore.SIGNAL("triggered()"), self.showAbout)
 		QtCore.QObject.connect(self.ui.actionDocumentation, QtCore.SIGNAL("triggered()"), self.openHelpPage)
 
@@ -104,11 +104,7 @@ class MainApplication(QtGui.QMainWindow):
 		
 		#Set up the settings box
 		QtCore.QObject.connect(self.ui.actionSettings, QtCore.SIGNAL("triggered()"), self.settings_box.show)
-		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWordsCustom)
-		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshWords)
-		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.wl.refreshReplacementTable)
-		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.speaker.setDriver)
-		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"), self.refreshAfterSettingsDialog)
+		QtCore.QObject.connect(self.settings_box, QtCore.SIGNAL("dialogSaved"),	self.refreshAfterSettingsDialogClosed)
 
 		#Distraction free
 		QtCore.QObject.connect(self.ui.actionDistractionFree, QtCore.SIGNAL("triggered()"), self.openDistractionFreeMode)
@@ -209,10 +205,15 @@ class MainApplication(QtGui.QMainWindow):
 			self.ui.actionStop.setDisabled(True)
 			QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("The current TTS driver is invalid.  Read-back is unavailable for this session."))
 		
-	def refreshAfterSettingsDialog(self):
+	def refreshAfterSettingsDialogClosed(self):
 		self.ui.actionSpeak.setDisabled(False)
 		self.ui.actionStop.setDisabled(False)
-		
+
+		self.wl.refreshWordsCustom()
+		self.wl.refreshWords()
+		self.wl.refreshReplacementTable()
+		self.speaker.setDriver()
+
 	def spellcheck(self):
 		dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
 		tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
@@ -225,28 +226,12 @@ class MainApplication(QtGui.QMainWindow):
 		if word[-1:] in ["", "\b", " ", "\t", ".", "?", ":", "!", ",", ";", ")"]:
 			if self.wl.correctWord(word[:-1]) != False:
 				print "Correcting", word[:-1]
-				self.ui.textArea.replaceWord(self.wl.correctWord(word[:-1]))
+				self.ui.textArea.replaceSelectedWord(self.wl.correctWord(word[:-1]))
 		if word[-1:] in [".", "!", "?"]:
 			print "Autosaving"
 			self.autoSave()
-			
-	def correctWordList(self, wordItem):
-		print "entering correct word list"
-		word = wordItem.text()
-		#Replace the selected word with another word the user selected
-		cursor = self.ui.textArea.textCursor()
-		cursor.select(QTextCursor.WordUnderCursor)
-		oldword = str(cursor.selectedText())
-		cursor.removeSelectedText()
-		cursor.insertText(word)
-		cursor.endEditBlock()
-		self.ui.textArea.setFocus()
-		
-		#now log it
-		print "about to log"
-		print "Logged " + oldword + " -> " + str(word)
 
-	def createButtons(self, text):
+	def populateWordList(self, text):
 		text = str(text)
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[-1:] in (" ", ".", ",", "!", "?", "\t"):
@@ -268,27 +253,22 @@ class MainApplication(QtGui.QMainWindow):
 			return
 
 		#Create the font for the list
-		font = QtGui.QFont()
-		font.setPointSize(12)
+   	   	font = QtGui.QFont()
+   		font.setPointSize(12)
 			
 		#Search the custom words
-		self.wordsC = self.wl.search(text, True)
-			#i = 0
-		for word in self.wordsC:
-			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
-			item.setFont(font)
-			#self.ui.spellingSuggestionsList.addItem(item)
+		## self.wordsC = self.wl.search(text, False) # I CHANGED THIS!
+		## for word in self.wordsC:
+		## 	item = QtGui.QListWidgetItem(word[0] + str(word[1]), self.ui.spellingSuggestionsList)
+		## 	item.setFont(font)
 			
 		#Search the normal words
 		self.wordsN = self.wl.search(str(text), False)
 		for word in self.wordsN:
-			
-			#Gray them if there are any custom words
-			item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
+			item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
 			item.setFont(font)
-			if len(self.wordsC) != 0:
-				item.setForeground(QtGui.QColor.fromRgb(50, 50, 50))
-			
+
+			## item.setForeground(QtGui.QColor.fromRgb(50-num, 50-num, 50-num))
 			
 			#action = QtGui.QAction(self)
 			#action.setObjectName("action"+word)
@@ -312,57 +292,56 @@ class MainApplication(QtGui.QMainWindow):
 		if platformSettings.getSetting("guessmisspellings", True) and len(self.wordsC) + len(self.wordsN) <= platformSettings.getSetting("threshold", 0):
 			#This is where things get trickier.  It MUST be a mispeling.  Fun fun fun!
 			possibilities = []
-			##Replace double letters with a single letter and look
-			#for cluster in re.findall(u'[a-z]\1', text):
-				#possibilities += self.wl.search(text.replace(cluster, cluster[0]))
-			#Replace "l" with "ll" and "s" with "ss", etc.
-			possibilities += self.wl.search(text.replace("l", "ll"), False, True)
-			possibilities += self.wl.search(text.replace("s", "ss"), False, True)
-			possibilities += self.wl.search(text.replace("t", "tt"), False, True)
-			possibilities += self.wl.search(text.replace("d", "dd"), False, True)
-			#Some more confusions
-			possibilities += self.wl.search(text.replace("t", "d"), False, True)
-			possibilities += self.wl.search(text.replace("d", "tt"), False, True)
-			possibilities += self.wl.search(text.replace("k", "ck"), False, True)
-			possibilities += self.wl.search(text.replace("k", "c"), False, True)
-			possibilities += self.wl.search(text.replace("s", "c"), False, True)
-			possibilities += self.wl.search(text.replace("l", "le"), False, True)
+			## ##Replace double letters with a single letter and look
+			## #for cluster in re.findall(u'[a-z]\1', text):
+			## 	#possibilities += self.wl.search(text.replace(cluster, cluster[0]))
+			## #Replace "l" with "ll" and "s" with "ss", etc.
+			## possibilities += self.wl.search(text.replace("l", "ll"), False, True)
+			## possibilities += self.wl.search(text.replace("s", "ss"), False, True)
+			## possibilities += self.wl.search(text.replace("t", "tt"), False, True)
+			## possibilities += self.wl.search(text.replace("d", "dd"), False, True)
+			## #Some more confusions
+			## possibilities += self.wl.search(text.replace("t", "d"), False, True)
+			## possibilities += self.wl.search(text.replace("d", "tt"), False, True)
+			## possibilities += self.wl.search(text.replace("k", "ck"), False, True)
+			## possibilities += self.wl.search(text.replace("k", "c"), False, True)
+			## possibilities += self.wl.search(text.replace("s", "c"), False, True)
+			## possibilities += self.wl.search(text.replace("l", "le"), False, True)
 
-			#Vowel confusions
-			possibilities += self.wl.search(text.replace("i", "ee"), False, True)
-			possibilities += self.wl.search(text.replace("ea", "ee"), False, True)
-			possibilities += self.wl.search(text.replace("ee", "i"), False, True)
-			possibilities += self.wl.search(text.replace("e", "i"), False, True)
-			possibilities += self.wl.search(text.replace("e", "ie"), False, True)
-			possibilities += self.wl.search(text.replace("a", "e"), False, True)
-			possibilities += self.wl.search(text.replace("u", "o"), False, True)
+			## #Vowel confusions
+			## possibilities += self.wl.search(text.replace("i", "ee"), False, True)
+			## possibilities += self.wl.search(text.replace("ea", "ee"), False, True)
+			## possibilities += self.wl.search(text.replace("ee", "i"), False, True)
+			## possibilities += self.wl.search(text.replace("e", "i"), False, True)
+			## possibilities += self.wl.search(text.replace("e", "ie"), False, True)
+			## possibilities += self.wl.search(text.replace("a", "e"), False, True)
+			## possibilities += self.wl.search(text.replace("u", "o"), False, True)
 
-			#Based on data analysis
-			possibilities += self.wl.search(text.replace("o", "a"), False, True) # becouse 
-			possibilities += self.wl.search(text.replace("a", "o"), False, True) # peaple 
-			possibilities += self.wl.search(text.replace("xs", "x"), False, True) # exsperience, exsplosion
-			possibilities += self.wl.search(text.replace("ei", "i"), False, True) # writeing, exciteing
+			## #Based on data analysis
+			## possibilities += self.wl.search(text.replace("o", "a"), False, True) # becouse 
+			## possibilities += self.wl.search(text.replace("a", "o"), False, True) # peaple 
+			## possibilities += self.wl.search(text.replace("xs", "x"), False, True) # exsperience, exsplosion
+			## possibilities += self.wl.search(text.replace("ei", "i"), False, True) # writeing, exciteing
 
 			
 
-			if platformSettings.getSetting("advancedsubstitutions", False):
-				possibilities += self.wl.search(text.replace("u", "oo"), False, True)
-				possibilities += self.wl.search(text.replace("u", "ou"), False, True)
-				possibilities += self.wl.search(text.replace("e", "a"), False, True)
+			## if platformSettings.getSetting("advancedsubstitutions", False):
+			## 	possibilities += self.wl.search(text.replace("u", "oo"), False, True)
+			## 	possibilities += self.wl.search(text.replace("u", "ou"), False, True)
+			## 	possibilities += self.wl.search(text.replace("e", "a"), False, True)
 				
 
-			#possibilities = self.wl.quicksort(possibilities)
-			#Remove duplicates
-			#if wordsN:
-				#for i in range(len(possibilities)):
-					#if possibilities[0] in wordsN:
-						#del possibilities[0]
+			## #possibilities = self.wl.quicksort(possibilities)
+			## #Remove duplicates
+			## #if wordsN:
+			## 	#for i in range(len(possibilities)):
+			## 		#if possibilities[0] in wordsN:
+			## 			#del possibilities[0]
 
-			for word in filter(lambda x:x not in self.wordsN, possibilities):
-				item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
-				item.setForeground(QtGui.QColor.fromRgb(80, 80, 80))
-				item.setFont(font)
-
+			## for word in filter(lambda x : x not in self.wordsN, possibilities):
+			## 	item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
+			## 	item.setForeground(QtGui.QColor.fromRgb(80, 80, 80))
+			## 	item.setFont(font)
 			
 	def updateFontSizeSpinBoxValue(self):
 		if not self.ui.textArea.textCursor().selectedText():
@@ -374,9 +353,6 @@ class MainApplication(QtGui.QMainWindow):
 		if not self.ui.textArea.textCursor().selectedText():
 			self.ui.fontComboBox.setCurrentFont(self.ui.textArea.currentFont())
 		self.ui.textArea.setFocus()
-		
-	def showAboutQt(self):
-		QtGui.QMessageBox.aboutQt(self)
 		
 	def showAbout(self):
 		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>"""))
@@ -400,9 +376,7 @@ class MainApplication(QtGui.QMainWindow):
 			self.ui.textArea.document().print_(printer)
 			self.ui.textArea.highlighter.format_grammar.setUnderlineColor(currentGrammarColor)
 			self.ui.textArea.highlighter.format_grammar.setUnderlineColor(currentSpellingColor)
-			self.ui.textArea.highlighter.rehighlight()
-
-			
+			self.ui.textArea.highlighter.rehighlight()			
 
 	def openDistractionFreeMode(self):
 		self.distractionFree_box.ui.verticalLayout_2.addWidget(self.ui.centralwidget)

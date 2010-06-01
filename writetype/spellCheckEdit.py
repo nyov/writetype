@@ -94,7 +94,7 @@ class spellCheckEdit(QTextEdit):
 			for mistake in self.highlighter.getDescriptionText(cursor.position(), self.toPlainText()):
 				print mistake
 				action = QAction(mistake["description"], menu)
-				self.connect(action, SIGNAL("triggered()"), lambda targ=mistake["new"], l=mistake["left"], r=mistake["right"]: self.correctWord(targ, l, r))
+				self.connect(action, SIGNAL("triggered()"), lambda targ=mistake["new"], l=mistake["left"], r=mistake["right"]: self.replaceTextByPosition(targ, l, r))
 				menu.addAction(action)
 
 	
@@ -109,7 +109,7 @@ class spellCheckEdit(QTextEdit):
 				spellingMenuItem.setEnabled(False)
 				for word in self.dictionary.suggest(text):
 					action = QAction(word, menu)
-					self.connect(action, SIGNAL("triggered()"), lambda targ=word, l=cursor.selectionStart(), r=cursor.selectionEnd(): self.correctWord(targ, l, r))
+					self.connect(action, SIGNAL("triggered()"), lambda targ=word, l=cursor.selectionStart(), r=cursor.selectionEnd(): self.replaceTextByPosition(targ, l, r))
 					menu.addAction(action)
 				if len(self.dictionary.suggest(text)) == 0:
 					noneMenuItem = menu.addAction("None")
@@ -120,8 +120,8 @@ class spellCheckEdit(QTextEdit):
 		
 		menu.exec_(event.globalPos())
 		
-	def correctWord(self, word, begin, end):
-		#Replace the selected word with another word
+	def replaceTextByPosition(self, word, begin, end):
+		#Replace from begin to end with word
 		cursor = self.textCursor()
 		cursor.setPosition(begin)
 		cursor.setPosition(end, QTextCursor.KeepAnchor)
@@ -133,11 +133,11 @@ class spellCheckEdit(QTextEdit):
 	def addToDictionary(self, word):
 		self.dictionary.add(word)
 		
-	def correctWordList(self, wordItem):
+	def correctWordFromListItem(self, wordItem):
 		word = wordItem.text()
-		self.replaceWord(word)
+		self.replaceSelectedWord(word)
 
-	def replaceWord(self, word):
+	def replaceSelectedWord(self, word):
 		#Replace the selected word with another word
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
