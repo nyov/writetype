@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/distractionfree.ui'
 #
-# Created: Tue Jun  1 14:18:08 2010
+# Created: Wed Jun  2 14:41:13 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!

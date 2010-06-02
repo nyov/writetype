@@ -1,5 +1,4 @@
 * Things to change
-
 ** DONE Force a space after a period
    In other words, don't allow things like "... said Joe.Then he"
 ** DONE Delete multiple spaces
@@ -20,7 +19,6 @@
 ** DONE Add a scoring system so that each word in the list is a tuple with the word and its importance score
 ** TODO Make tab scroll through the list of completions
 * Things to see if I can fix automatically 
-
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are
 ** TODO Plurals

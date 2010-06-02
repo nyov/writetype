@@ -52,11 +52,11 @@ class spellCheckEdit(QTextEdit):
 		if event.button() == Qt.RightButton:
 			event = QMouseEvent(QEvent.MouseButtonPress, event.pos(), Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
 
-		#Highlight an image if it is clicked
-		cursor = self.textCursor()
-		cursor.select(QTextCursor.WordUnderCursor)
-		if str(cursor.selection().toHtml()).find("img") != False:
-			self.setTextCursor(cursor)
+## 		#Highlight an image if it is clicked
+## 		cursor = self.textCursor()
+## 		cursor.select(QTextCursor.WordUnderCursor)
+## 		if str(cursor.selection().toHtml()).find("img") != False:
+## 			self.setTextCursor(cursor)
 
 		QTextEdit.mousePressEvent(self, event)
 	
@@ -166,8 +166,11 @@ class spellCheckEdit(QTextEdit):
 		if event.key() == Qt.Key_Tab or event.key() == Qt.Key_Down:
 			self.emit(SIGNAL("tabEvent"))
 			return
-		if (event.key() == Qt.Key_Tab and event.modifiers() == Qt.Key_Shift) or event.key() == Qt.Key_Up:
+		if (event.key() == Qt.Key_Tab | Qt.Key_Shift) or event.key() == Qt.Key_Up:
 			self.emit(SIGNAL("tabBackEvent"))
+			return
+		#Don't do all this if someone just clicked something in the word list
+		if event.key() == 0:
 			return
 
 		cursor = self.textCursor()
@@ -338,7 +341,11 @@ class Highlighter(QSyntaxHighlighter):
 		{
 			"description": "Use 'a' instead of 'an'",
 			"re": re.compile(u'^([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
-			"fix": '\\1 \\2' }]
+			"fix": '\\1 \\2' },
+		{
+			"description": "Word repeated",
+			"re": re.compile(u'([a-z]+) \\1', re.IGNORECASE),
+			"fix": '\\1' }]
 	
 	
 	def __init__(self, *args):

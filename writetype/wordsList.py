@@ -62,11 +62,8 @@ class wordsList:
 		return finalwords
 
 	def loadAutocompletions(self, filePath):
-		if platformSettings.getSetting("grammarcheck", True):
 			fileHandle = open(filePath, 'r')
 			return fileHandle.read().split("\n")
-		else:
-			return []
 
 	def addCustomWord(self, word):
 		word = word.lower()

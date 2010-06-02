@@ -417,13 +417,17 @@ class MainApplication(QtGui.QMainWindow):
 
 
 	def tabEvent(self):
+		if not self.wordsN:
+			return
 		if self.wlPointer == None:
 			self.wlPointer = 0
-		else:
+		elif self.wlPointer != len(self.wordsN)-1:
 			self.wlPointer += 1
-		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])
+       		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])
 
 	def tabBackEvent(self):
+		if not self.wordsN:
+			return
 		if self.wlPointer == None or self.wlPointer == 0:
 			self.wlPointer = 0
 		else:

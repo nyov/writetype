@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Tue Jun  1 14:18:05 2010
+# Created: Wed Jun  2 14:41:10 2010
 #      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -50,6 +50,7 @@ class Ui_MainWindow(object):
         self.spellingSuggestionsList.setSizePolicy(sizePolicy)
         self.spellingSuggestionsList.setMaximumSize(QtCore.QSize(300, 16777215))
         self.spellingSuggestionsList.setSelectionMode(QtGui.QAbstractItemView.NoSelection)
+        self.spellingSuggestionsList.setSelectionRectVisible(True)
         self.spellingSuggestionsList.setObjectName("spellingSuggestionsList")
         self.verticalLayout.addWidget(self.splitter)
         self.distractionButton = QtGui.QPushButton(self.centralwidget)
