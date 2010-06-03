@@ -66,7 +66,7 @@
     <message>
         <location filename="main.py" line="209"/>
         <source>Feature unavailable</source>
-        <translation type="unfinished">Espoken</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="main.py" line="209"/>
@@ -89,12 +89,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="436"/>
+        <location filename="main.py" line="440"/>
         <source>Quit?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="436"/>
+        <location filename="main.py" line="440"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -375,12 +375,12 @@
 <context>
     <name>SettingsDialogBox</name>
     <message>
-        <location filename="main.py" line="498"/>
+        <location filename="main.py" line="502"/>
         <source>Replace:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="499"/>
+        <location filename="main.py" line="503"/>
         <source>With:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -396,148 +396,148 @@
 <context>
     <name>settingsDialog</name>
     <message>
-        <location filename="settingsDialog.py" line="211"/>
+        <location filename="settingsDialog.py" line="212"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="212"/>
+        <location filename="settingsDialog.py" line="213"/>
         <source>Please enter any custom words you would like to appear in the spell check, one per line.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="213"/>
+        <location filename="settingsDialog.py" line="214"/>
         <source>Custom Words</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="214"/>
+        <location filename="settingsDialog.py" line="215"/>
         <source>Please select the size of the word completion database:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="215"/>
+        <location filename="settingsDialog.py" line="216"/>
         <source>Word lists</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="216"/>
+        <location filename="settingsDialog.py" line="217"/>
         <source>View settings for the custom word completion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="217"/>
+        <location filename="settingsDialog.py" line="218"/>
         <source>Minimum letters:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="218"/>
+        <location filename="settingsDialog.py" line="219"/>
         <source>Try to guess misspellings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="219"/>
+        <location filename="settingsDialog.py" line="220"/>
         <source>Misspelling Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="220"/>
+        <location filename="settingsDialog.py" line="221"/>
         <source>How many entries need to be displayed, at the minimum, before WriteType will attempt to guess the spelling?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="221"/>
+        <location filename="settingsDialog.py" line="222"/>
         <source>Misspelling Threshold:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="222"/>
+        <location filename="settingsDialog.py" line="223"/>
         <source>Advanced Substitutions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="223"/>
+        <location filename="settingsDialog.py" line="224"/>
         <source>Word Completion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="224"/>
+        <location filename="settingsDialog.py" line="225"/>
         <source>Use auto-completion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="225"/>
+        <location filename="settingsDialog.py" line="226"/>
         <source>Auto-correction settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="226"/>
+        <location filename="settingsDialog.py" line="227"/>
         <source>Contractions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="227"/>
+        <location filename="settingsDialog.py" line="228"/>
         <source>Auto-completions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="230"/>
-        <source>Send usage statistics to help improve the program</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="settingsDialog.py" line="228"/>
+        <location filename="settingsDialog.py" line="229"/>
         <source>Default Font:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="229"/>
+        <location filename="settingsDialog.py" line="230"/>
         <source>Options:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="234"/>
-        <source>System Default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="settingsDialog.py" line="231"/>
-        <source>Reading speed:</source>
+        <source>Send usage statistics to help improve the program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="232"/>
-        <source>%</source>
+        <source>Reading speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="233"/>
+        <source>%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settingsDialog.py" line="234"/>
         <source>TTS Engine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="settingsDialog.py" line="235"/>
+        <source>System Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="settingsDialog.py" line="236"/>
-        <source>Other</source>
+        <source>Check document for grammar mistakes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="237"/>
-        <source>Okay</source>
+        <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="238"/>
-        <source>Apply</source>
+        <source>Okay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="239"/>
-        <source>Cancel</source>
+        <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="235"/>
-        <source>Check document for grammar mistakes</source>
+        <location filename="settingsDialog.py" line="240"/>
+        <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

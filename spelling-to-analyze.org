@@ -18,6 +18,10 @@
 ** DONE Don't allow toolbars to be moved
 ** DONE Add a scoring system so that each word in the list is a tuple with the word and its importance score
 ** TODO Make tab scroll through the list of completions
+** TODO Remove "align right"
+** TODO If you hit bold, bold the selected word if nothing is selected
+** TODO Highlighting a bold thing changes everything to bold, and removing bold removes highlighting
+** TODO Changing the size of the font should change the entire text block
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are
