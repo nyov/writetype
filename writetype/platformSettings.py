@@ -61,12 +61,12 @@ def getSetting(key, default=None):
 			return default
 
 def correctType(val, default):
-	if isinstance(default, int):
+	if isinstance(default, bool):
+		val = val.toBool()
+	elif isinstance(default, int):
 		val = val.toInt()[0]
 	elif isinstance(default, str):
 		val = str(val.toString())
-	elif isinstance(default, bool):
-		val = val.toBoolean()
 	elif isinstance(default, float):
 		val = val.toFloat()
 	else:
@@ -77,3 +77,5 @@ def setSetting(key, value):
 	if settingsError == False:
 		settingsHandle.setValue(key, value)
 		cache[key] = QVariant(value)
+	else:
+		print "Settings error!  Setting not saved!"

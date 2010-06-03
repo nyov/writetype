@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/settings.ui'
 #
-# Created: Wed Jun  2 20:17:37 2010
-#      by: PyQt4 UI code generator 4.7.2
+# Created: Thu Jun  3 14:52:37 2010
+#      by: PyQt4 UI code generator 4.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -85,7 +85,6 @@ class Ui_settingsDialog(object):
         self.label_5.setObjectName("label_5")
         self.gridLayout_4.addWidget(self.label_5, 0, 0, 1, 1)
         self.advancedSubstitutionsCheckbox = QtGui.QCheckBox(self.misspellingSettings)
-        self.advancedSubstitutionsCheckbox.setText("")
         self.advancedSubstitutionsCheckbox.setObjectName("advancedSubstitutionsCheckbox")
         self.gridLayout_4.addWidget(self.advancedSubstitutionsCheckbox, 1, 1, 1, 1)
         self.label_6 = QtGui.QLabel(self.misspellingSettings)

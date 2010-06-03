@@ -102,272 +102,272 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.py" line="291"/>
+        <location filename="mainwindow.py" line="294"/>
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="292"/>
+        <location filename="mainwindow.py" line="295"/>
         <source>Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="293"/>
+        <location filename="mainwindow.py" line="296"/>
         <source>Go Back </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="294"/>
+        <location filename="mainwindow.py" line="297"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="295"/>
+        <location filename="mainwindow.py" line="298"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="296"/>
+        <location filename="mainwindow.py" line="299"/>
         <source>Toolbars</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="297"/>
+        <location filename="mainwindow.py" line="300"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="298"/>
+        <location filename="mainwindow.py" line="301"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="302"/>
+        <location filename="mainwindow.py" line="305"/>
         <source>toolBar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="300"/>
+        <location filename="mainwindow.py" line="303"/>
         <source>toolBar_2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="303"/>
+        <location filename="mainwindow.py" line="306"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="304"/>
+        <location filename="mainwindow.py" line="307"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="305"/>
+        <location filename="mainwindow.py" line="308"/>
         <source>Save As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="306"/>
+        <location filename="mainwindow.py" line="309"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="307"/>
+        <location filename="mainwindow.py" line="310"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="308"/>
+        <location filename="mainwindow.py" line="311"/>
         <source>Ctrl+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="309"/>
+        <location filename="mainwindow.py" line="312"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="311"/>
+        <location filename="mainwindow.py" line="314"/>
         <source>Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="312"/>
+        <location filename="mainwindow.py" line="315"/>
         <source>Ctrl+B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="314"/>
+        <location filename="mainwindow.py" line="317"/>
         <source>Italic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="315"/>
+        <location filename="mainwindow.py" line="318"/>
         <source>Ctrl+I</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="317"/>
+        <location filename="mainwindow.py" line="320"/>
         <source>Underline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="318"/>
+        <location filename="mainwindow.py" line="321"/>
         <source>Ctrl+U</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="319"/>
+        <location filename="mainwindow.py" line="322"/>
         <source>Speak</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="320"/>
+        <location filename="mainwindow.py" line="323"/>
         <source>Speak Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="322"/>
+        <location filename="mainwindow.py" line="325"/>
         <source>Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="323"/>
+        <location filename="mainwindow.py" line="326"/>
         <source>Ctrl+Z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="325"/>
+        <location filename="mainwindow.py" line="328"/>
         <source>Redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="326"/>
+        <location filename="mainwindow.py" line="329"/>
         <source>Ctrl+Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="327"/>
+        <location filename="mainwindow.py" line="330"/>
         <source>File Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="328"/>
+        <location filename="mainwindow.py" line="331"/>
         <source>Enable File Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="329"/>
+        <location filename="mainwindow.py" line="332"/>
         <source>Edit Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="330"/>
+        <location filename="mainwindow.py" line="333"/>
         <source>Enable Edit Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="331"/>
+        <location filename="mainwindow.py" line="334"/>
         <source>Speaker Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="332"/>
+        <location filename="mainwindow.py" line="335"/>
         <source>Enable Speaker Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="333"/>
+        <location filename="mainwindow.py" line="336"/>
         <source>Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="335"/>
+        <location filename="mainwindow.py" line="338"/>
         <source>About WriteType</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="336"/>
+        <location filename="mainwindow.py" line="339"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="338"/>
+        <location filename="mainwindow.py" line="341"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="339"/>
+        <location filename="mainwindow.py" line="342"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="341"/>
+        <location filename="mainwindow.py" line="344"/>
         <source>Highlight Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="343"/>
+        <location filename="mainwindow.py" line="346"/>
         <source>Highlight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="344"/>
+        <location filename="mainwindow.py" line="347"/>
         <source>Distraction Free</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="345"/>
+        <location filename="mainwindow.py" line="348"/>
         <source>Distraction Free Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="346"/>
+        <location filename="mainwindow.py" line="349"/>
         <source>Insert Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="347"/>
+        <location filename="mainwindow.py" line="350"/>
         <source>Align Image Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="348"/>
+        <location filename="mainwindow.py" line="351"/>
         <source>Align Image Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="349"/>
+        <location filename="mainwindow.py" line="352"/>
         <source>Image Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="350"/>
+        <location filename="mainwindow.py" line="353"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="351"/>
+        <location filename="mainwindow.py" line="354"/>
         <source>Align Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="352"/>
+        <location filename="mainwindow.py" line="355"/>
         <source>Align Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="353"/>
+        <location filename="mainwindow.py" line="356"/>
         <source>Align Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="354"/>
+        <location filename="mainwindow.py" line="357"/>
         <source>Double Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="355"/>
+        <location filename="mainwindow.py" line="358"/>
         <source>Single Space</source>
         <translation type="unfinished"></translation>
     </message>
@@ -396,147 +396,147 @@
 <context>
     <name>settingsDialog</name>
     <message>
-        <location filename="settingsDialog.py" line="212"/>
+        <location filename="settingsDialog.py" line="211"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="213"/>
+        <location filename="settingsDialog.py" line="212"/>
         <source>Please enter any custom words you would like to appear in the spell check, one per line.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="214"/>
+        <location filename="settingsDialog.py" line="213"/>
         <source>Custom Words</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="215"/>
+        <location filename="settingsDialog.py" line="214"/>
         <source>Please select the size of the word completion database:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="216"/>
+        <location filename="settingsDialog.py" line="215"/>
         <source>Word lists</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="217"/>
+        <location filename="settingsDialog.py" line="216"/>
         <source>View settings for the custom word completion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="218"/>
+        <location filename="settingsDialog.py" line="217"/>
         <source>Minimum letters:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="219"/>
+        <location filename="settingsDialog.py" line="218"/>
         <source>Try to guess misspellings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="220"/>
+        <location filename="settingsDialog.py" line="219"/>
         <source>Misspelling Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="221"/>
+        <location filename="settingsDialog.py" line="220"/>
         <source>How many entries need to be displayed, at the minimum, before WriteType will attempt to guess the spelling?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="222"/>
+        <location filename="settingsDialog.py" line="221"/>
         <source>Misspelling Threshold:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="223"/>
+        <location filename="settingsDialog.py" line="222"/>
         <source>Advanced Substitutions?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="224"/>
+        <location filename="settingsDialog.py" line="223"/>
         <source>Word Completion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="225"/>
+        <location filename="settingsDialog.py" line="224"/>
         <source>Use auto-completion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="226"/>
+        <location filename="settingsDialog.py" line="225"/>
         <source>Auto-correction settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="227"/>
+        <location filename="settingsDialog.py" line="226"/>
         <source>Contractions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="228"/>
+        <location filename="settingsDialog.py" line="227"/>
         <source>Auto-completions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="229"/>
+        <location filename="settingsDialog.py" line="228"/>
         <source>Default Font:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="230"/>
+        <location filename="settingsDialog.py" line="229"/>
         <source>Options:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="231"/>
+        <location filename="settingsDialog.py" line="230"/>
         <source>Send usage statistics to help improve the program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="232"/>
+        <location filename="settingsDialog.py" line="231"/>
         <source>Reading speed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="233"/>
+        <location filename="settingsDialog.py" line="232"/>
         <source>%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="234"/>
+        <location filename="settingsDialog.py" line="233"/>
         <source>TTS Engine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="235"/>
+        <location filename="settingsDialog.py" line="234"/>
         <source>System Default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="236"/>
+        <location filename="settingsDialog.py" line="235"/>
         <source>Check document for grammar mistakes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="237"/>
+        <location filename="settingsDialog.py" line="236"/>
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="238"/>
+        <location filename="settingsDialog.py" line="237"/>
         <source>Okay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="239"/>
+        <location filename="settingsDialog.py" line="238"/>
         <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="240"/>
+        <location filename="settingsDialog.py" line="239"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
