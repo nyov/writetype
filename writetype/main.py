@@ -92,6 +92,8 @@ class MainApplication(QtGui.QMainWindow):
 
 		#Connections for autocorrect
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutoreplacement)
+		#Keyboard shortcuts
+		#self.shortcut = Qt.QShortcut(Qt.Qt.Key_Tab, self.ui.textArea, self.tabEvent)
 		
 		#printer
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)

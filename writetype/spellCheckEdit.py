@@ -156,6 +156,13 @@ class spellCheckEdit(QTextEdit):
 		self.setFocus()
 		#Log it
 		self.log.log(oldword + " -> " + str(word))
+
+	def event(self, event):
+		if event.type() == QEvent.KeyPress:
+			event = QKeyEvent(event)
+			if event.key() == Qt.Key_Tab:
+				return self.keyPressEvent(event)
+		return QTextEdit.event(self, event)
 		
 	def keyPressEvent(self, event):
 		#Auto-repeats shouldn't be needed
@@ -166,7 +173,7 @@ class spellCheckEdit(QTextEdit):
 		if event.key() == Qt.Key_Tab or event.key() == Qt.Key_Down:
 			self.emit(SIGNAL("tabEvent"))
 			return
-		if (event.key() == Qt.Key_Tab | Qt.Key_Shift) or event.key() == Qt.Key_Up:
+		if (event.key() == Qt.Key_Tab and event.modifiers() & Qt.Key_Shift) or event.key() == Qt.Key_Up:
 			self.emit(SIGNAL("tabBackEvent"))
 			return
 		#Don't do all this if someone just clicked something in the word list
