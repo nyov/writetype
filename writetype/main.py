@@ -47,7 +47,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionSave, QtCore.SIGNAL("triggered()"), self.saveFile)
 		QtCore.QObject.connect(self.ui.actionSave_As, QtCore.SIGNAL("triggered()"), self.saveFileAs)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.populateWordList)
-		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.ui.textArea.correctWordFromListItem)
+		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.correctWordFromListItem)
 
 		#Set up the TTS
 		self.speaker = Speaker("festival")
@@ -426,6 +426,7 @@ class MainApplication(QtGui.QMainWindow):
 		elif self.wlPointer != len(self.wordsN)-1:
 			self.wlPointer += 1
        		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])
+		self.ui.spellingSuggestionsList.setCurrentRow(self.wlPointer)
 
 	def tabBackEvent(self):
 		if not self.wordsN:
@@ -435,6 +436,12 @@ class MainApplication(QtGui.QMainWindow):
 		else:
 			self.wlPointer -= 1
 		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])
+		self.ui.spellingSuggestionsList.setCurrentRow(self.wlPointer)
+
+	def correctWordFromListItem(self, wordItem):
+		word = wordItem.text()
+		self.wlPointer = self.ui.spellingSuggestionsList.row(wordItem)
+		self.ui.textArea.replaceSelectedWord(word)
 
 	def closeEvent(self, event):
 		#Set the stuff up to ask for a save on exit

@@ -133,10 +133,6 @@ class spellCheckEdit(QTextEdit):
 	def addToDictionary(self, word):
 		self.dictionary.add(word)
 		
-	def correctWordFromListItem(self, wordItem):
-		word = wordItem.text()
-		self.replaceSelectedWord(word)
-
 	def replaceSelectedWord(self, word):
 		#Replace the selected word with another word
 		cursor = self.textCursor()
@@ -157,24 +153,33 @@ class spellCheckEdit(QTextEdit):
 		#Log it
 		self.log.log(oldword + " -> " + str(word))
 
+	#Send shift-tabs to the widget
 	def event(self, event):
 		if event.type() == QEvent.KeyPress:
 			event = QKeyEvent(event)
-			if event.key() == Qt.Key_Tab:
-				return self.keyPressEvent(event)
+			self.keyPressEvent(event)
+			return True
 		return QTextEdit.event(self, event)
+
+	## def eventFilter(self, object, event):
+	## 	if event.type() == QEvent.KeyPress:
+	## 		print "key pressed"
+	## 		return False
+	## 	return False
 		
 	def keyPressEvent(self, event):
+		print "key pressed"
 		#Auto-repeats shouldn't be needed
 		if event.isAutoRepeat():
 			return
 
 		#Tabs should scroll through the words
+		if event.key() == Qt.Key_Backtab or event.key() == Qt.Key_Up:
+			print event.key()
+			self.emit(SIGNAL("tabBackEvent"))
+			return
 		if event.key() == Qt.Key_Tab or event.key() == Qt.Key_Down:
 			self.emit(SIGNAL("tabEvent"))
-			return
-		if (event.key() == Qt.Key_Tab and event.modifiers() & Qt.Key_Shift) or event.key() == Qt.Key_Up:
-			self.emit(SIGNAL("tabBackEvent"))
 			return
 		#Don't do all this if someone just clicked something in the word list
 		if event.key() == 0:
@@ -351,8 +356,8 @@ class Highlighter(QSyntaxHighlighter):
 			"fix": '\\1 \\2' },
 		{
 			"description": "Word repeated",
-			"re": re.compile(u'([a-z]+) \\1', re.IGNORECASE),
-			"fix": '\\1' }]
+			"re": re.compile(u' ([a-z]+) \\1([ .!?,:;])', re.IGNORECASE),
+			"fix": ' \\1\\2' }]
 	
 	
 	def __init__(self, *args):

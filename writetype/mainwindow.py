@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Thu Jun  3 14:52:33 2010
-#      by: PyQt4 UI code generator 4.6
+# Created: Sun Jun  6 11:01:35 2010
+#      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -49,8 +49,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.spellingSuggestionsList.sizePolicy().hasHeightForWidth())
         self.spellingSuggestionsList.setSizePolicy(sizePolicy)
         self.spellingSuggestionsList.setMaximumSize(QtCore.QSize(300, 16777215))
-        self.spellingSuggestionsList.setSelectionMode(QtGui.QAbstractItemView.NoSelection)
-        self.spellingSuggestionsList.setSelectionRectVisible(True)
+        self.spellingSuggestionsList.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
         self.spellingSuggestionsList.setObjectName("spellingSuggestionsList")
         self.verticalLayout.addWidget(self.splitter)
         self.distractionButton = QtGui.QPushButton(self.centralwidget)
@@ -58,7 +57,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.distractionButton)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 21))
         self.menubar.setObjectName("menubar")
         self.menuEdit = QtGui.QMenu(self.menubar)
         self.menuEdit.setObjectName("menuEdit")
@@ -77,20 +76,20 @@ class Ui_MainWindow(object):
         self.fileToolBar = QtGui.QToolBar(MainWindow)
         self.fileToolBar.setMovable(False)
         self.fileToolBar.setObjectName("fileToolBar")
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.fileToolBar)
+        MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.fileToolBar)
         self.editToolBar = QtGui.QToolBar(MainWindow)
         self.editToolBar.setEnabled(True)
         self.editToolBar.setMovable(False)
         self.editToolBar.setObjectName("editToolBar")
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.editToolBar)
+        MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.editToolBar)
         self.speakToolBar = QtGui.QToolBar(MainWindow)
         self.speakToolBar.setMovable(False)
         self.speakToolBar.setObjectName("speakToolBar")
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.speakToolBar)
+        MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.speakToolBar)
         self.imageToolBar = QtGui.QToolBar(MainWindow)
         self.imageToolBar.setMovable(False)
         self.imageToolBar.setObjectName("imageToolBar")
-        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.imageToolBar)
+        MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.imageToolBar)
         self.actionSave = QtGui.QAction(MainWindow)
         self.actionSave.setEnabled(False)
         icon1 = QtGui.QIcon()
