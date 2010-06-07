@@ -1,5 +1,8 @@
 <RCC>
-  <qresource prefix="res" >
+  <qresource prefix="res">
+    <file>page-simple.png</file>
+    <file>qtcreator_logo_32.png</file>
+    <file>view-statistics.png</file>
     <file>format-line-spacing-normal.png</file>
     <file>format-justify-center.png</file>
     <file>format-justify-left.png</file>

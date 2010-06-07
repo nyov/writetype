@@ -123,6 +123,7 @@
     </widget>
     <addaction name="menuToolbars"/>
     <addaction name="actionDistractionFree"/>
+    <addaction name="actionStatistics"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -415,11 +416,19 @@
    </property>
   </action>
   <action name="actionDocumentation">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/help.png</normaloff>:/res/help.png</iconset>
+   </property>
    <property name="text">
     <string>Documentation</string>
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/idea.png</normaloff>:/res/idea.png</iconset>
+   </property>
    <property name="text">
     <string>About WriteType</string>
    </property>
@@ -428,6 +437,10 @@
    </property>
   </action>
   <action name="actionAboutQt">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/qtcreator_logo_32.png</normaloff>:/res/qtcreator_logo_32.png</iconset>
+   </property>
    <property name="text">
     <string>About Qt</string>
    </property>
@@ -475,6 +488,10 @@
    </property>
   </action>
   <action name="actionDistractionFree">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/page-simple.png</normaloff>:/res/page-simple.png</iconset>
+   </property>
    <property name="text">
     <string>Distraction Free</string>
    </property>
@@ -575,6 +592,15 @@
    </property>
    <property name="text">
     <string>Single Space</string>
+   </property>
+  </action>
+  <action name="actionStatistics">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/view-statistics.png</normaloff>:/res/view-statistics.png</iconset>
+   </property>
+   <property name="text">
+    <string>Statistics</string>
    </property>
   </action>
  </widget>

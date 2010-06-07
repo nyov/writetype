@@ -36,6 +36,7 @@ from speaker import Speaker
 from PyQt4.QtGui import QMessageBox
 from PyQt4.QtCore import QTranslator, QLocale
 from xml.dom import minidom
+from statistics import Ui_statisticsDialog
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
@@ -48,6 +49,10 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionSave_As, QtCore.SIGNAL("triggered()"), self.saveFileAs)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.populateWordList)
 		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.correctWordFromListItem)
+
+		#Statistics
+		self.statisticsDialog = StatisticsWindow(self)
+		QtCore.QObject.connect(self.ui.actionStatistics, QtCore.SIGNAL("triggered()"), self.showStatisticsDialog)
 
 		#Set up the TTS
 		self.speaker = Speaker("festival")
@@ -443,6 +448,36 @@ class MainApplication(QtGui.QMainWindow):
 		self.wlPointer = self.ui.spellingSuggestionsList.row(wordItem)
 		self.ui.textArea.replaceSelectedWord(word)
 
+	def showStatisticsDialog(self):
+		#Update the statistics
+		self.statisticsDialog.ui.filenameLabel.setText(self.filename)
+		#Only alpha-numerics
+		chars = 0
+		for char in str(self.ui.textArea.toPlainText()):
+			if char in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890":
+				chars += 1
+		self.statisticsDialog.ui.charactersLabel.setText(str(chars))
+		#Stupid tokenizer, doesn't work with len()
+		words = 0
+		for x in self.tokenizer(str(self.ui.textArea.toPlainText())):
+			words += 1
+		self.statisticsDialog.ui.wordsLabel.setText(str(words))
+		sentences = len(re.findall('[A-Z][^A-Z]*[.!?]', self.ui.textArea.toPlainText()))
+		self.statisticsDialog.ui.sentencesLabel.setText(str(sentences))
+		paragraphs = self.ui.textArea.document().blockCount()
+		self.statisticsDialog.ui.paragraphsLabel.setText(str(paragraphs))
+		#Automated Readability Index - this is the easiest to implement :)
+		try:
+			readability = 4.71*(float(chars)/words) + .5*(float(words)/sentences) - 21.43
+			self.statisticsDialog.ui.readabilityLabel.setText(str(round(readability, 3)))
+		except ZeroDivisionError:
+			self.statisticsDialog.ui.readabilityLabel.setText("Invalid, no sentences found.")
+
+		self.statisticsDialog.show()
+
+		
+		
+
 	def closeEvent(self, event):
 		#Set the stuff up to ask for a save on exit
 		if self.ui.actionSave.isEnabled():
@@ -591,8 +626,12 @@ class DistractionFreeWindow(QtGui.QDialog):
 		QtGui.QWidget.__init__(self, parent)
 		self.ui = Ui_distractionFree()
 		self.ui.setupUi(self)
-#		self.layout = QtGui.QHBoxLayout(self)
-#		self.setLayout(self.layout)
+
+class StatisticsWindow(QtGui.QDialog):
+	def __init__(self, parent=None):
+		QtGui.QWidget.__init__(self, parent)
+		self.ui = Ui_statisticsDialog()
+		self.ui.setupUi(self)
 
 application = QtGui.QApplication(sys.argv)
 #translation
