@@ -17,9 +17,9 @@
 ** DONE Create an option in settings to enable/disable grammar check
 ** DONE Don't allow toolbars to be moved
 ** DONE Add a scoring system so that each word in the list is a tuple with the word and its importance score
-** TODO Make tab scroll through the list of completions [0/2]
-   - [ ] Shift tab doesn't work
-   - [ ] The currently selected item is not highlighted
+** DONE Make tab scroll through the list of completions [2/2]
+   - [X] Shift tab doesn't work
+   - [X] The currently selected item is not highlighted
 ** DONE Remove "align right"
 ** TODO If you hit bold, bold the selected word if nothing is selected
 ** TODO Highlighting a bold thing changes everything to bold, and removing bold removes highlighting
@@ -34,7 +34,7 @@
 ** DONE a vs. an
    CLOSED: [2010-05-29 Sat 11:50]
 
-** TODO Repeated words
+** DONE Repeated words
 * Spelling errors
 
 | SID | Error        | Correction    |

@@ -49,6 +49,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionSave_As, QtCore.SIGNAL("triggered()"), self.saveFileAs)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.populateWordList)
 		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.correctWordFromListItem)
+		#QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.resetWlPointer)
 
 		#Statistics
 		self.statisticsDialog = StatisticsWindow(self)
@@ -74,11 +75,11 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionSingleSpace, QtCore.SIGNAL("triggered()"), self.ui.textArea.singleSpace)
 		
 		#Font point size
-		QtCore.QObject.connect(self.ui.spinBoxFontSize, QtCore.SIGNAL("valueChanged(int)"), self.ui.textArea.setFontPointSize)
-		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
+		QtCore.QObject.connect(self.ui.spinBoxFontSize, QtCore.SIGNAL("valueChanged(int)"), self.ui.textArea.setFontSize)
+		#QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
 		#Font
 		QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setFont)
-		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontComboBoxValue)
+		#QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontComboBoxValue)
 		QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setFont)
 		#Clear the word list if a space is pressed
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("whiteSpacePressed"), self.ui.spellingSuggestionsList.clear)
@@ -237,12 +238,12 @@ class MainApplication(QtGui.QMainWindow):
 			if self.wl.correctWord(word[:-1]) != False:
 				print "Correcting", word[:-1]
 				self.ui.textArea.replaceSelectedWord(self.wl.correctWord(word[:-1]))
+			self.wlPointer = None
+			self.ui.spellingSuggestionsList.setCurrentRow(-1)
+			self.ui.spellingSuggestionsList.clear()
 		if word[-1:] in [".", "!", "?"]:
 			print "Autosaving"
 			self.autoSave()
-
-		if word[-1:] == ' ':
-			self.wlPointer = None
 
 	def populateWordList(self, text):
 		text = str(text)
@@ -428,7 +429,9 @@ class MainApplication(QtGui.QMainWindow):
 			return
 		if self.wlPointer == None:
 			self.wlPointer = 0
-		elif self.wlPointer != len(self.wordsN)-1:
+		elif self.wlPointer >= len(self.wordsN)-1:
+			self.wlPointer = 0
+		else:
 			self.wlPointer += 1
        		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])
 		self.ui.spellingSuggestionsList.setCurrentRow(self.wlPointer)
@@ -436,8 +439,10 @@ class MainApplication(QtGui.QMainWindow):
 	def tabBackEvent(self):
 		if not self.wordsN:
 			return
-		if self.wlPointer == None or self.wlPointer == 0:
+		if self.wlPointer == None: 
 			self.wlPointer = 0
+		elif self.wlPointer == 0:
+			self.wlPointer = len(self.wordsN)-1
 		else:
 			self.wlPointer -= 1
 		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])

@@ -168,10 +168,10 @@ class spellCheckEdit(QTextEdit):
 	## 	return False
 		
 	def keyPressEvent(self, event):
-		print "key pressed"
-		#Auto-repeats shouldn't be needed
+		#Auto-repeats shouldn't be needed unless
 		if event.isAutoRepeat():
-			return
+			if not event.key() in [Qt.Key_Backspace, Qt.Key_Right, Qt.Key_Left]:
+				return
 
 		#Tabs should scroll through the words
 		if event.key() == Qt.Key_Backtab or event.key() == Qt.Key_Up:
@@ -237,6 +237,15 @@ class spellCheckEdit(QTextEdit):
 		cursor.setPosition(len(self.toPlainText()), cursor.KeepAnchor)
 		fontFormat = QTextCharFormat()
 		fontFormat.setFont(font)
+		cursor.setCharFormat(fontFormat)
+
+	#Don't allow multiple fonts in one document
+	def setFontSize(self, size):
+		cursor = self.textCursor()
+		cursor.select(QTextCursor.BlockUnderCursor)
+
+		fontFormat = QTextCharFormat()
+		fontFormat.setFontPointSize(size)
 		cursor.setCharFormat(fontFormat)
 
 	def toggleHighlight(self, isSet):
