@@ -49,6 +49,8 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionSave_As, QtCore.SIGNAL("triggered()"), self.saveFileAs)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.populateWordList)
 		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.correctWordFromListItem)
+		self.dictionary = enchant.DictWithPWL('en_us')
+
 		#QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.resetWlPointer)
 
 		#Statistics
@@ -76,6 +78,7 @@ class MainApplication(QtGui.QMainWindow):
 		
 		#Font point size
 		QtCore.QObject.connect(self.ui.spinBoxFontSize, QtCore.SIGNAL("valueChanged(int)"), self.ui.textArea.setFontSize)
+		#self.ui.textArea.document().defaultFont().setPointSize(12)
 		#QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
 		#Font
 		QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setFont)
@@ -241,6 +244,24 @@ class MainApplication(QtGui.QMainWindow):
 			self.wlPointer = None
 			self.ui.spellingSuggestionsList.setCurrentRow(-1)
 			self.ui.spellingSuggestionsList.clear()
+			#Now show spelling corrections if the word was spelled incorrectly
+			if not word[:-1]:
+				pass
+			elif self.dictionary.check(word[:-1]) == False:
+				print word
+				#Create the font for the list
+				font = QtGui.QFont()
+				font.setPointSize(12)
+
+				self.wordsN = []
+				words = self.dictionary.suggest(word.strip())
+				for word in words:
+					self.wordsN.append((word, 0))
+				for word in self.wordsN:
+					item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
+					item.setFont(font)
+					item.setForeground(Qt.Qt.red)
+			
 		if word[-1:] in [".", "!", "?"]:
 			print "Autosaving"
 			self.autoSave()
@@ -255,7 +276,10 @@ class MainApplication(QtGui.QMainWindow):
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[-1:] in (" ", ".", ",", "!", "?", "\t"):
 			print "adding custom word"
-			self.wl.addCustomWord(text.lower()[0:len(text)-1])
+			if not text[0:len(text)-1]:
+				return
+			if self.dictionary.check(text.lower()[0:len(text)-1]):
+				self.wl.addCustomWord(text.lower()[0:len(text)-1])
 			return
 		
 		#Don't bother continuing if there are no words remaining
@@ -270,10 +294,6 @@ class MainApplication(QtGui.QMainWindow):
 
 		if not text:
 			return
-
-		#Create the font for the list
-   	   	font = QtGui.QFont()
-   		font.setPointSize(12)
 			
 		#Search the custom words
 		## self.wordsC = self.wl.search(text, False) # I CHANGED THIS!
@@ -281,8 +301,15 @@ class MainApplication(QtGui.QMainWindow):
 		## 	item = QtGui.QListWidgetItem(word[0] + str(word[1]), self.ui.spellingSuggestionsList)
 		## 	item.setFont(font)
 			
-		#Search the normal words
 		self.wordsN = self.wl.search(str(text), False)
+		#Sort by ranking
+		self.wordsN.sort(lambda x, y : cmp(y[1],x[1]))
+
+
+		#Create the font for the list
+   	   	font = QtGui.QFont()
+   		font.setPointSize(12)
+
 		for word in self.wordsN:
 			item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
 			item.setFont(font)

@@ -168,10 +168,11 @@ class spellCheckEdit(QTextEdit):
 	## 	return False
 		
 	def keyPressEvent(self, event):
-		#Auto-repeats shouldn't be needed unless
-		if event.isAutoRepeat():
-			if not event.key() in [Qt.Key_Backspace, Qt.Key_Right, Qt.Key_Left]:
-				return
+		#What was my reasoning behind this again?  Unless... what?  This has to be the stupidest "enhancement" I have ever made to a piece of software.
+		## #Auto-repeats shouldn't be needed unless
+		## if event.isAutoRepeat():
+		## 	if not event.key() in [Qt.Key_Backspace, Qt.Key_Right, Qt.Key_Left]:
+		## 		return
 
 		#Tabs should scroll through the words
 		if event.key() == Qt.Key_Backtab or event.key() == Qt.Key_Up:

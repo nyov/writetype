@@ -66,7 +66,7 @@ class wordsList:
 			return fileHandle.read().split("\n")
 
 	def addCustomWord(self, word):
-		word = word.lower()
+		word = str(word).lower()
 		if not filter(lambda x, w=word: x[0] == w, self.words):
 			self.words.append((word, 1))
 			self.words.sort(lambda x,y : cmp(x[0], y[0]))
