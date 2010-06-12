@@ -133,6 +133,16 @@ class MainApplication(QtGui.QMainWindow):
 		#Lets disable image support for now.  Yeah... I think that would be a wise idea.
 		self.ui.imageToolBar.setVisible(False)
 		self.ui.actionEnableImageToolbar.setVisible(False)
+
+		#Diction check
+		self.ui.dictionErrorFrame.setVisible(False)
+		QtCore.QObject.connect(self.ui.prevButton, QtCore.SIGNAL("clicked()"), self.prevDictionError)
+		QtCore.QObject.connect(self.ui.nextButton, QtCore.SIGNAL("clicked()"), self.nextDictionError)
+		self.dictionReplacements = None
+		self.dictionReplacementsIndex = 0
+		self.lastDictionReplacementsIndex = -1
+		QtCore.QObject.connect(self.ui.actionDiction_Check, QtCore.SIGNAL("triggered()"), self.dictionCheckModeEnable)
+		QtCore.QObject.connect(self.ui.dictionCloseButton, QtCore.SIGNAL("clicked()"), self.dictionCheckModeDisable)
 		
 		#Apply some settings
 		if platformSettings.getSetting("defaultfont", ""):
@@ -278,8 +288,8 @@ class MainApplication(QtGui.QMainWindow):
 			print "adding custom word"
 			if not text[0:len(text)-1]:
 				return
-			if self.dictionary.check(text.lower()[0:len(text)-1]):
-				self.wl.addCustomWord(text.lower()[0:len(text)-1])
+			if self.dictionary.check(text.lower()[0:-1]):
+				self.wl.addCustomWord(text.lower()[0:-1])
 			return
 		
 		#Don't bother continuing if there are no words remaining
@@ -389,6 +399,57 @@ class MainApplication(QtGui.QMainWindow):
 			## 	item.setForeground(QtGui.QColor.fromRgb(80, 80, 80))
 			## 	item.setFont(font)
 			
+	def nextDictionError(self):
+		print "going to diction check"
+		self.dictionCheck()
+
+	def prevDictionError(self):
+		pass
+
+	def dictionCheckModeEnable(self):
+		#Load these only if we need to
+		if self.dictionReplacements == None:
+			print "Loading words"
+			filepath = path.join(platformSettings.getPlatformSetting('pathToWordlists'),  "diction.txt")
+			fileHandle = open(filepath, 'r')
+			lines = fileHandle.read().split("\n")
+			self.dictionReplacements = []
+			for line in lines:
+				self.dictionReplacements.append(line.partition("\t"))
+		self.ui.dictionErrorFrame.setVisible(True)
+		self.dictionCheck()
+
+	def dictionCheckModeDisable(self):
+		self.ui.dictionErrorFrame.setVisible(False)
+		self.dictionReplacementsIndex = 0
+		self.lastDictionReplacementsIndex = 0
+
+	def dictionCheck(self):
+		text = str(self.ui.textArea.toPlainText()).lower()
+		while True:
+			index = text.find(self.dictionReplacements[self.dictionReplacementsIndex][0], self.lastDictionReplacementsIndex+2)
+			if index != -1:
+				self.ui.textArea.selectTextByPosition(index, index + len(self.dictionReplacements[self.dictionReplacementsIndex][0]))
+				suggestiontext = str(self.dictionReplacements[self.dictionReplacementsIndex][2])
+				if suggestiontext and suggestiontext[0] == "=":
+					print suggestiontext[1:]
+					print self.dictionReplacements
+					suggestiontext = [z for x,y,z in self.dictionReplacements if x == suggestiontext[1:]][0]
+					print suggestiontext
+				if not suggestiontext:
+					suggestiontext = self.tr("<i>No suggestion available.</i>")
+				self.ui.dictionErrorLabel.setText(suggestiontext)
+				self.lastDictionReplacementsIndex = index
+				break
+			else:
+				self.lastDictionReplacementsIndex = -1
+				self.dictionReplacementsIndex += 1
+				if self.dictionReplacementsIndex >= len(self.dictionReplacements):
+					self.dictionReplacementsIndex = 0
+					self.ui.dictionErrorLabel.setText(self.tr("<i>Diction check completed.</i>"))
+					self.ui.textArea.selectTextByPosition(0, 0)
+					break
+
 	def updateFontSizeSpinBoxValue(self):
 		if not self.ui.textArea.textCursor().selectedText():
 			self.ui.spinBoxFontSize.setValue(int(self.ui.textArea.fontPointSize()))
@@ -501,7 +562,7 @@ class MainApplication(QtGui.QMainWindow):
 		#Automated Readability Index - this is the easiest to implement :)
 		try:
 			readability = 4.71*(float(chars)/words) + .5*(float(words)/sentences) - 21.43
-			self.statisticsDialog.ui.readabilityLabel.setText(str(round(readability, 3)))
+			self.statisticsDialog.ui.readabilityLabel.setText(str(round(readability, 1)))
 		except ZeroDivisionError:
 			self.statisticsDialog.ui.readabilityLabel.setText("Invalid, no sentences found.")
 

@@ -120,6 +120,12 @@ class spellCheckEdit(QTextEdit):
 		
 		menu.exec_(event.globalPos())
 		
+	def selectTextByPosition(self, begin, end):
+		cursor = self.textCursor()
+		cursor.setPosition(begin)
+		cursor.setPosition(end, QTextCursor.KeepAnchor)
+		self.setTextCursor(cursor)
+
 	def replaceTextByPosition(self, word, begin, end):
 		#Replace from begin to end with word
 		cursor = self.textCursor()

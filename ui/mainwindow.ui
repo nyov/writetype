@@ -34,8 +34,26 @@
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="sizeLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>22</horstretch>
+          <verstretch>22</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Size:</string>
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="../res/resources.qrc">:/res/text.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
         </property>
         <property name="buddy">
          <cstring>spinBoxFontSize</cstring>
@@ -77,6 +95,88 @@
      </widget>
     </item>
     <item>
+     <widget class="QFrame" name="dictionErrorFrame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QToolButton" name="dictionCloseButton">
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/resources.qrc">
+           <normaloff>:/res/fileclose.png</normaloff>:/res/fileclose.png</iconset>
+         </property>
+         <property name="popupMode">
+          <enum>QToolButton::InstantPopup</enum>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="prevButton">
+         <property name="text">
+          <string>Prev.</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/resources.qrc">
+           <normaloff>:/res/go-previous.png</normaloff>:/res/go-previous.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="dictionErrorLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="nextButton">
+         <property name="layoutDirection">
+          <enum>Qt::RightToLeft</enum>
+         </property>
+         <property name="text">
+          <string>Next</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../res/resources.qrc">
+           <normaloff>:/res/go-next.png</normaloff>:/res/go-next.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="distractionButton">
       <property name="text">
        <string>Go Back </string>
@@ -106,7 +206,6 @@
     <addaction name="actionUnderline"/>
     <addaction name="actionDoubleSpace"/>
     <addaction name="actionSingleSpace"/>
-    <addaction name="actionSpeak"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -123,15 +222,6 @@
     </widget>
     <addaction name="menuToolbars"/>
     <addaction name="actionDistractionFree"/>
-    <addaction name="actionStatistics"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-    <addaction name="actionDocumentation"/>
-    <addaction name="actionAbout"/>
-    <addaction name="actionAboutQt"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
@@ -144,9 +234,26 @@
     <addaction name="actionSettings"/>
     <addaction name="actionClose"/>
    </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionSpeak"/>
+    <addaction name="actionStatistics"/>
+    <addaction name="actionDiction_Check"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionDocumentation"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAboutQt"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
+   <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -192,6 +299,7 @@
    <addaction name="actionAlignRight"/>
    <addaction name="actionHighlight"/>
    <addaction name="actionHighlightMode"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QToolBar" name="speakToolBar">
    <property name="windowTitle">
@@ -208,6 +316,7 @@
    </attribute>
    <addaction name="actionSpeak"/>
    <addaction name="actionStop"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QToolBar" name="imageToolBar">
    <property name="windowTitle">
@@ -225,6 +334,7 @@
    <addaction name="actionInsert_Image"/>
    <addaction name="actionAlign_Image_Left"/>
    <addaction name="actionAlign_Image_Right"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionSave">
    <property name="enabled">
@@ -253,7 +363,7 @@
   <action name="actionClose">
    <property name="icon">
     <iconset resource="../res/resources.qrc">
-     <normaloff>:/res/fileclose.png</normaloff>:/res/fileclose.png</iconset>
+     <normaloff>:/res/exit.png</normaloff>:/res/exit.png</iconset>
    </property>
    <property name="text">
     <string>Close</string>
@@ -603,6 +713,11 @@
     <string>Statistics</string>
    </property>
   </action>
+  <action name="actionDiction_Check">
+   <property name="text">
+    <string>Diction Check</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -611,6 +726,15 @@
    <header location="global">spellCheckEdit</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>spinBoxFontSize</tabstop>
+  <tabstop>fontComboBox</tabstop>
+  <tabstop>textArea</tabstop>
+  <tabstop>spellingSuggestionsList</tabstop>
+  <tabstop>distractionButton</tabstop>
+  <tabstop>prevButton</tabstop>
+  <tabstop>nextButton</tabstop>
+ </tabstops>
  <resources>
   <include location="../res/resources.qrc"/>
  </resources>

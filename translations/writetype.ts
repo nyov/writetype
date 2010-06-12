@@ -29,363 +29,393 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="417"/>
+        <location filename="main.py" line="506"/>
         <source>WriteType - </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="106"/>
+        <location filename="main.py" line="110"/>
         <source>Untitled Document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="147"/>
+        <location filename="main.py" line="161"/>
         <source>Crash recovery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="147"/>
+        <location filename="main.py" line="161"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="151"/>
+        <location filename="main.py" line="165"/>
         <source>Recovered file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="159"/>
+        <location filename="main.py" line="173"/>
         <source>Open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="184"/>
+        <location filename="main.py" line="198"/>
         <source>Save file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="216"/>
+        <location filename="main.py" line="230"/>
         <source>Feature unavailable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="216"/>
+        <location filename="main.py" line="230"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="376"/>
+        <location filename="main.py" line="465"/>
         <source>About this program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="376"/>
+        <location filename="main.py" line="465"/>
         <source>&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="386"/>
+        <location filename="main.py" line="475"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="484"/>
+        <location filename="main.py" line="577"/>
         <source>Quit?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="484"/>
+        <location filename="main.py" line="577"/>
         <source>You have unsaved work.  Do you want to save?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="main.py" line="440"/>
+        <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="main.py" line="449"/>
+        <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.py" line="311"/>
+        <location filename="mainwindow.py" line="380"/>
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="312"/>
-        <source>Size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.py" line="313"/>
+        <location filename="mainwindow.py" line="384"/>
         <source>Go Back </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="314"/>
+        <location filename="mainwindow.py" line="385"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="315"/>
+        <location filename="mainwindow.py" line="386"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="316"/>
+        <location filename="mainwindow.py" line="387"/>
         <source>Toolbars</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="317"/>
+        <location filename="mainwindow.py" line="390"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="318"/>
+        <location filename="mainwindow.py" line="388"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="322"/>
+        <location filename="mainwindow.py" line="394"/>
         <source>toolBar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="320"/>
+        <location filename="mainwindow.py" line="392"/>
         <source>toolBar_2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="323"/>
+        <location filename="mainwindow.py" line="395"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="324"/>
+        <location filename="mainwindow.py" line="396"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="325"/>
+        <location filename="mainwindow.py" line="397"/>
         <source>Save As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="326"/>
+        <location filename="mainwindow.py" line="398"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="327"/>
+        <location filename="mainwindow.py" line="399"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="328"/>
+        <location filename="mainwindow.py" line="400"/>
         <source>Ctrl+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="329"/>
+        <location filename="mainwindow.py" line="401"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="331"/>
+        <location filename="mainwindow.py" line="403"/>
         <source>Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="332"/>
+        <location filename="mainwindow.py" line="404"/>
         <source>Ctrl+B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="334"/>
+        <location filename="mainwindow.py" line="406"/>
         <source>Italic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="335"/>
+        <location filename="mainwindow.py" line="407"/>
         <source>Ctrl+I</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="337"/>
+        <location filename="mainwindow.py" line="409"/>
         <source>Underline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="338"/>
+        <location filename="mainwindow.py" line="410"/>
         <source>Ctrl+U</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="339"/>
+        <location filename="mainwindow.py" line="411"/>
         <source>Speak</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="340"/>
+        <location filename="mainwindow.py" line="412"/>
         <source>Speak Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="342"/>
+        <location filename="mainwindow.py" line="414"/>
         <source>Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="343"/>
+        <location filename="mainwindow.py" line="415"/>
         <source>Ctrl+Z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="345"/>
+        <location filename="mainwindow.py" line="417"/>
         <source>Redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="346"/>
+        <location filename="mainwindow.py" line="418"/>
         <source>Ctrl+Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="347"/>
+        <location filename="mainwindow.py" line="419"/>
         <source>File Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="348"/>
+        <location filename="mainwindow.py" line="420"/>
         <source>Enable File Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="349"/>
+        <location filename="mainwindow.py" line="421"/>
         <source>Edit Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="350"/>
+        <location filename="mainwindow.py" line="422"/>
         <source>Enable Edit Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="351"/>
+        <location filename="mainwindow.py" line="423"/>
         <source>Speaker Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="352"/>
+        <location filename="mainwindow.py" line="424"/>
         <source>Enable Speaker Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="353"/>
+        <location filename="mainwindow.py" line="425"/>
         <source>Documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="355"/>
+        <location filename="mainwindow.py" line="427"/>
         <source>About WriteType</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="356"/>
+        <location filename="mainwindow.py" line="428"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="358"/>
+        <location filename="mainwindow.py" line="430"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="359"/>
+        <location filename="mainwindow.py" line="431"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="361"/>
+        <location filename="mainwindow.py" line="433"/>
         <source>Highlight Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="363"/>
+        <location filename="mainwindow.py" line="435"/>
         <source>Highlight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="364"/>
+        <location filename="mainwindow.py" line="436"/>
         <source>Distraction Free</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="365"/>
+        <location filename="mainwindow.py" line="437"/>
         <source>Distraction Free Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="366"/>
+        <location filename="mainwindow.py" line="438"/>
         <source>Insert Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="367"/>
+        <location filename="mainwindow.py" line="439"/>
         <source>Align Image Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="368"/>
+        <location filename="mainwindow.py" line="440"/>
         <source>Align Image Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="369"/>
+        <location filename="mainwindow.py" line="441"/>
         <source>Image Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="370"/>
+        <location filename="mainwindow.py" line="442"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="371"/>
+        <location filename="mainwindow.py" line="443"/>
         <source>Align Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="372"/>
+        <location filename="mainwindow.py" line="444"/>
         <source>Align Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="373"/>
+        <location filename="mainwindow.py" line="445"/>
         <source>Align Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="374"/>
+        <location filename="mainwindow.py" line="446"/>
         <source>Double Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="375"/>
+        <location filename="mainwindow.py" line="447"/>
         <source>Single Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="376"/>
+        <location filename="mainwindow.py" line="448"/>
         <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.py" line="382"/>
+        <source>Prev.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.py" line="383"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.py" line="389"/>
+        <source>Tools</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.py" line="449"/>
+        <source>Diction Check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.py" line="381"/>
+        <source>...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SettingsDialogBox</name>
     <message>
-        <location filename="main.py" line="546"/>
+        <location filename="main.py" line="639"/>
         <source>Replace:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="547"/>
+        <location filename="main.py" line="640"/>
         <source>With:</source>
         <translation type="unfinished"></translation>
     </message>

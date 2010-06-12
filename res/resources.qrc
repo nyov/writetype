@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="res">
+    <file>go-next.png</file>
+    <file>go-previous.png</file>
     <file>page-simple.png</file>
     <file>qtcreator_logo_32.png</file>
     <file>view-statistics.png</file>
