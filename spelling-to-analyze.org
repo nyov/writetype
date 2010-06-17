@@ -22,10 +22,17 @@
    - [X] The currently selected item is not highlighted
 ** DONE Remove "align right"
 ** TODO If you hit bold, bold the selected word if nothing is selected
-** TODO Highlighting a bold thing changes everything to bold, and removing bold removes highlighting
-** TODO Changing the size of the font should change the entire text block
+** DONE Highlighting a bold thing changes everything to bold, and removing bold removes highlighting
+   CLOSED: [2010-06-16 Wed 08:52]
+** DONE Changing the size of the font should change the entire text block
+   CLOSED: [2010-06-17 Thu 13:05]
 ** DONE Checkbox changes in settings don't update
 ** DONE Redo starts enabled when there is nothing to redo
+** TODO Make it "emit" less often
+** DONE Fix the bug where it doesn't add a custom word if the user clicked the button in the word list to update it
+   CLOSED: [2010-06-17 Thu 15:12]
+** TODO Shave some seconds off spellcheckedit's keypressevent and event, and main's populatewordlist
+** TODO List of contributors in about box
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are

@@ -23,10 +23,8 @@ from PyQt4 import QtCore, QtGui, Qt
 import resources_rc
 from mainwindow import Ui_MainWindow
 import enchant
-import enchant.checker
 from enchant.tokenize import get_tokenizer
 from wordsList import wordsList
-import threading
 import platformSettings
 from settingsDialog import Ui_settingsDialog
 from distractionFree import Ui_distractionFree
@@ -79,7 +77,7 @@ class MainApplication(QtGui.QMainWindow):
 		#Font point size
 		QtCore.QObject.connect(self.ui.spinBoxFontSize, QtCore.SIGNAL("valueChanged(int)"), self.ui.textArea.setFontSize)
 		#self.ui.textArea.document().defaultFont().setPointSize(12)
-		#QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
+		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
 		#Font
 		QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setFont)
 		#QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontComboBoxValue)
@@ -94,10 +92,13 @@ class MainApplication(QtGui.QMainWindow):
 
 		#Word list for autocompletion
 		self.wl = wordsList()
-		self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
+		try:
+			self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
+		except enchant.tokenize.Error:
+			self.tokenizer = get_tokenizer("en_US")
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabEvent"), self.tabEvent)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabBackEvent"), self.tabBackEvent)
-		self.wlPointer = None
+		self.wlIndex = None
 
 		#Connections for autocorrect
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutoreplacement)
@@ -135,8 +136,8 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.actionEnableImageToolbar.setVisible(False)
 
 		#Diction check
-		self.ui.dictionErrorFrame.setVisible(False)
-		QtCore.QObject.connect(self.ui.prevButton, QtCore.SIGNAL("clicked()"), self.prevDictionError)
+		self.dictionCheckModeDisable()
+		#QtCore.QObject.connect(self.ui.prevButton, QtCore.SIGNAL("clicked()"), self.prevDictionError)
 		QtCore.QObject.connect(self.ui.nextButton, QtCore.SIGNAL("clicked()"), self.nextDictionError)
 		self.dictionReplacements = None
 		self.dictionReplacementsIndex = 0
@@ -239,10 +240,9 @@ class MainApplication(QtGui.QMainWindow):
 		self.speaker.setDriver()
 
 	def spellcheck(self):
-		dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
 		tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
 		for word in tokenizer(self.ui.textArea.toPlainText()):
-			if dictionary.check(word) == False:
+			if self.dictionary.check(word) == False:
 				pass
 
 	def checkForAutoreplacement(self, word):
@@ -251,7 +251,7 @@ class MainApplication(QtGui.QMainWindow):
 			if self.wl.correctWord(word[:-1]) != False:
 				print "Correcting", word[:-1]
 				self.ui.textArea.replaceSelectedWord(self.wl.correctWord(word[:-1]))
-			self.wlPointer = None
+			self.wlIndex = None
 			self.ui.spellingSuggestionsList.setCurrentRow(-1)
 			self.ui.spellingSuggestionsList.clear()
 			#Now show spelling corrections if the word was spelled incorrectly
@@ -278,18 +278,17 @@ class MainApplication(QtGui.QMainWindow):
 
 	def populateWordList(self, text):
 		text = str(text)
+		print "'", text, "'"
 
-		#This way, the word list won't keep changing if the user tabs to select a new word
-		if self.wlPointer != None:
-			return
-		
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[-1:] in (" ", ".", ",", "!", "?", "\t"):
-			print "adding custom word"
-			if not text[0:len(text)-1]:
-				return
+			print "trying to add custom word"
 			if self.dictionary.check(text.lower()[0:-1]):
 				self.wl.addCustomWord(text.lower()[0:-1])
+			return
+		
+		#This way, the word list won't keep changing if the user tabs to select a new word
+		if self.wlIndex != None:
 			return
 		
 		#Don't bother continuing if there are no words remaining
@@ -304,14 +303,8 @@ class MainApplication(QtGui.QMainWindow):
 
 		if not text:
 			return
-			
-		#Search the custom words
-		## self.wordsC = self.wl.search(text, False) # I CHANGED THIS!
-		## for word in self.wordsC:
-		## 	item = QtGui.QListWidgetItem(word[0] + str(word[1]), self.ui.spellingSuggestionsList)
-		## 	item.setFont(font)
-			
-		self.wordsN = self.wl.search(str(text), False)
+						
+		self.wordsN = self.wl.search(str(text), self.wl.NORMAL_WORDS)
 		#Sort by ranking
 		self.wordsN.sort(lambda x, y : cmp(y[1],x[1]))
 
@@ -324,30 +317,16 @@ class MainApplication(QtGui.QMainWindow):
 			item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
 			item.setFont(font)
 
-			## item.setForeground(QtGui.QColor.fromRgb(50-num, 50-num, 50-num))
-			
-			#action = QtGui.QAction(self)
-			#action.setObjectName("action"+word)
-			#action.setText(word)
-			#self.ui.menuFile.addAction(action)
-			#if len(word) > 4:
-				#if self.widgets[i]:
-					#self.ui.hboxlayout.removeWidget(self.widgets[i])
-					#del self.widgets[i]
-				#self.widgets[i]
-				#self.widgets[i] = QtGui.QPushButton(self)
-				#self.widgets[i].setText(word)
-				#self.widgets[i].setObjectName("button"+word)
-				#self.connect(self.widgets[i], QtCore.SIGNAL("pressed()"), lambda warg=word: self.ui.textArea.correctWordButton(warg))
-				#self.ui.hboxlayout.addWidget(self.widgets[i])
-				#self.widgets.append(self.widgets[i])
-				#if i >= 3:
-					#break
-				#else:
-					#i += 1
+			#Colors!
+			count = word[1]
+			if count > 10: count = 10
+		   	item.setBackground(QtGui.QColor.fromHsv(250-count*25, count*10, 255, int(bool(count))*255))
+
 		if platformSettings.getSetting("guessmisspellings", True) and len(self.wordsC) + len(self.wordsN) <= platformSettings.getSetting("threshold", 0):
-			#This is where things get trickier.  It MUST be a mispeling.  Fun fun fun!
-			possibilities = []
+			pass #for now
+
+			## #This is where things get trickier.  It MUST be a mispeling.  Fun fun fun!
+			## possibilities = []
 			## ##Replace double letters with a single letter and look
 			## #for cluster in re.findall(u'[a-z]\1', text):
 			## 	#possibilities += self.wl.search(text.replace(cluster, cluster[0]))
@@ -403,11 +382,8 @@ class MainApplication(QtGui.QMainWindow):
 		print "going to diction check"
 		self.dictionCheck()
 
-	def prevDictionError(self):
-		pass
-
 	def dictionCheckModeEnable(self):
-		#Load these only if we need to
+		#Load these into memory only if we need to
 		if self.dictionReplacements == None:
 			print "Loading words"
 			filepath = path.join(platformSettings.getPlatformSetting('pathToWordlists'),  "diction.txt")
@@ -417,17 +393,25 @@ class MainApplication(QtGui.QMainWindow):
 			for line in lines:
 				self.dictionReplacements.append(line.partition("\t"))
 		self.ui.dictionErrorFrame.setVisible(True)
+		self.ui.nextButton.setDisabled(False)
+		#self.ui.prevButton.setDisabled(False)
 		self.dictionCheck()
 
 	def dictionCheckModeDisable(self):
 		self.ui.dictionErrorFrame.setVisible(False)
 		self.dictionReplacementsIndex = 0
-		self.lastDictionReplacementsIndex = 0
+		self.lastDictionReplacementsIndex = -1
 
 	def dictionCheck(self):
 		text = str(self.ui.textArea.toPlainText()).lower()
 		while True:
 			index = text.find(self.dictionReplacements[self.dictionReplacementsIndex][0], self.lastDictionReplacementsIndex+2)
+			#Make sure it is a separate word.  This is easier than regex
+			if index != -1 and not text[index + len(self.dictionReplacements[self.dictionReplacementsIndex][0])] in [" " , ".", "!", ",", ":", ";"]:
+				self.lastDictionReplacementsIndex = index
+				print self.lastDictionReplacementsIndex
+				continue
+			#If a word was found
 			if index != -1:
 				self.ui.textArea.selectTextByPosition(index, index + len(self.dictionReplacements[self.dictionReplacementsIndex][0]))
 				suggestiontext = str(self.dictionReplacements[self.dictionReplacementsIndex][2])
@@ -447,6 +431,8 @@ class MainApplication(QtGui.QMainWindow):
 				if self.dictionReplacementsIndex >= len(self.dictionReplacements):
 					self.dictionReplacementsIndex = 0
 					self.ui.dictionErrorLabel.setText(self.tr("<i>Diction check completed.</i>"))
+					self.ui.nextButton.setDisabled(True)
+					#self.ui.prevButton.setDisabled(True)
 					self.ui.textArea.selectTextByPosition(0, 0)
 					break
 
@@ -515,30 +501,30 @@ class MainApplication(QtGui.QMainWindow):
 	def tabEvent(self):
 		if not self.wordsN:
 			return
-		if self.wlPointer == None:
-			self.wlPointer = 0
-		elif self.wlPointer >= len(self.wordsN)-1:
-			self.wlPointer = 0
+		if self.wlIndex == None:
+			self.wlIndex = 0
+		elif self.wlIndex >= len(self.wordsN)-1:
+			self.wlIndex = 0
 		else:
-			self.wlPointer += 1
-       		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])
-		self.ui.spellingSuggestionsList.setCurrentRow(self.wlPointer)
+			self.wlIndex += 1
+       		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlIndex][0])
+		self.ui.spellingSuggestionsList.setCurrentRow(self.wlIndex)
 
 	def tabBackEvent(self):
 		if not self.wordsN:
 			return
-		if self.wlPointer == None: 
-			self.wlPointer = 0
-		elif self.wlPointer == 0:
-			self.wlPointer = len(self.wordsN)-1
+		if self.wlIndex == None: 
+			self.wlIndex = 0
+		elif self.wlIndex == 0:
+			self.wlIndex = len(self.wordsN)-1
 		else:
-			self.wlPointer -= 1
-		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlPointer][0])
-		self.ui.spellingSuggestionsList.setCurrentRow(self.wlPointer)
+			self.wlIndex -= 1
+		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlIndex][0])
+		self.ui.spellingSuggestionsList.setCurrentRow(self.wlIndex)
 
 	def correctWordFromListItem(self, wordItem):
 		word = wordItem.text()
-		self.wlPointer = self.ui.spellingSuggestionsList.row(wordItem)
+		self.wlIndex = self.ui.spellingSuggestionsList.row(wordItem)
 		self.ui.textArea.replaceSelectedWord(word)
 
 	def showStatisticsDialog(self):
@@ -568,9 +554,6 @@ class MainApplication(QtGui.QMainWindow):
 
 		self.statisticsDialog.show()
 
-		
-		
-
 	def closeEvent(self, event):
 		#Set the stuff up to ask for a save on exit
 		if self.ui.actionSave.isEnabled():
@@ -584,8 +567,8 @@ class MainApplication(QtGui.QMainWindow):
 			elif response == QtGui.QMessageBox.Cancel:
 				event.ignore()
 				return
-		#Send the log
-		self.ui.textArea.log.send()
+		##Send the log
+		#self.ui.textArea.log.send()
 		#Purge the autosaves
 		path = platformSettings.getSetting("autosavepath", "")
 		if path:
@@ -605,27 +588,24 @@ class SettingsDialogBox(QtGui.QDialog):
 		QtCore.QObject.connect(self.ui.okayButton, QtCore.SIGNAL("clicked()"), self.okayClicked)
 		QtCore.QObject.connect(self.ui.applyButton, QtCore.SIGNAL("clicked()"), self.applyClicked)
 
-		
-		#NOTE TO SELF: Maybe I can load the word lists from an XML file one day if I have nothing better to do
+		#Load word list from xml
 		self.wordListButtonGroup = QtGui.QButtonGroup()
 		filepath = path.join(platformSettings.getPlatformSetting("pathToWordlists"), "wordlists.xml")
 		dom = minidom.parse(filepath)
 		#Don't forget to sort these by sortweight!
 		for node in dom.getElementsByTagName("wordlist"):
-			button = QtGui.QRadioButton(node.getAttribute("name"), self.ui.tab)
-			self.ui.verticalLayout_4.addWidget(button)
-			self.wordListButtonGroup.addButton(button, int(node.getAttribute("id")))
+			if node.getAttribute("lang") == platformSettings.getPlatformSetting("language"):
+				button = QtGui.QRadioButton(node.getAttribute("name"), self.ui.tab)
+				self.ui.verticalLayout_4.addWidget(button)
+				self.wordListButtonGroup.addButton(button, int(node.getAttribute("id")))
 		
 		#Load the radio button settings
-## 		self.wordListButtonGroup = QtGui.QButtonGroup()
-## 		self.wordListButtonGroup.addButton(self.ui.wordListSize1, 1)
-## 		self.wordListButtonGroup.addButton(self.ui.wordListSize2, 2)
-## 		self.wordListButtonGroup.addButton(self.ui.wordListSize3, 3)
-## 		self.wordListButtonGroup.addButton(self.ui.wordListSize4, 4)
-## 		self.wordListButtonGroup.addButton(self.ui.wordListSize5, 5)
 		self.wordListButtonGroup.setExclusive(True)
 		#Now actually select the correct button
-		self.wordListButtonGroup.buttons()[int(platformSettings.getSetting("wordlist", 2))-1].setChecked(True)
+		try:
+			self.wordListButtonGroup.buttons()[platformSettings.getSetting("wordlist", 2)-1].setChecked(True)
+		except IndexError:
+			self.wordListButtonGroup.buttons()[0].setChecked(True)			
 		
 		#Load the word completion settings
 		self.ui.guessMisspellingsCheckbox.setChecked(platformSettings.getSetting("guessmisspellings", True))
@@ -729,8 +709,10 @@ class StatisticsWindow(QtGui.QDialog):
 application = QtGui.QApplication(sys.argv)
 #translation
 trans = QTranslator()
-trans.load("qt_" + QLocale.system().name())
+print path.join(platformSettings.getPlatformSetting("basePath"), "translations")
+trans.load("qt_" + platformSettings.getPlatformSetting("language"), path.join(platformSettings.getPlatformSetting("basePath"), "translations"))
 application.installTranslator(trans)
 app = MainApplication()
 app.show()
-application.exec_()
+import cProfile
+cProfile.run('application.exec_()')

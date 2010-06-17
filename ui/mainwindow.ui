@@ -127,17 +127,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="prevButton">
-         <property name="text">
-          <string>Prev.</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../res/resources.qrc">
-           <normaloff>:/res/go-previous.png</normaloff>:/res/go-previous.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QLabel" name="dictionErrorLabel">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
@@ -732,7 +721,6 @@
   <tabstop>textArea</tabstop>
   <tabstop>spellingSuggestionsList</tabstop>
   <tabstop>distractionButton</tabstop>
-  <tabstop>prevButton</tabstop>
   <tabstop>nextButton</tabstop>
  </tabstops>
  <resources>

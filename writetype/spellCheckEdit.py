@@ -29,8 +29,8 @@ import enchant.checker
 from enchant.tokenize import get_tokenizer
 import platformSettings
 #For logger
-import urllib
-import urllib2
+#import urllib
+#import urllib2
 from PyQt4.QtGui import QFileDialog
 from PyQt4.QtGui import QTextBlockUserData
 
@@ -45,7 +45,7 @@ class spellCheckEdit(QTextEdit):
 		self.setFontPointSize(12)
 		self.highlighter.setDict(self.dictionary)
 			##Logging... for me :)
-		self.log = logger()
+		#self.log = logger()
 		
 	def mousePressEvent(self, event):
 		#This will move the cursor to the appropriate position
@@ -157,21 +157,7 @@ class spellCheckEdit(QTextEdit):
 		self.keyPressEvent(QKeyEvent(QEvent.KeyPress, 0, Qt.NoModifier))
 		self.setFocus()
 		#Log it
-		self.log.log(oldword + " -> " + str(word))
-
-	#Send shift-tabs to the widget
-	def event(self, event):
-		if event.type() == QEvent.KeyPress:
-			event = QKeyEvent(event)
-			self.keyPressEvent(event)
-			return True
-		return QTextEdit.event(self, event)
-
-	## def eventFilter(self, object, event):
-	## 	if event.type() == QEvent.KeyPress:
-	## 		print "key pressed"
-	## 		return False
-	## 	return False
+		#self.log.log(oldword + " -> " + str(word))
 		
 	def keyPressEvent(self, event):
 		#What was my reasoning behind this again?  Unless... what?  This has to be the stupidest "enhancement" I have ever made to a piece of software.
@@ -239,21 +225,23 @@ class spellCheckEdit(QTextEdit):
 
 	#Don't allow multiple fonts in one document
 	def setFont(self, font):
-		cursor = self.textCursor()
-		cursor.setPosition(0)
-		cursor.setPosition(len(self.toPlainText()), cursor.KeepAnchor)
-		fontFormat = QTextCharFormat()
-		fontFormat.setFont(font)
-		cursor.setCharFormat(fontFormat)
+		if not self.hasFocus():
+			cursor = self.textCursor()
+			cursor.setPosition(0)
+			cursor.setPosition(len(self.toPlainText()), cursor.KeepAnchor)
+			fontFormat = QTextCharFormat()
+			fontFormat.setFont(font)
+			cursor.setCharFormat(fontFormat)
 
 	#Don't allow multiple fonts in one document
 	def setFontSize(self, size):
-		cursor = self.textCursor()
-		cursor.select(QTextCursor.BlockUnderCursor)
+		if not self.hasFocus():
+			cursor = self.textCursor()
+			cursor.select(QTextCursor.BlockUnderCursor)
 
-		fontFormat = QTextCharFormat()
-		fontFormat.setFontPointSize(size)
-		cursor.setCharFormat(fontFormat)
+			fontFormat = QTextCharFormat()
+			fontFormat.setFontPointSize(size)
+			cursor.setCharFormat(fontFormat)
 
 	def toggleHighlight(self, isSet):
 		self.highlighting = isSet
@@ -398,10 +386,9 @@ class Highlighter(QSyntaxHighlighter):
 		text = unicode(text)
 
 		#Spellcheck
-		for word_object in re.finditer(self.WORDS, text):
-			#word_object = re.search(self.WORDS, word_object_extra.group())
-			
-			if not self.dict.check(word_object.group(1)):
+		words = re.finditer(self.WORDS, text)
+		matches = [word_object for word_object in words if not self.dict.check(word_object.group(1))]
+		for word_object in matches:
 				self.setFormat(word_object.start(), (word_object.end() - len(word_object.group(2))) - word_object.start(), self.format_spelling)
 
 		if not platformSettings.getSetting("grammarcheck", True):
@@ -410,19 +397,6 @@ class Highlighter(QSyntaxHighlighter):
 		for rule in self.corrections:
 			for word_object in re.finditer(rule["re"], text):
 					self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-			
-		## for word_object in re.finditer(self.SENTENCE_ENDS, text):
-		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		## for word_object in re.finditer(self.SENTENCE_STARTS, text):
-		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		## for word_object in re.finditer(self.SPACE_AFTER_PUNCTUATION, text):
-		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		## for word_object in re.finditer(self.MULTIPLE_SPACES_PUNCTUATION, text):
-		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		## for word_object in re.finditer(self.MULTIPLE_SPACES, text):
-		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
-		## for word_object in re.finditer(self.SPACE_BEFORE_PUNCTUATION, text):
-		## 		self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
 
 	def getDescriptionText(self, pos, text):
 		text = unicode(text)
@@ -438,17 +412,17 @@ class Highlighter(QSyntaxHighlighter):
 						"new": re.sub(rule["re"], rule["fix"], word_object.group(0)) })
 		return results
 					
-class logger:
-	logText = ""
-	def log(self, text):
-		self.logText += text
-		self.logText += "<br />\n"
-	def send(self):
-		if not self.logText:
-			return
-		if platformSettings.getSetting("sendusagestatistics", True) == True:
-			data = urllib.urlencode({"log": self.logText, "id": platformSettings.getPlatformSetting("statsId")})
-			request = urllib2.Request(platformSettings.getPlatformSetting('statsUrl'), data)
-			urllib2.urlopen(request)
+## class logger:
+## 	logText = ""
+## 	def log(self, text):
+## 		self.logText += text
+## 		self.logText += "<br />\n"
+## 	def send(self):
+## 		if not self.logText:
+## 			return
+## 		if platformSettings.getSetting("sendusagestatistics", True) == True:
+## 			data = urllib.urlencode({"log": self.logText, "id": platformSettings.getPlatformSetting("statsId")})
+## 			request = urllib2.Request(platformSettings.getPlatformSetting('statsUrl'), data)
+## 			urllib2.urlopen(request)
 		
 	

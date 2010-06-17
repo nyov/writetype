@@ -16,7 +16,7 @@
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from PyQt4.QtCore import QSettings, QVariant
+from PyQt4.QtCore import QSettings, QVariant, QLocale
 from ConfigParser import SafeConfigParser
 import os
 import sys
@@ -44,6 +44,13 @@ def getPlatformSetting(key):
 		return os.path.join(prefix, 'wordlists')
 	elif key == "pathToRes":
 		return os.path.join(prefix, 'res')
+	elif key == "basePath":
+		return prefix
+	elif key == "language":
+		language = str(QLocale.system().name())
+		return language
+
+
 
 	return parser.get('General', key)
 

@@ -17,17 +17,30 @@
 
 
 import platformSettings
-from sys import getrecursionlimit, setrecursionlimit
 from os import path
+from xml.dom import minidom
+
 
 class wordsList:
+	NOSORT = 1
+	SORT = 2
+	NORMAL_WORDS = 1
+	CUSTOM_WORDS = 2
 	def __init__(self):
 		self.refreshWords()
 		self.refreshWordsCustom()
 		self.refreshReplacementTable()
 
 	def refreshWords(self):
-		self.words = self.loadWords(path.join(platformSettings.getPlatformSetting('pathToWordlists'),  "list" + str(platformSettings.getSetting("wordlist", 2)) + ".txt"))
+		dom = minidom.parse(path.join(platformSettings.getPlatformSetting('basePath'), 'wordlists', 'wordlists.xml'))
+		self.words = []
+		#It will be empty if it wasn't found, just like we want
+		for node in dom.getElementsByTagName("wordlist"):
+			if node.getAttribute("lang") == platformSettings.getPlatformSetting("language") and node.getAttribute("id") == platformSettings.getSetting("wordlist", "1"):
+				self.words = self.loadWords(path.join(platformSettings.getPlatformSetting('basePath'), 'wordlists', node.getAttribute('file')))
+				break
+
+		#self.words = self.loadWords(path.join(platformSettings.getPlatformSetting('pathToWordlists'),  "list" + str(platformSettings.getSetting("wordlist", 2)) + ".txt"))
 
 	def refreshWordsCustom(self):
 		customwords = platformSettings.getSetting("customwords", "").lower().split("\n")
@@ -67,67 +80,24 @@ class wordsList:
 
 	def addCustomWord(self, word):
 		word = str(word).lower()
-		if not filter(lambda x, w=word: x[0] == w, self.words):
+		match = [(w,s) for w,s in self.words if w == word]
+	   	if match:
+			w,s = match[0]
+	   	   	pos = self.words.index((w,s))
+	   	   	self.words[pos] = (w,s+1)
+		else:
 			self.words.append((word, 1))
 			self.words.sort(lambda x,y : cmp(x[0], y[0]))
-		else:
-			for item in self.words:
-				if item[0] == word:
-					pos = self.words.index(item)
-					self.words[pos] = (item[0], item[1]+1)
-
    
-## 	@staticmethod
-## 	def quicksort(tosort):
-## 		if len(tosort) == 0:
-## 			return []
-## 		if len(tosort) == 1:
-## 			return tosort
-## 		if len(tosort) == 2:
-## 			if tosort[0] <= tosort[1]:
-## 				return tosort
-## 			else:
-## 				return [tosort[1], tosort[0]]
-## 		if(getrecursionlimit() < len(tosort)):
-## 			setrecursionlimit(len(tosort))
-## 		pivot = tosort.pop()
-## 		list1 = []
-## 		list2 = []
-## 		while tosort != []:
-## 			item = tosort.pop()
-## 			if item <= pivot:
-## 				list1.append(item)
-## 			else:
-## 				list2.append(item)
-## 		return wordsList.quicksort(list1) + [pivot] + wordsList.quicksort(list2)
-	
-## 	@staticmethod
-## 	def mergesort(baselist, mergelist):
-## 		if not type(mergelist) == type([]):
-## 			mergelist = [mergelist]
-## 		#This assumes the base list is already sorted - no need to bother checking otherwise.
-## 		for i in range(0, len(mergelist)):
-## 			for j in range(0, len(baselist)):
-## 				set = False
-## 				if baselist[j] > mergelist[i]:
-## 					baselist = baselist[:j] + [mergelist[i]] + baselist[j:]
-## 					set = True
-## 					break
-## 			if not set:
-## 				baselist += [mergelist[i]]
-## 		return baselist
-	
-	def search(self, firstLetters, customWords=False, noSort=False):
-		if customWords:
+	def search(self, firstLetters, customWords=NORMAL_WORDS, sort=NOSORT):
+		if customWords == self.CUSTOM_WORDS:
 			wordsList = self.wordsCustom
 		else:
 			wordsList = self.words
 		results = []
-		results = filter(lambda x:x[0].startswith(firstLetters.lower()), wordsList)
-		#for num in range(0, len(wordsList)):
-			#if wordsList[num].find(firstLetters.lower()) == 0:
-				#results.append(wordsList[num])
-		if noSort:
+		#results = filter(lambda x:x[0].startswith(firstLetters.lower()), wordsList)
+		results = [(w,s) for w,s in wordsList if w.startswith(firstLetters.lower())]
+		if sort == self.SORT:
 			return results
 		results.sort(lambda x,y : cmp(x[0], y[0]))
 		return results

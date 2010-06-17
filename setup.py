@@ -8,6 +8,7 @@ from platform import system
 #Settings for all platforms
 data_files_value = [(os.path.join(sys.prefix, 'share', 'writetype', 'res'), glob.glob('res/*')),
                     (os.path.join(sys.prefix, 'share', 'writetype', 'wordlists'), glob.glob('wordlists/*')),
+                    (os.path.join(sys.prefix, 'share', 'writetype', 'translations'), glob.glob('translations/*')),
                     (os.path.join(sys.prefix, 'share', 'writetype'), ['platformSettings.ini']),
                     (os.path.join(sys.prefix, 'share', 'applications'), ['writetype.desktop'])]
 options_value = {}
@@ -32,7 +33,7 @@ setup(
     version = '0.1.53',
     description = 'A program to help people type more easily.',
     author = 'Max Shinn',
-    author_email = 'trombonechamp@gmail.com',
+    author_email = 'max@bernsteinforpresident.com',
     url = 'http://bernsteinforpresident.com/software/writetype',
     packages = ['writetype'],
     scripts = ['scripts/writetype'],
