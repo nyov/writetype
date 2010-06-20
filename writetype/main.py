@@ -20,21 +20,21 @@
 
 import sys
 from PyQt4 import QtCore, QtGui, Qt
-import resources_rc
-from mainwindow import Ui_MainWindow
+from . import resources_rc
+from .mainwindow import Ui_MainWindow
 import enchant
 from enchant.tokenize import get_tokenizer
-from wordsList import wordsList
-import platformSettings
-from settingsDialog import Ui_settingsDialog
-from distractionFree import Ui_distractionFree
+from .wordsList import wordsList
+from . import platformSettings
+from .settingsDialog import Ui_settingsDialog
+from .distractionFree import Ui_distractionFree
 import re
 from os import path, sep
-from speaker import Speaker
+from .speaker import Speaker
 from PyQt4.QtGui import QMessageBox
 from PyQt4.QtCore import QTranslator, QLocale
 from xml.dom import minidom
-from statistics import Ui_statisticsDialog
+from .statistics import Ui_statisticsDialog
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):

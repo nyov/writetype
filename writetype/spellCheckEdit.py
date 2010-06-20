@@ -27,7 +27,7 @@ import re
 import enchant
 import enchant.checker
 from enchant.tokenize import get_tokenizer
-import platformSettings
+from . import platformSettings
 #For logger
 #import urllib
 #import urllib2

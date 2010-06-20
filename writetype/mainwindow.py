@@ -440,5 +440,5 @@ class Ui_MainWindow(object):
         self.actionStatistics.setText(QtGui.QApplication.translate("MainWindow", "Statistics", None, QtGui.QApplication.UnicodeUTF8))
         self.actionDiction_Check.setText(QtGui.QApplication.translate("MainWindow", "Diction Check", None, QtGui.QApplication.UnicodeUTF8))
 
-from spellCheckEdit import spellCheckEdit
-import resources_rc
+from .spellCheckEdit import spellCheckEdit
+from . import resources_rc
