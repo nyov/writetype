@@ -23,7 +23,7 @@ import sys
 
 prefix = os.path.join(sys.prefix, 'share', 'writetype')
 if not os.path.exists(prefix):
-	prefix = ".."
+	prefix = os.path.join(os.path.dirname(__file__), "..")
 	print "setting prefix"
 print "passed path"
 
