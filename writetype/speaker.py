@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
-import platformSettings
+from . import platformSettings
 import re
 from platform import system
 
@@ -87,16 +87,16 @@ class Speaker:
 		#Import
 		try:
 			if self.driver == "festival":
-				from festivalInterface import FestivalInterface
+				from .festivalInterface import FestivalInterface
 				self.ttsdriver = FestivalInterface(platformSettings.getPlatformSetting("pathToFestival"))
 			elif self.driver == "pyttsx":
-				from pyttsxInterface import PyttsxInterface
+				from .pyttsxInterface import PyttsxInterface
 				self.ttsdriver = PyttsxInterface() # This will make a bug, I'll fix it later
 			elif self.driver == "espeak":
-				from espeakInterface import EspeakInterface
+				from .espeakInterface import EspeakInterface
 				self.ttsdriver = EspeakInterface(platformSettings.getPlatformSetting("pathToEspeak"))
 		except ImportError:
-			from ttsInterface import TtsInterface
+			from .ttsInterface import TtsInterface
 			self.ttsdriver = TtsInterface()
 			self.driver = "null"
 			print "===========ERROR!===========\nInvalid TTS Driver\nRunning without TTS support"
