@@ -281,11 +281,12 @@ class MainApplication(QtGui.QMainWindow):
 		print "'", text, "'"
 
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
-		if text[-1:] in (" ", ".", ",", "!", "?", "\t"):
+		if text[0:-1] and text[-1:] in (" ", ".", ",", "!", "?", "\t"):
 			print "trying to add custom word"
 			if self.dictionary.check(text.lower()[0:-1]):
 				self.wl.addCustomWord(text.lower()[0:-1])
 			return
+		
 		
 		#This way, the word list won't keep changing if the user tabs to select a new word
 		if self.wlIndex != None:
@@ -448,7 +449,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.textArea.setFocus()
 		
 	def showAbout(self):
-		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a>"""))
+		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr></table>"""))
 		
 	def openHelpPage(self):
 		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype/documentation"))

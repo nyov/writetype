@@ -32,7 +32,8 @@
 ** DONE Fix the bug where it doesn't add a custom word if the user clicked the button in the word list to update it
    CLOSED: [2010-06-17 Thu 15:12]
 ** TODO Shave some seconds off spellcheckedit's keypressevent and event, and main's populatewordlist
-** TODO List of contributors in about box
+** DONE List of contributors in about box
+   CLOSED: [2010-06-21 Mon 14:26]
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are

@@ -196,6 +196,8 @@ class spellCheckEdit(QTextEdit):
 			newweight = QFont.Normal
 		else:
 			newweight = QFont.Bold
+		if not self.textCursor().hasSelection():
+			self.textCursor().select(QTextCursor.WordUnderCursor)
 		self.setFontWeight(newweight)
 		self.setFocus()
 		
