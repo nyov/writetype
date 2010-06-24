@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/statistics.ui'
 #
-# Created: Thu Jun 17 14:23:29 2010
+# Created: Thu Jun 24 09:08:17 2010
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!

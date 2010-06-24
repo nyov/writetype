@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
-from . import platformSettings
+import platformSettings
 import re
 from platform import system
 
@@ -87,7 +87,7 @@ class Speaker:
 		#Import
 		try:
 			if self.driver == "festival":
-				from .festivalInterface import FestivalInterface
+				from festivalInterface import FestivalInterface
 				self.ttsdriver = FestivalInterface(platformSettings.getPlatformSetting("pathToFestival"))
 			elif self.driver == "pyttsx":
 				from .pyttsxInterface import PyttsxInterface

@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="res">
+    <file>background.png</file>
     <file>go-next.png</file>
     <file>go-previous.png</file>
     <file>page-simple.png</file>

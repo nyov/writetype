@@ -16,7 +16,7 @@
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from . import platformSettings
+import platformSettings
 from os import path
 from xml.dom import minidom
 

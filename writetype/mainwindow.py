@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Thu Jun 17 14:23:28 2010
+# Created: Thu Jun 24 09:08:16 2010
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -440,5 +440,5 @@ class Ui_MainWindow(object):
         self.actionStatistics.setText(QtGui.QApplication.translate("MainWindow", "Statistics", None, QtGui.QApplication.UnicodeUTF8))
         self.actionDiction_Check.setText(QtGui.QApplication.translate("MainWindow", "Diction Check", None, QtGui.QApplication.UnicodeUTF8))
 
-from .spellCheckEdit import spellCheckEdit
-from . import resources_rc
+from spellCheckEdit import spellCheckEdit
+import resources_rc

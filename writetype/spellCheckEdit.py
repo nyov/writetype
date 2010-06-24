@@ -27,7 +27,7 @@ import re
 import enchant
 import enchant.checker
 from enchant.tokenize import get_tokenizer
-from . import platformSettings
+import platformSettings
 #For logger
 #import urllib
 #import urllib2
@@ -42,7 +42,6 @@ class spellCheckEdit(QTextEdit):
 		QTextEdit.__init__(self, *args)
 		self.dictionary = enchant.DictWithPWL('en_us')
 		self.highlighter = Highlighter(self.document())
-		self.setFontPointSize(12)
 		self.highlighter.setDict(self.dictionary)
 			##Logging... for me :)
 		#self.log = logger()
