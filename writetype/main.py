@@ -99,6 +99,10 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabEvent"), self.tabEvent)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabBackEvent"), self.tabBackEvent)
 		self.wlIndex = None
+		self.wlFont = QtGui.QFont()
+		self.wlFont.setPointSize(12)
+
+
 
 		#Connections for autocorrect
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutoreplacement)
@@ -259,17 +263,13 @@ class MainApplication(QtGui.QMainWindow):
 				pass
 			elif self.dictionary.check(word[:-1]) == False:
 				print word
-				#Create the font for the list
-				font = QtGui.QFont()
-				font.setPointSize(12)
-
 				self.wordsN = []
 				words = self.dictionary.suggest(word.strip())
 				for word in words:
 					self.wordsN.append((word, 0))
 				for word in self.wordsN:
 					item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
-					item.setFont(font)
+					item.setFont(self.wlFont)
 					item.setForeground(Qt.Qt.red)
 			
 		if word[-1:] in [".", "!", "?"]:
@@ -282,7 +282,6 @@ class MainApplication(QtGui.QMainWindow):
 
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[0:-1] and text[-1:] in (" ", ".", ",", "!", "?", "\t"):
-			print "trying to add custom word"
 			if self.dictionary.check(text.lower()[0:-1]):
 				self.wl.addCustomWord(text.lower()[0:-1])
 			return
@@ -299,24 +298,17 @@ class MainApplication(QtGui.QMainWindow):
 		
 		self.ui.spellingSuggestionsList.clear()
 		
-		if len(text) <= platformSettings.getSetting("minimumletters", 0):
+		if not text or len(text) <= platformSettings.getSetting("minimumletters", 0):
 			return
 
-		if not text:
-			return
-						
 		self.wordsN = self.wl.search(str(text), self.wl.NORMAL_WORDS)
 		#Sort by ranking
 		self.wordsN.sort(lambda x, y : cmp(y[1],x[1]))
 
 
-		#Create the font for the list
-   	   	font = QtGui.QFont()
-   		font.setPointSize(12)
-
 		for word in self.wordsN:
 			item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
-			item.setFont(font)
+			item.setFont(self.wlFont)
 
 			#Colors!
 			count = word[1]
@@ -715,5 +707,4 @@ trans.load("qt_" + platformSettings.getPlatformSetting("language"), path.join(pl
 application.installTranslator(trans)
 app = MainApplication()
 app.show()
-import cProfile
-cProfile.run('application.exec_()')
+application.exec_()
