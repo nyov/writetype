@@ -25,20 +25,22 @@ prefix = os.path.join(sys.prefix, 'share', 'writetype')
 if not os.path.exists(prefix):
 	prefix = os.path.join(os.path.dirname(__file__), "..")
 	print "setting prefix"
-print "passed path"
 
 #Some defines
 try:
 	parser = SafeConfigParser()
 	
 	parser.read(os.path.join(prefix, 'platformSettings.ini'))
-	cache = {} #A dictionary
+	cache = {} #A dictionary for normal settings cache
+	pCache = {} #Platform settings cache
 	settingsHandle = QSettings("BernsteinForPresident", "WriteType")
 	settingsError = False
 except:
 	print "Error loading settings file!"
 	settingsError = True
 def getPlatformSetting(key):
+	if key in pCache:
+		return pCache[key]
 	global prefix
 	if key == "pathToWordlists":
 		return os.path.join(prefix, 'wordlists')
@@ -48,9 +50,8 @@ def getPlatformSetting(key):
 		return prefix
 	elif key == "language":
 		language = str(QLocale.system().name())
+		#language = "ar-AR"
 		return language
-
-
 
 	return parser.get('General', key)
 
@@ -86,3 +87,9 @@ def setSetting(key, value):
 		cache[key] = QVariant(value)
 	else:
 		print "Settings error!  Setting not saved!"
+
+def setPSettingTmp(key, value):
+	pCache[key] = value
+
+def setSettingTmp(key, value):
+	cache[key] = QVariant(value)

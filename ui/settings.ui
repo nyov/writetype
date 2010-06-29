@@ -196,15 +196,15 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="autocompletions">
+     <widget class="QWidget" name="autocorrections">
       <attribute name="title">
-       <string>Auto-completions</string>
+       <string>Auto-corrections</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QCheckBox" name="autocompletionCheckBox">
+        <widget class="QCheckBox" name="autocorrectionCheckBox">
          <property name="text">
-          <string>Use auto-completion</string>
+          <string>Use auto-correction</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -218,7 +218,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QTableWidget" name="autocompletionsTable">
+           <widget class="QTableWidget" name="autocorrectionsTable">
             <property name="rowCount">
              <number>1</number>
             </property>
@@ -236,6 +236,18 @@
             </attribute>
             <attribute name="verticalHeaderVisible">
              <bool>false</bool>
+            </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="horizontalHeaderMinimumSectionSize">
+             <number>34</number>
+            </attribute>
+            <attribute name="horizontalHeaderDefaultSectionSize">
+             <number>150</number>
             </attribute>
             <row/>
             <column/>
@@ -272,10 +284,10 @@
        <string>Other</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="5" column="1">
+       <item row="4" column="1">
         <widget class="QFontComboBox" name="defaultFont"/>
        </item>
-       <item row="5" column="0">
+       <item row="4" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Default Font:</string>
@@ -289,14 +301,7 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QCheckBox" name="usageStatisticsCheckbox">
-         <property name="text">
-          <string>Send usage statistics to help improve the program</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
+       <item row="6" column="1">
         <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -312,14 +317,14 @@
          </property>
         </spacer>
        </item>
-       <item row="3" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="label_9">
          <property name="text">
           <string>Reading speed:</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
+       <item row="2" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QSlider" name="speedSlider">
@@ -361,21 +366,21 @@
          </item>
         </layout>
        </item>
-       <item row="4" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="label_10">
          <property name="text">
           <string>TTS Engine</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="3" column="1">
         <widget class="QComboBox" name="ttsEngineBox">
          <property name="editable">
           <bool>false</bool>
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
+       <item row="5" column="1">
         <widget class="QCheckBox" name="useDefaultFont">
          <property name="text">
           <string>System Default</string>
@@ -487,7 +492,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>autocompletionCheckBox</sender>
+   <sender>autocorrectionCheckBox</sender>
    <signal>toggled(bool)</signal>
    <receiver>autocorrectionGroupBox</receiver>
    <slot>setVisible(bool)</slot>

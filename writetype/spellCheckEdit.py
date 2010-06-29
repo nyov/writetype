@@ -26,11 +26,7 @@ from PyQt4 import QtCore
 import re
 import enchant
 import enchant.checker
-from enchant.tokenize import get_tokenizer
 import platformSettings
-#For logger
-#import urllib
-#import urllib2
 from PyQt4.QtGui import QFileDialog
 from PyQt4.QtGui import QTextBlockUserData
 
@@ -40,11 +36,12 @@ class spellCheckEdit(QTextEdit):
 	
 	def __init__(self, *args):
 		QTextEdit.__init__(self, *args)
-		self.dictionary = enchant.DictWithPWL('en_us')
+		try:
+			self.dictionary = enchant.DictWithPWL(platformSettings.getPlatformSetting('language'))
+		except enchant.Error:
+			self.dictionary = enchant.DictWithPWL("en_US")
 		self.highlighter = Highlighter(self.document())
 		self.highlighter.setDict(self.dictionary)
-			##Logging... for me :)
-		#self.log = logger()
 		
 	def mousePressEvent(self, event):
 		#This will move the cursor to the appropriate position
@@ -91,7 +88,6 @@ class spellCheckEdit(QTextEdit):
 		if self.highlighter.getDescriptionText(cursor.position(), self.toPlainText()):
 			menu.addSeparator()
 			for mistake in self.highlighter.getDescriptionText(cursor.position(), self.toPlainText()):
-				print mistake
 				action = QAction(mistake["description"], menu)
 				self.connect(action, SIGNAL("triggered()"), lambda targ=mistake["new"], l=mistake["left"], r=mistake["right"]: self.replaceTextByPosition(targ, l, r))
 				menu.addAction(action)
@@ -167,7 +163,6 @@ class spellCheckEdit(QTextEdit):
 
 		#Tabs should scroll through the words
 		if event.key() == Qt.Key_Backtab or event.key() == Qt.Key_Up:
-			print event.key()
 			self.emit(SIGNAL("tabBackEvent"))
 			return
 		if event.key() == Qt.Key_Tab or event.key() == Qt.Key_Down:
@@ -185,9 +180,6 @@ class spellCheckEdit(QTextEdit):
 			text = unicode(event.text())
 		self.emit(SIGNAL("wordEdited"), text)
 		self.emit(SIGNAL("keyPressed"))
-		#else:
-			#self.emit(SIGNAL("whiteSpacePressed"))
-		#Autocompletions
 		QTextEdit.keyPressEvent(self, event)
 
 	def boldSelectedText(self):
@@ -310,7 +302,6 @@ class spellCheckEdit(QTextEdit):
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
 		selection = cursor.selection().toHtml()
-		print "'", selection, "'"
 		selection = selection.replace("float: right", "float: left")
 		selection = selection.replace("float: none", "float: left")
 		cursor.removeSelectedText()
@@ -411,18 +402,3 @@ class Highlighter(QSyntaxHighlighter):
 						"text": word_object.group(0),
 						"new": re.sub(rule["re"], rule["fix"], word_object.group(0)) })
 		return results
-					
-## class logger:
-## 	logText = ""
-## 	def log(self, text):
-## 		self.logText += text
-## 		self.logText += "<br />\n"
-## 	def send(self):
-## 		if not self.logText:
-## 			return
-## 		if platformSettings.getSetting("sendusagestatistics", True) == True:
-## 			data = urllib.urlencode({"log": self.logText, "id": platformSettings.getPlatformSetting("statsId")})
-## 			request = urllib2.Request(platformSettings.getPlatformSetting('statsUrl'), data)
-## 			urllib2.urlopen(request)
-		
-	

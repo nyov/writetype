@@ -34,6 +34,7 @@
 ** TODO Shave some seconds off spellcheckedit's keypressevent and event, and main's populatewordlist
 ** DONE List of contributors in about box
    CLOSED: [2010-06-21 Mon 14:26]
+** TODO Delete tmp Sable files
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are

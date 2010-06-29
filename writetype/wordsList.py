@@ -54,13 +54,13 @@ class wordsList:
 
 	def refreshReplacementTable(self):
 		self.replacementTable = {}
-		if not platformSettings.getSetting('autocompletion'):
+		if not platformSettings.getSetting('autocorrection'):
 			return
-		if platformSettings.getSetting('autocompletioncontractions'):
-			for line in self.loadAutocompletions(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt")):
+		if platformSettings.getSetting('autocorrectioncontractions', True):
+			for line in self.loadAutocorrections(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt")):
 				if not line or line == ",": continue
 				self.replacementTable[line.split(",")[0]] = line.split(",")[1]
-		for line in str(platformSettings.getSetting("customAutocompletions", "")).split("\n"):
+		for line in str(platformSettings.getSetting("customAutocorrections", "")).split("\n"):
 			print line
 			if not line or line == ",": continue
 			self.replacementTable[line.split(",")[0]] = line.split(",")[1]
@@ -74,7 +74,7 @@ class wordsList:
 			finalwords.append((word, 0))
 		return finalwords
 
-	def loadAutocompletions(self, filePath):
+	def loadAutocorrections(self, filePath):
 			fileHandle = open(filePath, 'r')
 			return fileHandle.read().split("\n")
 
@@ -106,6 +106,5 @@ class wordsList:
 		if word.strip().lower() in self.replacementTable:
 			return self.replacementTable[word.strip().lower()]
 		else:
-			print "'" + word + "'"
 			return False
 		

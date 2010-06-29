@@ -183,19 +183,6 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuEdit">
-    <property name="title">
-     <string>Edit</string>
-    </property>
-    <addaction name="actionUndo"/>
-    <addaction name="actionRedo"/>
-    <addaction name="separator"/>
-    <addaction name="actionBold"/>
-    <addaction name="actionItalic"/>
-    <addaction name="actionUnderline"/>
-    <addaction name="actionDoubleSpace"/>
-    <addaction name="actionSingleSpace"/>
-   </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
      <string>View</string>
@@ -238,6 +225,23 @@
     <addaction name="actionDocumentation"/>
     <addaction name="actionAbout"/>
     <addaction name="actionAboutQt"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionCut"/>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="separator"/>
+    <addaction name="actionBold"/>
+    <addaction name="actionItalic"/>
+    <addaction name="actionUnderline"/>
+    <addaction name="actionDoubleSpace"/>
+    <addaction name="actionSingleSpace"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -705,6 +709,33 @@
   <action name="actionDiction_Check">
    <property name="text">
     <string>Diction Check</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/editcut.png</normaloff>:/res/editcut.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/editcopy.png</normaloff>:/res/editcopy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/editpaste.png</normaloff>:/res/editpaste.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
    </property>
   </action>
  </widget>

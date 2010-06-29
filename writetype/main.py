@@ -35,13 +35,34 @@ from PyQt4.QtGui import QMessageBox
 from PyQt4.QtCore import QTranslator, QLocale
 from statistics import Ui_statisticsDialog
 from os.path import isfile
+import getopt
+import sys
+
+#Command line arguments
+parsedoptions, options = getopt.gnu_getopt(sys.argv[1:], "l:t:?", ["lang=", "tts-engine=", "help"])
+for optionname, optionvalue in parsedoptions:
+	if optionname == "-l" or optionname == "--lang":
+		platformSettings.setPSettingTmp("language", optionvalue)
+	elif optionname == "-t" or optionname == "--tts-engine":
+		platformSettings.setSettingTmp("ttsengine", optionvalue)
+	elif optionname == "-?" or optionname == "--help":
+		print """Usage: writetype [OPTION] ... FILE
+Open FILE when the application starts.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -l,  --lang		    Set the language for this session
+  -t,  --tts-engine     Set the tts engine for this session.  Changes in the settings during this session will override this.
+  -?,  --help		    Display this help and exit
+
+Report bugs to <admin@bernsteinforpresident.com>"""
+		exit(0)
+								 
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
 		QtGui.QWidget.__init__(self, parent)
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
-		self.dictionary = enchant.DictWithPWL('en_us')
 
 		#General Actions
 		QtCore.QObject.connect(self.ui.actionOpen, QtCore.SIGNAL("triggered()"), self.openDialog)
@@ -79,7 +100,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionAbout, QtCore.SIGNAL("triggered()"), self.showAbout)
 		QtCore.QObject.connect(self.ui.actionDocumentation, QtCore.SIGNAL("triggered()"), self.openHelpPage)
 
-		#Word list for autocompletion
+		#Word list for word completion
 		self.wl = wordsList()
 		try:
 			self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
@@ -94,7 +115,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.correctWordFromListItem)
 
 		#Autocorrect
-		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutoreplacement)
+		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutocorrection)
 		
 		#printer
 		QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
@@ -130,9 +151,11 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionInsert_Image, QtCore.SIGNAL("triggered()"), self.ui.textArea.insertImage)
 		QtCore.QObject.connect(self.ui.actionAlign_Image_Right, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignImageRight)
 		QtCore.QObject.connect(self.ui.actionAlign_Image_Left, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignImageLeft)
-		#Lets disable image support for now.  Yeah... I think that would be a wise idea.
+		#Lets disable image support for now.  Yeah... I think that would be a wise idea.  (And double spacing too,  since I can't get it to work.)
 		self.ui.imageToolBar.setVisible(False)
 		self.ui.actionEnableImageToolbar.setVisible(False)
+		self.ui.actionDoubleSpace.setVisible(False)
+		self.ui.actionSingleSpace.setVisible(False)
 		
 		#Apply some settings
 		if platformSettings.getSetting("defaultfont", ""):
@@ -221,24 +244,22 @@ class MainApplication(QtGui.QMainWindow):
 	def disableSpeakButton(self):
 		self.ui.actionSpeak.disable()
 
-	#AUTOREPLACEMENTS
+	#AUTOCORRECTIONS
 
-	def checkForAutoreplacement(self, word):
-		#print "To autoreplace: '", word, "'"
+	def checkForAutocorrection(self, word):
 		if word[-1:] in ["", "\b", " ", "\t", ".", "?", ":", "!", ",", ";", ")"]:
 			if self.wl.correctWord(word[:-1]) != False:
-				print "Correcting", word[:-1]
 				self.ui.textArea.replaceSelectedWord(self.wl.correctWord(word[:-1]))
 			self.wlIndex = None
 			self.ui.spellingSuggestionsList.setCurrentRow(-1)
 			self.ui.spellingSuggestionsList.clear()
-			#Now show spelling corrections if the word was spelled incorrectly
+
+		#This is HORRIBLE of me.  Why is all this garbage down here that has nothing to do with autocorrections?
 			if not word[:-1]:
 				pass
-			elif self.dictionary.check(word[:-1]) == False:
-				print word
+			elif self.ui.textArea.dictionary.check(word[:-1]) == False:
 				self.wordsN = []
-				words = self.dictionary.suggest(word.strip())
+				words = self.ui.textArea.dictionary.suggest(word.strip())
 				for word in words:
 					self.wordsN.append((word, 0))
 				for word in self.wordsN:
@@ -282,15 +303,13 @@ class MainApplication(QtGui.QMainWindow):
 
 	def populateWordList(self, text):
 		text = str(text)
-		print "'", text, "'"
 
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[0:-1] and text[-1:] in (" ", ".", ",", "!", "?", "\t"):
-			if self.dictionary.check(text.lower()[0:-1]):
+			if self.ui.textArea.dictionary.check(text.lower()[0:-1]):
 				self.wl.addCustomWord(text.lower()[0:-1])
 			return
-		
-		
+
 		#This way, the word list won't keep changing if the user tabs to select a new word
 		if self.wlIndex != None:
 			return

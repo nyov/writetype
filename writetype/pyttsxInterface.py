@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with WriteType.	 If not, see <http://www.gnu.org/licenses/>.
 
-from .ttsInterface import TtsInterface
+from ttsInterface import TtsInterface
 import pyttsx
 from threading import Thread, Event
 from PyQt4.QtGui import QMessageBox

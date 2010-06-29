@@ -28,6 +28,14 @@ class FestivalInterface(TtsInterface):
 		self.executableName = executableName
 		self.libPath = libPath
 		self.proc = None
+		self.tmpPaths = []
+
+	def __del__(self):
+		print "destructor"
+		for path in self.tmpPaths:
+			print "removing " + str(path[1])
+			unlink(path[1])
+
 ## 	def speak(self, text):
 ## 		call = [self.executableName, "--tts", "-"]
 ## 		if self.libPath:
@@ -40,6 +48,8 @@ class FestivalInterface(TtsInterface):
 	def speak(self, text):
 		tmpfile = mkstemp(suffix=".sable", prefix="wt_")
 		print tmpfile
+		print self.tmpPaths
+		self.tmpPaths.append(tmpfile)
 		tmpfileHandle = open(tmpfile[1], 'w')
 		tmpfileHandle.write(text)
 		tmpfileHandle.close()
