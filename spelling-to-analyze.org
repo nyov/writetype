@@ -34,7 +34,15 @@
 ** TODO Shave some seconds off spellcheckedit's keypressevent and event, and main's populatewordlist
 ** DONE List of contributors in about box
    CLOSED: [2010-06-21 Mon 14:26]
-** TODO Delete tmp Sable files
+** DONE Delete tmp Sable files
+   CLOSED: [2010-07-01 Thu 19:14]
+   Can't really be fixed because of a bug in PyQt4. 
+   Should work fine when PyQt4 is fixed, though.
+** TODO Fix diction check to work from the beginning to end of the document
+** DONE Changing font changes font size
+   CLOSED: [2010-07-12 Mon 19:35]
+** DONE Don't put Harm's name in the about box twice
+   CLOSED: [2010-07-12 Mon 19:38]
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are

@@ -222,8 +222,8 @@ class spellCheckEdit(QTextEdit):
 			cursor.setPosition(0)
 			cursor.setPosition(len(self.toPlainText()), cursor.KeepAnchor)
 			fontFormat = QTextCharFormat()
-			fontFormat.setFont(font)
-			cursor.setCharFormat(fontFormat)
+			fontFormat.setFontFamily(font.family())
+			cursor.mergeCharFormat(fontFormat)
 
 	#Don't allow multiple fonts in one document
 	def setFontSize(self, size):
@@ -233,7 +233,7 @@ class spellCheckEdit(QTextEdit):
 
 			fontFormat = QTextCharFormat()
 			fontFormat.setFontPointSize(size)
-			cursor.setCharFormat(fontFormat)
+			cursor.mergeCharFormat(fontFormat)
 
 	def toggleHighlight(self, isSet):
 		self.highlighting = isSet

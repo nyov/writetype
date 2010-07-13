@@ -27,9 +27,15 @@ class EspeakInterface(TtsInterface):
 		self.executableName = executableName
 		self.proc = None
 
+	def __del__(self):
+		print "destructor"
+		for path in self.tmpPaths:
+			print "removing " + str(path[1])
+			unlink(path[1])
+
 	def speak(self, text):
 		tmpfile = mkstemp(suffix=".ssml", prefix="wt_")
-		print tmpfile
+		self.tmpPaths.append(tmpfile)
 		tmpfileHandle = open(tmpfile[1], 'w')
 		tmpfileHandle.write(text)
 		tmpfileHandle.close()

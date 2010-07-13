@@ -47,8 +47,6 @@ class FestivalInterface(TtsInterface):
 	#Doing it this way will give more flexibility in incorporating SABLE
 	def speak(self, text):
 		tmpfile = mkstemp(suffix=".sable", prefix="wt_")
-		print tmpfile
-		print self.tmpPaths
 		self.tmpPaths.append(tmpfile)
 		tmpfileHandle = open(tmpfile[1], 'w')
 		tmpfileHandle.write(text)

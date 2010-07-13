@@ -60,7 +60,7 @@ Report bugs to <admin@bernsteinforpresident.com>"""
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):
-		QtGui.QWidget.__init__(self, parent)
+		QtGui.QMainWindow.__init__(self, parent)
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
 
@@ -178,6 +178,11 @@ class MainApplication(QtGui.QMainWindow):
 				#Add the words in the document to the custom words list
 				for token in self.tokenizer(str(self.ui.textArea.toPlainText())):
 					self.wl.addCustomWord(token[0].lower())
+
+	def __del__(self):
+		print "destructor"
+ 		QtGui.QMainWindow.__del__(self)
+
 
 	#FILE OPENING/SAVING
 	
@@ -470,7 +475,7 @@ class MainApplication(QtGui.QMainWindow):
 	#DIALOGS
 
 	def showAbout(self):
-		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr></table>"""))
+		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType</h1><h2>Copyright 2010 Max Shinn</h2><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr></table>"""))
 		
 	def openHelpPage(self):
 		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype/documentation"))
