@@ -333,9 +333,49 @@ class MainApplication(QtGui.QMainWindow):
 			return
 
 		self.wordsN = self.wl.search(str(text), self.wl.NORMAL_WORDS)
+
+		if platformSettings.getSetting("guessmisspellings", True) and len(self.wordsN) <= platformSettings.getSetting("threshold", 0):
+			replacements = [
+				["l", "ll"],
+				["s", "ss"],
+				["t", "tt"],
+				["d", "dd"],
+				["t", "d"],
+				["d", "tt"],
+				["k", "ck"],
+				["k", "c"],
+				["s", "c"],
+				["l", "le"],
+				["i", "ee"],
+				["ea", "ee"],
+				["ee", "i"],
+				["e", "i"],
+				["e", "ie"],
+				["a", "e"],
+				["u", "o"],
+				["o", "a"],
+				["a", "o"],
+				["xs", "x"],
+				["ei", "i"],
+				["u", "oo"],
+				["u", "ou"],
+				["e", "a"]
+			]
+
+			possibilities = []
+			for replacement in replacements:
+				if not replacement[0] in text:
+					continue
+				possibilities += self.wl.search(text.replace(replacement[0], replacement[1]))
+			print possibilities
+
+			if possibilities:
+				#self.wordsN += [(rep[0], -1) for rep in possibilities]
+				self.wordsN += possibilities
+				
+		print self.wordsN[0:20]
 		#Sort by ranking
 		self.wordsN.sort(lambda x, y : cmp(y[1],x[1]))
-
 
 		for word in self.wordsN:
 			item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
@@ -344,62 +384,6 @@ class MainApplication(QtGui.QMainWindow):
 			count = word[1]
 			if count > 10: count = 10
 		   	item.setBackground(QtGui.QColor.fromHsv(250-count*25, count*10, 255, int(bool(count))*255))
-
-		if platformSettings.getSetting("guessmisspellings", True) and len(self.wordsC) + len(self.wordsN) <= platformSettings.getSetting("threshold", 0):
-			pass #for now
-
-			## #This is where things get trickier.  It MUST be a mispeling.  Fun fun fun!
-			## possibilities = []
-			## ##Replace double letters with a single letter and look
-			## #for cluster in re.findall(u'[a-z]\1', text):
-			## 	#possibilities += self.wl.search(text.replace(cluster, cluster[0]))
-			## #Replace "l" with "ll" and "s" with "ss", etc.
-			## possibilities += self.wl.search(text.replace("l", "ll"), False, True)
-			## possibilities += self.wl.search(text.replace("s", "ss"), False, True)
-			## possibilities += self.wl.search(text.replace("t", "tt"), False, True)
-			## possibilities += self.wl.search(text.replace("d", "dd"), False, True)
-			## #Some more confusions
-			## possibilities += self.wl.search(text.replace("t", "d"), False, True)
-			## possibilities += self.wl.search(text.replace("d", "tt"), False, True)
-			## possibilities += self.wl.search(text.replace("k", "ck"), False, True)
-			## possibilities += self.wl.search(text.replace("k", "c"), False, True)
-			## possibilities += self.wl.search(text.replace("s", "c"), False, True)
-			## possibilities += self.wl.search(text.replace("l", "le"), False, True)
-
-			## #Vowel confusions
-			## possibilities += self.wl.search(text.replace("i", "ee"), False, True)
-			## possibilities += self.wl.search(text.replace("ea", "ee"), False, True)
-			## possibilities += self.wl.search(text.replace("ee", "i"), False, True)
-			## possibilities += self.wl.search(text.replace("e", "i"), False, True)
-			## possibilities += self.wl.search(text.replace("e", "ie"), False, True)
-			## possibilities += self.wl.search(text.replace("a", "e"), False, True)
-			## possibilities += self.wl.search(text.replace("u", "o"), False, True)
-
-			## #Based on data analysis
-			## possibilities += self.wl.search(text.replace("o", "a"), False, True) # becouse 
-			## possibilities += self.wl.search(text.replace("a", "o"), False, True) # peaple 
-			## possibilities += self.wl.search(text.replace("xs", "x"), False, True) # exsperience, exsplosion
-			## possibilities += self.wl.search(text.replace("ei", "i"), False, True) # writeing, exciteing
-
-			
-
-			## if platformSettings.getSetting("advancedsubstitutions", False):
-			## 	possibilities += self.wl.search(text.replace("u", "oo"), False, True)
-			## 	possibilities += self.wl.search(text.replace("u", "ou"), False, True)
-			## 	possibilities += self.wl.search(text.replace("e", "a"), False, True)
-				
-
-			## #possibilities = self.wl.quicksort(possibilities)
-			## #Remove duplicates
-			## #if wordsN:
-			## 	#for i in range(len(possibilities)):
-			## 		#if possibilities[0] in wordsN:
-			## 			#del possibilities[0]
-
-			## for word in filter(lambda x : x not in self.wordsN, possibilities):
-			## 	item = QtGui.QListWidgetItem(word, self.ui.spellingSuggestionsList)
-			## 	item.setForeground(QtGui.QColor.fromRgb(80, 80, 80))
-			## 	item.setFont(font)
 			
 	# DICTION CHECKING
 
