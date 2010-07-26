@@ -12,3 +12,6 @@ pyrcc4 res/resources.qrc -o writetype/resources_rc.py
 #Translations
 pylupdate4 writetype/*.py -ts translations/writetype.ts translations/qt_nl_NL.ts
 lrelease-qt4 translations/qt_nl_NL.ts -qm translations/qt_nl_NL.qm
+
+#Bzr version info in the about box
+printf "aboutrevno = `bzr revno`" > writetype/revno.py

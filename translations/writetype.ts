@@ -3,12 +3,12 @@
 <context>
     <name>EspeakInterface</name>
     <message>
-        <location filename="espeakInterface.py" line="40"/>
+        <location filename="espeakInterface.py" line="46"/>
         <source>Feature unavailable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="espeakInterface.py" line="40"/>
+        <location filename="espeakInterface.py" line="46"/>
         <source>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16,12 +16,12 @@
 <context>
     <name>FestivalInterface</name>
     <message>
-        <location filename="festivalInterface.py" line="50"/>
+        <location filename="festivalInterface.py" line="58"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Espoken</translation>
     </message>
     <message>
-        <location filename="festivalInterface.py" line="50"/>
+        <location filename="festivalInterface.py" line="58"/>
         <source>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -29,83 +29,83 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="527"/>
+        <location filename="main.py" line="538"/>
         <source>WriteType - </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="101"/>
+        <location filename="main.py" line="123"/>
         <source>Untitled Document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="150"/>
+        <location filename="main.py" line="172"/>
         <source>Crash recovery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="150"/>
+        <location filename="main.py" line="172"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="154"/>
+        <location filename="main.py" line="176"/>
         <source>Recovered file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="163"/>
+        <location filename="main.py" line="190"/>
         <source>Open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="186"/>
+        <location filename="main.py" line="213"/>
         <source>Save file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="220"/>
+        <location filename="main.py" line="247"/>
         <source>Feature unavailable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="220"/>
+        <location filename="main.py" line="247"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="451"/>
+        <location filename="main.py" line="462"/>
         <source>About this program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="461"/>
+        <location filename="main.py" line="472"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="538"/>
+        <location filename="main.py" line="549"/>
         <source>Quit?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="538"/>
+        <location filename="main.py" line="549"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="418"/>
+        <location filename="main.py" line="429"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="427"/>
+        <location filename="main.py" line="438"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="451"/>
-        <source>&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
+        <location filename="main.py" line="462"/>
+        <source>&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
