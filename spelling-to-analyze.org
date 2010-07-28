@@ -43,6 +43,13 @@
    CLOSED: [2010-07-12 Mon 19:35]
 ** DONE Don't put Harm's name in the about box twice
    CLOSED: [2010-07-12 Mon 19:38]
+** DONE Fix tab completion when spell-checking multiple words
+   CLOSED: [2010-07-26 Mon 21:27]
+** DONE Fix regex when quotes end sentences 
+   CLOSED: [2010-07-26 Mon 20:48]
+** DONE Select the correct font when loading documents
+   CLOSED: [2010-07-27 Tue 19:40]
+** TODO Fix capitalization problem
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are

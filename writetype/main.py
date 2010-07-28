@@ -109,11 +109,13 @@ class MainApplication(QtGui.QMainWindow):
 			self.tokenizer = get_tokenizer("en_US")
 		self.wlIndex = None
 		self.wordsN = []
+		self.lastCursorPos = 0
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabEvent"), self.tabEvent)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabBackEvent"), self.tabBackEvent)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("whiteSpacePressed"), self.ui.spellingSuggestionsList.clear)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.populateWordList)
 		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.correctWordFromListItem)
+		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.clearWordList)
 
 		#Autocorrect
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutocorrection)
@@ -188,7 +190,7 @@ class MainApplication(QtGui.QMainWindow):
 	#FILE OPENING/SAVING
 	
 	def openDialog(self):
-		self.filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html *.htm);;Plain Text (*)")
+		self.filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)")
 		if isfile(self.filename):
 			text = open(self.filename).read()
 			self.ui.textArea.setText(text)
@@ -199,30 +201,44 @@ class MainApplication(QtGui.QMainWindow):
 			for token in self.tokenizer(str(self.ui.textArea.toPlainText())):
 				self.wl.addCustomWord(token[0].lower())
 
+			#Set the correct font
+			cursor = self.ui.textArea.textCursor()
+			cursor.setPosition(2)
+			self.ui.fontComboBox.setCurrentFont(cursor.charFormat().font())
+
 	def saveFile(self):
 		if isfile(self.filename):
-			file = open(self.filename, 'w')
-			file.write(self.ui.textArea.toHtml())
+			self.writeFile()
 			self.filetitle = str(self.filename).split(sep).pop()
 			self.updateTitle(False)
-			file.close()
 			return True
 		else:
 			return self.saveFileAs()
 
 	def saveFileAs(self):
-		self.filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Formatted Text (*.html)")
-		if not str(self.filename).find('.html'):
-			self.filename += '.html'
-			self.updateTitle(False)
-		file = open(self.filename, 'w+')
-		file.write(self.ui.textArea.toHtml())
-		file.close()
+		self.filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)")
+
+		self.writeFile()
+
 		self.filetitle = str(self.filename).split(sep).pop()
 		self.updateTitle(False)
-		file.close()
 		return True
-	
+
+	def writeFile(self):
+		extension = str(self.filename).split('.').pop()
+		try:
+			file = open(self.filename, 'w+')
+			if extension == "html" or extension == "wtd":
+				content = self.ui.textArea.toHtml()
+				#Sort of hacky way to fix the black spots where there used to be highlighted sections
+				content = content.replace("background-color:#000000", "")
+				file.write(content)
+			else:
+				file.write(self.ui.textArea.toPlainText())
+			file.close()
+		except:
+			QMessageBox.warning(self, self.tr("Save error"), self.tr("WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again."))
+		
 	def autoSave(self):
 		#This function should be called whenever an autosave is desired
 		path = platformSettings.getSetting("autosavepath", "")
@@ -287,7 +303,7 @@ class MainApplication(QtGui.QMainWindow):
 			self.wlIndex = 0
 		else:
 			self.wlIndex += 1
-       		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlIndex][0])
+       		self.ui.textArea.replaceLastWord(self.wordsN[self.wlIndex][0])
 		self.ui.spellingSuggestionsList.setCurrentRow(self.wlIndex)
 
 	def tabBackEvent(self):
@@ -299,13 +315,22 @@ class MainApplication(QtGui.QMainWindow):
 			self.wlIndex = len(self.wordsN)-1
 		else:
 			self.wlIndex -= 1
-		self.ui.textArea.replaceSelectedWord(self.wordsN[self.wlIndex][0])
+		self.ui.textArea.replaceLastWord(self.wordsN[self.wlIndex][0])
 		self.ui.spellingSuggestionsList.setCurrentRow(self.wlIndex)
+
+	def clearWordList(self):
+		#curpos = self.ui.textArea.textCursor().position()
+		#if abs(curpos - self.lastCursorPos) > 1:
+		if self.ui.textArea.lastWord == None:
+			self.wordsN = []
+			self.wlIndex = None
+			self.ui.spellingSuggestionsList.clear()
+		#self.lastCursorPos = curpos
 
 	def correctWordFromListItem(self, wordItem):
 		word = wordItem.text()
 		self.wlIndex = self.ui.spellingSuggestionsList.row(wordItem)
-		self.ui.textArea.replaceSelectedWord(word)
+		self.ui.textArea.replaceLastWord(word)
 
 	def populateWordList(self, text):
 		text = str(text)

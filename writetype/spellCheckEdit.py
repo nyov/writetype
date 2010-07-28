@@ -63,7 +63,6 @@ class spellCheckEdit(QTextEdit):
 		else:
 			QTextEdit.mousePressEvent(self, event)
 
-	
 	def contextMenuEvent(self, event):
 		menu = self.createStandardContextMenu()
 		#Select the word under the cursor
@@ -153,7 +152,33 @@ class spellCheckEdit(QTextEdit):
 		self.setFocus()
 		#Log it
 		#self.log.log(oldword + " -> " + str(word))
-		
+
+	def replaceLastWord(self, word):
+		#Dirtier than the above, but works better
+		cursor = self.textCursor()
+		#Make sure the last word is selected
+		if re.match(u'[A-Z][a-z]*', unicode(self.lastWord)):
+			word = unicode(word).capitalize()
+		#cursor.setPosition(1000000000)
+		cursor.beginEditBlock()
+		print len(self.lastWord)
+		if not self.lastWord:
+			cursor2 = self.textCursor()
+			cursor2.select(QTextCursor.WordUnderCursor)
+			while not cursor2.selectedText():
+				cursor2.deletePreviousChar()
+				cursor2.select(QTextCursor.WordUnderCursor)
+			self.lastWord = cursor2.selectedText()
+			print self.lastWord, "< Last word"
+		for i in range(0, len(self.lastWord)):
+			cursor.deletePreviousChar()
+		cursor.insertText(word)
+		cursor.endEditBlock()
+		print self.lastWord, word
+		self.lastWord = word
+		self.keyPressEvent(QKeyEvent(QEvent.KeyPress, 0, Qt.NoModifier))
+		self.setFocus()		
+
 	def keyPressEvent(self, event):
 		#What was my reasoning behind this again?  Unless... what?  This has to be the stupidest "enhancement" I have ever made to a piece of software.
 		## #Auto-repeats shouldn't be needed unless
@@ -168,6 +193,8 @@ class spellCheckEdit(QTextEdit):
 		if event.key() == Qt.Key_Tab or event.key() == Qt.Key_Down:
 			self.emit(SIGNAL("tabEvent"))
 			return
+		if event.text() != "":
+			self.lastWord = ""
 		#Don't do all this if someone just clicked something in the word list
 		if event.key() == 0:
 			return
@@ -327,7 +354,7 @@ class Highlighter(QSyntaxHighlighter):
 			"fix": u'\\1 \\2' },
 		{
 			"description": "Too many spaces", 
-			"re": re.compile(u'([^[.?!])[ ]{2,}([A-Za-z])'), #This accounts for the fact that mny people (myself included) use two spaces after punctuation.
+			"re": re.compile(u'([^[.?!"\'])[ ]{2,}([A-Za-z])'), #This accounts for the fact that many people (myself included) use two spaces after punctuation.  However, there is a bug here that makes two spaces after a quote acceptable.  Unless it gets reported, I don't care.
 			"fix": u'\\1 \\2' },
 		{
 			"description": "Spaces before punctuation",
