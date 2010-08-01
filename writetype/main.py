@@ -40,7 +40,7 @@ import sys
 import revno
 
 #Command line arguments
-parsedoptions, options = getopt.gnu_getopt(sys.argv[1:], "l:t:?", ["lang=", "tts-engine=", "help"])
+parsedoptions, options = getopt.gnu_getopt(sys.argv[1:], "l:t:c?", ["lang=", "tts-engine=", "help"])
 for optionname, optionvalue in parsedoptions:
 	if optionname == "-l" or optionname == "--lang":
 		platformSettings.setPSettingTmp("language", optionvalue)
@@ -57,7 +57,6 @@ Mandatory arguments to long options are mandatory for short options too.
 
 Report bugs to <admin@bernsteinforpresident.com>"""
 		exit(0)
-								 
 
 class MainApplication(QtGui.QMainWindow):
 	def __init__(self, parent=None):

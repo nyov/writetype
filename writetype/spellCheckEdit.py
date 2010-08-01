@@ -29,11 +29,24 @@ import enchant.checker
 import platformSettings
 from PyQt4.QtGui import QFileDialog
 from PyQt4.QtGui import QTextBlockUserData
+import sip
+import sys
 
 class spellCheckEdit(QTextEdit):
 	#To support the highlighting feature
 	highlighting = False
-	
+
+	#Hide your eyes!
+	def __new__(cls, *args, **kwargs):
+		if '-c' in sys.argv:
+			import colemak
+			self = sip.wrapper.__new__(colemak.ColemakEdit, *args, **kwargs)
+		else:
+			self = sip.wrapper.__new__(spellCheckEdit, *args, **kwargs)
+		print self
+		return self
+	#Okay, you can look again
+
 	def __init__(self, *args):
 		QTextEdit.__init__(self, *args)
 		try:
