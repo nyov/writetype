@@ -154,27 +154,34 @@ class spellCheckEdit(QTextEdit):
 		#self.log.log(oldword + " -> " + str(word))
 
 	def replaceLastWord(self, word):
-		#Dirtier than the above, but works better
+		#Dirtier than the above, but works better in the case of spellcheck
 		cursor = self.textCursor()
-		#Make sure the last word is selected
-		if re.match(u'[A-Z][a-z]*', unicode(self.lastWord)):
-			word = unicode(word).capitalize()
-		#cursor.setPosition(1000000000)
+		if cursor.hasSelection():
+			return
 		cursor.beginEditBlock()
-		print len(self.lastWord)
+		
+		#Make sure the last word is selected
 		if not self.lastWord:
 			cursor2 = self.textCursor()
 			cursor2.select(QTextCursor.WordUnderCursor)
+			#cursor2.movePosition(cursor.PreviousCharacter, cursor.KeepAnchor)
 			while not cursor2.selectedText():
 				cursor2.deletePreviousChar()
 				cursor2.select(QTextCursor.WordUnderCursor)
 			self.lastWord = cursor2.selectedText()
 			print self.lastWord, "< Last word"
+		#Capitalization
+		if re.match(u'[A-Z][a-z]*', unicode(self.lastWord)):
+			word = unicode(word).capitalize()
+		else:
+			word = unicode(word).lower()
+			
+		#Remove the word
 		for i in range(0, len(self.lastWord)):
 			cursor.deletePreviousChar()
 		cursor.insertText(word)
 		cursor.endEditBlock()
-		print self.lastWord, word
+
 		self.lastWord = word
 		self.keyPressEvent(QKeyEvent(QEvent.KeyPress, 0, Qt.NoModifier))
 		self.setFocus()		
@@ -200,12 +207,17 @@ class spellCheckEdit(QTextEdit):
 			return
 
 		cursor = self.textCursor()
-		cursor.select(QTextCursor.WordUnderCursor)
-		if cursor.hasSelection():
-			text = unicode(cursor.selectedText() + event.text())
+		#Check to make sure text is selected on the left, not the right
+		cursor.movePosition(cursor.PreviousCharacter, cursor.KeepAnchor)
+		if cursor.selectedText() != " ":
+			cursor.select(QTextCursor.WordUnderCursor)
+			if cursor.hasSelection():
+				text = unicode(cursor.selectedText() + event.text())
+			else:
+				text = unicode(event.text())
+			self.emit(SIGNAL("wordEdited"), text)
 		else:
-			text = unicode(event.text())
-		self.emit(SIGNAL("wordEdited"), text)
+			self.emit(SIGNAL("wordEdited"), unicode(event.text()))
 		self.emit(SIGNAL("keyPressed"))
 		QTextEdit.keyPressEvent(self, event)
 

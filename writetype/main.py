@@ -276,7 +276,9 @@ class MainApplication(QtGui.QMainWindow):
 			self.ui.spellingSuggestionsList.setCurrentRow(-1)
 			self.ui.spellingSuggestionsList.clear()
 
-		#This is HORRIBLE of me.  Why is all this garbage down here that has nothing to do with autocorrections?
+			#This is HORRIBLE of me.  Why is all this garbage down here that has nothing to do with autocorrections?
+			
+			#Display spell check suggestions in the misspelling box after a space is pressed
 			if not word[:-1]:
 				pass
 			elif self.ui.textArea.dictionary.check(word[:-1]) == False:
@@ -356,6 +358,10 @@ class MainApplication(QtGui.QMainWindow):
 			return
 
 		if not text:
+			return
+
+		if self.ui.textArea.textCursor().hasSelection():
+			self.wordsN = []
 			return
 
 		self.wordsN = self.wl.search(str(text), self.wl.NORMAL_WORDS)
