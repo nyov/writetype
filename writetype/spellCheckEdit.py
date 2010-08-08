@@ -16,7 +16,7 @@
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from PyQt4.Qt import QTextEdit, QMouseEvent, QTextCursor, QSyntaxHighlighter, QKeyEvent, QFont, QColor
+from PyQt4.Qt import QTextEdit, QMouseEvent, QTextCursor, QSyntaxHighlighter, QKeyEvent, QFont, QColor, QMenu
 from PyQt4.Qt import Qt
 from PyQt4.Qt import QEvent
 from PyQt4.Qt import QAction
@@ -43,7 +43,6 @@ class spellCheckEdit(QTextEdit):
 			self = sip.wrapper.__new__(colemak.ColemakEdit, *args, **kwargs)
 		else:
 			self = sip.wrapper.__new__(spellCheckEdit, *args, **kwargs)
-		print self
 		return self
 	#Okay, you can look again
 
@@ -55,6 +54,7 @@ class spellCheckEdit(QTextEdit):
 			self.dictionary = enchant.DictWithPWL("en_US")
 		self.highlighter = Highlighter(self.document())
 		self.highlighter.setDict(self.dictionary)
+		self.menu = QMenu(self)
 		
 	def mousePressEvent(self, event):
 		#This will move the cursor to the appropriate position
@@ -77,11 +77,13 @@ class spellCheckEdit(QTextEdit):
 			QTextEdit.mousePressEvent(self, event)
 
 	def contextMenuEvent(self, event):
-		menu = self.createStandardContextMenu()
 		#Select the word under the cursor
 		cursor = self.textCursor()
 		position = cursor.position()
-
+		menu = QMenu(self)
+		menu.addAction(self.actionCut)
+		menu.addAction(self.actionCopy)
+		menu.addAction(self.actionPaste)
 
 		## print str(cursor.selection().toHtml())
 		## #Check to see if an image is under the cursor

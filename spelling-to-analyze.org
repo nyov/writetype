@@ -54,6 +54,12 @@
 ** TODO Doesn't erase spaces if there is text right after the cursor
 ** DONE Erases stuff if there is a selection
    CLOSED: [2010-08-01 Sun 09:33]
+** TODO Right click on the toolbar gives real names
+** DONE Make a context menu with only the bare essentials
+   CLOSED: [2010-08-07 Sat 21:42]
+** DONE Cancel during Save as
+   CLOSED: [2010-08-07 Sat 20:31]
+** TODO Spelling suggestions after punctuation bug
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are

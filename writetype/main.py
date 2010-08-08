@@ -79,6 +79,11 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionDoubleSpace, QtCore.SIGNAL("triggered()"), self.ui.textArea.doubleSpace)
 		QtCore.QObject.connect(self.ui.actionSingleSpace, QtCore.SIGNAL("triggered()"), self.ui.textArea.singleSpace)
 
+		#Context menu for textarea
+		self.ui.textArea.actionCut = self.ui.actionCut
+		self.ui.textArea.actionCopy = self.ui.actionCopy
+		self.ui.textArea.actionPaste = self.ui.actionPaste
+
 		#The title
 		self.setWindowTitle(self.tr("WriteType - ") + self.tr("Untitled Document"))
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("keyPressed"), self.updateTitle)
@@ -111,7 +116,6 @@ class MainApplication(QtGui.QMainWindow):
 		self.lastCursorPos = 0
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabEvent"), self.tabEvent)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("tabBackEvent"), self.tabBackEvent)
-		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("whiteSpacePressed"), self.ui.spellingSuggestionsList.clear)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.populateWordList)
 		QtCore.QObject.connect(self.ui.spellingSuggestionsList, QtCore.SIGNAL("itemPressed(QListWidgetItem*)"), self.correctWordFromListItem)
 		QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.clearWordList)
@@ -189,8 +193,9 @@ class MainApplication(QtGui.QMainWindow):
 	#FILE OPENING/SAVING
 	
 	def openDialog(self):
-		self.filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)")
-		if isfile(self.filename):
+		filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)")
+		if isfile(filename):
+			self.filename = filename
 			text = open(self.filename).read()
 			self.ui.textArea.setText(text)
 			self.filetitle = str(self.filename).split(sep).pop()
@@ -215,8 +220,11 @@ class MainApplication(QtGui.QMainWindow):
 			return self.saveFileAs()
 
 	def saveFileAs(self):
-		self.filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)")
-
+		filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)")
+		if not filename:
+			return
+		self.filename = filename
+		
 		self.writeFile()
 
 		self.filetitle = str(self.filename).split(sep).pop()
@@ -274,6 +282,7 @@ class MainApplication(QtGui.QMainWindow):
 			self.wlIndex = None
 			self.ui.spellingSuggestionsList.setCurrentRow(-1)
 			self.ui.spellingSuggestionsList.clear()
+			self.wordsN = []
 
 			#This is HORRIBLE of me.  Why is all this garbage down here that has nothing to do with autocorrections?
 			
