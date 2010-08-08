@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Sun Jul 25 20:35:46 2010
+# Created: Sun Aug  8 16:23:46 2010
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -136,10 +136,6 @@ class Ui_MainWindow(object):
         self.speakToolBar.setMovable(False)
         self.speakToolBar.setObjectName("speakToolBar")
         MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.speakToolBar)
-        self.imageToolBar = QtGui.QToolBar(MainWindow)
-        self.imageToolBar.setMovable(False)
-        self.imageToolBar.setObjectName("imageToolBar")
-        MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.imageToolBar)
         self.actionSave = QtGui.QAction(MainWindow)
         self.actionSave.setEnabled(False)
         icon3 = QtGui.QIcon()
@@ -365,10 +361,6 @@ class Ui_MainWindow(object):
         self.speakToolBar.addAction(self.actionSpeak)
         self.speakToolBar.addAction(self.actionStop)
         self.speakToolBar.addSeparator()
-        self.imageToolBar.addAction(self.actionInsert_Image)
-        self.imageToolBar.addAction(self.actionAlign_Image_Left)
-        self.imageToolBar.addAction(self.actionAlign_Image_Right)
-        self.imageToolBar.addSeparator()
         self.sizeLabel.setBuddy(self.spinBoxFontSize)
 
         self.retranslateUi(MainWindow)
@@ -380,7 +372,6 @@ class Ui_MainWindow(object):
         QtCore.QObject.connect(self.actionRedo, QtCore.SIGNAL("triggered()"), self.textArea.redo)
         QtCore.QObject.connect(self.textArea, QtCore.SIGNAL("undoAvailable(bool)"), self.actionUndo.setEnabled)
         QtCore.QObject.connect(self.textArea, QtCore.SIGNAL("redoAvailable(bool)"), self.actionRedo.setEnabled)
-        QtCore.QObject.connect(self.actionEnableImageToolbar, QtCore.SIGNAL("toggled(bool)"), self.imageToolBar.setVisible)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.spinBoxFontSize, self.fontComboBox)
         MainWindow.setTabOrder(self.fontComboBox, self.textArea)
@@ -399,10 +390,9 @@ class Ui_MainWindow(object):
         self.menuTools.setTitle(QtGui.QApplication.translate("MainWindow", "Tools", None, QtGui.QApplication.UnicodeUTF8))
         self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "Help", None, QtGui.QApplication.UnicodeUTF8))
         self.menuEdit.setTitle(QtGui.QApplication.translate("MainWindow", "Edit", None, QtGui.QApplication.UnicodeUTF8))
-        self.fileToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
-        self.editToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar_2", None, QtGui.QApplication.UnicodeUTF8))
-        self.speakToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
-        self.imageToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "toolBar", None, QtGui.QApplication.UnicodeUTF8))
+        self.fileToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "File", None, QtGui.QApplication.UnicodeUTF8))
+        self.editToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Edit", None, QtGui.QApplication.UnicodeUTF8))
+        self.speakToolBar.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Speak text", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSave.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSave.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+S", None, QtGui.QApplication.UnicodeUTF8))
         self.actionSave_As.setText(QtGui.QApplication.translate("MainWindow", "Save As...", None, QtGui.QApplication.UnicodeUTF8))

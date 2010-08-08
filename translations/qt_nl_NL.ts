@@ -45,32 +45,32 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="123"/>
+        <location filename="main.py" line="129"/>
         <source>Untitled Document</source>
         <translation type="unfinished">Naamloos Document</translation>
     </message>
     <message>
-        <location filename="main.py" line="190"/>
+        <location filename="main.py" line="198"/>
         <source>Open file</source>
         <translation type="unfinished">Bestand openen</translation>
     </message>
     <message>
-        <location filename="main.py" line="213"/>
+        <location filename="main.py" line="225"/>
         <source>Save file</source>
         <translation type="unfinished">Bestand opslaan</translation>
     </message>
     <message>
-        <location filename="main.py" line="247"/>
+        <location filename="main.py" line="273"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Dienst niet beschikbaar</translation>
     </message>
     <message>
-        <location filename="main.py" line="247"/>
+        <location filename="main.py" line="273"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
         <translation type="unfinished">De huidige TTS driver is ongeldig.  Voorlezen is niet mogelijk voor deze sessie.</translation>
     </message>
     <message>
-        <location filename="main.py" line="462"/>
+        <location filename="main.py" line="499"/>
         <source>About this program</source>
         <translation type="unfinished">Over dit programma</translation>
     </message>
@@ -80,60 +80,70 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
         <translation type="obsolete">&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Deze software is toegankelijk onder de GNU General Public License v3 of later. Voor meer informatie over Uw rechten, zie: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="472"/>
+        <location filename="main.py" line="509"/>
         <source>Print</source>
         <translation type="unfinished">Afdrukken</translation>
     </message>
     <message>
-        <location filename="main.py" line="549"/>
+        <location filename="main.py" line="586"/>
         <source>Quit?</source>
         <translation type="unfinished">Sluiten?</translation>
     </message>
     <message>
-        <location filename="main.py" line="549"/>
+        <location filename="main.py" line="586"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation type="unfinished">Er zijn niet opgeslagen veranderingen.  Wilt U die  opslaan?</translation>
     </message>
     <message>
-        <location filename="main.py" line="538"/>
+        <location filename="main.py" line="575"/>
         <source>WriteType - </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="172"/>
+        <location filename="main.py" line="180"/>
         <source>Crash recovery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="172"/>
+        <location filename="main.py" line="180"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="176"/>
+        <location filename="main.py" line="184"/>
         <source>Recovered file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="429"/>
+        <location filename="main.py" line="466"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="438"/>
+        <location filename="main.py" line="475"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="462"/>
-        <source>&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
+        <location filename="main.py" line="249"/>
+        <source>Save error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="main.py" line="249"/>
+        <source>WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="main.py" line="499"/>
+        <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.py" line="392"/>
+        <location filename="mainwindow.py" line="383"/>
         <source>MainWindow</source>
         <translation type="unfinished">HoofdVenster</translation>
     </message>
@@ -156,303 +166,308 @@ p, li { white-space: pre-wrap; }(new line)
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="395"/>
+        <location filename="mainwindow.py" line="386"/>
         <source>Go Back </source>
         <translation type="unfinished">Ga Terug </translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="401"/>
+        <location filename="mainwindow.py" line="394"/>
         <source>Edit</source>
         <translation type="unfinished">Bewerken</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="396"/>
+        <location filename="mainwindow.py" line="387"/>
         <source>View</source>
         <translation type="unfinished">Beeld</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="397"/>
+        <location filename="mainwindow.py" line="388"/>
         <source>Toolbars</source>
         <translation type="unfinished">Werkbalken</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="400"/>
+        <location filename="mainwindow.py" line="391"/>
         <source>Help</source>
         <translation type="unfinished">Help</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="398"/>
+        <location filename="mainwindow.py" line="393"/>
         <source>File</source>
         <translation type="unfinished">Bestand</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="405"/>
         <source>toolBar</source>
-        <translation type="unfinished">WerkBalk</translation>
+        <translation type="obsolete">WerkBalk</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="403"/>
         <source>toolBar_2</source>
-        <translation type="unfinished">WerkBalk_2</translation>
+        <translation type="obsolete">WerkBalk_2</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="406"/>
+        <location filename="mainwindow.py" line="396"/>
         <source>Save</source>
         <translation type="unfinished">Opslaan</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="407"/>
+        <location filename="mainwindow.py" line="397"/>
         <source>Ctrl+S</source>
         <translation type="unfinished">Ctrl+S</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="408"/>
+        <location filename="mainwindow.py" line="398"/>
         <source>Save As...</source>
         <translation type="unfinished">Opslaan als...</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="409"/>
+        <location filename="mainwindow.py" line="399"/>
         <source>Close</source>
         <translation type="unfinished">Sluiten</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="410"/>
+        <location filename="mainwindow.py" line="400"/>
         <source>Open</source>
         <translation type="unfinished">Openen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="411"/>
+        <location filename="mainwindow.py" line="401"/>
         <source>Ctrl+O</source>
         <translation type="unfinished">Ctrl+O</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="412"/>
+        <location filename="mainwindow.py" line="402"/>
         <source>Settings</source>
         <translation type="unfinished">Instellingen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="414"/>
+        <location filename="mainwindow.py" line="404"/>
         <source>Bold</source>
         <translation type="unfinished">Vet</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="415"/>
+        <location filename="mainwindow.py" line="405"/>
         <source>Ctrl+B</source>
         <translation type="unfinished">Ctrl+B</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="417"/>
+        <location filename="mainwindow.py" line="407"/>
         <source>Italic</source>
         <translation type="unfinished">Schuin</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="418"/>
+        <location filename="mainwindow.py" line="408"/>
         <source>Ctrl+I</source>
         <translation type="unfinished">Ctrl+I</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="420"/>
+        <location filename="mainwindow.py" line="410"/>
         <source>Underline</source>
         <translation type="unfinished">Onderstrepen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="421"/>
+        <location filename="mainwindow.py" line="411"/>
         <source>Ctrl+U</source>
         <translation type="unfinished">Ctrl+U</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="422"/>
+        <location filename="mainwindow.py" line="412"/>
         <source>Speak</source>
         <translation type="unfinished">Voorlezen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="423"/>
+        <location filename="mainwindow.py" line="413"/>
         <source>Speak Text</source>
         <translation type="unfinished">Lees Tekst voor</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="425"/>
+        <location filename="mainwindow.py" line="415"/>
         <source>Undo</source>
         <translation type="unfinished">Terugdraaien</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="426"/>
+        <location filename="mainwindow.py" line="416"/>
         <source>Ctrl+Z</source>
         <translation type="unfinished">Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="428"/>
+        <location filename="mainwindow.py" line="418"/>
         <source>Redo</source>
         <translation type="unfinished">Opnieuw</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="429"/>
+        <location filename="mainwindow.py" line="419"/>
         <source>Ctrl+Y</source>
         <translation type="unfinished">Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="430"/>
+        <location filename="mainwindow.py" line="420"/>
         <source>File Toolbar</source>
         <translation type="unfinished">Bestand Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="431"/>
+        <location filename="mainwindow.py" line="421"/>
         <source>Enable File Toolbar</source>
         <translation type="unfinished">Toon Bestand Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="432"/>
+        <location filename="mainwindow.py" line="422"/>
         <source>Edit Toolbar</source>
         <translation type="unfinished">Bewerken Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="433"/>
+        <location filename="mainwindow.py" line="423"/>
         <source>Enable Edit Toolbar</source>
         <translation type="unfinished">Toon Bewerken Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="434"/>
+        <location filename="mainwindow.py" line="424"/>
         <source>Speaker Toolbar</source>
         <translation type="unfinished">Voorlees Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="435"/>
+        <location filename="mainwindow.py" line="425"/>
         <source>Enable Speaker Toolbar</source>
         <translation type="unfinished">Toon Voorlees Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="436"/>
+        <location filename="mainwindow.py" line="426"/>
         <source>Documentation</source>
         <translation type="unfinished">Documentatie</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="438"/>
+        <location filename="mainwindow.py" line="428"/>
         <source>About WriteType</source>
         <translation type="unfinished">Over Write Type</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="439"/>
+        <location filename="mainwindow.py" line="429"/>
         <source>About Qt</source>
         <translation type="unfinished">Over Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="441"/>
+        <location filename="mainwindow.py" line="431"/>
         <source>Print</source>
         <translation type="unfinished">Afdrukken</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="442"/>
+        <location filename="mainwindow.py" line="432"/>
         <source>Ctrl+P</source>
         <translation type="unfinished">Ctrl+P</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="444"/>
+        <location filename="mainwindow.py" line="434"/>
         <source>Highlight Mode</source>
         <translation type="unfinished">Uitlicht Modus</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="446"/>
+        <location filename="mainwindow.py" line="436"/>
         <source>Highlight</source>
         <translation type="unfinished">Uitlichten</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="447"/>
+        <location filename="mainwindow.py" line="437"/>
         <source>Distraction Free</source>
         <translation type="unfinished">Afleidings Vrij</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="448"/>
+        <location filename="mainwindow.py" line="438"/>
         <source>Distraction Free Mode</source>
         <translation type="unfinished">Afleidings Vrije Modus</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="449"/>
+        <location filename="mainwindow.py" line="439"/>
         <source>Insert Image</source>
         <translation type="unfinished">Afbeelding Invoegen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="450"/>
+        <location filename="mainwindow.py" line="440"/>
         <source>Align Image Left</source>
         <translation type="unfinished">Afbeelding Links</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="451"/>
+        <location filename="mainwindow.py" line="441"/>
         <source>Align Image Right</source>
         <translation type="unfinished">Afbeelding Rechts</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="452"/>
+        <location filename="mainwindow.py" line="442"/>
         <source>Image Toolbar</source>
         <translation type="unfinished">Afbeelding Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="453"/>
+        <location filename="mainwindow.py" line="443"/>
         <source>Stop</source>
         <translation type="unfinished">Stop</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="454"/>
+        <location filename="mainwindow.py" line="444"/>
         <source>Align Left</source>
         <translation type="unfinished">Links-bondig</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="455"/>
+        <location filename="mainwindow.py" line="445"/>
         <source>Align Center</source>
         <translation type="unfinished">Gecentreerd</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="456"/>
+        <location filename="mainwindow.py" line="446"/>
         <source>Align Right</source>
         <translation type="unfinished">Vertaling</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="457"/>
+        <location filename="mainwindow.py" line="447"/>
         <source>Double Space</source>
         <translation type="unfinished">Dubbele Spatie</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="458"/>
+        <location filename="mainwindow.py" line="448"/>
         <source>Single Space</source>
         <translation type="unfinished">Enkele Spatie</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="393"/>
+        <location filename="mainwindow.py" line="384"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="394"/>
+        <location filename="mainwindow.py" line="385"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="399"/>
+        <location filename="mainwindow.py" line="390"/>
         <source>Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="459"/>
+        <location filename="mainwindow.py" line="449"/>
         <source>Statistics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="460"/>
+        <location filename="mainwindow.py" line="450"/>
         <source>Diction Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="461"/>
+        <location filename="mainwindow.py" line="451"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="462"/>
+        <location filename="mainwindow.py" line="452"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="463"/>
+        <location filename="mainwindow.py" line="453"/>
         <source>Paste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.py" line="395"/>
+        <source>Speak text</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

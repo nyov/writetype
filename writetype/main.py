@@ -152,14 +152,16 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.nextButton, QtCore.SIGNAL("clicked()"), self.nextDictionError)
 		QtCore.QObject.connect(self.ui.actionDiction_Check, QtCore.SIGNAL("triggered()"), self.dictionCheckModeEnable)
 		QtCore.QObject.connect(self.ui.dictionCloseButton, QtCore.SIGNAL("clicked()"), self.dictionCheckModeDisable)
+		if platformSettings.getPlatformSetting("language") != "en_US":
+			self.ui.actionDiction_Check.setVisible(False)
 
-		#images
-		QtCore.QObject.connect(self.ui.actionInsert_Image, QtCore.SIGNAL("triggered()"), self.ui.textArea.insertImage)
-		QtCore.QObject.connect(self.ui.actionAlign_Image_Right, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignImageRight)
-		QtCore.QObject.connect(self.ui.actionAlign_Image_Left, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignImageLeft)
-		#Lets disable image support for now.  Yeah... I think that would be a wise idea.  (And double spacing too,  since I can't get it to work.)
-		self.ui.imageToolBar.setVisible(False)
-		self.ui.actionEnableImageToolbar.setVisible(False)
+		## #images
+		## QtCore.QObject.connect(self.ui.actionInsert_Image, QtCore.SIGNAL("triggered()"), self.ui.textArea.insertImage)
+		## QtCore.QObject.connect(self.ui.actionAlign_Image_Right, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignImageRight)
+		## QtCore.QObject.connect(self.ui.actionAlign_Image_Left, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignImageLeft)
+		## #Lets disable image support for now.  Yeah... I think that would be a wise idea.  (And double spacing too,  since I can't get it to work.)
+		## self.ui.imageToolBar.setVisible(False)
+		## self.ui.actionEnableImageToolbar.setVisible(False)
 		self.ui.actionDoubleSpace.setVisible(False)
 		self.ui.actionSingleSpace.setVisible(False)
 		
@@ -349,16 +351,11 @@ class MainApplication(QtGui.QMainWindow):
 		if text[0:-1] and text[-1:] in (" ", ".", ",", "!", "?", "\t"):
 			if self.ui.textArea.dictionary.check(text.lower()[0:-1]):
 				self.wl.addCustomWord(text.lower()[0:-1])
-			return
+			#return
 
 		#This way, the word list won't keep changing if the user tabs to select a new word
 		if self.wlIndex != None:
 			return
-		
-		#Don't bother continuing if there are no words remaining
-		#if len(self.wordsC) == 0 and len(self.wordsN) == 0 and len(text) > platformSettings.getSetting("minimumletters", 0) + 1:
-			#return
-		#YES bother because it could have been a typo
 		
 		self.ui.spellingSuggestionsList.clear()
 		
