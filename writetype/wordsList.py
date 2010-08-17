@@ -19,7 +19,7 @@
 import platformSettings
 from os import path
 from xml.dom import minidom
-
+import codecs
 
 class wordsList:
 	NOSORT = 1
@@ -67,7 +67,7 @@ class wordsList:
 
 	def loadWords(self, filePath):
 		print "Loading words"
-		fileHandle = open(filePath, 'r')
+		fileHandle = codecs.open(filePath, 'r', encoding='utf-8')
 		words = fileHandle.read().split("\n")
 		finalwords = []
 		for word in words:
@@ -79,7 +79,7 @@ class wordsList:
 			return fileHandle.read().split("\n")
 
 	def addCustomWord(self, word):
-		word = str(word).lower()
+		word = unicode(word).lower()
 		match = [(w,s) for w,s in self.words if w == word]
 	   	if match:
 			w,s = match[0]

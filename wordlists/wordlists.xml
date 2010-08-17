@@ -5,4 +5,7 @@
 <wordlist name="Super Huge" file="list4.txt" lang="en_US" id="4" />
 <wordlist name="Ginormous" file="list5.txt" lang="en_US" id="5" />
 <wordlist name="Groot" file="dutch.txt" lang="nl_NL" id="1" />
+<wordlist name="Español" file="spanish.txt" lang="es_AR" id="1" />
+<wordlist name="Español" file="spanish.txt" lang="es_ES" id="1" />
+<wordlist name="Español" file="spanish.txt" lang="es_MX" id="1" />
 </xml>

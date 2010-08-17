@@ -29,7 +29,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="575"/>
+        <location filename="main.py" line="569"/>
         <source>WriteType - </source>
         <translation type="unfinished"></translation>
     </message>
@@ -74,32 +74,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="499"/>
+        <location filename="main.py" line="493"/>
         <source>About this program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="509"/>
+        <location filename="main.py" line="503"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="586"/>
+        <location filename="main.py" line="580"/>
         <source>Quit?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="586"/>
+        <location filename="main.py" line="580"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="466"/>
+        <location filename="main.py" line="460"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="475"/>
+        <location filename="main.py" line="469"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -114,8 +114,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="499"/>
-        <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
+        <location filename="main.py" line="493"/>
+        <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

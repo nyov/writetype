@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="nl_NL">
+<!DOCTYPE TS><TS version="1.1">
 <context>
     <name>EspeakInterface</name>
     <message>
-        <location filename="" line="4569760"/>
+        <location filename="" line="1836017711"/>
         <source>Feature unavailable</source>
         <comment>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</comment>
         <translation type="obsolete">Dienst niet beschikbaar.
@@ -24,7 +24,7 @@ eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer e
 <context>
     <name>FestivalInterface</name>
     <message>
-        <location filename="espeakInterface.py" line="17440016"/>
+        <location filename="" line="1836017711"/>
         <source>Feature unavailable</source>
         <comment>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</comment>
         <translation type="obsolete">Dienst niet beschikbaar.
@@ -70,73 +70,78 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
         <translation type="unfinished">De huidige TTS driver is ongeldig.  Voorlezen is niet mogelijk voor deze sessie.</translation>
     </message>
     <message>
-        <location filename="main.py" line="499"/>
+        <location filename="main.py" line="493"/>
         <source>About this program</source>
         <translation type="unfinished">Over dit programma</translation>
     </message>
     <message>
-        <location filename="main.py" line="448"/>
+        <location filename="" line="1836017711"/>
         <source>&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;</source>
         <translation type="obsolete">&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Deze software is toegankelijk onder de GNU General Public License v3 of later. Voor meer informatie over Uw rechten, zie: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="509"/>
+        <location filename="main.py" line="503"/>
         <source>Print</source>
         <translation type="unfinished">Afdrukken</translation>
     </message>
     <message>
-        <location filename="main.py" line="586"/>
+        <location filename="main.py" line="580"/>
         <source>Quit?</source>
         <translation type="unfinished">Sluiten?</translation>
     </message>
     <message>
-        <location filename="main.py" line="586"/>
+        <location filename="main.py" line="580"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation type="unfinished">Er zijn niet opgeslagen veranderingen.  Wilt U die  opslaan?</translation>
     </message>
     <message>
-        <location filename="main.py" line="575"/>
+        <location filename="main.py" line="569"/>
         <source>WriteType - </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">WriteType -(sp)</translation>
     </message>
     <message>
         <location filename="main.py" line="180"/>
         <source>Crash recovery</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Crash herstel</translation>
     </message>
     <message>
         <location filename="main.py" line="180"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">WriteType heeft niet opgeslagen verloren gegevens gevonden.(sp)(sp)Wilt U die opslaan?</translation>
     </message>
     <message>
         <location filename="main.py" line="184"/>
         <source>Recovered file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hersteld bestand</translation>
     </message>
     <message>
-        <location filename="main.py" line="466"/>
+        <location filename="main.py" line="460"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;i&gt;Geen suggesties gevonden.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="475"/>
+        <location filename="main.py" line="469"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;i&gt;Dictie controle compleet.&lt;/i&gt;</translation>
     </message>
     <message>
         <location filename="main.py" line="249"/>
         <source>Save error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fout opslaan</translation>
     </message>
     <message>
         <location filename="main.py" line="249"/>
         <source>WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">WriteType kan het werk niet opslaan.  Controleer de bestands-extensie, dat het bestand bewerkbaar is, en probeer het dan nog eens.</translation>
     </message>
     <message>
-        <location filename="main.py" line="499"/>
+        <location filename="main.py" line="493"/>
         <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
+        <translation type="obsolete">&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="493"/>
+        <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -148,12 +153,12 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
         <translation type="unfinished">HoofdVenster</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="17440016"/>
+        <location filename="" line="1836017711"/>
         <source>Size:</source>
         <translation type="obsolete">Formaat:</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="17440016"/>
+        <location filename="" line="1836017711"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -196,12 +201,12 @@ p, li { white-space: pre-wrap; }(new line)
         <translation type="unfinished">Bestand</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="405"/>
+        <location filename="" line="1836017711"/>
         <source>toolBar</source>
         <translation type="obsolete">WerkBalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="403"/>
+        <location filename="" line="1836017711"/>
         <source>toolBar_2</source>
         <translation type="obsolete">WerkBalk_2</translation>
     </message>
@@ -428,47 +433,47 @@ p, li { white-space: pre-wrap; }(new line)
     <message>
         <location filename="mainwindow.py" line="384"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">...</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="385"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Volgende</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="390"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Werktuigen</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="449"/>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Statistieken</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="450"/>
         <source>Diction Check</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dictie controle</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="451"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Snijden</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="452"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kopieren</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="453"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Plakken</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="395"/>
         <source>Speak text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tekst uitspreken</translation>
     </message>
 </context>
 <context>
@@ -489,7 +494,7 @@ p, li { white-space: pre-wrap; }(new line)
     <message>
         <location filename="distractionFree.py" line="28"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dialoog</translation>
     </message>
 </context>
 <context>
@@ -515,27 +520,27 @@ p, li { white-space: pre-wrap; }(new line)
         <translation type="unfinished">Selecteer de grootte van de woord aanvulling database:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="17440016"/>
+        <location filename="" line="1836017711"/>
         <source>Big</source>
         <translation type="obsolete">Groot</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="17440016"/>
+        <location filename="" line="1836017711"/>
         <source>Really Big</source>
         <translation type="obsolete">Heel Groot</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="17440016"/>
+        <location filename="" line="1836017711"/>
         <source>Huge</source>
         <translation type="obsolete">Enorm</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="17440016"/>
+        <location filename="" line="1836017711"/>
         <source>Super Huge</source>
         <translation type="obsolete">Super Enorm</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="17440016"/>
+        <location filename="" line="1836017711"/>
         <source>Ginormous</source>
         <translation type="obsolete">Giga Enorm</translation>
     </message>
@@ -585,7 +590,7 @@ p, li { white-space: pre-wrap; }(new line)
         <translation type="unfinished">Woord Aanvulling</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="225"/>
+        <location filename="" line="1836017711"/>
         <source>Use auto-completion</source>
         <translation type="obsolete">Gebruik auto-aanvulling</translation>
     </message>
@@ -600,12 +605,12 @@ p, li { white-space: pre-wrap; }(new line)
         <translation type="unfinished">Afkortingen</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="225"/>
+        <location filename="" line="1836017711"/>
         <source>Auto-completions</source>
         <translation type="obsolete">Auto-aanvullingen</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="231"/>
+        <location filename="" line="1836017711"/>
         <source>Send usage statistics to help improve the program</source>
         <translation type="obsolete">Verzend gebruiks statistieken om het programma te helpen verbeteren</translation>
     </message>
@@ -662,17 +667,17 @@ p, li { white-space: pre-wrap; }(new line)
     <message>
         <location filename="settingsDialog.py" line="232"/>
         <source>Check document for grammar mistakes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Controleer document op grammatica fouten</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="222"/>
         <source>Use auto-correction</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gebruik auto-correctie</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="225"/>
         <source>Auto-corrections</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Auto-correcties</translation>
     </message>
 </context>
 <context>
@@ -680,7 +685,7 @@ p, li { white-space: pre-wrap; }(new line)
     <message>
         <location filename="statistics.py" line="74"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dialoog</translation>
     </message>
     <message>
         <location filename="statistics.py" line="75"/>
@@ -689,12 +694,16 @@ p, li { white-space: pre-wrap; }(new line)
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Document Statistics&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;(new line)
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;(new line)
+p, li { white-space: pre-wrap; }(new line)
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;(new line)
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Document Statistics&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="statistics.py" line="80"/>
         <source>Filename: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bestandsnaam: </translation>
     </message>
     <message>
         <location filename="statistics.py" line="81"/>

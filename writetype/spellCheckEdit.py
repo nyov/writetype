@@ -184,7 +184,6 @@ class spellCheckEdit(QTextEdit):
 				cursor2.deletePreviousChar()
 				cursor2.select(QTextCursor.WordUnderCursor)
 			self.lastWord = cursor2.selectedText()
-			print self.lastWord, "< Last word"
 		#Capitalization
 		if re.match(u'[A-Z][a-z]*', unicode(self.lastWord)):
 			word = unicode(word).capitalize()

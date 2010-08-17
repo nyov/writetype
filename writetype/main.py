@@ -345,7 +345,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.textArea.replaceLastWord(word)
 
 	def populateWordList(self, text):
-		text = str(text)
+		text = unicode(text)
 
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
 		if text[0:-1] and text[-1:] in (" ", ".", ",", "!", "?", "\t"):
@@ -369,7 +369,7 @@ class MainApplication(QtGui.QMainWindow):
 			self.wordsN = []
 			return
 
-		self.wordsN = self.wl.search(str(text), self.wl.NORMAL_WORDS)
+		self.wordsN = self.wl.search(text, self.wl.NORMAL_WORDS)
 
 		if platformSettings.getSetting("guessmisspellings", True) and len(self.wordsN) <= platformSettings.getSetting("threshold", 0):
 			replacements = [
@@ -404,13 +404,11 @@ class MainApplication(QtGui.QMainWindow):
 				if not replacement[0] in text:
 					continue
 				possibilities += self.wl.search(text.replace(replacement[0], replacement[1]))
-			print possibilities
 
 			if possibilities:
 				#self.wordsN += [(rep[0], -1) for rep in possibilities]
 				self.wordsN += possibilities
 				
-		print self.wordsN[0:20]
 		#Sort by ranking
 		self.wordsN.sort(lambda x, y : cmp(y[1],x[1]))
 
@@ -451,17 +449,13 @@ class MainApplication(QtGui.QMainWindow):
 			#Make sure it is a separate word.  This is easier than regex
 			if index != -1 and not text[index + len(self.dictionReplacements[self.dictionReplacementsIndex][0])] in [" " , ".", "!", ",", ":", ";"]:
 				self.lastDictionReplacementsIndex = index
-				print self.lastDictionReplacementsIndex
 				continue
 			#If a word was found
 			if index != -1:
 				self.ui.textArea.selectTextByPosition(index, index + len(self.dictionReplacements[self.dictionReplacementsIndex][0]))
 				suggestiontext = str(self.dictionReplacements[self.dictionReplacementsIndex][2])
 				if suggestiontext and suggestiontext[0] == "=":
-					print suggestiontext[1:]
-					print self.dictionReplacements
 					suggestiontext = [z for x,y,z in self.dictionReplacements if x == suggestiontext[1:]][0]
-					print suggestiontext
 				if not suggestiontext:
 					suggestiontext = self.tr("<i>No suggestion available.</i>")
 				self.ui.dictionErrorLabel.setText(suggestiontext)
@@ -496,7 +490,7 @@ class MainApplication(QtGui.QMainWindow):
 	#DIALOGS
 
 	def showAbout(self):
-		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType <span style="font-size: large">Revision r%1</span></h1><h2>Copyright 2010 Max Shinn</h2><br /><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr></table>""").arg(revno.aboutrevno))
+		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType <span style="font-size: large">Revision r%1</span></h1><h2>Copyright 2010 Max Shinn</h2><br /><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Emilio Lopez</td><td>Spanish Translations</td></tr><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr></table>""").arg(revno.aboutrevno))
 		
 	def openHelpPage(self):
 		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype/documentation"))
@@ -619,6 +613,7 @@ application = QtGui.QApplication(sys.argv)
 #translation
 trans = QTranslator()
 print path.join(platformSettings.getPlatformSetting("basePath"), "translations")
+print platformSettings.getPlatformSetting("language")
 trans.load("qt_" + platformSettings.getPlatformSetting("language"), path.join(platformSettings.getPlatformSetting("basePath"), "translations"))
 application.installTranslator(trans)
 app = MainApplication()
