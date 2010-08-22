@@ -19,13 +19,14 @@
 from ttsInterface import TtsInterface
 import subprocess
 from tempfile import mkstemp
-from os import unlink, uname
+from os import unlink
 from PyQt4.QtGui import QMessageBox
 
 class EspeakInterface(TtsInterface):
 	def __init__(self, executableName):
 		self.executableName = executableName
 		self.proc = None
+		self.tmpPaths = []
 
 	def __del__(self):
 		print "destructor"
@@ -47,7 +48,7 @@ class EspeakInterface(TtsInterface):
 		
 	def stop(self):
 		if self.proc:
-			self.proc.terminate()
-
-
-
+			try:
+				self.proc.terminate()
+			except WindowsError:
+				pass

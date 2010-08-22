@@ -22,11 +22,10 @@ import os
 import sys
 
 #Stupid Windows.
-if hasattr(sys, "frozen") and sys.frozen in ("windows_exe", "console_exe"):
-	import jpath
-	path = jpath.path(os.path.abspath(sys.executabe)).dirname()
+if hasattr(sys, "frozen"):
+	path = os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding( )))
 else:
-	path = os.path.dirname(__file__)
+	path = os.path.dirname(unicode(__file__, sys.getfilesystemencoding( )))
 	
 prefix = os.path.join(path, "..")
 if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
@@ -57,6 +56,11 @@ def getPlatformSetting(key):
 		return os.path.join(prefix, 'res')
 	elif key == "basePath":
 		return prefix
+	elif key == "pathToEspeak":
+		path = parser.get('General', key)
+		path = path.replace("[wt]", prefix)
+		print path
+		return path
 	elif key == "language":
 		language = str(QLocale.system().name())
 		#language = "ar-AR"

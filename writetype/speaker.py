@@ -90,10 +90,10 @@ class Speaker:
 				from festivalInterface import FestivalInterface
 				self.ttsdriver = FestivalInterface(platformSettings.getPlatformSetting("pathToFestival"))
 			elif self.driver == "pyttsx":
-				from .pyttsxInterface import PyttsxInterface
+				from pyttsxInterface import PyttsxInterface
 				self.ttsdriver = PyttsxInterface() # This will make a bug, I'll fix it later
 			elif self.driver == "espeak":
-				from .espeakInterface import EspeakInterface
+				from espeakInterface import EspeakInterface
 				self.ttsdriver = EspeakInterface(platformSettings.getPlatformSetting("pathToEspeak"))
 		except ImportError:
 			from .ttsInterface import TtsInterface
