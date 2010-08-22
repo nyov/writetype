@@ -31,7 +31,7 @@ if system() == "Windows":
 setup(
     name = 'WriteType',
     version = '0.1.53',
-    description = 'A program to help people type more easily.',
+    description = 'A program to help young students type more easily.',
     author = 'Max Shinn',
     author_email = 'max@bernsteinforpresident.com',
     url = 'http://bernsteinforpresident.com/software/writetype',

@@ -21,10 +21,19 @@ from ConfigParser import SafeConfigParser
 import os
 import sys
 
-prefix = os.path.join(sys.prefix, 'share', 'writetype')
-if not os.path.exists(prefix):
-	prefix = os.path.join(os.path.dirname(__file__), "..")
-	print "setting prefix"
+#Stupid Windows.
+if hasattr(sys, "frozen") and sys.frozen in ("windows_exe", "console_exe"):
+	import jpath
+	path = jpath.path(os.path.abspath(sys.executabe)).dirname()
+else:
+	path = os.path.dirname(__file__)
+	
+prefix = os.path.join(path, "..")
+if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
+	prefix = os.path.join(sys.prefix, 'share', 'writetype')
+	if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
+		raise IOError("PlatformSettings not found!")
+	print "setting intallation prefix"
 
 #Some defines
 try:
