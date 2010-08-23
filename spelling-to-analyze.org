@@ -62,6 +62,10 @@
    CLOSED: [2010-08-07 Sat 20:31]
 ** DONE Spelling suggestions after punctuation bug
    CLOSED: [2010-08-08 Sun 15:49]
+** DONE Unicode for tts
+   CLOSED: [2010-08-23 Mon 08:54]
+** DONE Option for no word completion
+   CLOSED: [2010-08-23 Mon 08:04]
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are

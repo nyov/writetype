@@ -21,6 +21,7 @@ import subprocess
 from tempfile import mkstemp
 from os import unlink
 from PyQt4.QtGui import QMessageBox
+import codecs
 
 class EspeakInterface(TtsInterface):
 	def __init__(self, executableName):
@@ -37,7 +38,8 @@ class EspeakInterface(TtsInterface):
 	def speak(self, text):
 		tmpfile = mkstemp(suffix=".ssml", prefix="wt_")
 		self.tmpPaths.append(tmpfile)
-		tmpfileHandle = open(tmpfile[1], 'w')
+		print text
+		tmpfileHandle = codecs.open(tmpfile[1], 'w', encoding="utf-8")
 		tmpfileHandle.write(text)
 		tmpfileHandle.close()
 		call = [self.executableName, "-m", "-f", tmpfile[1]]

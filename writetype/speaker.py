@@ -27,7 +27,7 @@ class Speaker:
 		#threading.Thread.__init__(self)
 
 	def say(self, text):
-		text = str(text)
+		text = unicode(text)
 		#Sanitize input
 		text.replace("<", "")
 		text.replace(">", "")
@@ -40,12 +40,14 @@ class Speaker:
 				text = text.replace('"', "<PITCH BASE='20%'>", 1)
 				text = text.replace('"', "</PITCH>", 1)
 				print text
+			text = '<LANGUAGE ID="' + platformSettings.getPlatformSetting("language")[0:2] + '">' + text + '</LANGUAGE>'
 			text = text.replace("\n", '<BREAK LEVEL="large" />')
 			text = re.sub(re.compile(re.escape("writetype"), re.I), '<PRON SUB="right type">writetype</PRON>', text, 0)
 			#Set the speed to the user preference
 			speed = platformSettings.getSetting("readingspeed", 0)
 			text = '<RATE SPEED="' + str(speed) + '%">' + text + "</RATE>"
-			self.ttsdriver.speak("<SABLE>"+text+"</SABLE>")
+			print text
+			self.ttsdriver.speak(u"<SABLE>"+unicode(text)+u"</SABLE>")
 
 		elif self.driver == "espeak":
 			print "espeak"
@@ -59,8 +61,9 @@ class Speaker:
 			text = re.sub(re.compile(re.escape("writetype"), re.I), 'write type', text, 0)
 			#Set the speed to the user preference
 			speed = platformSettings.getSetting("readingspeed", 0)
-			text = '<prosody speed="' + str(speed) + '%">' + text + "</prosody>"
-			self.ttsdriver.speak("<speak>"+text+"</speak>")
+			text = unicode('<prosody rate="' + unicode(speed) + '%">' + text + "</prosody>")
+			print text
+			self.ttsdriver.speak("<speak xml:lang=\""+platformSettings.getPlatformSetting("language").replace('_', '-')+"\">"+text+"</speak>")
 
 		elif self.driver == "pyttsx":
 			print "pyttsx"

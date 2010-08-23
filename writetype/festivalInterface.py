@@ -22,6 +22,7 @@ from tempfile import mkstemp
 from os import unlink
 from platform import system
 from PyQt4.QtGui import QMessageBox
+import codecs
 
 class FestivalInterface(TtsInterface):
 	def __init__(self, executableName, libPath=None):
@@ -48,7 +49,7 @@ class FestivalInterface(TtsInterface):
 	def speak(self, text):
 		tmpfile = mkstemp(suffix=".sable", prefix="wt_")
 		self.tmpPaths.append(tmpfile)
-		tmpfileHandle = open(tmpfile[1], 'w')
+		tmpfileHandle = codecs.open(tmpfile[1], 'w', encoding='utf-8')
 		tmpfileHandle.write(text)
 		tmpfileHandle.close()
 		call = [self.executableName, "--tts", tmpfile[1]]
