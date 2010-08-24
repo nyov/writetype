@@ -11,12 +11,12 @@
 eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
     </message>
     <message>
-        <location filename="espeakInterface.py" line="46"/>
+        <location filename="espeakInterface.py" line="49"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Dienst niet beschikbaar</translation>
     </message>
     <message>
-        <location filename="espeakInterface.py" line="46"/>
+        <location filename="espeakInterface.py" line="49"/>
         <source>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</source>
         <translation type="unfinished">eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
     </message>
@@ -32,12 +32,12 @@ eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer e
 Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
     </message>
     <message>
-        <location filename="festivalInterface.py" line="58"/>
+        <location filename="festivalInterface.py" line="59"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Dienst niet beschikbaar</translation>
     </message>
     <message>
-        <location filename="festivalInterface.py" line="58"/>
+        <location filename="festivalInterface.py" line="59"/>
         <source>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</source>
         <translation type="unfinished">Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
     </message>
@@ -148,7 +148,7 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.py" line="383"/>
+        <location filename="mainwindow.py" line="386"/>
         <source>MainWindow</source>
         <translation type="unfinished">HoofdVenster</translation>
     </message>
@@ -171,32 +171,32 @@ p, li { white-space: pre-wrap; }(new line)
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="386"/>
+        <location filename="mainwindow.py" line="389"/>
         <source>Go Back </source>
         <translation type="unfinished">Ga Terug </translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="394"/>
+        <location filename="mainwindow.py" line="397"/>
         <source>Edit</source>
         <translation type="unfinished">Bewerken</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="387"/>
+        <location filename="mainwindow.py" line="390"/>
         <source>View</source>
         <translation type="unfinished">Beeld</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="388"/>
+        <location filename="mainwindow.py" line="391"/>
         <source>Toolbars</source>
         <translation type="unfinished">Werkbalken</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="391"/>
+        <location filename="mainwindow.py" line="394"/>
         <source>Help</source>
         <translation type="unfinished">Help</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="393"/>
+        <location filename="mainwindow.py" line="396"/>
         <source>File</source>
         <translation type="unfinished">Bestand</translation>
     </message>
@@ -211,267 +211,267 @@ p, li { white-space: pre-wrap; }(new line)
         <translation type="obsolete">WerkBalk_2</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="396"/>
+        <location filename="mainwindow.py" line="399"/>
         <source>Save</source>
         <translation type="unfinished">Opslaan</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="397"/>
+        <location filename="mainwindow.py" line="400"/>
         <source>Ctrl+S</source>
         <translation type="unfinished">Ctrl+S</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="398"/>
+        <location filename="mainwindow.py" line="401"/>
         <source>Save As...</source>
         <translation type="unfinished">Opslaan als...</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="399"/>
+        <location filename="mainwindow.py" line="402"/>
         <source>Close</source>
         <translation type="unfinished">Sluiten</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="400"/>
+        <location filename="mainwindow.py" line="403"/>
         <source>Open</source>
         <translation type="unfinished">Openen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="401"/>
+        <location filename="mainwindow.py" line="404"/>
         <source>Ctrl+O</source>
         <translation type="unfinished">Ctrl+O</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="402"/>
+        <location filename="mainwindow.py" line="405"/>
         <source>Settings</source>
         <translation type="unfinished">Instellingen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="404"/>
+        <location filename="mainwindow.py" line="407"/>
         <source>Bold</source>
         <translation type="unfinished">Vet</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="405"/>
+        <location filename="mainwindow.py" line="408"/>
         <source>Ctrl+B</source>
         <translation type="unfinished">Ctrl+B</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="407"/>
+        <location filename="mainwindow.py" line="410"/>
         <source>Italic</source>
         <translation type="unfinished">Schuin</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="408"/>
+        <location filename="mainwindow.py" line="411"/>
         <source>Ctrl+I</source>
         <translation type="unfinished">Ctrl+I</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="410"/>
+        <location filename="mainwindow.py" line="413"/>
         <source>Underline</source>
         <translation type="unfinished">Onderstrepen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="411"/>
+        <location filename="mainwindow.py" line="414"/>
         <source>Ctrl+U</source>
         <translation type="unfinished">Ctrl+U</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="412"/>
+        <location filename="mainwindow.py" line="415"/>
         <source>Speak</source>
         <translation type="unfinished">Voorlezen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="413"/>
+        <location filename="mainwindow.py" line="416"/>
         <source>Speak Text</source>
         <translation type="unfinished">Lees Tekst voor</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="415"/>
+        <location filename="mainwindow.py" line="418"/>
         <source>Undo</source>
         <translation type="unfinished">Terugdraaien</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="416"/>
+        <location filename="mainwindow.py" line="419"/>
         <source>Ctrl+Z</source>
         <translation type="unfinished">Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="418"/>
+        <location filename="mainwindow.py" line="421"/>
         <source>Redo</source>
         <translation type="unfinished">Opnieuw</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="419"/>
+        <location filename="mainwindow.py" line="422"/>
         <source>Ctrl+Y</source>
         <translation type="unfinished">Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="420"/>
+        <location filename="mainwindow.py" line="423"/>
         <source>File Toolbar</source>
         <translation type="unfinished">Bestand Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="421"/>
+        <location filename="mainwindow.py" line="424"/>
         <source>Enable File Toolbar</source>
         <translation type="unfinished">Toon Bestand Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="422"/>
+        <location filename="mainwindow.py" line="425"/>
         <source>Edit Toolbar</source>
         <translation type="unfinished">Bewerken Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="423"/>
+        <location filename="mainwindow.py" line="426"/>
         <source>Enable Edit Toolbar</source>
         <translation type="unfinished">Toon Bewerken Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="424"/>
+        <location filename="mainwindow.py" line="427"/>
         <source>Speaker Toolbar</source>
         <translation type="unfinished">Voorlees Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="425"/>
+        <location filename="mainwindow.py" line="428"/>
         <source>Enable Speaker Toolbar</source>
         <translation type="unfinished">Toon Voorlees Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="426"/>
+        <location filename="mainwindow.py" line="429"/>
         <source>Documentation</source>
         <translation type="unfinished">Documentatie</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="428"/>
+        <location filename="mainwindow.py" line="431"/>
         <source>About WriteType</source>
         <translation type="unfinished">Over Write Type</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="429"/>
+        <location filename="mainwindow.py" line="432"/>
         <source>About Qt</source>
         <translation type="unfinished">Over Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="431"/>
+        <location filename="mainwindow.py" line="434"/>
         <source>Print</source>
         <translation type="unfinished">Afdrukken</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="432"/>
+        <location filename="mainwindow.py" line="435"/>
         <source>Ctrl+P</source>
         <translation type="unfinished">Ctrl+P</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="434"/>
+        <location filename="mainwindow.py" line="437"/>
         <source>Highlight Mode</source>
         <translation type="unfinished">Uitlicht Modus</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="436"/>
+        <location filename="mainwindow.py" line="439"/>
         <source>Highlight</source>
         <translation type="unfinished">Uitlichten</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="437"/>
+        <location filename="mainwindow.py" line="440"/>
         <source>Distraction Free</source>
         <translation type="unfinished">Afleidings Vrij</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="438"/>
+        <location filename="mainwindow.py" line="441"/>
         <source>Distraction Free Mode</source>
         <translation type="unfinished">Afleidings Vrije Modus</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="439"/>
+        <location filename="mainwindow.py" line="442"/>
         <source>Insert Image</source>
         <translation type="unfinished">Afbeelding Invoegen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="440"/>
+        <location filename="mainwindow.py" line="443"/>
         <source>Align Image Left</source>
         <translation type="unfinished">Afbeelding Links</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="441"/>
+        <location filename="mainwindow.py" line="444"/>
         <source>Align Image Right</source>
         <translation type="unfinished">Afbeelding Rechts</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="442"/>
+        <location filename="mainwindow.py" line="445"/>
         <source>Image Toolbar</source>
         <translation type="unfinished">Afbeelding Werkbalk</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="443"/>
+        <location filename="mainwindow.py" line="446"/>
         <source>Stop</source>
         <translation type="unfinished">Stop</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="444"/>
+        <location filename="mainwindow.py" line="447"/>
         <source>Align Left</source>
         <translation type="unfinished">Links-bondig</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="445"/>
+        <location filename="mainwindow.py" line="448"/>
         <source>Align Center</source>
         <translation type="unfinished">Gecentreerd</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="446"/>
+        <location filename="mainwindow.py" line="449"/>
         <source>Align Right</source>
         <translation type="unfinished">Vertaling</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="447"/>
+        <location filename="mainwindow.py" line="450"/>
         <source>Double Space</source>
         <translation type="unfinished">Dubbele Spatie</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="448"/>
+        <location filename="mainwindow.py" line="451"/>
         <source>Single Space</source>
         <translation type="unfinished">Enkele Spatie</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="384"/>
+        <location filename="mainwindow.py" line="387"/>
         <source>...</source>
         <translation type="unfinished">...</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="385"/>
+        <location filename="mainwindow.py" line="388"/>
         <source>Next</source>
         <translation type="unfinished">Volgende</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="390"/>
+        <location filename="mainwindow.py" line="393"/>
         <source>Tools</source>
         <translation type="unfinished">Werktuigen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="449"/>
+        <location filename="mainwindow.py" line="452"/>
         <source>Statistics</source>
         <translation type="unfinished">Statistieken</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="450"/>
+        <location filename="mainwindow.py" line="453"/>
         <source>Diction Check</source>
         <translation type="unfinished">Dictie controle</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="451"/>
+        <location filename="mainwindow.py" line="454"/>
         <source>Cut</source>
         <translation type="unfinished">Snijden</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="452"/>
+        <location filename="mainwindow.py" line="455"/>
         <source>Copy</source>
         <translation type="unfinished">Kopieren</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="453"/>
+        <location filename="mainwindow.py" line="456"/>
         <source>Paste</source>
         <translation type="unfinished">Plakken</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="395"/>
+        <location filename="mainwindow.py" line="398"/>
         <source>Speak text</source>
         <translation type="unfinished">Tekst uitspreken</translation>
     </message>

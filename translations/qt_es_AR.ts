@@ -3,12 +3,12 @@
 <context>
     <name>EspeakInterface</name>
     <message>
-        <location filename="espeakInterface.py" line="46"/>
+        <location filename="espeakInterface.py" line="49"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Característica no disponible</translation>
     </message>
     <message>
-        <location filename="espeakInterface.py" line="46"/>
+        <location filename="espeakInterface.py" line="49"/>
         <source>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</source>
         <translation>eSpeak no está instalado en el equipo.  Para usar esta característica, por favor instale eSpeak o seleccione un nuevo controlador de texto a voz en la ventana de Opciones.</translation>
     </message>
@@ -16,12 +16,12 @@
 <context>
     <name>FestivalInterface</name>
     <message>
-        <location filename="festivalInterface.py" line="58"/>
+        <location filename="festivalInterface.py" line="59"/>
         <source>Feature unavailable</source>
         <translation>Característica no disponible</translation>
     </message>
     <message>
-        <location filename="festivalInterface.py" line="58"/>
+        <location filename="festivalInterface.py" line="59"/>
         <source>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</source>
         <translation>Festival no está instalado en el equipo.  Para usar esta característica, por favor instale Festival o seleccione un nuevo controlador de texto a voz en la ventana de Opciones.</translation>
     </message>
@@ -127,302 +127,302 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.py" line="383"/>
+        <location filename="mainwindow.py" line="386"/>
         <source>MainWindow</source>
         <translation>MainWindow</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="386"/>
+        <location filename="mainwindow.py" line="389"/>
         <source>Go Back </source>
         <translation>Atrás</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="394"/>
+        <location filename="mainwindow.py" line="397"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="387"/>
+        <location filename="mainwindow.py" line="390"/>
         <source>View</source>
         <translation>Ver</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="388"/>
+        <location filename="mainwindow.py" line="391"/>
         <source>Toolbars</source>
         <translation>Barras de Herramientas</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="391"/>
+        <location filename="mainwindow.py" line="394"/>
         <source>Help</source>
         <translation>Ayuda</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="393"/>
+        <location filename="mainwindow.py" line="396"/>
         <source>File</source>
         <translation>Archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="396"/>
+        <location filename="mainwindow.py" line="399"/>
         <source>Save</source>
         <translation>Guardar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="397"/>
+        <location filename="mainwindow.py" line="400"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="398"/>
+        <location filename="mainwindow.py" line="401"/>
         <source>Save As...</source>
         <translation>Guardar Como...</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="399"/>
+        <location filename="mainwindow.py" line="402"/>
         <source>Close</source>
         <translation>Cerrar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="400"/>
+        <location filename="mainwindow.py" line="403"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="401"/>
+        <location filename="mainwindow.py" line="404"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="402"/>
+        <location filename="mainwindow.py" line="405"/>
         <source>Settings</source>
         <translation>Opciones</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="404"/>
+        <location filename="mainwindow.py" line="407"/>
         <source>Bold</source>
         <translation>Negrita</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="405"/>
+        <location filename="mainwindow.py" line="408"/>
         <source>Ctrl+B</source>
         <translation>Ctrl+B</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="407"/>
+        <location filename="mainwindow.py" line="410"/>
         <source>Italic</source>
         <translation>Itálica</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="408"/>
+        <location filename="mainwindow.py" line="411"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="410"/>
+        <location filename="mainwindow.py" line="413"/>
         <source>Underline</source>
         <translation>Subrayado</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="411"/>
+        <location filename="mainwindow.py" line="414"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="412"/>
+        <location filename="mainwindow.py" line="415"/>
         <source>Speak</source>
         <translation>Leer</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="413"/>
+        <location filename="mainwindow.py" line="416"/>
         <source>Speak Text</source>
         <translation>Leer Texto</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="415"/>
+        <location filename="mainwindow.py" line="418"/>
         <source>Undo</source>
         <translation>Deshacer</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="416"/>
+        <location filename="mainwindow.py" line="419"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="418"/>
+        <location filename="mainwindow.py" line="421"/>
         <source>Redo</source>
         <translation>Rehacer</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="419"/>
+        <location filename="mainwindow.py" line="422"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="420"/>
+        <location filename="mainwindow.py" line="423"/>
         <source>File Toolbar</source>
         <translation>Barra de Herramientas de Archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="421"/>
+        <location filename="mainwindow.py" line="424"/>
         <source>Enable File Toolbar</source>
         <translation>Habilitar Barra de Herramientas de Archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="422"/>
+        <location filename="mainwindow.py" line="425"/>
         <source>Edit Toolbar</source>
         <translation>Barra de Herramientas de Edición</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="423"/>
+        <location filename="mainwindow.py" line="426"/>
         <source>Enable Edit Toolbar</source>
         <translation>Habilitar Barra de Herramientas de Edición</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="424"/>
+        <location filename="mainwindow.py" line="427"/>
         <source>Speaker Toolbar</source>
         <translation>Barra de Herramientas de Lectura</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="425"/>
+        <location filename="mainwindow.py" line="428"/>
         <source>Enable Speaker Toolbar</source>
         <translation>Habilitar Barra de Herramientas de Lectura</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="426"/>
+        <location filename="mainwindow.py" line="429"/>
         <source>Documentation</source>
         <translation>Documentación</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="428"/>
+        <location filename="mainwindow.py" line="431"/>
         <source>About WriteType</source>
         <translation>Sobre WriteType</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="429"/>
+        <location filename="mainwindow.py" line="432"/>
         <source>About Qt</source>
         <translation>Sobre Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="431"/>
+        <location filename="mainwindow.py" line="434"/>
         <source>Print</source>
         <translation>Imprimir</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="432"/>
+        <location filename="mainwindow.py" line="435"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="434"/>
+        <location filename="mainwindow.py" line="437"/>
         <source>Highlight Mode</source>
         <translation>Modo de Resaltado</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="436"/>
+        <location filename="mainwindow.py" line="439"/>
         <source>Highlight</source>
         <translation>Resaltar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="437"/>
+        <location filename="mainwindow.py" line="440"/>
         <source>Distraction Free</source>
         <translation>Libre de Distracciones</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="438"/>
+        <location filename="mainwindow.py" line="441"/>
         <source>Distraction Free Mode</source>
         <translation>Modo Libre de Distracciones</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="439"/>
+        <location filename="mainwindow.py" line="442"/>
         <source>Insert Image</source>
         <translation>Insertar Imagen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="440"/>
+        <location filename="mainwindow.py" line="443"/>
         <source>Align Image Left</source>
         <translation>Alinear Imagen a la Izquierda</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="441"/>
+        <location filename="mainwindow.py" line="444"/>
         <source>Align Image Right</source>
         <translation>Alinear Imagen a la Derecha</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="442"/>
+        <location filename="mainwindow.py" line="445"/>
         <source>Image Toolbar</source>
         <translation>Barra de Imágenes</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="443"/>
+        <location filename="mainwindow.py" line="446"/>
         <source>Stop</source>
         <translation>Detener</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="444"/>
+        <location filename="mainwindow.py" line="447"/>
         <source>Align Left</source>
         <translation>Alinear a la Izquierda</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="445"/>
+        <location filename="mainwindow.py" line="448"/>
         <source>Align Center</source>
         <translation>Centrar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="446"/>
+        <location filename="mainwindow.py" line="449"/>
         <source>Align Right</source>
         <translation>Alinear a la Derecha</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="447"/>
+        <location filename="mainwindow.py" line="450"/>
         <source>Double Space</source>
         <translation>Espacio Doble</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="448"/>
+        <location filename="mainwindow.py" line="451"/>
         <source>Single Space</source>
         <translation>Espacio Simple</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="449"/>
+        <location filename="mainwindow.py" line="452"/>
         <source>Statistics</source>
         <translation>Estadísticas</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="385"/>
+        <location filename="mainwindow.py" line="388"/>
         <source>Next</source>
         <translation>Siguiente</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="390"/>
+        <location filename="mainwindow.py" line="393"/>
         <source>Tools</source>
         <translation>Herramientas</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="450"/>
+        <location filename="mainwindow.py" line="453"/>
         <source>Diction Check</source>
         <translation>Revisión de la dicción</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="384"/>
+        <location filename="mainwindow.py" line="387"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="451"/>
+        <location filename="mainwindow.py" line="454"/>
         <source>Cut</source>
         <translation>Cortar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="452"/>
+        <location filename="mainwindow.py" line="455"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="453"/>
+        <location filename="mainwindow.py" line="456"/>
         <source>Paste</source>
         <translation>Pegar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="395"/>
+        <location filename="mainwindow.py" line="398"/>
         <source>Speak text</source>
         <translation>Leer texto</translation>
     </message>

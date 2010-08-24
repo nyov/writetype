@@ -289,6 +289,9 @@ class MainApplication(QtGui.QMainWindow):
 			#This is HORRIBLE of me.  Why is all this garbage down here that has nothing to do with autocorrections?
 			
 			#Display spell check suggestions in the misspelling box after a space is pressed
+			word = word.replace("?", "")
+			word = word.replace("!", "")
+			word = word.replace(",", "")
 			if not word[:-1]:
 				pass
 			elif self.ui.textArea.dictionary.check(word[:-1]) == False:
@@ -594,7 +597,10 @@ class MainApplication(QtGui.QMainWindow):
 		if path:
 			from os import unlink
 			platformSettings.setSetting("autosavepath", "")
-			unlink(path)
+			try:
+				unlink(path)
+			except Exception:
+				pass
 		QtGui.QMainWindow.closeEvent(self, event)
 
 class DistractionFreeWindow(QtGui.QDialog):

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Mon Aug 16 19:07:56 2010
-#      by: PyQt4 UI code generator 4.7.2
+# Created: Mon Aug 23 09:26:17 2010
+#      by: PyQt4 UI code generator 4.7.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -105,7 +105,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.distractionButton)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 27))
         self.menubar.setObjectName("menubar")
         self.menuView = QtGui.QMenu(self.menubar)
         self.menuView.setObjectName("menuView")
@@ -372,6 +372,9 @@ class Ui_MainWindow(object):
         QtCore.QObject.connect(self.actionRedo, QtCore.SIGNAL("triggered()"), self.textArea.redo)
         QtCore.QObject.connect(self.textArea, QtCore.SIGNAL("undoAvailable(bool)"), self.actionUndo.setEnabled)
         QtCore.QObject.connect(self.textArea, QtCore.SIGNAL("redoAvailable(bool)"), self.actionRedo.setEnabled)
+        QtCore.QObject.connect(self.actionCopy, QtCore.SIGNAL("triggered()"), self.textArea.copy)
+        QtCore.QObject.connect(self.actionCut, QtCore.SIGNAL("triggered()"), self.textArea.cut)
+        QtCore.QObject.connect(self.actionPaste, QtCore.SIGNAL("triggered()"), self.textArea.paste)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.spinBoxFontSize, self.fontComboBox)
         MainWindow.setTabOrder(self.fontComboBox, self.textArea)

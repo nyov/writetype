@@ -21,17 +21,17 @@ if system() == "Windows":
     data_files_value += enchant.utils.win32_data_files()
     options_value["py2exe"] = {
                     "includes":["sip"], 
-                    "packages":["pyttsx"], 
                     "bundle_files":1,
                     "typelibs" : [('{C866CA3A-32F7-11D2-9602-00C04F8EE628}', 0, 5, 0)]
-    }}
+    }
     windows_value += ['scripts/writetype']
 
 #Setup!
 setup(
     name = 'WriteType',
-    version = '0.1.53',
+    version = '1.0.98',
     description = 'A program to help young students type more easily.',
+    long_description = 'WriteType is a simple word processor designed to help young students type more easily and accurately.  It offers spelling suggestions as students type, making the process easier and less frustrating.  It also provides the ability to read back text through either an eSpeak or a Festival backend.  In addition, there are special tools for teachers, and the entire application is easily translatable.',
     author = 'Max Shinn',
     author_email = 'max@bernsteinforpresident.com',
     url = 'http://bernsteinforpresident.com/software/writetype',
@@ -50,5 +50,5 @@ setup(
         'Programming Language :: Python :: 2',
         'Topic :: Education',
         ],
-    requires = ['PyQt4', 'pyttsx', 'enchant']
+    requires = ['PyQt4', 'enchant']
     )
