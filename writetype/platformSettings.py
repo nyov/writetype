@@ -96,7 +96,7 @@ def correctType(val, default):
 
 def setSetting(key, value):
 	if settingsError == False:
-		settingsHandle.setValue(key, value)
+		settingsHandle.setValue(key, QVariant(value))
 		cache[key] = QVariant(value)
 	else:
 		print "Settings error!  Setting not saved!"

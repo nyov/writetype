@@ -29,12 +29,12 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="569"/>
+        <location filename="main.py" line="572"/>
         <source>WriteType - </source>
         <translation>WriteType - </translation>
     </message>
     <message>
-        <location filename="main.py" line="129"/>
+        <location filename="main.py" line="132"/>
         <source>Untitled Document</source>
         <translation>Documento sin Título</translation>
     </message>
@@ -49,7 +49,7 @@
         <translation>WriteType encontró trabajo sin guardar de una sesión cerrada incorrectamente. ¿Desea recuperarlo?</translation>
     </message>
     <message>
-        <location filename="main.py" line="184"/>
+        <location filename="main.py" line="185"/>
         <source>Recovered file</source>
         <translation>Archivo recuperado</translation>
     </message>
@@ -74,32 +74,32 @@
         <translation>El controlador de texto a voz actual no es válido. La lectura no estará disponible en esta sesión.</translation>
     </message>
     <message>
-        <location filename="main.py" line="493"/>
+        <location filename="main.py" line="496"/>
         <source>About this program</source>
         <translation>Sobre este programa</translation>
     </message>
     <message>
-        <location filename="main.py" line="503"/>
+        <location filename="main.py" line="506"/>
         <source>Print</source>
         <translation>Imprimir</translation>
     </message>
     <message>
-        <location filename="main.py" line="580"/>
+        <location filename="main.py" line="583"/>
         <source>Quit?</source>
         <translation>¿Salir?</translation>
     </message>
     <message>
-        <location filename="main.py" line="580"/>
+        <location filename="main.py" line="583"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation>Tienes trabajo sin guardar. ¿Deseas guardarlo?</translation>
     </message>
     <message>
-        <location filename="main.py" line="460"/>
+        <location filename="main.py" line="464"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
         <translation>&lt;i&gt;No hay sugerencias disponibles.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="469"/>
+        <location filename="main.py" line="472"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation>&lt;i&gt;La revisión de la dicción se ha completado.&lt;/i&gt;</translation>
     </message>
@@ -119,7 +119,7 @@
         <translation type="obsolete">&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revisión r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Este software está disponible bajo la licencia pública general de GNU versión 3 o superior. Para más información sobre sus derechos, mire: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Contribuciones Adicionales&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Traducción al Neerlandés&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="493"/>
+        <location filename="main.py" line="496"/>
         <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
         <translation>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revisión r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Este software está disponible bajo la licencia pública general de GNU versión 3 o superior. Para más información sobre sus derechos, mire: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Contribuciones Adicionales&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Traducción al Español&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Traducción al Neerlandés&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
     </message>
@@ -127,302 +127,302 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.py" line="386"/>
+        <location filename="mainwindow.py" line="388"/>
         <source>MainWindow</source>
         <translation>MainWindow</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="389"/>
+        <location filename="mainwindow.py" line="391"/>
         <source>Go Back </source>
         <translation>Atrás</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="397"/>
+        <location filename="mainwindow.py" line="399"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="390"/>
+        <location filename="mainwindow.py" line="392"/>
         <source>View</source>
         <translation>Ver</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="391"/>
+        <location filename="mainwindow.py" line="393"/>
         <source>Toolbars</source>
         <translation>Barras de Herramientas</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="394"/>
+        <location filename="mainwindow.py" line="396"/>
         <source>Help</source>
         <translation>Ayuda</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="396"/>
+        <location filename="mainwindow.py" line="398"/>
         <source>File</source>
         <translation>Archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="399"/>
+        <location filename="mainwindow.py" line="401"/>
         <source>Save</source>
         <translation>Guardar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="400"/>
+        <location filename="mainwindow.py" line="402"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="401"/>
+        <location filename="mainwindow.py" line="403"/>
         <source>Save As...</source>
         <translation>Guardar Como...</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="402"/>
+        <location filename="mainwindow.py" line="404"/>
         <source>Close</source>
         <translation>Cerrar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="403"/>
+        <location filename="mainwindow.py" line="405"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="404"/>
+        <location filename="mainwindow.py" line="406"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="405"/>
+        <location filename="mainwindow.py" line="407"/>
         <source>Settings</source>
         <translation>Opciones</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="407"/>
+        <location filename="mainwindow.py" line="409"/>
         <source>Bold</source>
         <translation>Negrita</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="408"/>
+        <location filename="mainwindow.py" line="410"/>
         <source>Ctrl+B</source>
         <translation>Ctrl+B</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="410"/>
+        <location filename="mainwindow.py" line="412"/>
         <source>Italic</source>
         <translation>Itálica</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="411"/>
+        <location filename="mainwindow.py" line="413"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="413"/>
+        <location filename="mainwindow.py" line="415"/>
         <source>Underline</source>
         <translation>Subrayado</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="414"/>
+        <location filename="mainwindow.py" line="416"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="415"/>
+        <location filename="mainwindow.py" line="417"/>
         <source>Speak</source>
         <translation>Leer</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="416"/>
+        <location filename="mainwindow.py" line="418"/>
         <source>Speak Text</source>
         <translation>Leer Texto</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="418"/>
+        <location filename="mainwindow.py" line="420"/>
         <source>Undo</source>
         <translation>Deshacer</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="419"/>
+        <location filename="mainwindow.py" line="421"/>
         <source>Ctrl+Z</source>
         <translation>Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="421"/>
+        <location filename="mainwindow.py" line="423"/>
         <source>Redo</source>
         <translation>Rehacer</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="422"/>
+        <location filename="mainwindow.py" line="424"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="423"/>
+        <location filename="mainwindow.py" line="425"/>
         <source>File Toolbar</source>
         <translation>Barra de Herramientas de Archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="424"/>
+        <location filename="mainwindow.py" line="426"/>
         <source>Enable File Toolbar</source>
         <translation>Habilitar Barra de Herramientas de Archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="425"/>
+        <location filename="mainwindow.py" line="427"/>
         <source>Edit Toolbar</source>
         <translation>Barra de Herramientas de Edición</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="426"/>
+        <location filename="mainwindow.py" line="428"/>
         <source>Enable Edit Toolbar</source>
         <translation>Habilitar Barra de Herramientas de Edición</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="427"/>
+        <location filename="mainwindow.py" line="429"/>
         <source>Speaker Toolbar</source>
         <translation>Barra de Herramientas de Lectura</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="428"/>
+        <location filename="mainwindow.py" line="430"/>
         <source>Enable Speaker Toolbar</source>
         <translation>Habilitar Barra de Herramientas de Lectura</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="429"/>
+        <location filename="mainwindow.py" line="431"/>
         <source>Documentation</source>
         <translation>Documentación</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="431"/>
+        <location filename="mainwindow.py" line="433"/>
         <source>About WriteType</source>
         <translation>Sobre WriteType</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="432"/>
+        <location filename="mainwindow.py" line="434"/>
         <source>About Qt</source>
         <translation>Sobre Qt</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="434"/>
+        <location filename="mainwindow.py" line="436"/>
         <source>Print</source>
         <translation>Imprimir</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="435"/>
+        <location filename="mainwindow.py" line="437"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="437"/>
+        <location filename="mainwindow.py" line="439"/>
         <source>Highlight Mode</source>
         <translation>Modo de Resaltado</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="439"/>
+        <location filename="mainwindow.py" line="441"/>
         <source>Highlight</source>
         <translation>Resaltar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="440"/>
+        <location filename="mainwindow.py" line="442"/>
         <source>Distraction Free</source>
         <translation>Libre de Distracciones</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="441"/>
+        <location filename="mainwindow.py" line="443"/>
         <source>Distraction Free Mode</source>
         <translation>Modo Libre de Distracciones</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="442"/>
+        <location filename="mainwindow.py" line="444"/>
         <source>Insert Image</source>
         <translation>Insertar Imagen</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="443"/>
+        <location filename="mainwindow.py" line="445"/>
         <source>Align Image Left</source>
         <translation>Alinear Imagen a la Izquierda</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="444"/>
+        <location filename="mainwindow.py" line="446"/>
         <source>Align Image Right</source>
         <translation>Alinear Imagen a la Derecha</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="445"/>
+        <location filename="mainwindow.py" line="447"/>
         <source>Image Toolbar</source>
         <translation>Barra de Imágenes</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="446"/>
+        <location filename="mainwindow.py" line="448"/>
         <source>Stop</source>
         <translation>Detener</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="447"/>
+        <location filename="mainwindow.py" line="449"/>
         <source>Align Left</source>
         <translation>Alinear a la Izquierda</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="448"/>
+        <location filename="mainwindow.py" line="450"/>
         <source>Align Center</source>
         <translation>Centrar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="449"/>
+        <location filename="mainwindow.py" line="451"/>
         <source>Align Right</source>
         <translation>Alinear a la Derecha</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="450"/>
+        <location filename="mainwindow.py" line="452"/>
         <source>Double Space</source>
         <translation>Espacio Doble</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="451"/>
+        <location filename="mainwindow.py" line="453"/>
         <source>Single Space</source>
         <translation>Espacio Simple</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="452"/>
+        <location filename="mainwindow.py" line="454"/>
         <source>Statistics</source>
         <translation>Estadísticas</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="388"/>
+        <location filename="mainwindow.py" line="390"/>
         <source>Next</source>
         <translation>Siguiente</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="393"/>
+        <location filename="mainwindow.py" line="395"/>
         <source>Tools</source>
         <translation>Herramientas</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="453"/>
+        <location filename="mainwindow.py" line="455"/>
         <source>Diction Check</source>
         <translation>Revisión de la dicción</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="387"/>
+        <location filename="mainwindow.py" line="389"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="454"/>
+        <location filename="mainwindow.py" line="456"/>
         <source>Cut</source>
         <translation>Cortar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="455"/>
+        <location filename="mainwindow.py" line="457"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="456"/>
+        <location filename="mainwindow.py" line="458"/>
         <source>Paste</source>
         <translation>Pegar</translation>
     </message>
     <message>
-        <location filename="mainwindow.py" line="398"/>
+        <location filename="mainwindow.py" line="400"/>
         <source>Speak text</source>
         <translation>Leer texto</translation>
     </message>
@@ -451,142 +451,142 @@
 <context>
     <name>settingsDialog</name>
     <message>
-        <location filename="settingsDialog.py" line="209"/>
+        <location filename="settingsDialog.py" line="200"/>
         <source>Settings</source>
         <translation>Opciones</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="210"/>
+        <location filename="settingsDialog.py" line="201"/>
         <source>Please enter any custom words you would like to appear in the spell check, one per line.</source>
         <translation>Por favor escriba las palabras personalizadas que desearía que aparezcan en la corrección de ortografía, una por línea.</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="211"/>
+        <location filename="settingsDialog.py" line="202"/>
         <source>Custom Words</source>
         <translation>Palabras Personalizadas</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="212"/>
+        <location filename="settingsDialog.py" line="203"/>
         <source>Please select the size of the word completion database:</source>
         <translation>Por favor seleccione el tamaño de la base de datos de autocompletado de palabras:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="213"/>
+        <location filename="settingsDialog.py" line="204"/>
         <source>Word lists</source>
         <translation>Listas de palabras</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="214"/>
+        <location filename="settingsDialog.py" line="205"/>
         <source>View settings for the custom word completion</source>
         <translation>Ver opciones de el autocompletado de palabras personalizado</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="215"/>
+        <location filename="settingsDialog.py" line="206"/>
         <source>Minimum letters:</source>
         <translation>Mínimo de letras:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="216"/>
+        <location filename="settingsDialog.py" line="207"/>
         <source>Try to guess misspellings</source>
         <translation>Intentar adivinar errores de deletreo</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="217"/>
+        <location filename="settingsDialog.py" line="208"/>
         <source>Misspelling Settings</source>
         <translation>Errores de Deletreo</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="218"/>
+        <location filename="settingsDialog.py" line="209"/>
         <source>How many entries need to be displayed, at the minimum, before WriteType will attempt to guess the spelling?</source>
         <translation>¿Cuántas entradas necesitan ser mostradas, como mínimo, para que WriteType intente adivinar el deletreo?</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="219"/>
+        <location filename="settingsDialog.py" line="210"/>
         <source>Misspelling Threshold:</source>
         <translation>Límite para Activación:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="220"/>
+        <location filename="settingsDialog.py" line="211"/>
         <source>Advanced Substitutions?</source>
         <translation>¿Sustituciones Avanzadas?</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="221"/>
+        <location filename="settingsDialog.py" line="212"/>
         <source>Word Completion</source>
         <translation>Autocompletado de Palabras</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="223"/>
+        <location filename="settingsDialog.py" line="214"/>
         <source>Auto-correction settings</source>
         <translation>Opciones de Corrección Automática</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="224"/>
+        <location filename="settingsDialog.py" line="220"/>
         <source>Contractions</source>
         <translation>Contracciones</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="226"/>
+        <location filename="settingsDialog.py" line="222"/>
         <source>Default Font:</source>
         <translation>Fuente Predeterminada:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="227"/>
+        <location filename="settingsDialog.py" line="223"/>
         <source>Options:</source>
         <translation>Opciones:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="228"/>
+        <location filename="settingsDialog.py" line="224"/>
         <source>Reading speed:</source>
         <translation>Velocidad de lectura:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="229"/>
+        <location filename="settingsDialog.py" line="225"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="230"/>
+        <location filename="settingsDialog.py" line="226"/>
         <source>TTS Engine</source>
         <translation>Motor de Texto a Voz</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="231"/>
+        <location filename="settingsDialog.py" line="227"/>
         <source>System Default</source>
         <translation>Predeterminado del Sistema</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="232"/>
+        <location filename="settingsDialog.py" line="228"/>
         <source>Check document for grammar mistakes</source>
         <translation>Revisar el documento por errores gramaticales</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="233"/>
+        <location filename="settingsDialog.py" line="229"/>
         <source>Other</source>
         <translation>Otro</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="234"/>
+        <location filename="settingsDialog.py" line="230"/>
         <source>Okay</source>
         <translation>Aceptar</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="235"/>
+        <location filename="settingsDialog.py" line="231"/>
         <source>Apply</source>
         <translation>Aplicar</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="236"/>
+        <location filename="settingsDialog.py" line="232"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="222"/>
+        <location filename="settingsDialog.py" line="213"/>
         <source>Use auto-correction</source>
         <translation>Usar correcciones automáticas</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="225"/>
+        <location filename="settingsDialog.py" line="221"/>
         <source>Auto-corrections</source>
         <translation>Correcciones Automáticas</translation>
     </message>
@@ -594,12 +594,12 @@
 <context>
     <name>statisticsDialog</name>
     <message>
-        <location filename="statistics.py" line="74"/>
+        <location filename="statistics.py" line="68"/>
         <source>Dialog</source>
         <translation>Diálogo</translation>
     </message>
     <message>
-        <location filename="statistics.py" line="75"/>
+        <location filename="statistics.py" line="73"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -612,32 +612,32 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Estadísticas del Documento&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="statistics.py" line="80"/>
+        <location filename="statistics.py" line="74"/>
         <source>Filename: </source>
         <translation>Nombre de Archivo: </translation>
     </message>
     <message>
-        <location filename="statistics.py" line="81"/>
+        <location filename="statistics.py" line="75"/>
         <source>Characters: </source>
         <translation>Caracteres: </translation>
     </message>
     <message>
-        <location filename="statistics.py" line="82"/>
+        <location filename="statistics.py" line="76"/>
         <source>Sentences: </source>
         <translation>Oraciones: </translation>
     </message>
     <message>
-        <location filename="statistics.py" line="83"/>
+        <location filename="statistics.py" line="77"/>
         <source>Paragraphs: </source>
         <translation>Párrafos: </translation>
     </message>
     <message>
-        <location filename="statistics.py" line="84"/>
+        <location filename="statistics.py" line="78"/>
         <source>Readability</source>
         <translation>Legibilidad</translation>
     </message>
     <message>
-        <location filename="statistics.py" line="85"/>
+        <location filename="statistics.py" line="79"/>
         <source>Words: </source>
         <translation>Palabras: </translation>
     </message>
