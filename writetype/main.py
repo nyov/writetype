@@ -186,6 +186,11 @@ class MainApplication(QtGui.QMainWindow):
 				#Add the words in the document to the custom words list
 				for token in self.tokenizer(str(self.ui.textArea.toPlainText())):
 					self.wl.addCustomWord(token[0].lower())
+		#Load the file if one was specified
+		global options
+		if len(options) >= 1:
+			self.openFile(options[0])
+				
 
 	def __del__(self):
 		print "destructor"
@@ -196,6 +201,9 @@ class MainApplication(QtGui.QMainWindow):
 	
 	def openDialog(self):
 		filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)")
+		self.openFile(filename)
+
+	def openFile(self, filename):
 		if isfile(filename):
 			self.filename = filename
 			text = open(self.filename).read()
@@ -204,7 +212,7 @@ class MainApplication(QtGui.QMainWindow):
 			self.updateTitle(False)
 			
 			#Add the words in the document to the custom words list
-			for token in self.tokenizer(str(self.ui.textArea.toPlainText())):
+			for token in self.tokenizer(unicode(self.ui.textArea.toPlainText())):
 				self.wl.addCustomWord(token[0].lower())
 
 			#Set the correct font

@@ -55,6 +55,7 @@ class spellCheckEdit(QTextEdit):
 		self.highlighter = Highlighter(self.document())
 		self.highlighter.setDict(self.dictionary)
 		self.menu = QMenu(self)
+		self.lastWord = ""
 		
 	def mousePressEvent(self, event):
 		#This will move the cursor to the appropriate position

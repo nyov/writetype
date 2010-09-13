@@ -41,10 +41,12 @@ setup(
     windows = windows_value,
     options = options_value,
     classifiers = [
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Education',
         'License :: OSI Approved :: GNU General Public License',
         'Natural Language :: English',
+		'Natural Language :: Dutch',
+		'Natural Language :: Spanish',
         'Operating System :: Microsoft',
         'Operating System :: POSIX',
         'Programming Language :: Python :: 2',
