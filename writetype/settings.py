@@ -47,7 +47,7 @@ class SettingsDialogBox(QtGui.QDialog):
 		self.wordListButtonGroup.setExclusive(True)
 		#Now actually select the correct button
 		try:
-			self.wordListButtonGroup.buttons()[platformSettings.getSetting("wordlist", 2)-1].setChecked(True)
+			self.wordListButtonGroup.buttons()[platformSettings.getSetting("wordlist", 4)-1].setChecked(True)
 		except IndexError:
 			#self.wordListButtonGroup.buttons()[0].setChecked(True)
 			pass

@@ -66,6 +66,9 @@
    CLOSED: [2010-08-23 Mon 08:54]
 ** DONE Option for no word completion
    CLOSED: [2010-08-23 Mon 08:04]
+** TODO Ability to set default settings from platformsettings
+** TODO REAL Debian packaging
+** TODO Reorganize to not package as a python module
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are

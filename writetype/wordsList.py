@@ -36,7 +36,7 @@ class wordsList:
 		self.words = []
 		#It will be empty if it wasn't found, just like we want
 		for node in dom.getElementsByTagName("wordlist"):
-			if node.getAttribute("lang") == platformSettings.getPlatformSetting("language") and node.getAttribute("id") == platformSettings.getSetting("wordlist", "1"):
+			if node.getAttribute("lang") == platformSettings.getPlatformSetting("language") and node.getAttribute("id") == platformSettings.getSetting("wordlist", "4"):
 				self.words = self.loadWords(path.join(platformSettings.getPlatformSetting('basePath'), 'wordlists', node.getAttribute('file')))
 				break
 

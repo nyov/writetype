@@ -81,7 +81,7 @@ class Speaker:
 
 		self.driver = driver
 		#Defaults per platform
-		if not self.driver in platformSettings.getPlatformSetting("ttsEngines"):
+		if not self.driver:
 			print "Driver error!  Driver not found!  Selecting default."
 			if system() == "Linux":
 				self.driver = "festival"
