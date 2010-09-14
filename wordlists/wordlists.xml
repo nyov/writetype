@@ -13,4 +13,5 @@
 <wordlist name="Español" file="spanish.txt" lang="es_AR" id="2" />
 <wordlist name="Español" file="spanish.txt" lang="es_ES" id="2" />
 <wordlist name="Español" file="spanish.txt" lang="es_MX" id="2" />
+<wordlist name="Basque" file="basque.txt" lang="eu_ES" id="1" />
 </xml>

@@ -10,9 +10,10 @@ pyuic4 ui/statistics.ui -o writetype/statistics.py
 pyrcc4 res/resources.qrc -o writetype/resources_rc.py
 
 #Translations
-pylupdate4 writetype/*.py -ts translations/writetype.ts translations/qt_nl_NL.ts translations/qt_es_AR.ts
+pylupdate4 writetype/*.py -ts translations/writetype.ts translations/qt_nl_NL.ts translations/qt_es_AR.ts translations/qt_eu_ES.ts
 lrelease-qt4 translations/qt_nl_NL.ts -qm translations/qt_nl_NL.qm
 lrelease-qt4 translations/qt_es_AR.ts -qm translations/qt_es_AR.qm
+lrelease-qt4 translations/qt_eu_ES.ts -qm translations/qt_eu_ES.qm
 #Other spanish locales too?
 cp translations/qt_es_AR.qm translations/qt_es_ES.qm
 cp translations/qt_es_AR.qm translations/qt_es_MX.qm

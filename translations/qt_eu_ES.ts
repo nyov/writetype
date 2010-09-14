@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="es_AR">
+<!DOCTYPE TS><TS version="1.1">
 <context>
     <name>EspeakInterface</name>
     <message>
         <location filename="espeakInterface.py" line="49"/>
         <source>Feature unavailable</source>
-        <translation type="unfinished">Característica no disponible</translation>
+        <translation>EspeakInterface#1</translation>
     </message>
     <message>
         <location filename="espeakInterface.py" line="49"/>
         <source>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</source>
-        <translation>eSpeak no está instalado en el equipo.  Para usar esta característica, por favor instale eSpeak o seleccione un nuevo controlador de texto a voz en la ventana de Opciones.</translation>
+        <translation>eSpeak ez dago ordenagailu honetan instalaturik.  Aukera hau erabiltzeko, mesedez, instalatu eSpeak edo hautatu TTS kontrolatzaile berri bat ezarpen kutxatilan.</translation>
     </message>
 </context>
 <context>
@@ -18,12 +18,12 @@
     <message>
         <location filename="festivalInterface.py" line="59"/>
         <source>Feature unavailable</source>
-        <translation>Característica no disponible</translation>
+        <translation>EspeakInterface#1</translation>
     </message>
     <message>
         <location filename="festivalInterface.py" line="59"/>
         <source>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</source>
-        <translation>Festival no está instalado en el equipo.  Para usar esta característica, por favor instale Festival o seleccione un nuevo controlador de texto a voz en la ventana de Opciones.</translation>
+        <translation>Festival ez dago ordenagailu honetan instalaturik.  Aukera hau erabiltzeko, mesedez, instalatu Festival edo hautatu TTS kontrolatzaile berri bat ezarpen kutxatilan.</translation>
     </message>
 </context>
 <context>
@@ -36,92 +36,87 @@
     <message>
         <location filename="main.py" line="129"/>
         <source>Untitled Document</source>
-        <translation>Documento sin Título</translation>
+        <translation>Izenbururik gabeko dokumentua</translation>
     </message>
     <message>
         <location filename="main.py" line="180"/>
         <source>Crash recovery</source>
-        <translation>Recuperación</translation>
+        <translation>Ezbeharrak konpontzeko tresna</translation>
     </message>
     <message>
         <location filename="main.py" line="180"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
-        <translation>WriteType encontró trabajo sin guardar de una sesión cerrada incorrectamente. ¿Desea recuperarlo?</translation>
+        <translation>WriteTypek topatu du gorde gabeko lan bat, ezbehar batek sortutakoa  Berreskuratu nahi duzu?</translation>
     </message>
     <message>
         <location filename="main.py" line="184"/>
         <source>Recovered file</source>
-        <translation>Archivo recuperado</translation>
+        <translation>Berreskuratutako fitxategia</translation>
     </message>
     <message>
         <location filename="main.py" line="203"/>
         <source>Open file</source>
-        <translation>Abrir archivo</translation>
+        <translation>Zabaldu fitxategia</translation>
     </message>
     <message>
         <location filename="main.py" line="233"/>
         <source>Save file</source>
-        <translation>Guardar archivo</translation>
+        <translation>Gorde fitxategia</translation>
     </message>
     <message>
         <location filename="main.py" line="281"/>
         <source>Feature unavailable</source>
-        <translation>Característica no disponible</translation>
+        <translation>EspeakInterface#1</translation>
     </message>
     <message>
         <location filename="main.py" line="281"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
-        <translation>El controlador de texto a voz actual no es válido. La lectura no estará disponible en esta sesión.</translation>
+        <translation>Oraingo TTS kontrolatzailea ez da baliagarria.  Atzera-irakurri aukera ezin da saio honetan erabili.</translation>
     </message>
     <message>
         <location filename="main.py" line="504"/>
         <source>About this program</source>
-        <translation>Sobre este programa</translation>
+        <translation>Programa honi buruz</translation>
     </message>
     <message>
         <location filename="main.py" line="514"/>
         <source>Print</source>
-        <translation>Imprimir</translation>
+        <translation>Inprimatu</translation>
     </message>
     <message>
         <location filename="main.py" line="591"/>
         <source>Quit?</source>
-        <translation>¿Salir?</translation>
+        <translation>Irten?</translation>
     </message>
     <message>
         <location filename="main.py" line="591"/>
         <source>You have unsaved work.  Do you want to save?</source>
-        <translation>Tienes trabajo sin guardar. ¿Deseas guardarlo?</translation>
+        <translation>Baduzu gorde gabeko lan bat.  Gorde nahi duzu?</translation>
     </message>
     <message>
         <location filename="main.py" line="471"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
-        <translation>&lt;i&gt;No hay sugerencias disponibles.&lt;/i&gt;</translation>
+        <translation>&lt;i&gt;Ez dago iradokizunik.&lt;/i&gt;</translation>
     </message>
     <message>
         <location filename="main.py" line="480"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
-        <translation>&lt;i&gt;La revisión de la dicción se ha completado.&lt;/i&gt;</translation>
+        <translation>&lt;i&gt;Ortografia zuzenketa osatua.&lt;/i&gt;</translation>
     </message>
     <message>
         <location filename="main.py" line="257"/>
         <source>Save error</source>
-        <translation>Error al guardar</translation>
+        <translation>Gorde errorea</translation>
     </message>
     <message>
         <location filename="main.py" line="257"/>
         <source>WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
-        <translation>WriteType no ha podido guardar su trabajo. Por favor revise la extensión del archivo asegúrese de que el archivo pueda ser escrito, y pruebe de nuevo.</translation>
-    </message>
-    <message>
-        <location filename="main.py" line="493"/>
-        <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
-        <translation type="obsolete">&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revisión r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Este software está disponible bajo la licencia pública general de GNU versión 3 o superior. Para más información sobre sus derechos, mire: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Contribuciones Adicionales&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Traducción al Neerlandés&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
+        <translation>WriteTypek ezin izan du zure lana gorde.  Mesedez, aztertu fitxategiaren luzapena, ziurta zaitez hautatutako fitxategi horretan idaz daitekeela eta saia zaitez berriro.</translation>
     </message>
     <message>
         <location filename="main.py" line="504"/>
         <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
-        <translation>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revisión r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Este software está disponible bajo la licencia pública general de GNU versión 3 o superior. Para más información sobre sus derechos, mire: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Contribuciones Adicionales&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Traducción al Español&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Traducción al Neerlandés&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
+        <translation>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;idatzihona:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Software hau eskura duzu GNU General Public License v3 batekin edo beranduagoko bertsio batekin. Zure eskubideei buruzko informazio gehiagorako, ikus: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Beste laguntzaile batzuk:&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;gorkaazk&lt;/td&gt;&lt;td&gt;Basque Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
     </message>
 </context>
 <context>
@@ -129,42 +124,42 @@
     <message>
         <location filename="mainwindow.py" line="388"/>
         <source>MainWindow</source>
-        <translation>MainWindow</translation>
+        <translation>LeihoNagusia</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="391"/>
         <source>Go Back </source>
-        <translation>Atrás</translation>
+        <translation>Jo ezazu atzera </translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="399"/>
         <source>Edit</source>
-        <translation>Editar</translation>
+        <translation>Editatu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="392"/>
         <source>View</source>
-        <translation>Ver</translation>
+        <translation>Ikusi</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="393"/>
         <source>Toolbars</source>
-        <translation>Barras de Herramientas</translation>
+        <translation>Tresna-barrak</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="396"/>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>Laguntza</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="398"/>
         <source>File</source>
-        <translation>Archivo</translation>
+        <translation>Fitxategia</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="401"/>
         <source>Save</source>
-        <translation>Guardar</translation>
+        <translation>Gorde</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="402"/>
@@ -174,17 +169,17 @@
     <message>
         <location filename="mainwindow.py" line="403"/>
         <source>Save As...</source>
-        <translation>Guardar Como...</translation>
+        <translation>Gorde honela...</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="404"/>
         <source>Close</source>
-        <translation>Cerrar</translation>
+        <translation>Itxi</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="405"/>
         <source>Open</source>
-        <translation>Abrir</translation>
+        <translation>Zabaldu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="406"/>
@@ -194,12 +189,12 @@
     <message>
         <location filename="mainwindow.py" line="407"/>
         <source>Settings</source>
-        <translation>Opciones</translation>
+        <translation>Ezarpenak</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="409"/>
         <source>Bold</source>
-        <translation>Negrita</translation>
+        <translation>Letra lodia</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="410"/>
@@ -209,7 +204,7 @@
     <message>
         <location filename="mainwindow.py" line="412"/>
         <source>Italic</source>
-        <translation>Itálica</translation>
+        <translation>Letra etzana</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="413"/>
@@ -219,7 +214,7 @@
     <message>
         <location filename="mainwindow.py" line="415"/>
         <source>Underline</source>
-        <translation>Subrayado</translation>
+        <translation>Azpimarratua</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="416"/>
@@ -229,17 +224,17 @@
     <message>
         <location filename="mainwindow.py" line="417"/>
         <source>Speak</source>
-        <translation>Leer</translation>
+        <translation>Mintzatu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="418"/>
         <source>Speak Text</source>
-        <translation>Leer Texto</translation>
+        <translation>Adierazpen testua</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="420"/>
         <source>Undo</source>
-        <translation>Deshacer</translation>
+        <translation>Zuzendu atzera</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="421"/>
@@ -249,7 +244,7 @@
     <message>
         <location filename="mainwindow.py" line="423"/>
         <source>Redo</source>
-        <translation>Rehacer</translation>
+        <translation>Berregin</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="424"/>
@@ -259,52 +254,52 @@
     <message>
         <location filename="mainwindow.py" line="425"/>
         <source>File Toolbar</source>
-        <translation>Barra de Herramientas de Archivo</translation>
+        <translation>Fitxategi tresna-barra</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="426"/>
         <source>Enable File Toolbar</source>
-        <translation>Habilitar Barra de Herramientas de Archivo</translation>
+        <translation>Gaitu fitxategi tresna-barra</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="427"/>
         <source>Edit Toolbar</source>
-        <translation>Barra de Herramientas de Edición</translation>
+        <translation>Editatu Tresna-barra</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="428"/>
         <source>Enable Edit Toolbar</source>
-        <translation>Habilitar Barra de Herramientas de Edición</translation>
+        <translation>Gaitu editatu Tresna-barra</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="429"/>
         <source>Speaker Toolbar</source>
-        <translation>Barra de Herramientas de Lectura</translation>
+        <translation>Speaker Tresna-barra</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="430"/>
         <source>Enable Speaker Toolbar</source>
-        <translation>Habilitar Barra de Herramientas de Lectura</translation>
+        <translation>Gaitu Speaker Tresna-barra</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="431"/>
         <source>Documentation</source>
-        <translation>Documentación</translation>
+        <translation>Documentazioa</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="433"/>
         <source>About WriteType</source>
-        <translation>Sobre WriteType</translation>
+        <translation>WriteType honi buruz</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="434"/>
         <source>About Qt</source>
-        <translation>Sobre Qt</translation>
+        <translation>Qt-ri buruz</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="436"/>
         <source>Print</source>
-        <translation>Imprimir</translation>
+        <translation>Inprimatu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="437"/>
@@ -314,92 +309,92 @@
     <message>
         <location filename="mainwindow.py" line="439"/>
         <source>Highlight Mode</source>
-        <translation>Modo de Resaltado</translation>
+        <translation>Modu dotorea</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="441"/>
         <source>Highlight</source>
-        <translation>Resaltar</translation>
+        <translation>Dotorea</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="442"/>
         <source>Distraction Free</source>
-        <translation>Libre de Distracciones</translation>
+        <translation>Arretaz ibiltzeko, denbora-pasa gabe</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="443"/>
         <source>Distraction Free Mode</source>
-        <translation>Modo Libre de Distracciones</translation>
+        <translation>Modu &quot;Arreta handiz&quot;</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="444"/>
         <source>Insert Image</source>
-        <translation>Insertar Imagen</translation>
+        <translation>Sartu Irudia</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="445"/>
         <source>Align Image Left</source>
-        <translation>Alinear Imagen a la Izquierda</translation>
+        <translation>Lerrokatu irudia ezkerretara</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="446"/>
         <source>Align Image Right</source>
-        <translation>Alinear Imagen a la Derecha</translation>
+        <translation>Lerrokatu irudia eskuinetara</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="447"/>
         <source>Image Toolbar</source>
-        <translation>Barra de Imágenes</translation>
+        <translation>Irudien tresna-barra</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="448"/>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="449"/>
         <source>Align Left</source>
-        <translation>Alinear a la Izquierda</translation>
+        <translation>Ezkerretara lerrokatu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="450"/>
         <source>Align Center</source>
-        <translation>Centrar</translation>
+        <translation>Erdian lerrokatu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="451"/>
         <source>Align Right</source>
-        <translation>Alinear a la Derecha</translation>
+        <translation>Eskuinetara lerrokatu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="452"/>
         <source>Double Space</source>
-        <translation>Espacio Doble</translation>
+        <translation>Espazio bikoitza</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="453"/>
         <source>Single Space</source>
-        <translation>Espacio Simple</translation>
+        <translation>Espazio bakuna</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="454"/>
         <source>Statistics</source>
-        <translation>Estadísticas</translation>
+        <translation>Estatistikak</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="390"/>
         <source>Next</source>
-        <translation>Siguiente</translation>
+        <translation>Hurrengoa</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="395"/>
         <source>Tools</source>
-        <translation>Herramientas</translation>
+        <translation>Tresnak</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="455"/>
         <source>Diction Check</source>
-        <translation>Revisión de la dicción</translation>
+        <translation>Ortografia aztertu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="389"/>
@@ -409,22 +404,22 @@
     <message>
         <location filename="mainwindow.py" line="456"/>
         <source>Cut</source>
-        <translation>Cortar</translation>
+        <translation>Moztu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="457"/>
         <source>Copy</source>
-        <translation>Copiar</translation>
+        <translation>Kopiatu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="458"/>
         <source>Paste</source>
-        <translation>Pegar</translation>
+        <translation>Itsatsi</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="400"/>
         <source>Speak text</source>
-        <translation>Leer texto</translation>
+        <translation>Adierazpen testua</translation>
     </message>
 </context>
 <context>
@@ -432,12 +427,12 @@
     <message>
         <location filename="settings.py" line="64"/>
         <source>Replace:</source>
-        <translation>Reemplazar:</translation>
+        <translation>Ordeztu:</translation>
     </message>
     <message>
         <location filename="settings.py" line="65"/>
         <source>With:</source>
-        <translation>Con:</translation>
+        <translation>Honekin:</translation>
     </message>
 </context>
 <context>
@@ -445,7 +440,7 @@
     <message>
         <location filename="distractionFree.py" line="28"/>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation>Elkarrizketa</translation>
     </message>
 </context>
 <context>
@@ -453,92 +448,92 @@
     <message>
         <location filename="settingsDialog.py" line="200"/>
         <source>Settings</source>
-        <translation>Opciones</translation>
+        <translation>Ezarpenak</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="201"/>
         <source>Please enter any custom words you would like to appear in the spell check, one per line.</source>
-        <translation>Por favor escriba las palabras personalizadas que desearía que aparezcan en la corrección de ortografía, una por línea.</translation>
+        <translation>Mesedez, sar itzazu banan-banan ortografia aldetik aztertu nahi dituzun hitzak.</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="202"/>
         <source>Custom Words</source>
-        <translation>Palabras Personalizadas</translation>
+        <translation>Aukeratutako hitzak</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="203"/>
         <source>Please select the size of the word completion database:</source>
-        <translation>Por favor seleccione el tamaño de la base de datos de autocompletado de palabras:</translation>
+        <translation>Mesedez, aukeratu ezazu hitzen datu baseko amaierako tamaina:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="204"/>
         <source>Word lists</source>
-        <translation>Listas de palabras</translation>
+        <translation>Hitzen zerrenda</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="205"/>
         <source>View settings for the custom word completion</source>
-        <translation>Ver opciones de el autocompletado de palabras personalizado</translation>
+        <translation>Ikus itzazu hitzen amaierako ezarpenak</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="206"/>
         <source>Minimum letters:</source>
-        <translation>Mínimo de letras:</translation>
+        <translation>Gutxieneko letrak:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="207"/>
         <source>Try to guess misspellings</source>
-        <translation>Intentar adivinar errores de deletreo</translation>
+        <translation>Saia zaitez gaizki idatzitakoak antzematen</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="208"/>
         <source>Misspelling Settings</source>
-        <translation>Errores de Deletreo</translation>
+        <translation>Gaizki idatzitakoen ezarpenak</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="209"/>
         <source>How many entries need to be displayed, at the minimum, before WriteType will attempt to guess the spelling?</source>
-        <translation>¿Cuántas entradas necesitan ser mostradas, como mínimo, para que WriteType intente adivinar el deletreo?</translation>
+        <translation>Zenbat hitz-sarrera behar dira erakutsi, gutxienez, WriteType ortografia asmatzen saiatu baino lehen?</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="210"/>
         <source>Misspelling Threshold:</source>
-        <translation>Límite para Activación:</translation>
+        <translation>Gaizki idatzitakoen atalasea:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="211"/>
         <source>Advanced Substitutions?</source>
-        <translation>¿Sustituciones Avanzadas?</translation>
+        <translation>Ordezkatze aurreratuak?</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="212"/>
         <source>Word Completion</source>
-        <translation>Autocompletado de Palabras</translation>
+        <translation>Hitzen amaiera</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="214"/>
         <source>Auto-correction settings</source>
-        <translation>Opciones de Corrección Automática</translation>
+        <translation>Auto-zuzentze ezarpenak</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="220"/>
         <source>Contractions</source>
-        <translation>Contracciones</translation>
+        <translation>Kontrakzioak</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="222"/>
         <source>Default Font:</source>
-        <translation>Fuente Predeterminada:</translation>
+        <translation>Lehenetsitako letra-tipoa:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="223"/>
         <source>Options:</source>
-        <translation>Opciones:</translation>
+        <translation>Aukerak:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="224"/>
         <source>Reading speed:</source>
-        <translation>Velocidad de lectura:</translation>
+        <translation>Irakurtzeko lastertasuna:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="225"/>
@@ -548,47 +543,47 @@
     <message>
         <location filename="settingsDialog.py" line="226"/>
         <source>TTS Engine</source>
-        <translation>Motor de Texto a Voz</translation>
+        <translation>TTS motorra</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="227"/>
         <source>System Default</source>
-        <translation>Predeterminado del Sistema</translation>
+        <translation>Sistema lehenetsia</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="228"/>
         <source>Check document for grammar mistakes</source>
-        <translation>Revisar el documento por errores gramaticales</translation>
+        <translation>Aztertu dokumentua gramatika akatsen bila</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="229"/>
         <source>Other</source>
-        <translation>Otro</translation>
+        <translation>Beste</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="230"/>
         <source>Okay</source>
-        <translation>Aceptar</translation>
+        <translation>Ados</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="231"/>
         <source>Apply</source>
-        <translation>Aplicar</translation>
+        <translation>Aplikatu</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="232"/>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>Bertan behera utzi</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="213"/>
         <source>Use auto-correction</source>
-        <translation>Usar correcciones automáticas</translation>
+        <translation>Erabili zuzenketa automatikoa</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="221"/>
         <source>Auto-corrections</source>
-        <translation>Correcciones Automáticas</translation>
+        <translation>Zuzenketa automatikoak</translation>
     </message>
 </context>
 <context>
@@ -596,7 +591,7 @@
     <message>
         <location filename="statistics.py" line="68"/>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation>Elkarrizketa</translation>
     </message>
     <message>
         <location filename="statistics.py" line="69"/>
@@ -609,37 +604,37 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Estadísticas del Documento&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Documentuaren Estatistikak&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="statistics.py" line="74"/>
         <source>Filename: </source>
-        <translation>Nombre de Archivo: </translation>
+        <translation>Fitxategiaren izena: </translation>
     </message>
     <message>
         <location filename="statistics.py" line="75"/>
         <source>Characters: </source>
-        <translation>Caracteres: </translation>
+        <translation>Karaktereak: </translation>
     </message>
     <message>
         <location filename="statistics.py" line="76"/>
         <source>Sentences: </source>
-        <translation>Oraciones: </translation>
+        <translation>Esaldiak: </translation>
     </message>
     <message>
         <location filename="statistics.py" line="77"/>
         <source>Paragraphs: </source>
-        <translation>Párrafos: </translation>
+        <translation>Paragrafoak: </translation>
     </message>
     <message>
         <location filename="statistics.py" line="78"/>
         <source>Readability</source>
-        <translation>Legibilidad</translation>
+        <translation>Irakurgarritasuna</translation>
     </message>
     <message>
         <location filename="statistics.py" line="79"/>
         <source>Words: </source>
-        <translation>Palabras: </translation>
+        <translation>Hitzak: </translation>
     </message>
 </context>
 </TS>

@@ -1,0 +1,723 @@
+------------------------------------------------------------
+revno: 102
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-09-13 20:03:04 -0500
+message:
+  Fixed bugs from CRE
+------------------------------------------------------------
+revno: 101
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-09-13 17:58:30 -0500
+message:
+  Bugs
+------------------------------------------------------------
+revno: 100
+committer: Max Shinn <max@debian>
+branch nick: writetype
+timestamp: Sat 2010-08-28 18:58:19 -0500
+message:
+  Compatibility with debian
+------------------------------------------------------------
+revno: 99
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-08-23 20:38:25 -0500
+message:
+  Last pre-release stuff
+------------------------------------------------------------
+revno: 98
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-08-23 09:12:25 -0500
+message:
+  utf-8 tts
+------------------------------------------------------------
+revno: 97
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-08-22 15:41:09 -0500
+message:
+  Maintaining a Windows port of a free software application is like driving a horse and buggy down the interstate.  It's painfully inconvenient, and for your efforts, you get nothing but crap.
+------------------------------------------------------------
+revno: 96
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sat 2010-08-21 19:09:48 -0500
+message:
+  I THINK this will make it work on Windows?
+------------------------------------------------------------
+revno: 95
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Tue 2010-08-17 10:47:06 -0500
+message:
+  Lesson No. 1: Don't commit while sleep-deprived
+------------------------------------------------------------
+revno: 94
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-08-16 19:12:04 -0500
+message:
+  Spanish translations.  Thanks, Turl\!
+------------------------------------------------------------
+revno: 93
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-08-08 16:59:49 -0500
+message:
+  Funny names on the toolbar and completion after punctuation
+------------------------------------------------------------
+revno: 92
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sat 2010-08-07 22:33:39 -0500
+message:
+  Tab completion bugs
+------------------------------------------------------------
+revno: 91
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-08-01 11:23:21 -0500
+message:
+  Uhh... bug fixes?  Yeah, that's it.
+------------------------------------------------------------
+revno: 90
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-08-01 09:37:46 -0500
+message:
+  Capitalization and completions with a selection
+------------------------------------------------------------
+revno: 89
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Tue 2010-07-27 19:42:14 -0500
+message:
+  Multi-word tab spelling completion, quotes ending sentences, correct font on document load, wtd format
+------------------------------------------------------------
+revno: 88
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-07-25 20:58:05 -0500
+message:
+  Version info in the about box
+------------------------------------------------------------
+revno: 87
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Tue 2010-07-13 21:01:52 -0500
+message:
+  Ooh, yeah!  Misspelling suggestions again!
+------------------------------------------------------------
+revno: 86
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-07-12 19:49:08 -0500
+message:
+  I don't remember anymore exactly what is in this one.
+------------------------------------------------------------
+revno: 85
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Tue 2010-06-29 08:27:53 -0500
+message:
+  Command-line arguments
+------------------------------------------------------------
+revno: 84
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Thu 2010-06-24 10:14:21 -0500
+message:
+  Code organization and font size bug
+------------------------------------------------------------
+revno: 83
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Thu 2010-06-24 08:20:07 -0500
+message:
+  run.py to run from current location
+------------------------------------------------------------
+revno: 82 [merge]
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-06-21 17:18:27 -0500
+message:
+  Merge from lp:~gutworth/writetype/more-robust
+------------------------------------------------------------
+revno: 81
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-06-21 17:09:13 -0500
+message:
+  Fixed enchant.Error and added additional credits
+------------------------------------------------------------
+revno: 80
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Thu 2010-06-17 15:15:03 -0500
+message:
+  Wow, this should have been like five commits.  i18n (Dutch), lots of optimization, colorful suggestion box, a few bugs, and some code cleanup.  Whoofta\!
+------------------------------------------------------------
+revno: 79
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sat 2010-06-12 09:55:22 -0500
+message:
+  Diction check
+------------------------------------------------------------
+revno: 78
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Tue 2010-06-08 19:12:21 -0500
+message:
+  Output words sorted by usage and spelling errors are displayed in the word list immediately after they are made.
+------------------------------------------------------------
+revno: 77
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Mon 2010-06-07 14:58:28 -0500
+message:
+  General fixes, but make sure to reimplement guessing misspellings and updating the value of the font size and type spinboxes
+------------------------------------------------------------
+revno: 76
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-06-06 19:02:06 -0500
+message:
+  Statistics and readability
+------------------------------------------------------------
+revno: 75
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-06-06 11:20:43 -0500
+message:
+  WHY THE HECK IS BACKTAB DIFFERENT FROM TAB WITH A SHIFT MODIFIER?!?!  Oh well, at least tabbing through word list items works now.
+------------------------------------------------------------
+revno: 74
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Fri 2010-06-04 14:58:42 -0500
+message:
+  Just added some bugs.  Seriously.
+------------------------------------------------------------
+revno: 73
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Thu 2010-06-03 14:56:39 -0500
+message:
+  Fixed boolean platformSettings and redo
+------------------------------------------------------------
+revno: 72
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Wed 2010-06-02 20:50:52 -0500
+message:
+  Updated icon set
+------------------------------------------------------------
+revno: 71
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Wed 2010-06-02 14:58:24 -0500
+message:
+  Some bug fixes
+------------------------------------------------------------
+revno: 70
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Tue 2010-06-01 15:00:05 -0500
+message:
+  Tabbing through wordlist and interface enhancements
+------------------------------------------------------------
+revno: 69
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-05-31 21:05:57 -0500
+message:
+  Now includes rankings for each word in the wordlist
+------------------------------------------------------------
+revno: 68
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-05-30 20:44:28 -0500
+message:
+  Performance and bug fixes
+------------------------------------------------------------
+revno: 67
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sat 2010-05-29 21:42:04 -0500
+message:
+  Font box changes the font for the whole document
+------------------------------------------------------------
+revno: 66
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sat 2010-05-29 11:34:33 -0500
+message:
+  Yay, grammar checking!
+------------------------------------------------------------
+revno: 65
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Fri 2010-05-28 14:59:11 -0500
+message:
+  Almost done with grammar correction.
+------------------------------------------------------------
+revno: 64
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Thu 2010-05-27 14:56:40 -0500
+message:
+  Better grammar checking
+------------------------------------------------------------
+revno: 63
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Thu 2010-05-27 13:59:14 -0500
+message:
+  Setup.py now includes py2exesetup.py
+------------------------------------------------------------
+revno: 62
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Wed 2010-05-26 19:39:56 -0500
+message:
+  Added more data to analyze, and switched to org-mode
+------------------------------------------------------------
+revno: 61
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Tue 2010-05-25 14:58:27 -0500
+message:
+  Dynamically loaded wordlists
+------------------------------------------------------------
+revno: 60
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-05-24 20:25:04 -0500
+message:
+  Autosave - Bug #581021
+------------------------------------------------------------
+revno: 59
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Mon 2010-05-24 14:58:23 -0500
+message:
+  Interface translations
+------------------------------------------------------------
+revno: 58
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Wed 2010-05-19 13:22:57 -0500
+message:
+  Alignment
+------------------------------------------------------------
+revno: 57
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Tue 2010-05-18 18:22:24 -0500
+message:
+  Added some sample spelling errors to analyze at a later time
+------------------------------------------------------------
+revno: 56
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Tue 2010-05-18 14:53:45 -0500
+message:
+  Graceful failing of tts drivers - Bug #581062
+------------------------------------------------------------
+revno: 55
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Mon 2010-05-17 14:56:51 -0500
+message:
+  Progress on the ambiguous Bug #581062
+------------------------------------------------------------
+revno: 54
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Mon 2010-05-17 14:39:10 -0500
+message:
+  Bug #581297 - Backspace makes new word completions
+------------------------------------------------------------
+revno: 53
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sat 2010-05-15 14:14:55 -0500
+message:
+  Some last pre-release things
+------------------------------------------------------------
+revno: 52
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Wed 2010-05-12 14:40:40 -0500
+message:
+  Those bugaloos are no longer in the air and everywhere.  Flying high.  Flying loose.  Flying free as the summer breeze.  You get the picture.
+------------------------------------------------------------
+revno: 51
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-05-10 20:09:41 -0500
+message:
+  Added an espeak interface.  Maybe this should be the windows default.
+------------------------------------------------------------
+revno: 50
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Mon 2010-05-10 16:26:36 -0500
+message:
+  Speech drivers tested and working on GNU/Linux
+------------------------------------------------------------
+revno: 49
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Mon 2010-05-10 14:57:34 -0500
+message:
+  Settings backbone for multiple tts engines
+------------------------------------------------------------
+revno: 48
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Mon 2010-05-10 14:32:59 -0500
+message:
+  Dang it, can't test pyttsxInterface on this stupid computer.  Please test.
+------------------------------------------------------------
+revno: 47
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-05-09 07:38:40 -0500
+message:
+  Code cleanup, no more manual qvariant type casting
+------------------------------------------------------------
+revno: 46
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sat 2010-05-08 13:41:33 -0500
+message:
+  Festival/SABLE backbone for speech synthesis
+------------------------------------------------------------
+revno: 45
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Thu 2010-05-06 14:58:26 -0500
+message:
+  I have no idea what the status of image support is, but a very basic SABLE-enabled tts in in the works
+------------------------------------------------------------
+revno: 44
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Tue 2010-05-04 15:00:07 -0500
+message:
+  VERY basic and buggy image support. Beware.
+------------------------------------------------------------
+revno: 43
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Tue 2010-04-27 14:55:47 -0500
+message:
+  Sorry, I forgot what I did in the last few minutes... :(
+------------------------------------------------------------
+revno: 42
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Tue 2010-04-27 14:28:06 -0500
+message:
+  Autocompletions before periods and better word list
+------------------------------------------------------------
+revno: 41
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Sun 2010-04-25 15:03:49 -0500
+message:
+  customizable auto-correction
+------------------------------------------------------------
+revno: 40
+committer: Max Shinn <max@Newton>
+branch nick: writetype
+timestamp: Thu 2010-04-22 17:11:29 -0500
+message:
+  Forgot to commit some stuff from before
+------------------------------------------------------------
+revno: 39
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Thu 2010-04-22 14:59:04 -0500
+message:
+  Autocompletion
+------------------------------------------------------------
+revno: 38
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Fri 2010-04-09 14:57:26 -0500
+message:
+  added script to update auto-generated python files
+------------------------------------------------------------
+revno: 37
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Fri 2010-04-09 14:51:18 -0500
+message:
+  Working setup.py now, with qrc file
+------------------------------------------------------------
+revno: 36
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Mon 2010-04-05 14:42:29 -0500
+message:
+  This works, time to change the directory structure.
+------------------------------------------------------------
+revno: 35
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Mon 2010-04-05 14:15:55 -0500
+message:
+  The stuff I forgot
+------------------------------------------------------------
+revno: 34
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Thu 2010-03-25 14:35:04 -0500
+message:
+  Distraction-free mode and highlight i=0 bugfix
+------------------------------------------------------------
+revno: 33
+committer: Max Shinn <max@max-studio>
+branch nick: writetype
+timestamp: Fri 2010-02-19 14:47:54 -0600
+message:
+  Platform settings is now a module
+------------------------------------------------------------
+revno: 32
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2010-02-06 14:10:29 -0600
+message:
+  Updated documentation url.  I finally took the time to write it!!!
+------------------------------------------------------------
+revno: 31
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2010-02-06 12:07:41 -0600
+message:
+  Minimum letters before autocompletion
+------------------------------------------------------------
+revno: 30
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2010-02-06 10:42:36 -0600
+message:
+  Fixed problem with spaces and finished default font dialog
+------------------------------------------------------------
+revno: 29
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2010-02-06 09:31:07 -0600
+message:
+  Default fonts
+------------------------------------------------------------
+revno: 28
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2010-02-06 08:38:11 -0600
+message:
+  Changed around some files
+------------------------------------------------------------
+revno: 27
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2010-02-06 07:54:32 -0600
+message:
+  Oops... here is the platformSettings ini
+------------------------------------------------------------
+revno: 26
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2010-01-30 15:20:58 -0600
+message:
+  Fixed problem with spaces and included a festival interface class to test
+------------------------------------------------------------
+revno: 25
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2010-01-30 11:52:47 -0600
+message:
+  Platform settings now come from an ini file
+------------------------------------------------------------
+revno: 24
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2010-01-16 12:53:48 -0600
+message:
+  More words that shouldn't be in an application like this
+------------------------------------------------------------
+revno: 23
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Tue 2010-01-12 20:13:32 -0600
+message:
+  Updated documentation url
+------------------------------------------------------------
+revno: 22
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Tue 2010-01-12 20:12:59 -0600
+message:
+  Added license information.
+------------------------------------------------------------
+revno: 21
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Tue 2010-01-05 19:22:23 -0600
+message:
+  Adding highlight images
+------------------------------------------------------------
+revno: 20
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Tue 2010-01-05 18:32:23 -0600
+message:
+  Removed swear words from the word lists before distributing to 4th graders :)
+------------------------------------------------------------
+revno: 19
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Fri 2010-01-01 09:28:41 -0600
+message:
+  Forgot to sort the word lists
+------------------------------------------------------------
+revno: 18
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Fri 2010-01-01 09:22:17 -0600
+message:
+  Speed enhancements
+------------------------------------------------------------
+revno: 17
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Tue 2009-12-29 16:07:22 -0600
+message:
+  Logging
+------------------------------------------------------------
+revno: 16
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Tue 2009-12-29 13:51:20 -0600
+message:
+  Threshold works, and works better
+------------------------------------------------------------
+revno: 15
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Tue 2009-12-29 12:14:31 -0600
+message:
+  another highlight button && text completion tries to guess words now if none are found
+------------------------------------------------------------
+revno: 14
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Tue 2009-12-29 09:20:25 -0600
+message:
+  Support for highlighting
+------------------------------------------------------------
+revno: 13
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Mon 2009-12-28 18:41:32 -0600
+message:
+  Switch the word list in the settings; better storage for custom words with qsettings engine in platformsettings
+------------------------------------------------------------
+revno: 12
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Wed 2009-12-23 10:02:16 -0600
+message:
+  Yuck!  Where did THAT come from?
+------------------------------------------------------------
+revno: 11
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Wed 2009-12-23 09:01:27 -0600
+message:
+  Removed debugging prints
+------------------------------------------------------------
+revno: 10
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Wed 2009-12-23 08:56:47 -0600
+message:
+  Added py2exe build script
+------------------------------------------------------------
+revno: 9
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2009-12-05 12:00:53 -0600
+message:
+  Updates to saving
+------------------------------------------------------------
+revno: 8
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sat 2009-12-05 11:29:31 -0600
+message:
+  Add words to the custom list after opening a file and dynamically while typing
+------------------------------------------------------------
+revno: 7
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Mon 2009-11-30 16:50:18 -0600
+message:
+  interface fixes
+------------------------------------------------------------
+revno: 6
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Mon 2009-11-30 16:29:23 -0600
+message:
+  disable save without modification
+------------------------------------------------------------
+revno: 5
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Mon 2009-11-30 16:23:25 -0600
+message:
+  Fixes with the icon
+------------------------------------------------------------
+revno: 4
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sun 2009-11-29 20:54:58 -0600
+message:
+  Added ability to detect changes and change titlebar message accordingly
+------------------------------------------------------------
+revno: 3
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sun 2009-11-29 10:54:43 -0600
+message:
+  Fixed file name vs file path
+------------------------------------------------------------
+revno: 2 [merge]
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sun 2009-11-29 10:02:17 -0600
+message:
+  merged changes
+------------------------------------------------------------
+revno: 1
+committer: Max Shinn <admin@BernsteinForPresident.com>
+branch nick: writetype
+timestamp: Sun 2009-11-29 09:38:28 -0600
+message:
+  Printing and splitter layout
+------------------------------------------------------------
+revno: 0
+committer: Max Shinn <admin@bernsteinforpresident.com>
+branch nick: writetype
+timestamp: Sun 2009-11-29 08:02:48 -0600
+message:
+  Initial commit
+------------------------------------------------------------
+Use --include-merges or -n0 to see merged revisions.
