@@ -1,3 +1,6 @@
+DATADIR = $(DESTDIR)/usr/share/writetype
+BINDIR = $(DESTDIR)/usr/bin
+
 translation:
 	pylupdate4 writetype/*.py -ts translations/writetype.ts translations/qt_nl_NL.ts translations/qt_es_AR.ts translations/qt_eu_ES.ts
 	lrelease-qt4 translations/qt_nl_NL.ts -qm translations/qt_nl_NL.qm
@@ -23,3 +26,16 @@ rc:
 	pyrcc4 res/resources.qrc -o writetype/resources_rc.py
 
 all: translation revno gui rc changelog
+
+clean:
+	rm -f writetype/*.py[co]
+
+install:
+	mkdir -p $(DATADIR)
+	mkdir -p $(BINDIR)
+	cp -r * $(DATADIR)/
+	cp scripts/writetype $(BINDIR)/writetype
+
+uninstall:
+	rm -rf $(DATADIR)
+	rm -rf $(BINDIR)/writetype

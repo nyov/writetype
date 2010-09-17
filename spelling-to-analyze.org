@@ -69,6 +69,7 @@
 ** TODO Ability to set default settings from platformsettings
 ** TODO REAL Debian packaging
 ** TODO Reorganize to not package as a python module
+** TODO Remove self.tr from the non-QObject translation files
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes
 ** TODO Is vs. are

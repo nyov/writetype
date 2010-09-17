@@ -1,0 +1,5 @@
+writetype (1.1.102) UNRELEASED; urgency=low
+
+  * debian/changelog
+
+ -- Max Shinn <max@bernsteinforpresident.com>  Wed, 15 Sep 2010 19:45:07 -0500

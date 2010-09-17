@@ -538,7 +538,7 @@ class MainApplication(QtGui.QMainWindow):
 		for x in self.tokenizer(str(self.ui.textArea.toPlainText())):
 			words += 1
 		self.statisticsDialog.ui.wordsLabel.setText(str(words))
-		sentences = len(re.findall('[A-Z][^A-Z]*[.!?]', self.ui.textArea.toPlainText()))
+		sentences = len(re.findall('[A-Z][^A-Z]*[.!?]', unicode(self.ui.textArea.toPlainText())))
 		self.statisticsDialog.ui.sentencesLabel.setText(str(sentences))
 		paragraphs = self.ui.textArea.document().blockCount()
 		self.statisticsDialog.ui.paragraphsLabel.setText(str(paragraphs))

@@ -1,2 +1,2 @@
-#!/usr/bin/python
-import writetype.main
+#!/bin/bash
+/usr/bin/python /usr/share/writetype/writetype/main.py
