@@ -53,7 +53,7 @@ class wordsList:
 		customwords = platformSettings.getSetting("customwords", "").lower().split("\n")
 		wordsfinal = []
 		for word in customwords:
-			wordsfinal.append((word, 5))
+			wordsfinal.append((word, 5)) 
 		self.words += wordsfinal
 
 	def loadWords(self, filePath):
@@ -150,5 +150,5 @@ class WordPattern:
 		returnlist = []
 		print self.words
 		for key, value in self.words[word].iteritems():
-			returnlist.append((word + " " + key, value))
+			returnlist.append((key, value))
 		return returnlist

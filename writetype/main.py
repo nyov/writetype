@@ -321,6 +321,7 @@ class MainApplication(QtGui.QMainWindow):
 					self.wordsN.append((word, 0))
 				for word in self.wordsN:
 					item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
+					item.spellingSuggestionListItemType = "replace"
 					item.setForeground(Qt.Qt.red)
 			else:
 				#This is still HORRIBLE of me.  Still nothing to do with autocorrections.
@@ -328,7 +329,7 @@ class MainApplication(QtGui.QMainWindow):
 				if links:
 					for link in links:
 						self.wordsN = []
-						self.wordsN.append(link)
+						self.wordsN.append((link[0], link[1], "i"))
 					for word in self.wordsN:
 						item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
 
@@ -355,7 +356,10 @@ class MainApplication(QtGui.QMainWindow):
 			self.wlIndex = 0
 		else:
 			self.wlIndex += 1
-       		self.ui.textArea.replaceLastWord(self.wordsN[self.wlIndex][0])
+		if self.wordsN[self.wlIndex][2] == "i": #i for insert
+			self.ui.textArea.insertPlainText(self.wordsN[self.wlIndex][0])
+		else: #r for replace
+			self.ui.textArea.replaceLastWord(self.wordsN[self.wlIndex][0])
 		self.ui.spellingSuggestionsList.setCurrentRow(self.wlIndex)
 
 	def tabBackEvent(self):
@@ -386,10 +390,14 @@ class MainApplication(QtGui.QMainWindow):
 		spelling completion box"""
 		word = wordItem.text()
 		self.wlIndex = self.ui.spellingSuggestionsList.row(wordItem)
-		self.ui.textArea.replaceLastWord(word)
+		print wordItem.spellingSuggestionListItemType
+		if self.wordsN[self.wlIndex][2] == "i": #i for insert
+			self.ui.textArea.insertPlainText(word)
+		else: #r for replace
+			self.ui.textArea.replaceLastWord(word)
 
 	def populateWordList(self, text):
-		"""Fill the word completion box with words"""
+		"""Serach for completions and fill the word completion box with words"""
 		text = unicode(text)
 
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
@@ -415,6 +423,7 @@ class MainApplication(QtGui.QMainWindow):
 			return
 
 		self.wordsN = self.wl.search(text, self.wl.NORMAL_WORDS)
+		self.wordsN = [(w,s,"r") for w,s in self.wordsN]
 
 		if platformSettings.getSetting("guessmisspellings", True) and len(self.wordsN) <= platformSettings.getSetting("threshold", 0):
 			replacements = [
@@ -449,14 +458,16 @@ class MainApplication(QtGui.QMainWindow):
 				if not replacement[0] in text:
 					continue
 				possibilities += self.wl.search(text.replace(replacement[0], replacement[1]))
+				possibilities = [(w,0,"r") for w in possibilities]
 
 			if possibilities:
 				#self.wordsN += [(rep[0], -1) for rep in possibilities]
 				self.wordsN += possibilities
-				
+
 		#Sort by ranking
 		self.wordsN.sort(lambda x, y : cmp(y[1],x[1]))
 
+		print self.wordsN
 		for word in self.wordsN:
 			item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
 
