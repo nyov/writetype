@@ -58,7 +58,7 @@ class spellCheckEdit(QTextEdit):
 		self.lastWord = ""
 		
 	def mousePressEvent(self, event):
-		#This will move the cursor to the appropriate position
+		"""Move the cursor to the appropriate position"""
 		if event.button() == Qt.RightButton:
 			event = QMouseEvent(QEvent.MouseButtonPress, event.pos(), Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
 
@@ -71,14 +71,14 @@ class spellCheckEdit(QTextEdit):
 		QTextEdit.mousePressEvent(self, event)
 	
 	def mouseReleaseEvent(self, event):
-		#Highlight on click?
+		"""Highlight the word under the cursor if necessary"""
 		if self.highlighting:
 			self.highlightAction()
 		else:
 			QTextEdit.mousePressEvent(self, event)
 
 	def contextMenuEvent(self, event):
-		#Select the word under the cursor
+		"""Display the context menu"""
 		cursor = self.textCursor()
 		position = cursor.position()
 		menu = QMenu(self)
@@ -131,13 +131,14 @@ class spellCheckEdit(QTextEdit):
 		menu.exec_(event.globalPos())
 		
 	def selectTextByPosition(self, begin, end):
+		"""Select text by specifying its beginning and ending index"""
 		cursor = self.textCursor()
 		cursor.setPosition(begin)
 		cursor.setPosition(end, QTextCursor.KeepAnchor)
 		self.setTextCursor(cursor)
 
 	def replaceTextByPosition(self, word, begin, end):
-		#Replace from begin to end with word
+		"""Replace text by specifying its beginning and ending indices"""
 		cursor = self.textCursor()
 		cursor.setPosition(begin)
 		cursor.setPosition(end, QTextCursor.KeepAnchor)
@@ -147,9 +148,11 @@ class spellCheckEdit(QTextEdit):
 		cursor.endEditBlock()
 
 	def addToDictionary(self, word):
+		"""Add a word to the spell check dictionary"""
 		self.dictionary.add(word)
 		
 	def replaceSelectedWord(self, word):
+		"""Replace the most recently typed word with another"""
 		#Replace the selected word with another word
 		cursor = self.textCursor()
 		cursor.select(QTextCursor.WordUnderCursor)
@@ -170,6 +173,9 @@ class spellCheckEdit(QTextEdit):
 		#self.log.log(oldword + " -> " + str(word))
 
 	def replaceLastWord(self, word):
+		"""Replace the last word typed with another.  Works by remembering the
+		last word selected in the word suggestion box, and removing that many
+		characters.  This is necessary for spell checking in the box to function."""
 		#Dirtier than the above, but works better in the case of spellcheck
 		cursor = self.textCursor()
 		if cursor.hasSelection():
@@ -202,12 +208,7 @@ class spellCheckEdit(QTextEdit):
 		self.setFocus()		
 
 	def keyPressEvent(self, event):
-		#What was my reasoning behind this again?  Unless... what?  This has to be the stupidest "enhancement" I have ever made to a piece of software.
-		## #Auto-repeats shouldn't be needed unless
-		## if event.isAutoRepeat():
-		## 	if not event.key() in [Qt.Key_Backspace, Qt.Key_Right, Qt.Key_Left]:
-		## 		return
-
+		"""Emit tab events and events indicating the last word/char typed"""
 		#Tabs should scroll through the words
 		if event.key() == Qt.Key_Backtab or event.key() == Qt.Key_Up:
 			self.emit(SIGNAL("tabBackEvent"))
@@ -269,8 +270,8 @@ class spellCheckEdit(QTextEdit):
 	def singleSpace(self):
 		pass
 
-	#Don't allow multiple fonts in one document
 	def setFont(self, font):
+		"""Ensure that only one font is being used in the document"""
 		if not self.hasFocus():
 			cursor = self.textCursor()
 			cursor.setPosition(0)
@@ -279,8 +280,8 @@ class spellCheckEdit(QTextEdit):
 			fontFormat.setFontFamily(font.family())
 			cursor.mergeCharFormat(fontFormat)
 
-	#Don't allow multiple fonts in one document
 	def setFontSize(self, size):
+		"""Ensure that only one font size is being used in the paragraph"""
 		if not self.hasFocus():
 			cursor = self.textCursor()
 			cursor.select(QTextCursor.BlockUnderCursor)
@@ -290,6 +291,8 @@ class spellCheckEdit(QTextEdit):
 			cursor.mergeCharFormat(fontFormat)
 
 	def toggleHighlight(self, isSet):
+		"""Set the cursor to highlight the word underneath it and disable
+		standard editing functions"""
 		self.highlighting = isSet
 		if isSet:
 			self.setReadOnly(True)
@@ -297,6 +300,7 @@ class spellCheckEdit(QTextEdit):
 			self.setReadOnly(False)
 
 	def highlightAction(self):
+		"""Highlight the word underneath the cursor"""
 		cursor = self.textCursor()
 		if cursor.charFormat().background().color() == QColor.fromRgb(255, 255, 0):
 			format_highlight = QTextCharFormat()
@@ -334,35 +338,36 @@ class spellCheckEdit(QTextEdit):
 			format_highlight.setBackground(QColor.fromRgb(255, 255, 0))
 			cursor.mergeCharFormat(format_highlight)
 
-	def insertImage(self):
-		imageurl = QFileDialog.getOpenFileName(self, "Insert image", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Image file (*.jpg *.jpeg *.gif *.png)")
-		self.insertImageByUrl(imageurl)
+	## def insertImage(self):
+	## 	imageurl = QFileDialog.getOpenFileName(self, "Insert image", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Image file (*.jpg *.jpeg *.gif *.png)")
+	## 	self.insertImageByUrl(imageurl)
 
-	def insertImageByUrl(self, url):
-		#cursor = self.textCursor()
-		self.insertHtml('&nbsp;<img src="{0}" style="float:right" />&nbsp;'.format(url))
+	## def insertImageByUrl(self, url):
+	## 	#cursor = self.textCursor()
+	## 	self.insertHtml('&nbsp;<img src="{0}" style="float:right" />&nbsp;'.format(url))
 		
-	def alignImageRight(self):
-		cursor = self.textCursor()
-		cursor.select(QTextCursor.WordUnderCursor)
-		selection = str(cursor.selection().toHtml())
-		selection = selection.replace("float: left", "float: right")
-		selection = selection.replace("float: none", "float: right")
-		cursor.removeSelectedText()
-		cursor.insertHtml(selection)
-		self.setHtml(self.toHtml()) #framework bugs are not cute
+	## def alignImageRight(self):
+	## 	cursor = self.textCursor()
+	## 	cursor.select(QTextCursor.WordUnderCursor)
+	## 	selection = str(cursor.selection().toHtml())
+	## 	selection = selection.replace("float: left", "float: right")
+	## 	selection = selection.replace("float: none", "float: right")
+	## 	cursor.removeSelectedText()
+	## 	cursor.insertHtml(selection)
+	## 	self.setHtml(self.toHtml()) #framework bugs are not cute
 		
-	def alignImageLeft(self):
-		cursor = self.textCursor()
-		cursor.select(QTextCursor.WordUnderCursor)
-		selection = cursor.selection().toHtml()
-		selection = selection.replace("float: right", "float: left")
-		selection = selection.replace("float: none", "float: left")
-		cursor.removeSelectedText()
-		cursor.insertHtml(selection)
-		self.setHtml(self.toHtml()) #see above for bad pun
+	## def alignImageLeft(self):
+	## 	cursor = self.textCursor()
+	## 	cursor.select(QTextCursor.WordUnderCursor)
+	## 	selection = cursor.selection().toHtml()
+	## 	selection = selection.replace("float: right", "float: left")
+	## 	selection = selection.replace("float: none", "float: left")
+	## 	cursor.removeSelectedText()
+	## 	cursor.insertHtml(selection)
+	## 	self.setHtml(self.toHtml()) #see above for bad pun
 
 class Highlighter(QSyntaxHighlighter):
+	"""Highlight misspellings and grammar/formatting issues"""
 
 	WORDS = re.compile(u'((?iu)[\w\']+)([\s\n .?!])')
 
@@ -425,6 +430,7 @@ class Highlighter(QSyntaxHighlighter):
 		self.dict = dict
 	
 	def highlightBlock(self, text):
+		"""Perform the highlighting"""
 		if not self.dict:
 			return
 	
@@ -444,6 +450,7 @@ class Highlighter(QSyntaxHighlighter):
 					self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
 
 	def getDescriptionText(self, pos, text):
+		"""Given a grammar mistake, figure out what the mistake was"""
 		text = unicode(text)
 		results = []
 		for rule in self.corrections:

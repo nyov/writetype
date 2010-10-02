@@ -59,6 +59,8 @@ Report bugs to <admin@bernsteinforpresident.com>"""
 		exit(0)
 
 class MainApplication(QtGui.QMainWindow):
+	"""The main application class"""
+	
 	def __init__(self, parent=None):
 		QtGui.QMainWindow.__init__(self, parent)
 		self.ui = Ui_MainWindow()
@@ -200,10 +202,12 @@ class MainApplication(QtGui.QMainWindow):
 	#FILE OPENING/SAVING
 	
 	def openDialog(self):
+		"""Display a dialog to open a file"""
 		filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)")
 		self.openFile(filename)
 
 	def openFile(self, filename):
+		"""Open a file and display it"""
 		if isfile(filename):
 			self.filename = filename
 			text = open(self.filename).read()
@@ -221,6 +225,7 @@ class MainApplication(QtGui.QMainWindow):
 			self.ui.fontComboBox.setCurrentFont(cursor.charFormat().font())
 
 	def saveFile(self):
+		"""Save the current document to a prespecified file"""
 		if isfile(self.filename):
 			self.writeFile()
 			self.filetitle = str(self.filename).split(sep).pop()
@@ -230,6 +235,7 @@ class MainApplication(QtGui.QMainWindow):
 			return self.saveFileAs()
 
 	def saveFileAs(self):
+		"""Prompt the user on where to save the current document"""
 		filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)")
 		if not filename:
 			return
@@ -242,6 +248,7 @@ class MainApplication(QtGui.QMainWindow):
 		return True
 
 	def writeFile(self):
+		"""Used by save functions to write the file to the disk"""
 		extension = str(self.filename).split('.').pop()
 		try:
 			file = open(self.filename, 'w+')
@@ -257,6 +264,7 @@ class MainApplication(QtGui.QMainWindow):
 			QMessageBox.warning(self, self.tr("Save error"), self.tr("WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again."))
 		
 	def autoSave(self):
+		"""Autosave the current document whenever called"""
 		#This function should be called whenever an autosave is desired
 		path = platformSettings.getSetting("autosavepath", "")
 		if not path:
@@ -270,6 +278,7 @@ class MainApplication(QtGui.QMainWindow):
 	#TTS
 
 	def readAloud(self):
+		"""Speak the document or the selected text out loud"""
 		if self.ui.textArea.textCursor().selectedText():
 			text = self.ui.textArea.textCursor().selectedText()
 		else:
@@ -286,6 +295,9 @@ class MainApplication(QtGui.QMainWindow):
 	#AUTOCORRECTIONS
 
 	def checkForAutocorrection(self, word):
+		"""Check to see if the last word typed needed to be automatically corrected.
+		Unless I structure this better, it also looks to see if the last word was
+		misspelled and offers suggestions in the word completion box."""
 		if word[-1:] in ["", "\b", " ", "\t", ".", "?", ":", "!", ",", ";", ")"]:
 			if self.wl.correctWord(word[:-1]) != False:
 				self.ui.textArea.replaceSelectedWord(self.wl.correctWord(word[:-1]))
@@ -318,6 +330,7 @@ class MainApplication(QtGui.QMainWindow):
 	#SPELLING SUGGESTIONS/WORD LISTS
 
 	def tabEvent(self):
+		"""Tab through the words in the spelling completion box"""
 		if not self.wordsN:
 			return
 		if self.wlIndex == None:
@@ -330,6 +343,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.spellingSuggestionsList.setCurrentRow(self.wlIndex)
 
 	def tabBackEvent(self):
+		"""Tab backwards through words in the spelling completion box"""
 		if not self.wordsN:
 			return
 		if self.wlIndex == None: 
@@ -342,6 +356,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.ui.spellingSuggestionsList.setCurrentRow(self.wlIndex)
 
 	def clearWordList(self):
+		"""Clear the spelling completion box"""
 		#curpos = self.ui.textArea.textCursor().position()
 		#if abs(curpos - self.lastCursorPos) > 1:
 		if self.ui.textArea.lastWord == None:
@@ -351,11 +366,14 @@ class MainApplication(QtGui.QMainWindow):
 		#self.lastCursorPos = curpos
 
 	def correctWordFromListItem(self, wordItem):
+		"""Replace the last word typed with the currently selected row in the
+		spelling completion box"""
 		word = wordItem.text()
 		self.wlIndex = self.ui.spellingSuggestionsList.row(wordItem)
 		self.ui.textArea.replaceLastWord(word)
 
 	def populateWordList(self, text):
+		"""Fill the word completion box with words"""
 		text = unicode(text)
 
 		#If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
@@ -434,6 +452,7 @@ class MainApplication(QtGui.QMainWindow):
 	# DICTION CHECKING
 
 	def dictionCheckModeEnable(self):
+		"""Open the diction check toolbar"""
 		#Load these into memory only if we need to
 		if self.dictionReplacements == None:
 			print "Loading words"
@@ -449,11 +468,13 @@ class MainApplication(QtGui.QMainWindow):
 		self.dictionCheck()
 
 	def dictionCheckModeDisable(self):
+		"""Close the diction check toolbar"""
 		self.ui.dictionErrorFrame.setVisible(False)
 		self.dictionReplacementsIndex = 0
 		self.lastDictionReplacementsIndex = -1
 
 	def dictionCheck(self):
+		"""Check the document for diction mistakes"""
 		text = str(self.ui.textArea.toPlainText()).lower()
 		while True:
 			index = text.find(self.dictionReplacements[self.dictionReplacementsIndex][0], self.lastDictionReplacementsIndex+2)
@@ -484,16 +505,19 @@ class MainApplication(QtGui.QMainWindow):
 					break
 	
 	def nextDictionError(self):
+		"""Go to the next diction error"""
 		print "going to diction check"
 		self.dictionCheck()
 
 	def updateFontSizeSpinBoxValue(self):
+		"""Update the font size spinbox when the cursor moves"""
 		if not self.ui.textArea.textCursor().selectedText():
 			self.ui.spinBoxFontSize.setValue(int(self.ui.textArea.fontPointSize()))
 		if self.ui.spinBoxFontSize.value() == 0:
 			self.ui.spinBoxFontSize.setValue(12)
 
 	def updateFontComboBoxValue(self):
+		"""Update the font family combobox when the cursor moves"""
 		if not self.ui.textArea.textCursor().selectedText():
 			self.ui.fontComboBox.setCurrentFont(self.ui.textArea.currentFont())
 		self.ui.textArea.setFocus()
@@ -501,12 +525,15 @@ class MainApplication(QtGui.QMainWindow):
 	#DIALOGS
 
 	def showAbout(self):
+		"""Open the about box"""
 		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType <span style="font-size: large">Revision r%1</span></h1><h2>Copyright 2010 Max Shinn</h2><br /><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Emilio Lopez</td><td>Spanish Translations</td></tr><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr></table>""").arg(revno.aboutrevno))
 		
 	def openHelpPage(self):
+		"""Open the Bernsteinforpresident.com documentation"""
 		QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype/documentation"))
 		
 	def openPrintDialog(self):
+		"""Print a document"""
 		printer = QtGui.QPrinter()
 		printer.setDocName("writetype_" + self.filename)
 		printDialog = QtGui.QPrintDialog(printer)
@@ -525,6 +552,7 @@ class MainApplication(QtGui.QMainWindow):
 			self.ui.textArea.highlighter.rehighlight()			
 
 	def showStatisticsDialog(self):
+		"""Show document statistics"""
 		#Update the statistics
 		self.statisticsDialog.ui.filenameLabel.setText(self.filename)
 		#Only alpha-numerics
@@ -552,6 +580,8 @@ class MainApplication(QtGui.QMainWindow):
 		self.statisticsDialog.show()
 
 	def openDistractionFreeMode(self):
+		"""Display only the text entry box and the word completion list in fullscreen
+		mode.  Buggy on older operating systems, but who uses those anyway? :)"""
 		self.distractionFree_box.ui.verticalLayout_2.addWidget(self.ui.centralwidget)
 		self.distractionFree_box.show()
 		self.ui.distractionButton.show()
@@ -560,12 +590,14 @@ class MainApplication(QtGui.QMainWindow):
 #		self.ui.splitter.showFullScreen()
 
 	def closeDistractionFreeMode(self):
+		"""Display the normal application again"""
 		self.distractionFree_box.hide()
 		self.ui.centralwidget.setParent(self)
 		self.setCentralWidget(self.ui.centralwidget)
 		self.ui.distractionButton.hide()
 			
 	def refreshAfterSettingsDialogClosed(self):
+		"""Reload the settings that were changed in the settings dialog"""
 		self.ui.actionSpeak.setDisabled(False)
 		self.ui.actionStop.setDisabled(False)
 
@@ -577,6 +609,8 @@ class MainApplication(QtGui.QMainWindow):
 	#MISC
 
 	def updateTitle(self, modified=True):
+		"""Change the window title to either remove the 'unsaved asterisk'
+		or change the document title."""
 		titlestring = self.tr("WriteType - ") + self.filetitle
 		if modified:
 			titlestring += " *"
@@ -586,6 +620,7 @@ class MainApplication(QtGui.QMainWindow):
 		self.setWindowTitle(titlestring)
 
 	def closeEvent(self, event):
+		"""Clean up!"""
 		#Set the stuff up to ask for a save on exit
 		if self.ui.actionSave.isEnabled():
 			response =  QtGui.QMessageBox.question(self, self.tr("Quit?"), self.tr("You have unsaved work.  Do you want to save?"), QtGui.QMessageBox.Yes, QtGui.QMessageBox.No, QtGui.QMessageBox.Cancel)
@@ -598,8 +633,6 @@ class MainApplication(QtGui.QMainWindow):
 			elif response == QtGui.QMessageBox.Cancel:
 				event.ignore()
 				return
-		##Send the log
-		#self.ui.textArea.log.send()
 		#Purge the autosaves
 		path = platformSettings.getSetting("autosavepath", "")
 		if path:
@@ -612,12 +645,15 @@ class MainApplication(QtGui.QMainWindow):
 		QtGui.QMainWindow.closeEvent(self, event)
 
 class DistractionFreeWindow(QtGui.QDialog):
+	"""Fullscreen window onto which the word suggestion list
+	and the text editing widget are reparented"""
 	def __init__(self, parent=None):
 		QtGui.QWidget.__init__(self, parent)
 		self.ui = Ui_distractionFree()
 		self.ui.setupUi(self)
 
 class StatisticsWindow(QtGui.QDialog):
+	"""Statistics dialog box"""
 	def __init__(self, parent=None):
 		QtGui.QWidget.__init__(self, parent)
 		self.ui = Ui_statisticsDialog()

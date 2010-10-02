@@ -22,16 +22,23 @@ from xml.dom import minidom
 import codecs
 
 class wordsList:
+	"""Interface to the dirty work of searching for word
+	suggestions and autocorrections"""
+
 	NOSORT = 1
 	SORT = 2
 	NORMAL_WORDS = 1
 	CUSTOM_WORDS = 2
+
 	def __init__(self):
 		self.refreshWords()
 		self.refreshWordsCustom()
 		self.refreshReplacementTable()
 
+	#WORD COMPLETION FUNCTIONS
+
 	def refreshWords(self):
+		"""Reload the list of words from which suggestions are found"""
 		dom = minidom.parse(path.join(platformSettings.getPlatformSetting('basePath'), 'wordlists', 'wordlists.xml'))
 		self.words = []
 		#It will be empty if it wasn't found, just like we want
@@ -40,32 +47,16 @@ class wordsList:
 				self.words = self.loadWords(path.join(platformSettings.getPlatformSetting('basePath'), 'wordlists', node.getAttribute('file')))
 				break
 
-		#self.words = self.loadWords(path.join(platformSettings.getPlatformSetting('pathToWordlists'),  "list" + str(platformSettings.getSetting("wordlist", 2)) + ".txt"))
-
 	def refreshWordsCustom(self):
+		"""Reload the words specified in the settings box, and give them a default weight of 5"""
 		customwords = platformSettings.getSetting("customwords", "").lower().split("\n")
 		wordsfinal = []
 		for word in customwords:
 			wordsfinal.append((word, 5))
 		self.words += wordsfinal
 
-	## def refreshWordsCustom(self):
-	## 	self.wordsCustom = str(platformSettings.getSetting("customwords", "")).lower().split("\n")
-
-	def refreshReplacementTable(self):
-		self.replacementTable = {}
-		if not platformSettings.getSetting('autocorrection'):
-			return
-		if platformSettings.getSetting('autocorrectioncontractions', True):
-			for line in self.loadAutocorrections(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt")):
-				if not line or line == ",": continue
-				self.replacementTable[line.split(",")[0]] = line.split(",")[1]
-		for line in str(platformSettings.getSetting("customAutocorrections", "")).split("\n"):
-			print line
-			if not line or line == ",": continue
-			self.replacementTable[line.split(",")[0]] = line.split(",")[1]
-
 	def loadWords(self, filePath):
+		"""Used by loading functions to load all of the words from the wordlist into memory"""
 		print "Loading words"
 		fileHandle = codecs.open(filePath, 'r', encoding='utf-8')
 		words = fileHandle.read().split("\n")
@@ -74,11 +65,8 @@ class wordsList:
 			finalwords.append((word, 0))
 		return finalwords
 
-	def loadAutocorrections(self, filePath):
-			fileHandle = open(filePath, 'r')
-			return fileHandle.read().split("\n")
-
 	def addCustomWord(self, word):
+		"""Add a new word to the list of words, or increment the weight by 1"""
 		word = unicode(word).lower()
 		match = [(w,s) for w,s in self.words if w == word]
 	   	if match:
@@ -90,6 +78,7 @@ class wordsList:
 			self.words.sort(lambda x,y : cmp(x[0], y[0]))
    
 	def search(self, firstLetters, customWords=NORMAL_WORDS, sort=NOSORT):
+		"""Search for a word in the list of words"""
 		if customWords == self.CUSTOM_WORDS:
 			wordsList = self.wordsCustom
 		else:
@@ -102,7 +91,26 @@ class wordsList:
 		results.sort(lambda x,y : cmp(x[0], y[0]))
 		return results
 
+	#AUTOCORRECTION
+
+	def refreshReplacementTable(self):
+		"""Reload the list of autoreplacements from the settings box"""
+		self.replacementTable = {}
+		if not platformSettings.getSetting('autocorrection'):
+			return
+		if platformSettings.getSetting('autocorrectioncontractions', True):
+			fileHandle = open(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt"), 'r')
+			autocorrections = fileHandle.read().split("\n")
+			for line in autocorrections:
+				if not line or line == ",": continue
+				self.replacementTable[line.split(",")[0]] = line.split(",")[1]
+		for line in str(platformSettings.getSetting("customAutocorrections", "")).split("\n"):
+			print line
+			if not line or line == ",": continue
+			self.replacementTable[line.split(",")[0]] = line.split(",")[1]
+
 	def correctWord(self, word):
+		"""Return the autocorrected form of a word"""
 		if word.strip().lower() in self.replacementTable:
 			return self.replacementTable[word.strip().lower()]
 		else:

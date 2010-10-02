@@ -79,6 +79,8 @@
    CLOSED: [2010-05-29 Sat 11:50]
 
 ** DONE Repeated words
+** TODO For vs Four
+** TODO Pick up on sets of words commonly used together
 * Spelling errors
 
 | SID | Error        | Correction    |

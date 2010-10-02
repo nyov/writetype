@@ -22,6 +22,7 @@ import platformSettings
 from os.path import join
 
 class SettingsDialogBox(QtGui.QDialog):
+	"""The settings dialog box"""
 	def __init__(self, parent=None):
 		QtGui.QWidget.__init__(self, parent)
 		self.ui = Ui_settingsDialog()

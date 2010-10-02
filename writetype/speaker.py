@@ -19,7 +19,6 @@ import platformSettings
 import re
 from platform import system
 
-#This will do more in the future... I guess...
 class Speaker:
 	def __init__(self, text):
 		self.setDriver()
@@ -27,6 +26,7 @@ class Speaker:
 		#threading.Thread.__init__(self)
 
 	def say(self, text):
+		"""Speak the selected text"""
 		text = unicode(text)
 		#Sanitize input
 		text.replace("<", "")
@@ -73,9 +73,11 @@ class Speaker:
 			return True
 			
 	def stop(self):
+		"""Try to stop speaking the text"""
    		self.ttsdriver.stop()
 
 	def setDriver(self, driver=None):
+		"""Init the selected driver, or the suggested driver for the platform"""
 		if not driver:
 			driver = platformSettings.getSetting("ttsengine", "")
 

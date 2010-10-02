@@ -46,7 +46,10 @@ try:
 except:
 	print "Error loading settings file!"
 	settingsError = True
+
 def getPlatformSetting(key):
+	"""Get a core setting, either hard-coded, dynamically created,
+	or specified in platformsettings.ini"""
 	if key in pCache:
 		return pCache[key]
 	global prefix
@@ -69,6 +72,7 @@ def getPlatformSetting(key):
 	return parser.get('General', key)
 
 def getSetting(key, default=None):
+	"""Get a setting specified in the settings dialog box"""
 	if key in cache: #Check to see if it is in the cache
 		return correctType(cache[key], default)
 	else:
@@ -82,6 +86,7 @@ def getSetting(key, default=None):
 			return default
 
 def correctType(val, default):
+	"""Make sure the QVariant is cast to the right type"""
 	if isinstance(default, bool):
 		val = val.toBool()
 	elif isinstance(default, int):
@@ -95,6 +100,7 @@ def correctType(val, default):
 	return val
 
 def setSetting(key, value):
+	"""Set a setting, probably from the settings box"""
 	if settingsError == False:
 		settingsHandle.setValue(key, QVariant(value))
 		cache[key] = QVariant(value)
@@ -102,7 +108,9 @@ def setSetting(key, value):
 		print "Settings error!  Setting not saved!"
 
 def setPSettingTmp(key, value):
+	"""Set a temporary value for a platform setting"""
 	pCache[key] = value
 
 def setSettingTmp(key, value):
+	"""Set a temporary value for a normal setting"""
 	cache[key] = QVariant(value)
