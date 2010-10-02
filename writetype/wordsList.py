@@ -34,6 +34,7 @@ class wordsList:
 		self.refreshWords()
 		self.refreshWordsCustom()
 		self.refreshReplacementTable()
+		self.pattern = WordPattern()
 
 	#WORD COMPLETION FUNCTIONS
 
@@ -116,3 +117,38 @@ class wordsList:
 		else:
 			return False
 		
+
+class WordPattern:
+	"""Keeps track of which words are generally typed after
+	other words.  For instance, I generally type 'Shinn'
+	after I type 'Max' and 'software' after I type 'free'."""
+	def __init__(self):
+		#Words are the index to a sub-dictionary, with the word indexed to frequency
+		self.words = {}
+		self.lastcheckedword = ""
+
+	def insertLink(self, first, second):
+		"""Insert the word order link into the data structure"""
+		if not first in self.words:
+			self.words[first] = {}
+		if second in self.words[first]:
+			freq = self.words[first][second]
+			self.words[first][second] = freq + 1
+		else:
+		   	self.words[first][second] = 1
+
+	def getLinks(self, word):
+		"""Return a list of tuples (word, frequency) of words that come
+		after the requested word"""
+		word = word.strip()
+		if self.lastcheckedword and word:
+			self.insertLink(self.lastcheckedword, word)
+		self.lastcheckedword = word
+		
+		if not word in self.words:
+			return []
+		returnlist = []
+		print self.words
+		for key, value in self.words[word].iteritems():
+			returnlist.append((word + " " + key, value))
+		return returnlist

@@ -106,7 +106,6 @@ class spellCheckEdit(QTextEdit):
 				action = QAction(mistake["description"], menu)
 				self.connect(action, SIGNAL("triggered()"), lambda targ=mistake["new"], l=mistake["left"], r=mistake["right"]: self.replaceTextByPosition(targ, l, r))
 				menu.addAction(action)
-
 	
 		cursor.select(QTextCursor.WordUnderCursor)
 		#If there is a word highlighted fix the spelling

@@ -322,6 +322,22 @@ class MainApplication(QtGui.QMainWindow):
 				for word in self.wordsN:
 					item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
 					item.setForeground(Qt.Qt.red)
+			else:
+				#This is still HORRIBLE of me.  Still nothing to do with autocorrections.
+				links = self.wl.pattern.getLinks(word)
+				if links:
+					for link in links:
+						self.wordsN = []
+						self.wordsN.append(link)
+					for word in self.wordsN:
+						item = QtGui.QListWidgetItem(word[0], self.ui.spellingSuggestionsList)
+
+						#Colors!
+						count = link[1]
+						if count > 10: count = 10
+						item.setBackground(QtGui.QColor.fromHsv(250-count*25, count*10, 255, int(bool(count))*255))
+					
+
 			
 		if word[-1:] in [".", "!", "?"]:
 			print "Autosaving"
