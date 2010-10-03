@@ -35,17 +35,15 @@ if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
 	print "setting intallation prefix"
 
 #Some defines
-try:
-	parser = SafeConfigParser()
-	
-	parser.read(os.path.join(prefix, 'platformSettings.ini'))
-	cache = {} #A dictionary for normal settings cache
-	pCache = {} #Platform settings cache
-	settingsHandle = QSettings("BernsteinForPresident", "WriteType")
-	settingsError = False
-except:
-	print "Error loading settings file!"
-	settingsError = True
+parser = SafeConfigParser()
+parser.read(os.path.join(prefix, 'platformSettings.ini'))
+cache = {} #A dictionary for normal settings cache
+pCache = {} #Platform settings cache
+settingsHandle = QSettings("BernsteinForPresident", "WriteType")
+
+#Global Overrides
+for key,value in parser.items("GlobalOverride"):
+	cache[str(key)] = QVariant(value)
 
 def getPlatformSetting(key):
 	"""Get a core setting, either hard-coded, dynamically created,
@@ -66,7 +64,6 @@ def getPlatformSetting(key):
 		return path
 	elif key == "language":
 		language = str(QLocale.system().name())
-		#language = "ar-AR"
 		return language
 
 	return parser.get('General', key)
@@ -76,14 +73,12 @@ def getSetting(key, default=None):
 	if key in cache: #Check to see if it is in the cache
 		return correctType(cache[key], default)
 	else:
-		if settingsError == False:
-			val = settingsHandle.value(key, QVariant(default))
-#			val = val.toPyObject()
-			#Dynamic type casting to the default's type
-			cache[key] = val
-			return correctType(val, default)
-		else:
-			return default
+		val = settingsHandle.value(key, QVariant(default))
+		#val = val.toPyObject()
+		#Dynamic type casting to the default's type
+		cache[key] = val
+		return correctType(val, default)
+
 
 def correctType(val, default):
 	"""Make sure the QVariant is cast to the right type"""
@@ -101,11 +96,8 @@ def correctType(val, default):
 
 def setSetting(key, value):
 	"""Set a setting, probably from the settings box"""
-	if settingsError == False:
-		settingsHandle.setValue(key, QVariant(value))
-		cache[key] = QVariant(value)
-	else:
-		print "Settings error!  Setting not saved!"
+	settingsHandle.setValue(key, QVariant(value))
+	cache[key] = QVariant(value)
 
 def setPSettingTmp(key, value):
 	"""Set a temporary value for a platform setting"""
