@@ -106,6 +106,7 @@ class MainApplication(QtGui.QMainWindow):
 		QtCore.QObject.connect(self.ui.actionAboutQt, QtCore.SIGNAL("triggered()"), lambda : QtGui.QMessageBox.aboutQt(self))
 		QtCore.QObject.connect(self.ui.actionAbout, QtCore.SIGNAL("triggered()"), self.showAbout)
 		QtCore.QObject.connect(self.ui.actionDocumentation, QtCore.SIGNAL("triggered()"), self.openHelpPage)
+		QtCore.QObject.connect(self.ui.actionCheck_for_Updates, QtCore.SIGNAL("triggered()"), self.checkForUpdates)
 
 		#Word list for word completion
 		self.wl = wordsList()
@@ -554,6 +555,19 @@ class MainApplication(QtGui.QMainWindow):
 	def showAbout(self):
 		"""Open the about box"""
 		QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType <span style="font-size: large">Revision r%1</span></h1><h2>Copyright 2010 Max Shinn</h2><br /><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Emilio Lopez</td><td>Spanish Translations</td></tr><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr></table>""").arg(revno.aboutrevno))
+
+	def checkForUpdates(self):
+		"""Check for updates"""
+		from urllib2 import urlopen
+		try:
+			version = urlopen(platformSettings.getPlatformSetting("updateServer")).read()
+			if int(version) > int(revno.aboutrevno):
+				message = self.tr("""<html>A new version of WriteType is available!  You are using WriteType version r%2.  Find more information about WriteType version r%3 at: <a href="%1">%1</a></html>""").arg(platformSettings.getPlatformSetting("updateUrl")).arg(revno.aboutrevno).arg(version)
+			else:
+				message = self.tr("Your version of WriteType is up to date.  You are using WriteType version r%1.").arg(revno.aboutrevno)
+		except:
+			message = self.tr("""There was an unexpected error in establishing a connection.  Please try again later.""")
+		QtGui.QMessageBox.information(self, self.tr("Updates"), message)
 		
 	def openHelpPage(self):
 		"""Open the Bernsteinforpresident.com documentation"""

@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="res">
+    <file>system-software-update.png</file>
     <file>background.png</file>
     <file>go-next.png</file>
     <file>go-previous.png</file>

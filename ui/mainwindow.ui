@@ -16,7 +16,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../res/resources.qrc">
-    <normaloff>:/res/key22x22.png</normaloff>:/res/key22x22.png</iconset>
+    <normaloff>:/res/key120x120.png</normaloff>:/res/key120x120.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -180,7 +180,7 @@
      <x>0</x>
      <y>0</y>
      <width>803</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuView">
@@ -224,6 +224,7 @@
     </property>
     <addaction name="actionDocumentation"/>
     <addaction name="actionAbout"/>
+    <addaction name="actionCheck_for_Updates"/>
     <addaction name="actionAboutQt"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
@@ -718,6 +719,15 @@
    </property>
    <property name="text">
     <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionCheck_for_Updates">
+   <property name="icon">
+    <iconset resource="../res/resources.qrc">
+     <normaloff>:/res/system-software-update.png</normaloff>:/res/system-software-update.png</iconset>
+   </property>
+   <property name="text">
+    <string>Check for Updates</string>
    </property>
   </action>
  </widget>

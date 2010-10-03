@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/distractionfree.ui'
 #
-# Created: Sat Aug 28 18:07:36 2010
-#      by: PyQt4 UI code generator 4.4.2
+# Created: Sun Oct  3 15:44:01 2010
+#      by: PyQt4 UI code generator 4.7.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,8 +12,8 @@ from PyQt4 import QtCore, QtGui
 class Ui_distractionFree(object):
     def setupUi(self, distractionFree):
         distractionFree.setObjectName("distractionFree")
-        distractionFree.resize(377,315)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum,QtGui.QSizePolicy.Maximum)
+        distractionFree.resize(377, 315)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(distractionFree.sizePolicy().hasHeightForWidth())
