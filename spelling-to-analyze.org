@@ -66,9 +66,12 @@
    CLOSED: [2010-08-23 Mon 08:54]
 ** DONE Option for no word completion
    CLOSED: [2010-08-23 Mon 08:04]
-** TODO Ability to set default settings from platformsettings
-** TODO REAL Debian packaging
-** TODO Reorganize to not package as a python module
+** DONE Ability to set default settings from platformsettings
+   CLOSED: [2010-10-03 Sun 16:18]
+** DONE REAL Debian packaging
+   CLOSED: [2010-10-03 Sun 16:18]
+** DONE Reorganize to not package as a python module
+   CLOSED: [2010-10-03 Sun 16:18]
 ** TODO Remove self.tr from the non-QObject translation files
 * Things to see if I can fix automatically 
 ** TODO Suggestions for apostrophes

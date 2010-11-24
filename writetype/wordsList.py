@@ -127,8 +127,15 @@ class WordPattern:
 		self.words = {}
 		self.lastcheckedword = ""
 
+	def _cleanString(self, s):
+		s = s.lower()
+		s = s.strip(".,!?;: \t\n")
+		return s
+
 	def insertLink(self, first, second):
 		"""Insert the word order link into the data structure"""
+		first = self._cleanString(first)
+		second = self._cleanString(second)
 		if not first in self.words:
 			self.words[first] = {}
 		if second in self.words[first]:
@@ -140,7 +147,7 @@ class WordPattern:
 	def getLinks(self, word):
 		"""Return a list of tuples (word, frequency) of words that come
 		after the requested word"""
-		word = word.strip()
+		word = self._cleanString(word)
 		if self.lastcheckedword and word:
 			self.insertLink(self.lastcheckedword, word)
 		self.lastcheckedword = word
@@ -151,4 +158,7 @@ class WordPattern:
 		print self.words
 		for key, value in self.words[word].iteritems():
 			returnlist.append((key, value))
+			for k, v in self.words[key].iteritems():
+				if v > 3:
+					returnlist.append((key + " " + k, v-3))
 		return returnlist
