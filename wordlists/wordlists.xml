@@ -7,6 +7,7 @@
 <wordlist name="Ginormous" file="list5.txt" lang="en_US" id="6" />
 <wordlist name="Geen" file="blank.txt" lang="nl_NL" id="1" />
 <wordlist name="Groot" file="dutch.txt" lang="nl_NL" id="2" />
+<wordlist name="Enorm" file="dutch_big.txt" lang="nl_NL" id="3" />
 <wordlist name="Nada" file="blank.txt" lang="es_AR" id="1" />
 <wordlist name="Nada" file="blank.txt" lang="es_ES" id="1" />
 <wordlist name="Nada" file="blank.txt" lang="es_MX" id="1" />

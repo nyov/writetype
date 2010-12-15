@@ -451,7 +451,8 @@ class MainApplication(QtGui.QMainWindow):
 				["ei", "i"],
 				["u", "oo"],
 				["u", "ou"],
-				["e", "a"]
+				["e", "a"],
+				["e", "ea"]
 			]
 
 			possibilities = []

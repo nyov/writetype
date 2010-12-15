@@ -742,7 +742,7 @@ croissant
 crossfiets
 ctrl
 cultuur
-Curaçaos
+CuraÃ§aos
 cursor
 daag
 daar
@@ -1064,7 +1064,7 @@ ervaring
 ervaringen
 erwten
 erwtensoep
-ést
+Ã©st
 estafette
 etage
 etalage
@@ -1581,7 +1581,7 @@ heus
 heuvel
 hevig
 hier
-hiërarchisch
+hiÃ«rarchisch
 hiernamaals
 hieronder
 hiervan
@@ -2969,8 +2969,8 @@ pasteitje
 pasteltinten
 pastorie
 patatjes
-patiënt
-patiënten
+patiÃ«nt
+patiÃ«nten
 patrijs
 Paul
 pauw
@@ -3391,7 +3391,7 @@ safari
 salade
 salamander
 salami
-salariëring
+salariÃ«ring
 salontafel
 samen
 samenleving
