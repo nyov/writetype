@@ -25,6 +25,7 @@ from mainwindow import Ui_MainWindow
 import enchant
 from enchant.tokenize import get_tokenizer
 from wordsList import wordsList
+from listWidget import ListWidget
 import platformSettings
 from settings import SettingsDialogBox
 from distractionFree import Ui_distractionFree
