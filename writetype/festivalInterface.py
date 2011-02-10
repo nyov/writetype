@@ -25,46 +25,46 @@ from PyQt4.QtGui import QMessageBox
 import codecs
 
 class FestivalInterface(TtsInterface):
-	def __init__(self, executableName, libPath=None):
-		self.executableName = executableName
-		self.libPath = libPath
-		self.proc = None
-		self.tmpPaths = []
+    def __init__(self, executableName, libPath=None):
+        self.executableName = executableName
+        self.libPath = libPath
+        self.proc = None
+        self.tmpPaths = []
 
-	def __del__(self):
-		print "destructor"
-		for path in self.tmpPaths:
-			print "removing " + str(path[1])
-			unlink(path[1])
+    def __del__(self):
+        print "destructor"
+        for path in self.tmpPaths:
+            print "removing " + str(path[1])
+            unlink(path[1])
 
-## 	def speak(self, text):
-## 		call = [self.executableName, "--tts", "-"]
-## 		if self.libPath:
-## 			call.append("--libpath")
-## 			call.append(self.libPath)
-## 		self.proc = subprocess.Popen(call, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
-## 		stdout, stderr = self.proc.communicate(input=text)
+##  def speak(self, text):
+##      call = [self.executableName, "--tts", "-"]
+##      if self.libPath:
+##          call.append("--libpath")
+##          call.append(self.libPath)
+##      self.proc = subprocess.Popen(call, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+##      stdout, stderr = self.proc.communicate(input=text)
 
-	#Doing it this way will give more flexibility in incorporating SABLE
-	def speak(self, text):
-		tmpfile = mkstemp(suffix=".sable", prefix="wt_")
-		self.tmpPaths.append(tmpfile)
-		tmpfileHandle = codecs.open(tmpfile[1], 'w', encoding='utf-8')
-		tmpfileHandle.write(text)
-		tmpfileHandle.close()
-		call = [self.executableName, "--tts", tmpfile[1]]
-		try:
-			self.proc = subprocess.Popen(call)
-		except OSError:
-			QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box."))
-		
-#		unlink(tmpfile[1])
+    #Doing it this way will give more flexibility in incorporating SABLE
+    def speak(self, text):
+        tmpfile = mkstemp(suffix=".sable", prefix="wt_")
+        self.tmpPaths.append(tmpfile)
+        tmpfileHandle = codecs.open(tmpfile[1], 'w', encoding='utf-8')
+        tmpfileHandle.write(text)
+        tmpfileHandle.close()
+        call = [self.executableName, "--tts", tmpfile[1]]
+        try:
+            self.proc = subprocess.Popen(call)
+        except OSError:
+            QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box."))
+        
+#       unlink(tmpfile[1])
 
-	def stop(self):
-		if self.proc:
-			self.proc.terminate()
-			#This only works on GNU/Linux for now, I think
-			if system() == "Linux":
-				subprocess.Popen(['pkill', 'audsp'])
+    def stop(self):
+        if self.proc:
+            self.proc.terminate()
+            #This only works on GNU/Linux for now, I think
+            if system() == "Linux":
+                subprocess.Popen(['pkill', 'audsp'])
 
 

@@ -75,7 +75,7 @@
         </font>
        </property>
       </widget>
-      <widget class="QListWidget" name="spellingSuggestionsList">
+      <widget class="ListWidget" name="spellingSuggestionsList">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -87,9 +87,6 @@
          <width>300</width>
          <height>16777215</height>
         </size>
-       </property>
-       <property name="selectionMode">
-        <enum>QAbstractItemView::SingleSelection</enum>
        </property>
       </widget>
      </widget>
@@ -180,7 +177,7 @@
      <x>0</x>
      <y>0</y>
      <width>803</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuView">
@@ -736,6 +733,11 @@
    <class>spellCheckEdit</class>
    <extends>QTextEdit</extends>
    <header location="global">spellCheckEdit</header>
+  </customwidget>
+  <customwidget>
+   <class>ListWidget</class>
+   <extends>QListWidget</extends>
+   <header location="global">listWidget</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Sun Oct  3 15:44:00 2010
+# Created: Sat Dec 18 15:38:53 2010
 #      by: PyQt4 UI code generator 4.7.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -51,14 +51,13 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.textArea.setFont(font)
         self.textArea.setObjectName("textArea")
-        self.spellingSuggestionsList = QtGui.QListWidget(self.splitter)
+        self.spellingSuggestionsList = ListWidget(self.splitter)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.spellingSuggestionsList.sizePolicy().hasHeightForWidth())
         self.spellingSuggestionsList.setSizePolicy(sizePolicy)
         self.spellingSuggestionsList.setMaximumSize(QtCore.QSize(300, 16777215))
-        self.spellingSuggestionsList.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
         self.spellingSuggestionsList.setObjectName("spellingSuggestionsList")
         self.verticalLayout.addWidget(self.splitter)
         self.dictionErrorFrame = QtGui.QFrame(self.centralwidget)
@@ -105,7 +104,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.distractionButton)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 25))
         self.menubar.setObjectName("menubar")
         self.menuView = QtGui.QMenu(self.menubar)
         self.menuView.setObjectName("menuView")
@@ -461,4 +460,5 @@ class Ui_MainWindow(object):
         self.actionCheck_for_Updates.setText(QtGui.QApplication.translate("MainWindow", "Check for Updates", None, QtGui.QApplication.UnicodeUTF8))
 
 from spellCheckEdit import spellCheckEdit
+from listWidget import ListWidget
 import resources_rc

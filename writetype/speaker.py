@@ -20,89 +20,89 @@ import re
 from platform import system
 
 class Speaker:
-	def __init__(self, text):
-		self.setDriver()
-		#self.text = text
-		#threading.Thread.__init__(self)
+    def __init__(self, text):
+        self.setDriver()
+        #self.text = text
+        #threading.Thread.__init__(self)
 
-	def say(self, text):
-		"""Speak the selected text"""
-		text = unicode(text)
-		#Sanitize input
-		text.replace("<", "")
-		text.replace(">", "")
-		print "selecting driver"
-		if self.driver == "festival":
-			print "festival"
-			self.ttsdriver.stop()
-			#Do some things to make text sound more realistic
-			while text.find('"') != text.rfind('"'):
-				text = text.replace('"', "<PITCH BASE='20%'>", 1)
-				text = text.replace('"', "</PITCH>", 1)
-				print text
-			text = '<LANGUAGE ID="' + platformSettings.getPlatformSetting("language")[0:2] + '">' + text + '</LANGUAGE>'
-			text = text.replace("\n", '<BREAK LEVEL="large" />')
-			text = re.sub(re.compile(re.escape("writetype"), re.I), '<PRON SUB="right type">writetype</PRON>', text, 0)
-			#Set the speed to the user preference
-			speed = platformSettings.getSetting("readingspeed", 0)
-			text = '<RATE SPEED="' + str(speed) + '%">' + text + "</RATE>"
-			print text
-			self.ttsdriver.speak(u"<SABLE>"+unicode(text)+u"</SABLE>")
+    def say(self, text):
+        """Speak the selected text"""
+        text = unicode(text)
+        #Sanitize input
+        text.replace("<", "")
+        text.replace(">", "")
+        print "selecting driver"
+        if self.driver == "festival":
+            print "festival"
+            self.ttsdriver.stop()
+            #Do some things to make text sound more realistic
+            while text.find('"') != text.rfind('"'):
+                text = text.replace('"', "<PITCH BASE='20%'>", 1)
+                text = text.replace('"', "</PITCH>", 1)
+                print text
+            text = '<LANGUAGE ID="' + platformSettings.getPlatformSetting("language")[0:2] + '">' + text + '</LANGUAGE>'
+            text = text.replace("\n", '<BREAK LEVEL="large" />')
+            text = re.sub(re.compile(re.escape("writetype"), re.I), '<PRON SUB="right type">writetype</PRON>', text, 0)
+            #Set the speed to the user preference
+            speed = platformSettings.getSetting("readingspeed", 0)
+            text = '<RATE SPEED="' + str(speed) + '%">' + text + "</RATE>"
+            print text
+            self.ttsdriver.speak(u"<SABLE>"+unicode(text)+u"</SABLE>")
 
-		elif self.driver == "espeak":
-			print "espeak"
-			self.ttsdriver.stop()
-			#Do some things to make text sound more realistic
-			while text.find('"') != text.rfind('"'):
-				text = text.replace('"', '<prosody pitch="+20%">', 1)
-				text = text.replace('"', "</prosody>", 1)
-				print text
-			text = text.replace("\n", '.<break strength="x-large" time="1s" />')
-			text = re.sub(re.compile(re.escape("writetype"), re.I), 'write type', text, 0)
-			#Set the speed to the user preference
-			speed = platformSettings.getSetting("readingspeed", 0)
-			text = unicode('<prosody rate="' + unicode(speed) + '%">' + text + "</prosody>")
-			print text
-			self.ttsdriver.speak("<speak xml:lang=\""+platformSettings.getPlatformSetting("language").replace('_', '-')+"\">"+text+"</speak>")
+        elif self.driver == "espeak":
+            print "espeak"
+            self.ttsdriver.stop()
+            #Do some things to make text sound more realistic
+            while text.find('"') != text.rfind('"'):
+                text = text.replace('"', '<prosody pitch="+20%">', 1)
+                text = text.replace('"', "</prosody>", 1)
+                print text
+            text = text.replace("\n", '.<break strength="x-large" time="1s" />')
+            text = re.sub(re.compile(re.escape("writetype"), re.I), 'write type', text, 0)
+            #Set the speed to the user preference
+            speed = platformSettings.getSetting("readingspeed", 0)
+            text = unicode('<prosody rate="' + unicode(speed) + '%">' + text + "</prosody>")
+            print text
+            self.ttsdriver.speak("<speak xml:lang=\""+platformSettings.getPlatformSetting("language").replace('_', '-')+"\">"+text+"</speak>")
 
-		elif self.driver == "pyttsx":
-			print "pyttsx"
-			self.ttsdriver.setReadingSpeed(platformSettings.getSetting("readingspeed", 0))
-			self.ttsdriver.speak(text)
-		else:
-			return True
-			
-	def stop(self):
-		"""Try to stop speaking the text"""
-   		self.ttsdriver.stop()
+        elif self.driver == "pyttsx":
+            print "pyttsx"
+            self.ttsdriver.setReadingSpeed(platformSettings.getSetting("readingspeed", 0))
+            self.ttsdriver.speak(text)
+        else:
+            return True
+            
+    def stop(self):
+        """Try to stop speaking the text"""
+        self.ttsdriver.stop()
 
-	def setDriver(self, driver=None):
-		"""Init the selected driver, or the suggested driver for the platform"""
-		if not driver:
-			driver = platformSettings.getSetting("ttsengine", "")
+    def setDriver(self, driver=None):
+        """Init the selected driver, or the suggested driver for the platform"""
+        if not driver:
+            driver = platformSettings.getSetting("ttsengine", "")
 
-		self.driver = driver
-		#Defaults per platform
-		if not self.driver:
-			print "Driver error!  Driver not found!  Selecting default."
-			if system() == "Linux":
-				self.driver = "festival"
-			else:
-				self.driver = "pyttsx"
-		#Import
-		try:
-			if self.driver == "festival":
-				from festivalInterface import FestivalInterface
-				self.ttsdriver = FestivalInterface(platformSettings.getPlatformSetting("pathToFestival"))
-			elif self.driver == "pyttsx":
-				from pyttsxInterface import PyttsxInterface
-				self.ttsdriver = PyttsxInterface() # This will make a bug, I'll fix it later
-			elif self.driver == "espeak":
-				from espeakInterface import EspeakInterface
-				self.ttsdriver = EspeakInterface(platformSettings.getPlatformSetting("pathToEspeak"))
-		except ImportError:
-			from .ttsInterface import TtsInterface
-			self.ttsdriver = TtsInterface()
-			self.driver = "null"
-			print "===========ERROR!===========\nInvalid TTS Driver\nRunning without TTS support"
-			
+        self.driver = driver
+        #Defaults per platform
+        if not self.driver:
+            print "Driver error!  Driver not found!  Selecting default."
+            if system() == "Linux":
+                self.driver = "festival"
+            else:
+                self.driver = "pyttsx"
+        #Import
+        try:
+            if self.driver == "festival":
+                from festivalInterface import FestivalInterface
+                self.ttsdriver = FestivalInterface(platformSettings.getPlatformSetting("pathToFestival"))
+            elif self.driver == "pyttsx":
+                from pyttsxInterface import PyttsxInterface
+                self.ttsdriver = PyttsxInterface() # This will make a bug, I'll fix it later
+            elif self.driver == "espeak":
+                from espeakInterface import EspeakInterface
+                self.ttsdriver = EspeakInterface(platformSettings.getPlatformSetting("pathToEspeak"))
+        except ImportError:
+            from .ttsInterface import TtsInterface
+            self.ttsdriver = TtsInterface()
+            self.driver = "null"
+            print "===========ERROR!===========\nInvalid TTS Driver\nRunning without TTS support"
+            

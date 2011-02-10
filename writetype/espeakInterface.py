@@ -24,33 +24,33 @@ from PyQt4.QtGui import QMessageBox
 import codecs
 
 class EspeakInterface(TtsInterface):
-	def __init__(self, executableName):
-		self.executableName = executableName
-		self.proc = None
-		self.tmpPaths = []
+    def __init__(self, executableName):
+        self.executableName = executableName
+        self.proc = None
+        self.tmpPaths = []
 
-	def __del__(self):
-		print "destructor"
-		for path in self.tmpPaths:
-			print "removing " + str(path[1])
-			unlink(path[1])
+    def __del__(self):
+        print "destructor"
+        for path in self.tmpPaths:
+            print "removing " + str(path[1])
+            unlink(path[1])
 
-	def speak(self, text):
-		tmpfile = mkstemp(suffix=".ssml", prefix="wt_")
-		self.tmpPaths.append(tmpfile)
-		print text
-		tmpfileHandle = codecs.open(tmpfile[1], 'w', encoding="utf-8")
-		tmpfileHandle.write(text)
-		tmpfileHandle.close()
-		call = [self.executableName, "-m", "-f", tmpfile[1]]
-		try:
-			self.proc = subprocess.Popen(call)
-		except OSError:
-			QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box."))
-		
-	def stop(self):
-		if self.proc:
-			try:
-				self.proc.terminate()
-			except WindowsError:
-				pass
+    def speak(self, text):
+        tmpfile = mkstemp(suffix=".ssml", prefix="wt_")
+        self.tmpPaths.append(tmpfile)
+        print text
+        tmpfileHandle = codecs.open(tmpfile[1], 'w', encoding="utf-8")
+        tmpfileHandle.write(text)
+        tmpfileHandle.close()
+        call = [self.executableName, "-m", "-f", tmpfile[1]]
+        try:
+            self.proc = subprocess.Popen(call)
+        except OSError:
+            QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box."))
+        
+    def stop(self):
+        if self.proc:
+            try:
+                self.proc.terminate()
+            except WindowsError:
+                pass

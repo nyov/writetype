@@ -23,16 +23,16 @@ import sys
 
 #Stupid Windows.
 if hasattr(sys, "frozen"):
-	path = os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding( )))
+    path = os.path.dirname(unicode(sys.executable, sys.getfilesystemencoding( )))
 else:
-	path = os.path.dirname(unicode(__file__, sys.getfilesystemencoding( )))
-	
+    path = os.path.dirname(unicode(__file__, sys.getfilesystemencoding( )))
+    
 prefix = os.path.join(path, "..")
 if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
-	prefix = os.path.join(sys.prefix, 'share', 'writetype')
-	if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
-		raise IOError("PlatformSettings not found!")
-	print "setting intallation prefix"
+    prefix = os.path.join(sys.prefix, 'share', 'writetype')
+    if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
+        raise IOError("PlatformSettings not found!")
+    print "setting intallation prefix"
 
 #Some defines
 parser = SafeConfigParser()
@@ -43,66 +43,66 @@ settingsHandle = QSettings("BernsteinForPresident", "WriteType")
 
 #Global Overrides
 for key,value in parser.items("GlobalOverride"):
-	cache[str(key)] = QVariant(value)
+    cache[str(key)] = QVariant(value)
 
 def getPlatformSetting(key):
-	"""Get a core setting, either hard-coded, dynamically created,
-	or specified in platformsettings.ini"""
-	if key in pCache:
-		return pCache[key]
-	global prefix
-	if key == "pathToWordlists":
-		return os.path.join(prefix, 'wordlists')
-	elif key == "pathToRes":
-		return os.path.join(prefix, 'res')
-	elif key == "basePath":
-		return prefix
-	elif key == "pathToEspeak":
-		path = parser.get('General', key)
-		path = path.replace("[wt]", prefix)
-		print path
-		return path
-	elif key == "language":
-		language = str(QLocale.system().name())
-		return language
+    """Get a core setting, either hard-coded, dynamically created,
+    or specified in platformsettings.ini"""
+    if key in pCache:
+        return pCache[key]
+    global prefix
+    if key == "pathToWordlists":
+        return os.path.join(prefix, 'wordlists')
+    elif key == "pathToRes":
+        return os.path.join(prefix, 'res')
+    elif key == "basePath":
+        return prefix
+    elif key == "pathToEspeak":
+        path = parser.get('General', key)
+        path = path.replace("[wt]", prefix)
+        print path
+        return path
+    elif key == "language":
+        language = str(QLocale.system().name())
+        return language
 
-	return parser.get('General', key)
+    return parser.get('General', key)
 
 def getSetting(key, default=None):
-	"""Get a setting specified in the settings dialog box"""
-	if key in cache: #Check to see if it is in the cache
-		return correctType(cache[key], default)
-	else:
-		val = settingsHandle.value(key, QVariant(default))
-		#val = val.toPyObject()
-		#Dynamic type casting to the default's type
-		cache[key] = val
-		return correctType(val, default)
+    """Get a setting specified in the settings dialog box"""
+    if key in cache: #Check to see if it is in the cache
+        return correctType(cache[key], default)
+    else:
+        val = settingsHandle.value(key, QVariant(default))
+        #val = val.toPyObject()
+        #Dynamic type casting to the default's type
+        cache[key] = val
+        return correctType(val, default)
 
 
 def correctType(val, default):
-	"""Make sure the QVariant is cast to the right type"""
-	if isinstance(default, bool):
-		val = val.toBool()
-	elif isinstance(default, int):
-		val = val.toInt()[0]
-	elif isinstance(default, str):
-		val = str(val.toString())
-	elif isinstance(default, float):
-		val = val.toFloat()
-	else:
-		val = val.toPyObject()
-	return val
+    """Make sure the QVariant is cast to the right type"""
+    if isinstance(default, bool):
+        val = val.toBool()
+    elif isinstance(default, int):
+        val = val.toInt()[0]
+    elif isinstance(default, str):
+        val = str(val.toString())
+    elif isinstance(default, float):
+        val = val.toFloat()
+    else:
+        val = val.toPyObject()
+    return val
 
 def setSetting(key, value):
-	"""Set a setting, probably from the settings box"""
-	settingsHandle.setValue(key, QVariant(value))
-	cache[key] = QVariant(value)
+    """Set a setting, probably from the settings box"""
+    settingsHandle.setValue(key, QVariant(value))
+    cache[key] = QVariant(value)
 
 def setPSettingTmp(key, value):
-	"""Set a temporary value for a platform setting"""
-	pCache[key] = value
+    """Set a temporary value for a platform setting"""
+    pCache[key] = value
 
 def setSettingTmp(key, value):
-	"""Set a temporary value for a normal setting"""
-	cache[key] = QVariant(value)
+    """Set a temporary value for a normal setting"""
+    cache[key] = QVariant(value)
