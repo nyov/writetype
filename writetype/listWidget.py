@@ -48,7 +48,7 @@ class ListWidgetItem:
         self.colorbg = colorbg
         
 class ListWidget(QtGui.QWidget):
-    words = [ListWidgetItem("monkey", 3), ListWidgetItem("ape", 0), ListWidgetItem("gorilla", 9), ListWidgetItem("orangutan", 0), ListWidgetItem("chimpanzee", 0)]
+    words = []
     words_hash = None
     index = None
     arrow_image = QPixmap(":/res/arrow-right.png")
@@ -64,8 +64,18 @@ class ListWidget(QtGui.QWidget):
             painter.setPen(Qt.black)
 
             #coloring the backgrounds if necessary
-            bgcolor = QtGui.QColor.fromHsv(250-word[1].weight*25, word[1].weight*10, 255)
-            painter.setBrush(bgcolor) 
+            if not word[1].colorbg:
+                weight = word[1].weight
+                if weight > 10: weight = 10
+                bgcolor = QtGui.QColor.fromHsv(250-weight*25, weight*10, 255)
+            else:
+                bgcolor = word[1].colorbg
+            if not word[1].colorfg:
+                fgcolor = Qt.black
+            else:
+                fgcolor = word[1].colorfg
+            painter.setBrush(bgcolor)
+            painter.setPen(fgcolor)
             upperleft = QPoint(0,word[0]*LINE_HEIGHT)
             lowerright = QPoint(self.width()-2, LINE_HEIGHT*(word[0]+1))
             painter.drawRect(QRect(upperleft, lowerright))

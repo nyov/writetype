@@ -149,6 +149,7 @@ class spellCheckEdit(QTextEdit):
     def addToDictionary(self, word):
         """Add a word to the spell check dictionary"""
         self.dictionary.add(word)
+        self.highlighter.rehighlight()
         
     def replaceSelectedWord(self, word):
         """Replace the most recently typed word with another"""

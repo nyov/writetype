@@ -321,13 +321,15 @@ class MainApplication(QtGui.QMainWindow):
             if not word[:-1]:
                 pass
             elif self.ui.textArea.dictionary.check(word[:-1]) == False:
+                print "Checking words was false"
                 self.wordsN = []
                 words = self.ui.textArea.dictionary.suggest(word.strip())
                 for word in words:
                     self.wordsN.append((word, 0))
                 for word in self.wordsN:
-                    item = ListWidgetItem(word[0], mode=MODE_REPLACE, colorfg=Qt.Qt.red)
-                    self.ui.spellingSuggestionsList.addListItem(item)
+                    print "Adding an item"
+                    item = ListWidgetItem(word[0], mode=MODE_REPLACE, colorfg=Qt.red)
+                    self.ui.spellingSuggestionsList.addItem(item)
             else:
                 #This is still HORRIBLE of me.  Still nothing to do with autocorrections.
                 links = self.wl.pattern.getLinks(word)
@@ -346,6 +348,7 @@ class MainApplication(QtGui.QMainWindow):
                         self.ui.spellingSuggestionsList.addItem(item)
 
             
+        self.ui.spellingSuggestionsList.repaint()
         if word[-1:] in [".", "!", "?"]:
             print "Autosaving"
             self.autoSave()
@@ -392,7 +395,6 @@ class MainApplication(QtGui.QMainWindow):
     def correctWordFromListItem(self, word, mode):
         """Replace the last word typed with the currently selected row in the
         spelling completion box"""
-        print "correcting", word
         if mode == MODE_INSERT: #insert #TODO fix this
             self.ui.textArea.insertPlainText(word)
         else: #MODE_REPLACE
@@ -400,12 +402,11 @@ class MainApplication(QtGui.QMainWindow):
 
     def populateWordList(self, text):
         """Serach for completions and fill the word completion box with words"""
-        print "populating"
         text = unicode(text)
 
         #If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
         if text[0:-1] and text[-1:] in (" ", ".", ",", "!", "?", "\t"):
-            if self.ui.textArea.dictionary.check(text.lower()[0:-1]):
+            if self.ui.textArea.dictionary.check(text[0:-1]):
                 self.wl.addCustomWord(text.lower()[0:-1])
             #return
 
@@ -431,31 +432,31 @@ class MainApplication(QtGui.QMainWindow):
 
         if platformSettings.getSetting("guessmisspellings", True) and len(self.ui.spellingSuggestionsList.words) <= platformSettings.getSetting("threshold", 0):
             replacements = [
-                ["l", "ll"],
-                ["s", "ss"],
-                ["t", "tt"],
+                ["a", "e"],
+                ["a", "o"],
                 ["d", "dd"],
-                ["t", "d"],
                 ["d", "tt"],
-                ["k", "ck"],
-                ["k", "c"],
-                ["s", "c"],
-                ["l", "le"],
-                ["i", "ee"],
-                ["ea", "ee"],
-                ["ee", "i"],
+                ["e", "a"],
+                ["e", "ea"],
                 ["e", "i"],
                 ["e", "ie"],
-                ["a", "e"],
-                ["u", "o"],
-                ["o", "a"],
-                ["a", "o"],
-                ["xs", "x"],
+                ["ea", "ee"],
+                ["ee", "i"],
                 ["ei", "i"],
+                ["i", "ee"],
+                ["k", "c"],
+                ["k", "ck"],
+                ["l", "le"],
+                ["l", "ll"],
+                ["o", "a"],
+                ["s", "c"],
+                ["s", "ss"],
+                ["t", "d"],
+                ["t", "tt"],
+                ["u", "o"],
                 ["u", "oo"],
                 ["u", "ou"],
-                ["e", "a"],
-                ["e", "ea"]
+                ["xs", "x"]
             ]
 
             possibilities = []
