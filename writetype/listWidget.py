@@ -139,6 +139,7 @@ class ListWidget(QtGui.QWidget):
         self.words = []
         self.clearSelection()
         self.repaint()
+        print "Clearing list"
 
     def sortElements(self):
         self.words.sort(lambda x, y : cmp(y.weight,x.weight))

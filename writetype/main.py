@@ -333,11 +333,14 @@ class MainApplication(QtGui.QMainWindow):
             else:
                 #This is still HORRIBLE of me.  Still nothing to do with autocorrections.
                 links = self.wl.pattern.getLinks(word)
+                print "links are..."
+                print links
                 if links:
+                    print "Showing links"
                     #TODO This code doesn't work, but I'm too lazy to figure it out right now
+                    self.ui.spellingSuggestionsList.clear()
                     for link in links:
-                        self.ui.spellingSuggestionsList.clear()
-                        item = ListWidgetItem(link[0], weight=link[1], mode=MODE_REPLACE)
+                        item = ListWidgetItem(link[0], weight=link[1], mode=MODE_INSERT)
                         self.ui.spellingSuggestionsList.addItem(item)
                     for word in self.wordsN:
                         #Colors!
@@ -396,9 +399,12 @@ class MainApplication(QtGui.QMainWindow):
         """Replace the last word typed with the currently selected row in the
         spelling completion box"""
         if mode == MODE_INSERT: #insert #TODO fix this
-            self.ui.textArea.insertPlainText(word)
-        else: #MODE_REPLACE
-            self.ui.textArea.replaceLastWord(word)
+            if not self.ui.textArea.lastWord:
+                self.ui.textArea.insertPlainText(word)
+                self.ui.textArea.lastWord = word
+                return
+        #MODE_REPLACE
+        self.ui.textArea.replaceLastWord(word)
 
     def populateWordList(self, text):
         """Serach for completions and fill the word completion box with words"""
@@ -435,6 +441,7 @@ class MainApplication(QtGui.QMainWindow):
                 ["a", "e"],
                 ["a", "o"],
                 ["d", "dd"],
+                ["d", "t"],
                 ["d", "tt"],
                 ["e", "a"],
                 ["e", "ea"],
@@ -446,9 +453,11 @@ class MainApplication(QtGui.QMainWindow):
                 ["i", "ee"],
                 ["k", "c"],
                 ["k", "ck"],
+                ["k", "ch"],
                 ["l", "le"],
                 ["l", "ll"],
                 ["o", "a"],
+                ["o", "ou"],
                 ["s", "c"],
                 ["s", "ss"],
                 ["t", "d"],

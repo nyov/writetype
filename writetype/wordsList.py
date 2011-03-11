@@ -86,7 +86,7 @@ class WordsList:
             wordsList = self.words
         results = []
         #results = filter(lambda x:x[0].startswith(firstLetters.lower()), wordsList)
-        fllower = firstLetters.lower();
+        fllower = firstLetters.lower()
         results = [(w,s) for w,s in wordsList if w.startswith(fllower)]
         if sort == self.SORT:
             return results
@@ -123,9 +123,10 @@ class WordPattern:
     """Keeps track of which words are generally typed after
     other words.  For instance, I generally type 'Shinn'
     after I type 'Max' and 'software' after I type 'free'."""
+    #TODO - Clean this class up
     def __init__(self):
         #Words are the index to a sub-dictionary, with the word indexed to frequency
-        self.words = {}
+        self.words = []
         self.lastcheckedword = ""
 
     def _cleanString(self, s):
@@ -137,13 +138,20 @@ class WordPattern:
         """Insert the word order link into the data structure"""
         first = self._cleanString(first)
         second = self._cleanString(second)
-        if not first in self.words:
-            self.words[first] = {}
-        if second in self.words[first]:
-            freq = self.words[first][second]
-            self.words[first][second] = freq + 1
+        secondNode = [n for n in self.words if n.word == second]
+        firstNode = [n for n in self.words if n.word == first]
+        if not secondNode:
+            secondNode = LinkNode(second)
+            self.words.append(secondNode)
         else:
-            self.words[first][second] = 1
+            secondNode = secondNode[0]
+        if not firstNode:
+            firstNode = LinkNode(first)
+            self.words.append(firstNode)
+        else:
+            firstNode = firstNode[0]
+        firstNode.addLink(secondNode)
+
 
     def getLinks(self, word):
         """Return a list of tuples (word, frequency) of words that come
@@ -153,13 +161,36 @@ class WordPattern:
             self.insertLink(self.lastcheckedword, word)
         self.lastcheckedword = word
         
-        if not word in self.words:
+        #if not word in self.words:
+        #    return []
+
+        node = [n for n in self.words if n.word == word]
+        if not node:
             return []
-        returnlist = []
-        print self.words
-        for key, value in self.words[word].iteritems():
-            returnlist.append((key, value))
-            for k, v in self.words[key].iteritems():
-                if v > 3:
-                    returnlist.append((key + " " + k, v-3))
-        return returnlist
+        return node[0].getLinks()
+
+class LinkNode:
+    #TODO - Clean this class up also
+    def __init__(self, word):
+        self.word = word
+        self.links = []
+
+    def addLink(self, node):
+        result = [(n,w) for n,w in self.links if n.word == node.word]
+        if not result:
+            print "result is"
+            self.links.append((node, 1))
+        else:
+            print "found result, incrementing"
+            print result[0][1]
+            index = self.links.index(result[0])
+            self.links[index] = (node, result[0][1]+1)
+
+    def getLinks(self, preappend="", i=0):
+        finallist = []
+        finallist.extend([(preappend+n.word, w) for n,w in self.links])
+        for link in [(n,w) for (n,w) in self.links if w-i>0]:
+            finallist.extend(link[0].getLinks(preappend+link[0].word+" ", i+1))
+        print "self.links"
+        print self.links
+        return finallist
