@@ -315,15 +315,14 @@ class MainApplication(QtGui.QMainWindow):
             #This is HORRIBLE of me.  Why is all this garbage down here that has nothing to do with autocorrections?
             
             #Display spell check suggestions in the misspelling box after a space is pressed
-            word = word.replace("?", "")
-            word = word.replace("!", "")
-            word = word.replace(",", "")
-            if not word[:-1]:
+            word = re.sub('[ \t!"#$%&()*+,./:;<=>?@\[\\]^_`{|}~]', '', word)
+            #word.translate(None, ' \t!"#$%&()*+,./:;<=>?@[\\]^_`{|}~')
+            if not word:
                 pass
-            elif self.ui.textArea.dictionary.check(word[:-1]) == False:
-                print "Checking words was false"
+            elif self.ui.textArea.dictionary.check(word) == False:
+                print "Checking words was false", word
                 self.wordsN = []
-                words = self.ui.textArea.dictionary.suggest(word.strip())
+                words = self.ui.textArea.dictionary.suggest(word)
                 for word in words:
                     self.wordsN.append((word, 0))
                 for word in self.wordsN:
