@@ -315,10 +315,12 @@ class MainApplication(QtGui.QMainWindow):
             #This is HORRIBLE of me.  Why is all this garbage down here that has nothing to do with autocorrections?
             
             #Display spell check suggestions in the misspelling box after a space is pressed
+            wordraw = word
             word = re.sub('[ \t!"#$%&()*+,./:;<=>?@\[\\]^_`{|}~]', '', word)
             #word.translate(None, ' \t!"#$%&()*+,./:;<=>?@[\\]^_`{|}~')
             if not word:
-                self.wl.pattern.clearLastCheckedWord()
+                if wordraw:
+                    self.wl.pattern.clearLastCheckedWord()
             elif self.ui.textArea.dictionary.check(word) == False:
                 print "Checking words was false", word
                 self.wordsN = []
@@ -336,7 +338,6 @@ class MainApplication(QtGui.QMainWindow):
                 print links
                 if links:
                     print "Showing links"
-                    #TODO This code doesn't work, but I'm too lazy to figure it out right now
                     self.ui.spellingSuggestionsList.clear()
                     for link in links:
                         item = ListWidgetItem(link[0], weight=link[1], mode=MODE_INSERT)

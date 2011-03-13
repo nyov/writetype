@@ -29,6 +29,7 @@ class WordsList:
     SORT = 2
     NORMAL_WORDS = 1
     CUSTOM_WORDS = 2
+    
 
     def __init__(self):
         self.refreshWords()
@@ -130,7 +131,7 @@ class WordPattern:
         self.lastcheckedword = ""
 
     def _cleanString(self, s):
-        s = s.lower()
+        #s = s.lower()
         s = s.strip(".,!?;: \t\n")
         return s
 
@@ -150,6 +151,9 @@ class WordPattern:
             self.words.append(firstNode)
         else:
             firstNode = firstNode[0]
+        print "self.words:"
+        for node in self.words:
+            print node.word
         firstNode.addLink(secondNode)
 
 
@@ -157,6 +161,7 @@ class WordPattern:
         """Return a list of tuples (word, frequency) of words that come
         after the requested word"""
         word = self._cleanString(word)
+        print "getting links for", word, self.lastcheckedword
         if self.lastcheckedword and word:
             self.insertLink(self.lastcheckedword, word)
         self.lastcheckedword = word
@@ -170,11 +175,15 @@ class WordPattern:
         return node[0].getLinks()
 
     def clearLastCheckedWord(self):
+        print "clearing phrases list"
         self.lastcheckedword = None
 
         
 class LinkNode:
     #TODO - Clean this class up also
+
+    WORDS_THRESHOLD = 1 #How many links before it suggests a phrase completion
+
     def __init__(self, word):
         self.word = word
         self.links = []
@@ -192,8 +201,8 @@ class LinkNode:
 
     def getLinks(self, preappend="", i=0):
         finallist = []
-        finallist.extend([(preappend+n.word, w) for n,w in self.links])
-        for link in [(n,w) for (n,w) in self.links if w-i>0]:
+        finallist.extend([(preappend+n.word, w) for n,w in self.links if w>self.WORDS_THRESHOLD])
+        for link in [(n,w) for (n,w) in self.links if w-i>self.WORDS_THRESHOLD]:
             finallist.extend(link[0].getLinks(preappend+link[0].word+" ", i+1))
         print "self.links"
         print self.links
