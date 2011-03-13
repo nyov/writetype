@@ -1,4 +1,4 @@
-# Copyright 2010 Max Shinn
+# Copyright 2010, 2011 Max Shinn
 
 # This file is part of WriteType.
 
@@ -18,6 +18,7 @@
 import platformSettings
 import re
 from platform import system
+import logger
 
 class Speaker:
     def __init__(self, text):
@@ -31,47 +32,43 @@ class Speaker:
         #Sanitize input
         text.replace("<", "")
         text.replace(">", "")
-        print "selecting driver"
         if self.driver == "festival":
-            print "festival"
+            logger.log("Festival driver speaking")
             self.ttsdriver.stop()
             #Do some things to make text sound more realistic
             while text.find('"') != text.rfind('"'):
                 text = text.replace('"', "<PITCH BASE='20%'>", 1)
                 text = text.replace('"', "</PITCH>", 1)
-                print text
             text = '<LANGUAGE ID="' + platformSettings.getPlatformSetting("language")[0:2] + '">' + text + '</LANGUAGE>'
             text = text.replace("\n", '<BREAK LEVEL="large" />')
             text = re.sub(re.compile(re.escape("writetype"), re.I), '<PRON SUB="right type">writetype</PRON>', text, 0)
             #Set the speed to the user preference
             speed = platformSettings.getSetting("readingspeed", 0)
             text = '<RATE SPEED="' + str(speed) + '%">' + text + "</RATE>"
-            print text
             self.ttsdriver.speak(u"<SABLE>"+unicode(text)+u"</SABLE>")
 
         elif self.driver == "espeak":
-            print "espeak"
+            logger.log("Espeak driver speaking")
             self.ttsdriver.stop()
             #Do some things to make text sound more realistic
             while text.find('"') != text.rfind('"'):
                 text = text.replace('"', '<prosody pitch="+20%">', 1)
                 text = text.replace('"', "</prosody>", 1)
-                print text
             text = text.replace("\n", '.<break strength="x-large" time="1s" />')
             text = re.sub(re.compile(re.escape("writetype"), re.I), 'write type', text, 0)
             #Set the speed to the user preference
             speed = platformSettings.getSetting("readingspeed", 0)
             text = unicode('<prosody rate="' + unicode(speed) + '%">' + text + "</prosody>")
-            print text
             self.ttsdriver.speak("<speak xml:lang=\""+platformSettings.getPlatformSetting("language").replace('_', '-')+"\">"+text+"</speak>")
 
         elif self.driver == "pyttsx":
-            print "pyttsx"
+            logger.log("Pyttsx driver speaking")
             self.ttsdriver.setReadingSpeed(platformSettings.getSetting("readingspeed", 0))
             self.ttsdriver.speak(text)
         else:
-            return True
-            
+            logger.log("No driver selected", "Info")
+            return True 
+           
     def stop(self):
         """Try to stop speaking the text"""
         self.ttsdriver.stop()
@@ -84,7 +81,7 @@ class Speaker:
         self.driver = driver
         #Defaults per platform
         if not self.driver:
-            print "Driver error!  Driver not found!  Selecting default."
+            logger.log("Driver error!  Driver not found!  Selecting default.", "Info")
             if system() == "Linux":
                 self.driver = "festival"
             else:
@@ -104,5 +101,5 @@ class Speaker:
             from .ttsInterface import TtsInterface
             self.ttsdriver = TtsInterface()
             self.driver = "null"
-            print "===========ERROR!===========\nInvalid TTS Driver\nRunning without TTS support"
+            logger.log("Invalid TTS Driver... Running without TTS support", "Error")
             

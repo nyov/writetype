@@ -24,6 +24,7 @@ from PyQt4.QtCore import SIGNAL
 #from PyQt4 import QtCore
 import sys
 import resources_rc
+import logger
 
 
 #Debugging application
@@ -102,12 +103,15 @@ class ListWidget(QtGui.QWidget):
         """Overloaded mouseReleaseEvent from QWidget"""
         #Over which word is it hovering?
         hoverindex = int(e.y()/LINE_HEIGHT)
+        if hoverindex >= len(self.words):
+            return
 
         #Speak the word?
         if e.x() < self.width()-PADDING_RIGHT and e.x() > self.width()-self.speaker_image.width()-PADDING_RIGHT:
             self.emit(SIGNAL("speakWord"), self.words[hoverindex].word)
         else:
             self.activate(hoverindex)
+        logger.log("Mouse pressed for " + self.words[hoverindex].word)
         QtGui.QWidget.mouseReleaseEvent(self, e)
 
     def _countLines(self):
@@ -122,6 +126,7 @@ class ListWidget(QtGui.QWidget):
         else:
             self.index += 1
         self.activate(self.index)
+        logger.log("Tab event to index " + str(index))
 
     def backtabEvent(self):
         if self.index == None or self.index == 0:
@@ -129,6 +134,7 @@ class ListWidget(QtGui.QWidget):
         else:
             self.index -= 1
         self.activate(self.index)
+        logger.log("Tab event to index " + str(index))
 
     def clearSelection(self):
         """Resets the selected word index"""
@@ -139,7 +145,6 @@ class ListWidget(QtGui.QWidget):
         self.words = []
         self.clearSelection()
         self.repaint()
-        print "Clearing list"
 
     def sortElements(self):
         self.words.sort(lambda x, y : cmp(y.weight,x.weight))

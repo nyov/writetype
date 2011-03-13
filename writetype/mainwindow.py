@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Sat Mar 12 19:31:52 2011
+# Created: Sun Mar 13 14:07:29 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -104,7 +104,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.distractionButton)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 803, 21))
         self.menubar.setObjectName("menubar")
         self.menuView = QtGui.QMenu(self.menubar)
         self.menuView.setObjectName("menuView")
@@ -291,27 +291,35 @@ class Ui_MainWindow(object):
         self.actionStatistics.setIcon(icon27)
         self.actionStatistics.setObjectName("actionStatistics")
         self.actionDiction_Check = QtGui.QAction(MainWindow)
+        icon28 = QtGui.QIcon()
+        icon28.addPixmap(QtGui.QPixmap(":/res/diction.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionDiction_Check.setIcon(icon28)
         self.actionDiction_Check.setObjectName("actionDiction_Check")
         self.actionCut = QtGui.QAction(MainWindow)
-        icon28 = QtGui.QIcon()
-        icon28.addPixmap(QtGui.QPixmap(":/res/editcut.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionCut.setIcon(icon28)
+        icon29 = QtGui.QIcon()
+        icon29.addPixmap(QtGui.QPixmap(":/res/editcut.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionCut.setIcon(icon29)
         self.actionCut.setObjectName("actionCut")
         self.actionCopy = QtGui.QAction(MainWindow)
-        icon29 = QtGui.QIcon()
-        icon29.addPixmap(QtGui.QPixmap(":/res/editcopy.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionCopy.setIcon(icon29)
+        icon30 = QtGui.QIcon()
+        icon30.addPixmap(QtGui.QPixmap(":/res/editcopy.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionCopy.setIcon(icon30)
         self.actionCopy.setObjectName("actionCopy")
         self.actionPaste = QtGui.QAction(MainWindow)
-        icon30 = QtGui.QIcon()
-        icon30.addPixmap(QtGui.QPixmap(":/res/editpaste.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionPaste.setIcon(icon30)
+        icon31 = QtGui.QIcon()
+        icon31.addPixmap(QtGui.QPixmap(":/res/editpaste.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionPaste.setIcon(icon31)
         self.actionPaste.setObjectName("actionPaste")
         self.actionCheck_for_Updates = QtGui.QAction(MainWindow)
-        icon31 = QtGui.QIcon()
-        icon31.addPixmap(QtGui.QPixmap(":/res/system-software-update.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionCheck_for_Updates.setIcon(icon31)
+        icon32 = QtGui.QIcon()
+        icon32.addPixmap(QtGui.QPixmap(":/res/system-software-update.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionCheck_for_Updates.setIcon(icon32)
         self.actionCheck_for_Updates.setObjectName("actionCheck_for_Updates")
+        self.actionSaveDebugLog = QtGui.QAction(MainWindow)
+        icon33 = QtGui.QIcon()
+        icon33.addPixmap(QtGui.QPixmap(":/res/debug.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionSaveDebugLog.setIcon(icon33)
+        self.actionSaveDebugLog.setObjectName("actionSaveDebugLog")
         self.menuToolbars.addAction(self.actionEnableFileToolbar)
         self.menuToolbars.addAction(self.actionEnableEditToolbar)
         self.menuToolbars.addAction(self.actionEnableSpeakerToolbar)
@@ -331,6 +339,7 @@ class Ui_MainWindow(object):
         self.menuHelp.addAction(self.actionAbout)
         self.menuHelp.addAction(self.actionCheck_for_Updates)
         self.menuHelp.addAction(self.actionAboutQt)
+        self.menuHelp.addAction(self.actionSaveDebugLog)
         self.menuEdit.addAction(self.actionUndo)
         self.menuEdit.addAction(self.actionRedo)
         self.menuEdit.addSeparator()
@@ -458,6 +467,7 @@ class Ui_MainWindow(object):
         self.actionCopy.setText(QtGui.QApplication.translate("MainWindow", "Copy", None, QtGui.QApplication.UnicodeUTF8))
         self.actionPaste.setText(QtGui.QApplication.translate("MainWindow", "Paste", None, QtGui.QApplication.UnicodeUTF8))
         self.actionCheck_for_Updates.setText(QtGui.QApplication.translate("MainWindow", "Check for Updates", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionSaveDebugLog.setText(QtGui.QApplication.translate("MainWindow", "Save Debug Log", None, QtGui.QApplication.UnicodeUTF8))
 
 from spellCheckEdit import spellCheckEdit
 from listWidget import ListWidget

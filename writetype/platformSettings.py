@@ -20,6 +20,7 @@ from PyQt4.QtCore import QSettings, QVariant, QLocale
 from ConfigParser import SafeConfigParser
 import os
 import sys
+import logger
 
 #Stupid Windows.
 if hasattr(sys, "frozen"):
@@ -32,7 +33,6 @@ if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
     prefix = os.path.join(sys.prefix, 'share', 'writetype')
     if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
         raise IOError("PlatformSettings not found!")
-    print "setting intallation prefix"
 
 #Some defines
 parser = SafeConfigParser()
@@ -60,7 +60,6 @@ def getPlatformSetting(key):
     elif key == "pathToEspeak":
         path = parser.get('General', key)
         path = path.replace("[wt]", prefix)
-        print path
         return path
     elif key == "language":
         language = str(QLocale.system().name())

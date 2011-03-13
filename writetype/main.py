@@ -37,6 +37,7 @@ from os.path import isfile
 import getopt
 import sys
 import revno
+import logger
 
 #Command line arguments
 parsedoptions, options = getopt.gnu_getopt(sys.argv[1:], "l:t:c?", ["lang=", "tts-engine=", "help"])
@@ -111,6 +112,7 @@ class MainApplication(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.actionAbout, QtCore.SIGNAL("triggered()"), self.showAbout)
         QtCore.QObject.connect(self.ui.actionDocumentation, QtCore.SIGNAL("triggered()"), self.openHelpPage)
         QtCore.QObject.connect(self.ui.actionCheck_for_Updates, QtCore.SIGNAL("triggered()"), self.checkForUpdates)
+        QtCore.QObject.connect(self.ui.actionSaveDebugLog, QtCore.SIGNAL("triggered()"), self.saveLog)
 
         #Word list for word completion
         self.wl = WordsList()
@@ -169,8 +171,8 @@ class MainApplication(QtGui.QMainWindow):
         ## #Lets disable image support for now.  Yeah... I think that would be a wise idea.  (And double spacing too,  since I can't get it to work.)
         ## self.ui.imageToolBar.setVisible(False)
         ## self.ui.actionEnableImageToolbar.setVisible(False)
-        self.ui.actionDoubleSpace.setVisible(False)
-        self.ui.actionSingleSpace.setVisible(False)
+        #self.ui.actionDoubleSpace.setVisible(False)
+        #self.ui.actionSingleSpace.setVisible(False)
         
         #Apply some settings
         if platformSettings.getSetting("defaultfont", ""):
@@ -322,22 +324,18 @@ class MainApplication(QtGui.QMainWindow):
                 if wordraw:
                     self.wl.pattern.clearLastCheckedWord()
             elif self.ui.textArea.dictionary.check(word) == False:
-                print "Checking words was false", word
+                logger.log("Checking words was false" + word)
                 self.wordsN = []
                 words = self.ui.textArea.dictionary.suggest(word)
                 for word in words:
                     self.wordsN.append((word, 0))
                 for word in self.wordsN:
-                    print "Adding an item"
                     item = ListWidgetItem(word[0], mode=MODE_REPLACE, colorfg=Qt.red)
                     self.ui.spellingSuggestionsList.addItem(item)
             elif platformSettings.getSetting("phrasecompletion", True):
                 #This is still HORRIBLE of me.  Still nothing to do with autocorrections.
                 links = self.wl.pattern.getLinks(word)
-                print "links are..."
-                print links
                 if links:
-                    print "Showing links"
                     self.ui.spellingSuggestionsList.clear()
                     for link in links:
                         item = ListWidgetItem(link[0], weight=link[1], mode=MODE_INSERT)
@@ -353,7 +351,7 @@ class MainApplication(QtGui.QMainWindow):
             
         self.ui.spellingSuggestionsList.repaint()
         if word[-1:] in [".", "!", "?"]:
-            print "Autosaving"
+            logger.log("Autosaving")
             self.autoSave()
 
     #SPELLING SUGGESTIONS/WORD LISTS
@@ -477,8 +475,7 @@ class MainApplication(QtGui.QMainWindow):
                 words = self.wl.search(text.replace(replacement[0], replacement[1]))
                 for w,s in words:
                     self.ui.spellingSuggestionsList.addNewItem(w, weight=s)
-        self.ui.spellingSuggestionsList.repaint()
-            
+        self.ui.spellingSuggestionsList.repaint()      
     def keyPressEvent(self, e):
         """Overloaded keyPressEvent from QWidget to catch F-keys"""
         #F-keys select words quickly
@@ -495,7 +492,7 @@ class MainApplication(QtGui.QMainWindow):
         """Open the diction check toolbar"""
         #Load these into memory only if we need to
         if self.dictionReplacements == None:
-            print "Loading words"
+            logger.log("Loading resources for diction check")
             filepath = path.join(platformSettings.getPlatformSetting('pathToWordlists'),  "diction.txt")
             fileHandle = open(filepath, 'r')
             lines = fileHandle.read().split("\n")
@@ -546,7 +543,7 @@ class MainApplication(QtGui.QMainWindow):
     
     def nextDictionError(self):
         """Go to the next diction error"""
-        print "going to diction check"
+        logger.log("going to diction check")
         self.dictionCheck()
 
     def updateFontSizeSpinBoxValue(self):
@@ -585,6 +582,18 @@ class MainApplication(QtGui.QMainWindow):
         """Open the Bernsteinforpresident.com documentation"""
         QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype/documentation"))
         
+    def saveLog(self):
+        filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Log file (*.log)")
+        if not filename:
+            return
+        try:
+            file = open(filename, 'w+')
+            file.write(logger.formatLog())
+            file.close()
+        except:
+            QMessageBox.warning(self, self.tr("Save error"), self.tr("WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again."))
+        
+
     def openPrintDialog(self):
         """Print a document"""
         printer = QtGui.QPrinter()
@@ -714,8 +723,7 @@ class StatisticsWindow(QtGui.QDialog):
 
 #translation
 trans = QTranslator()
-print path.join(platformSettings.getPlatformSetting("basePath"), "translations")
-print platformSettings.getPlatformSetting("language")
+logger.log("Language is " + platformSettings.getPlatformSetting("language"), "Info")
 trans.load("qt_" + platformSettings.getPlatformSetting("language"), path.join(platformSettings.getPlatformSetting("basePath"), "translations"))
 application.installTranslator(trans)
 app = MainApplication()

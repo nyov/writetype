@@ -20,6 +20,7 @@ import platformSettings
 from os import path
 from xml.dom import minidom
 import codecs
+import logger
 
 class WordsList:
     """Interface to the dirty work of searching for word
@@ -59,7 +60,7 @@ class WordsList:
 
     def loadWords(self, filePath):
         """Used by loading functions to load all of the words from the wordlist into memory"""
-        print "Loading words"
+        logger.log("Loading words")
         fileHandle = codecs.open(filePath, 'r', encoding='utf-8')
         words = fileHandle.read().split("\n")
         finalwords = []
@@ -70,6 +71,7 @@ class WordsList:
     def addCustomWord(self, word):
         """Add a new word to the list of words, or increment the weight by 1"""
         word = unicode(word).lower()
+        logger.log("Adding " + word + " to list of words")
         match = [(w,s) for w,s in self.words if w == word]
         if match:
             w,s = match[0]
@@ -108,7 +110,6 @@ class WordsList:
                 if not line or line == ",": continue
                 self.replacementTable[line.split(",")[0]] = line.split(",")[1]
         for line in str(platformSettings.getSetting("customAutocorrections", "")).split("\n"):
-            print line
             if not line or line == ",": continue
             self.replacementTable[line.split(",")[0]] = line.split(",")[1]
 
@@ -151,17 +152,14 @@ class WordPattern:
             self.words.append(firstNode)
         else:
             firstNode = firstNode[0]
-        print "self.words:"
-        for node in self.words:
-            print node.word
         firstNode.addLink(secondNode)
+        logger.log("Added link from " + first + " to " + second)
 
 
     def getLinks(self, word):
         """Return a list of tuples (word, frequency) of words that come
         after the requested word"""
         word = self._cleanString(word)
-        print "getting links for", word, self.lastcheckedword
         if self.lastcheckedword and word:
             self.insertLink(self.lastcheckedword, word)
         self.lastcheckedword = word
@@ -175,7 +173,6 @@ class WordPattern:
         return node[0].getLinks()
 
     def clearLastCheckedWord(self):
-        print "clearing phrases list"
         self.lastcheckedword = None
 
         
@@ -191,11 +188,8 @@ class LinkNode:
     def addLink(self, node):
         result = [(n,w) for n,w in self.links if n.word == node.word]
         if not result:
-            print "result is"
             self.links.append((node, 1))
         else:
-            print "found result, incrementing"
-            print result[0][1]
             index = self.links.index(result[0])
             self.links[index] = (node, result[0][1]+1)
 
@@ -204,6 +198,4 @@ class LinkNode:
         finallist.extend([(preappend+n.word, w) for n,w in self.links if w>self.WORDS_THRESHOLD])
         for link in [(n,w) for (n,w) in self.links if w-i>self.WORDS_THRESHOLD]:
             finallist.extend(link[0].getLinks(preappend+link[0].word+" ", i+1))
-        print "self.links"
-        print self.links
         return finallist

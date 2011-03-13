@@ -267,7 +267,7 @@ class spellCheckEdit(QTextEdit):
         self.setAlignment(Qt.AlignRight)
 
     def doubleSpace(self):
-        #self.document().setDefaultStyleSheet("line-height: 2em;")
+        self.document().setDefaultStyleSheet("line-height: 200%;")
         pass
 
     def singleSpace(self):
