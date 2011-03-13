@@ -1,4 +1,4 @@
-# Copyright 2010 Max Shinn
+# Copyright 2010, 2011 Max Shinn
 
 # This file is part of WriteType.
 
@@ -123,7 +123,7 @@ class WordPattern:
     """Keeps track of which words are generally typed after
     other words.  For instance, I generally type 'Shinn'
     after I type 'Max' and 'software' after I type 'free'."""
-    #TODO - Clean this class up
+    #TODO - Clean this class up... how does this even run it's so ugly?
     def __init__(self):
         #Words are the index to a sub-dictionary, with the word indexed to frequency
         self.words = []
@@ -169,6 +169,10 @@ class WordPattern:
             return []
         return node[0].getLinks()
 
+    def clearLastCheckedWord(self):
+        self.lastcheckedword = None
+
+        
 class LinkNode:
     #TODO - Clean this class up also
     def __init__(self, word):

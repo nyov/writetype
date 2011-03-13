@@ -318,7 +318,7 @@ class MainApplication(QtGui.QMainWindow):
             word = re.sub('[ \t!"#$%&()*+,./:;<=>?@\[\\]^_`{|}~]', '', word)
             #word.translate(None, ' \t!"#$%&()*+,./:;<=>?@[\\]^_`{|}~')
             if not word:
-                pass
+                self.wl.pattern.clearLastCheckedWord()
             elif self.ui.textArea.dictionary.check(word) == False:
                 print "Checking words was false", word
                 self.wordsN = []
@@ -329,7 +329,7 @@ class MainApplication(QtGui.QMainWindow):
                     print "Adding an item"
                     item = ListWidgetItem(word[0], mode=MODE_REPLACE, colorfg=Qt.red)
                     self.ui.spellingSuggestionsList.addItem(item)
-            else:
+            elif platformSettings.getSetting("phrasecompletion", True):
                 #This is still HORRIBLE of me.  Still nothing to do with autocorrections.
                 links = self.wl.pattern.getLinks(word)
                 print "links are..."

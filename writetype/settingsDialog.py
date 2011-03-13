@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui/settings.ui'
 #
-# Created: Sat Dec 18 15:38:53 2010
-#      by: PyQt4 UI code generator 4.7.3
+# Created: Sat Mar 12 19:31:53 2011
+#      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -66,6 +66,10 @@ class Ui_settingsDialog(object):
         self.minimumLetters.setObjectName("minimumLetters")
         self.horizontalLayout_2.addWidget(self.minimumLetters)
         self.verticalLayout_8.addLayout(self.horizontalLayout_2)
+        self.phraseCompletionCheckbox = QtGui.QCheckBox(self.wordCompletionTab)
+        self.phraseCompletionCheckbox.setChecked(True)
+        self.phraseCompletionCheckbox.setObjectName("phraseCompletionCheckbox")
+        self.verticalLayout_8.addWidget(self.phraseCompletionCheckbox)
         self.guessMisspellingsCheckbox = QtGui.QCheckBox(self.wordCompletionTab)
         self.guessMisspellingsCheckbox.setChecked(True)
         self.guessMisspellingsCheckbox.setObjectName("guessMisspellingsCheckbox")
@@ -213,6 +217,7 @@ class Ui_settingsDialog(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("settingsDialog", "Word lists", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("settingsDialog", "View settings for the custom word completion", None, QtGui.QApplication.UnicodeUTF8))
         self.label_8.setText(QtGui.QApplication.translate("settingsDialog", "Minimum letters:", None, QtGui.QApplication.UnicodeUTF8))
+        self.phraseCompletionCheckbox.setText(QtGui.QApplication.translate("settingsDialog", "Offer phrase completions", None, QtGui.QApplication.UnicodeUTF8))
         self.guessMisspellingsCheckbox.setText(QtGui.QApplication.translate("settingsDialog", "Try to guess misspellings", None, QtGui.QApplication.UnicodeUTF8))
         self.misspellingSettings.setTitle(QtGui.QApplication.translate("settingsDialog", "Misspelling Settings", None, QtGui.QApplication.UnicodeUTF8))
         self.thresholdSpinbox.setToolTip(QtGui.QApplication.translate("settingsDialog", "How many entries need to be displayed, at the minimum, before WriteType will attempt to guess the spelling?", None, QtGui.QApplication.UnicodeUTF8))
