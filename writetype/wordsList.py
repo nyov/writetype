@@ -96,6 +96,21 @@ class WordsList:
         results.sort(lambda x,y : cmp(x[0], y[0]))
         return results
 
+    def searchMultiple(self, firstLetters, customWords=NORMAL_WORDS, sort=NOSORT):
+        """Search for all the words in the firstLetters tuple"""
+        print firstLetters
+        if customWords == self.CUSTOM_WORDS:
+            wordsList = self.wordsCustom
+        else:
+            wordsList = self.words
+        results = []
+        results = [(w,s) for w,s in wordsList if w.startswith(firstLetters)]
+        if sort == self.NOSORT:
+            return results
+        results.sort(lambda x,y : cmp(x[0], y[0]))
+        return results
+
+
     #AUTOCORRECTION
 
     def refreshReplacementTable(self):

@@ -271,6 +271,7 @@ class spellCheckEdit(QTextEdit):
         pass
 
     def singleSpace(self):
+        self.document().setDefaultStyleSheet("line-height: 100%;")
         pass
 
     def setFont(self, font):

@@ -31,7 +31,7 @@ import re
 from os import path, sep
 from speaker import Speaker
 from PyQt4.QtGui import QMessageBox
-from PyQt4.QtCore import QTranslator, QLocale
+from PyQt4.QtCore import QTranslator, QLocale, qVersion
 from statistics import Ui_statisticsDialog
 from os.path import isfile
 import getopt
@@ -83,8 +83,12 @@ class MainApplication(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.actionAlignLeft, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignLeft)
         QtCore.QObject.connect(self.ui.actionAlignCenter, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignCenter)
         QtCore.QObject.connect(self.ui.actionAlignRight, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignRight)
-        QtCore.QObject.connect(self.ui.actionDoubleSpace, QtCore.SIGNAL("triggered()"), self.ui.textArea.doubleSpace)
-        QtCore.QObject.connect(self.ui.actionSingleSpace, QtCore.SIGNAL("triggered()"), self.ui.textArea.singleSpace)
+        if '4.8.' in qVersion(): #only for the new unreleased QT, unfortunately
+            QtCore.QObject.connect(self.ui.actionDoubleSpace, QtCore.SIGNAL("triggered()"), self.ui.textArea.doubleSpace)
+            QtCore.QObject.connect(self.ui.actionSingleSpace, QtCore.SIGNAL("triggered()"), self.ui.textArea.singleSpace)
+        else:
+            self.ui.actionDoubleSpace.setVisible(False)
+            self.ui.actionSingleSpace.setVisible(False)
 
         #Context menu for textarea
         self.ui.textArea.actionCut = self.ui.actionCut
@@ -467,14 +471,13 @@ class MainApplication(QtGui.QMainWindow):
             ]
 
             possibilities = []
+            text = text.lower()
             for replacement in replacements:
-                if not replacement[0] in text:
-                    continue
-                possibilities += self.wl.search(text.replace(replacement[0], replacement[1]))
-                possibilities = [(w,0,"r") for w in possibilities]
-                words = self.wl.search(text.replace(replacement[0], replacement[1]))
-                for w,s in words:
-                    self.ui.spellingSuggestionsList.addNewItem(w, weight=s)
+                if replacement[0] in text:
+                    possibilities.append(text.replace(replacement[0], replacement[1]))
+            words = self.wl.searchMultiple(tuple(possibilities))
+            for w,s in words:
+                self.ui.spellingSuggestionsList.addNewItem(w, weight=s)
         self.ui.spellingSuggestionsList.repaint()      
     def keyPressEvent(self, e):
         """Overloaded keyPressEvent from QWidget to catch F-keys"""
