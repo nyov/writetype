@@ -110,6 +110,8 @@ class MainApplication(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
         QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setFont)
         self.ui.textArea.setStyleSheet("/*background-image: url(:/res/background.png);*/ font: 12pt;")
+        QtGui.QFontDatabase.addApplicationFont(":/res/ArchitectsDaughter.ttf")
+        self.ui.menubar.setStyleSheet("font-family: \"Architects Daughter\"; font-size: 12pt;")
 
         #about boxes
         QtCore.QObject.connect(self.ui.actionAboutQt, QtCore.SIGNAL("triggered()"), lambda : QtGui.QMessageBox.aboutQt(self))

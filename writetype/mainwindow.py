@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Sun Apr 10 12:56:36 2011
+# Created: Sun Apr 10 18:56:07 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -38,6 +38,16 @@ class Ui_MainWindow(object):
 "}\n"
 "QMenu::item:selected {\n"
 "    background-color: rgb(191, 216, 224);\n"
+"}\n"
+"QToolButton { \n"
+"    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.514, fx:0.5, fy:0.5, stop:0.382514 rgba(54, 68, 156, 255), stop:1 rgba(255, 255, 255, 0));\n"
+"}\n"
+"QToolButton:hover {\n"
+"    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.514, fx:0.5, fy:0.5, stop:0.382514 rgba(89, 112, 255, 255), stop:1 rgba(255, 255, 255, 0));\n"
+"    border-radius: 8px;\n"
+"}\n"
+"QToolButton:pressed {\n"
+"    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.436, fx:0.5, fy:0.5, stop:0 rgba(42, 66, 220, 255), stop:1 rgba(255, 255, 255, 0))\n"
 "}")
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("None")

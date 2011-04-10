@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/res">
+    <file>ArchitectsDaughter.ttf</file>
     <file>diction.png</file>
     <file>debug.png</file>
     <file>system-software-update.png</file>

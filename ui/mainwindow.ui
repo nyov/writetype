@@ -41,6 +41,16 @@ QMenu {
 }
 QMenu::item:selected {
 	background-color: rgb(191, 216, 224);
+}
+QToolButton { 
+	background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.514, fx:0.5, fy:0.5, stop:0.382514 rgba(54, 68, 156, 255), stop:1 rgba(255, 255, 255, 0));
+}
+QToolButton:hover {
+	background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.514, fx:0.5, fy:0.5, stop:0.382514 rgba(89, 112, 255, 255), stop:1 rgba(255, 255, 255, 0));
+	border-radius: 8px;
+}
+QToolButton:pressed {
+	background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.436, fx:0.5, fy:0.5, stop:0 rgba(42, 66, 220, 255), stop:1 rgba(255, 255, 255, 0))
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
