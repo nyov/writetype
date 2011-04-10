@@ -94,7 +94,7 @@ class ListWidget(QtGui.QWidget):
             #Draw F-key shortcut hints
             if word[0] + 1 <= 12:
                 painter.setPen(Qt.gray)
-                fpos = QPoint(self.width()-PADDING_RIGHT-self.speaker_image.width()-30, word[0]*LINE_HEIGHT+LINE_HEIGHT/1.5)
+                fpos = QPoint(self.width()-PADDING_RIGHT-self.speaker_image.width()-35, word[0]*LINE_HEIGHT+LINE_HEIGHT/1.5)
                 painter.drawText(fpos, "(F" + str(word[0]+1) + ")")
             
         QtGui.QWidget.paintEvent(self, e)

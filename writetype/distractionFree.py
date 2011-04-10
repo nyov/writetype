@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/distractionfree.ui'
 #
-# Created: Sun Mar 13 14:07:30 2011
+# Created: Sun Apr 10 12:56:36 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,6 +18,10 @@ class Ui_distractionFree(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(distractionFree.sizePolicy().hasHeightForWidth())
         distractionFree.setSizePolicy(sizePolicy)
+        distractionFree.setStyleSheet("#distractionFree {\n"
+"    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(222, 240, 248, 255), stop:1 rgba(183, 229, 248, 255));\n"
+"}\n"
+"")
         self.verticalLayout_2 = QtGui.QVBoxLayout(distractionFree)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
 

@@ -174,7 +174,7 @@ class MainApplication(QtGui.QMainWindow):
         ## QtCore.QObject.connect(self.ui.actionAlign_Image_Left, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignImageLeft)
         ## #Lets disable image support for now.  Yeah... I think that would be a wise idea.  (And double spacing too,  since I can't get it to work.)
         ## self.ui.imageToolBar.setVisible(False)
-        ## self.ui.actionEnableImageToolbar.setVisible(False)
+        self.ui.actionEnableImageToolbar.setVisible(False)
         #self.ui.actionDoubleSpace.setVisible(False)
         #self.ui.actionSingleSpace.setVisible(False)
         
@@ -462,6 +462,7 @@ class MainApplication(QtGui.QMainWindow):
                 ["o", "ou"],
                 ["s", "c"],
                 ["s", "ss"],
+                ["sh", "c"],
                 ["t", "d"],
                 ["t", "tt"],
                 ["u", "o"],

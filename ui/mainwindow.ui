@@ -18,7 +18,35 @@
    <iconset resource="../res/resources.qrc">
     <normaloff>:/res/key120x120.png</normaloff>:/res/key120x120.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#MainWindow {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(222, 240, 248, 255), stop:1 rgba(183, 229, 248, 255));
+}
+#MainWindow #centralwidget {
+	background: transparent;
+}
+#MainWindow .QToolBar {
+	background: transparent;
+}
+.QFontComboBox, .QSpinBox {
+	background: rgb(247, 251, 254);
+}
+#textArea { 
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 246, 209, 255), stop:1 rgba(255, 252, 240, 255));
+}
+QMenu {
+	background-color: rgb(217, 245, 255);
+	border: 2px solid gray;
+	border-radius: 5px;
+}
+QMenu::item:selected {
+	background-color: rgb(191, 216, 224);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QGridLayout" name="gridLayout">
@@ -256,6 +284,12 @@
    <property name="movable">
     <bool>false</bool>
    </property>
+   <property name="iconSize">
+    <size>
+     <width>26</width>
+     <height>26</height>
+    </size>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -276,6 +310,12 @@
    </property>
    <property name="movable">
     <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>26</width>
+     <height>26</height>
+    </size>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -299,6 +339,12 @@
    </property>
    <property name="movable">
     <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>26</width>
+     <height>26</height>
+    </size>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>

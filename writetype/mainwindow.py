@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/mainwindow.ui'
 #
-# Created: Sun Mar 13 14:07:29 2011
+# Created: Sun Apr 10 12:56:36 2011
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -16,7 +16,31 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/res/key120x120.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
+        MainWindow.setStyleSheet("#MainWindow {\n"
+"    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(222, 240, 248, 255), stop:1 rgba(183, 229, 248, 255));\n"
+"}\n"
+"#MainWindow #centralwidget {\n"
+"    background: transparent;\n"
+"}\n"
+"#MainWindow .QToolBar {\n"
+"    background: transparent;\n"
+"}\n"
+".QFontComboBox, .QSpinBox {\n"
+"    background: rgb(247, 251, 254);\n"
+"}\n"
+"#textArea { \n"
+"    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 246, 209, 255), stop:1 rgba(255, 252, 240, 255));\n"
+"}\n"
+"QMenu {\n"
+"    background-color: rgb(217, 245, 255);\n"
+"    border: 2px solid gray;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"QMenu::item:selected {\n"
+"    background-color: rgb(191, 216, 224);\n"
+"}")
         self.centralwidget = QtGui.QWidget(MainWindow)
+        self.centralwidget.setStyleSheet("None")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -124,15 +148,18 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.fileToolBar = QtGui.QToolBar(MainWindow)
         self.fileToolBar.setMovable(False)
+        self.fileToolBar.setIconSize(QtCore.QSize(26, 26))
         self.fileToolBar.setObjectName("fileToolBar")
         MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.fileToolBar)
         self.editToolBar = QtGui.QToolBar(MainWindow)
         self.editToolBar.setEnabled(True)
         self.editToolBar.setMovable(False)
+        self.editToolBar.setIconSize(QtCore.QSize(26, 26))
         self.editToolBar.setObjectName("editToolBar")
         MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.editToolBar)
         self.speakToolBar = QtGui.QToolBar(MainWindow)
         self.speakToolBar.setMovable(False)
+        self.speakToolBar.setIconSize(QtCore.QSize(26, 26))
         self.speakToolBar.setObjectName("speakToolBar")
         MainWindow.addToolBar(QtCore.Qt.ToolBarArea(QtCore.Qt.TopToolBarArea), self.speakToolBar)
         self.actionSave = QtGui.QAction(MainWindow)
