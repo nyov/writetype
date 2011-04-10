@@ -20,7 +20,6 @@ abasing
 abatement
 abattoir
 abattoirs
-abb�
 abbess
 abbesses
 abbreviate
@@ -29,7 +28,6 @@ abbreviates
 abbreviating
 abbreviation
 abbreviations
-abb�s
 abduction
 abductions
 abductor
@@ -412,7 +410,6 @@ adiabatic
 adieu
 adieus
 adipose
-adi�s
 adjacent
 adjacently
 adjectival
@@ -1440,10 +1437,10 @@ application
 applications
 applied
 applies
-appliqu�
-appliqu�d
-appliqu�ing
-appliqu�s
+appliqué
+appliquéd
+appliquéing
+appliqués
 apply
 applying
 appoint
@@ -1929,7 +1926,7 @@ attached
 attaching
 attachment
 
-attach�s
+attachés
 attack
 attacked
 attackers
@@ -3523,8 +3520,6 @@ bounds
 bounteous
 bountifully
 bout
-boutonni�re
-boutonni�res
 
 bow
 bowdlerize
@@ -4067,7 +4062,7 @@ caducei
 caduceus
 caesura
 caesuras
-caf�
+café
 caffeine
 caftan
 caftans
@@ -4201,8 +4196,8 @@ cams
 camshaft
 camshafts
 can
-canap�
-canap�s
+canapé
+canapés
 canard
 canards
 canasta
@@ -5161,10 +5156,6 @@ chronometer
 chronometers
 chrysalis
 chrysalises
-ch�teau
-ch�teaux
-ch�telaine
-ch�telaines
 chubbiness
 chuck
 chucked
@@ -5352,7 +5343,6 @@ classifying
 classiness
 classing
 classless
-�clat
 clause
 clauses
 claustrophobic
@@ -5399,8 +5389,8 @@ clew
 clewed
 clewing
 clews
-clich�
-clich�d
+cliché
+clichéd
 click
 client
 clients
@@ -6249,8 +6239,6 @@ confrontational
 confronted
 confronting
 confronts
-confr�re
-confr�res
 confuse
 confused
 confusedly
@@ -6790,8 +6778,6 @@ corruptness
 corrupts
 corsair
 corsairs
-cort�ge
-cort�ges
 cortical
 cortices
 cortisone
@@ -7076,8 +7062,8 @@ crawlspace
 crawlspaces
 craws
 crazy
-cr�che
-cr�ches
+créche
+créches
 cream
 creamer
 creameries
@@ -7237,8 +7223,6 @@ crossword
 crotchet
 crotchets
 crotchety
-cro�ton
-cro�tons
 croup
 crouped
 croupier
@@ -7265,7 +7249,6 @@ cruddy
 crude
 crudeness
 crudities
-crudit�s
 cruel
 cruelty
 cruet
@@ -7676,7 +7659,6 @@ days
 daytime
 dazzlings
 dB
-d�collet�
 deaconess
 deaconesses
 deactivate
@@ -8351,8 +8333,6 @@ derogation
 derogatory
 derringer
 derringers
-derri�re
-derri�res
 dervish
 dervishes
 desalinate
@@ -9580,8 +9560,6 @@ dragooned
 dragooning
 dragoons
 drags
-d�railleur
-d�railleurs
 drain
 drained
 drainer
@@ -9736,7 +9714,7 @@ drywall
 drywalled
 drywalling
 drywalls
-d�tente
+détente
 dual
 duality
 dubiety
@@ -11995,8 +11973,6 @@ flagstaff
 flagstaffs
 flakiness
 flaks
-flamb�
-flamb�ed
 flambeing
 flambes
 flame
@@ -12517,7 +12493,7 @@ frankincense
 frankly
 frankness
 frantic
-frapp�
+frappé
 frappes
 frat
 fraternally
@@ -13373,7 +13349,6 @@ gobbledygook
 gobbler
 gobblers
 god
-goddamn
 goddaughter
 goddaughters
 godforsaken
@@ -13838,13 +13813,11 @@ haberdashery
 habit
 habitability
 habits
-habitu�
 habituate
 habituated
 habituates
 habituating
 habituation
-habitu�s
 hacienda
 haciendas
 hack
@@ -15929,8 +15902,6 @@ ingenuously
 ingenuousness
 ingestion
 inglorious
-ing�nue
-ing�nues
 ingot
 ingots
 ingrate
@@ -16656,9 +16627,8 @@ jags
 jail
 jailbreak
 jailbreaks
-
-jalape�o
-jalape�os
+jalapeño
+jalapeños
 jalousie
 jalousies
 jam
@@ -16674,8 +16644,6 @@ jape
 japed
 japes
 japing
-jardini�re
-jardini�res
 jargon
 jasmine
 jasmines
@@ -17048,8 +17016,8 @@ kiloton
 kilotons
 kilter
 kind
-kinderg�rtner
-kinderg�rtners
+kindergartner
+kindergartners
 kindhearted
 kindliness
 kindly
@@ -17159,8 +17127,6 @@ kooks
 kooky
 kopeck
 kopecks
-kr�na
-kr�nur
 krone
 kroner
 kronor
@@ -17282,7 +17248,6 @@ lampreys
 lampshade
 lampshades
 lams
-�lan
 lancer
 lancers
 lancet
@@ -18274,7 +18239,6 @@ mackinaw
 mackinaws
 mackintosh
 mackintoshes
-macram�
 macro
 macrobiotic
 macrobiotics
@@ -18472,10 +18436,6 @@ maneuvers
 manful
 manfully
 manganese
-man�ge
-man�ged
-man�ges
-man�ging
 mangle
 mangled
 mangles
@@ -18509,7 +18469,6 @@ mannishly
 mannishness
 manorial
 manpower
-manqu�
 mans
 mansard
 mansards
@@ -18708,7 +18667,6 @@ matriarchy
 matrices
 matricide
 matricides
-mat�riel
 matrix
 matter
 matters
@@ -19143,13 +19101,11 @@ might
 mightily
 mightiness
 mighty
-�migr�
 migrate
 migrated
 migrates
 migrating
 migration
-�migr�s
 mil
 milch
 mild
@@ -19549,8 +19505,6 @@ mizzen
 mizzenmast
 mizzenmasts
 mizzens
-m�l�e
-m�l�es
 mnemonic
 moan
 moaned
@@ -19965,8 +19919,6 @@ movies
 moving
 movingly
 mozzarella
-m�tier
-m�tiers
 much
 mucilage
 muck
@@ -21456,7 +21408,6 @@ outpouring
 outpourings
 output
 outputs
-outr�
 outrage
 outraged
 outrageous
@@ -22256,7 +22207,6 @@ paymasters
 payment
 payments
 pays
-�p�e
 peace
 peaceably
 peaceful
@@ -22584,7 +22534,6 @@ perverse
 perversely
 perverseness
 perversity
-�p�es
 peseta
 pesetas
 peso
@@ -25277,7 +25226,6 @@ recheck
 rechecked
 rechecking
 rechecks
-recherch�
 recidivism
 recidivist
 recidivists
@@ -26763,7 +26711,6 @@ rotten
 rottenness
 rotundity
 rotundness
-rou�
 rough
 roughly
 roughneck
@@ -26786,7 +26733,6 @@ roundup
 roundups
 roundworm
 roundworms
-rou�s
 roustabout
 roustabouts
 rout
@@ -27070,8 +27016,6 @@ samplers
 samples
 sampling
 samurai
-s�ance
-s�ances
 sanctification
 sanctimoniously
 sanctum
@@ -28946,8 +28890,6 @@ smooches
 smooching
 smooth
 smoothly
-sm�rg�sbord
-sm�rg�sbords
 smudgier
 smudgiest
 smudgy
@@ -29104,8 +29046,6 @@ softy
 soggily
 sogginess
 soil
-soir�e
-soir�es
 sol
 solar
 solaria
@@ -29266,9 +29206,6 @@ soundtracks
 soup
 soupier
 soupiest
-soup�on
-soup�ons
-
 soupy
 source
 sources
@@ -32717,8 +32654,8 @@ tucker
 tuckered
 tuckering
 tuckers
-�tude
-�tudes
+etude
+etudes
 tugboat
 tugboats
 tulle
@@ -34253,8 +34190,6 @@ victual
 victualed
 victualing
 victuals
-vicu�a
-vicu�as
 video
 videocassette
 videocassettes

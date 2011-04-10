@@ -987,7 +987,7 @@ attached
 attaching
 attachment
 
-attach�s
+attachés
 attack
 attacked
 attackers
@@ -1952,7 +1952,7 @@ caddying
 
 cadre
 cadres
-caf�
+café
 caffeine
 cage
 cahoot
@@ -2466,8 +2466,8 @@ choreographs
 chorus
 chose
 chosen
-ch�teau
-ch�teaux
+château
+châteaux
 chuck
 chucked
 chucking
@@ -2591,7 +2591,7 @@ clergywomen
 clever
 cleverer
 cleverest
-clich�
+cliché
 click
 client
 clients
@@ -4864,7 +4864,7 @@ drunk
 drunken
 dry
 drying
-d�tente
+détente
 dual
 dubious
 duck
@@ -6814,7 +6814,6 @@ goals
 goat
 gobbledygook
 god
-goddamn
 godforsaken
 gods
 goes
@@ -8739,8 +8738,8 @@ kilometers
 kilometers
 
 kind
-kinderg�rtner
-kinderg�rtners
+kindergartner
+kindergartners
 kindhearted
 kindly
 kindness
@@ -9920,8 +9919,6 @@ mixed
 mixes
 mixing
 mixture
-m�l�e
-m�l�es
 mnemonic
 moan
 moaned
@@ -14622,8 +14619,6 @@ smooches
 smooching
 smooth
 smoothly
-sm�rg�sbord
-sm�rg�sbords
 smug
 smugness
 smuttier
