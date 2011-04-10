@@ -49,7 +49,7 @@ class spellCheckEdit(QTextEdit):
     def __init__(self, *args):
         QTextEdit.__init__(self, *args)
         try:
-            self.dictionary = enchant.DictWithPWL(platformSettings.getPlatformSetting('language'), None)
+            self.dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
         except enchant.Error:
             self.dictionary = enchant.DictWithPWL("en_US", None)
         self.highlighter = Highlighter(self.document())
