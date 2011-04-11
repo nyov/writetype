@@ -28,29 +28,33 @@
 #MainWindow .QToolBar {
 	background: transparent;
 }
-.QFontComboBox, .QSpinBox {
+QFontComboBox, QSpinBox {
 	background: rgb(247, 251, 254);
 }
 #textArea { 
 	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(255, 246, 209, 255), stop:1 rgba(255, 252, 240, 255));
 }
-QMenu {
+#MainWindow QMenu {
 	background-color: rgb(217, 245, 255);
 	border: 2px solid gray;
 	border-radius: 5px;
 }
-QMenu::item:selected {
+#MainWindow QMenu::item:selected {
 	background-color: rgb(191, 216, 224);
 }
-QToolButton { 
+#fileToolBar QToolButton, #editToolBar QToolButton, #speakToolBar QToolButton { 
 	background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.514, fx:0.5, fy:0.5, stop:0.382514 rgba(54, 68, 156, 255), stop:1 rgba(255, 255, 255, 0));
 }
-QToolButton:hover {
+#fileToolBar QToolButton:hover, #editToolBar QToolButton:hover, #speakToolBar QToolButton:hover {
 	background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.514, fx:0.5, fy:0.5, stop:0.382514 rgba(89, 112, 255, 255), stop:1 rgba(255, 255, 255, 0));
 	border-radius: 8px;
 }
-QToolButton:pressed {
+#fileToolBar QToolButton:pressed, #editToolBar QToolButton:pressed, #speakToolBar QToolButton:pressed{
 	background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.436, fx:0.5, fy:0.5, stop:0 rgba(42, 66, 220, 255), stop:1 rgba(255, 255, 255, 0))
+}
+#editToolBar QToolButton:checked {
+	background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.514, fx:0.5, fy:0.5, stop:0.382514 rgba(156, 54, 54, 255), stop:1 rgba(255, 255, 255, 0));
+	border: transparent;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
