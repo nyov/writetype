@@ -20,7 +20,7 @@ import os
 import traceback
 
 _logs = []
-DEBUGGING_MODE = True
+DEBUGGING_MODE = False
 
 def log(description, logtype="Default"):
     function = inspect.stack()[1][3]

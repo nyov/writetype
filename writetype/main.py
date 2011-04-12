@@ -110,8 +110,11 @@ class MainApplication(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
         QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setFont)
         self.ui.textArea.setStyleSheet("/*background-image: url(:/res/background.png);*/ font: 12pt;")
-        QtGui.QFontDatabase.addApplicationFont(":/res/ArchitectsDaughter.ttf")
-        self.ui.menubar.setStyleSheet("font-family: \"Architects Daughter\"; font-size: 12pt;")
+        if not platformSettings.getSetting("disablefancyinterface", False):
+            QtGui.QFontDatabase.addApplicationFont(":/res/ArchitectsDaughter.ttf")
+            self.ui.menubar.setStyleSheet("font-family: \"Architects Daughter\"; font-size: 12pt;")
+        else:
+            self.setStyleSheet("")
 
         #about boxes
         QtCore.QObject.connect(self.ui.actionAboutQt, QtCore.SIGNAL("triggered()"), lambda : QtGui.QMessageBox.aboutQt(self))
@@ -298,12 +301,13 @@ class MainApplication(QtGui.QMainWindow):
             text = self.ui.textArea.toPlainText()
         self.sayText(text)
 
-    def sayText(self, text):
+    def sayText(self, text, showalert=True):
         #Disable the buttons if there was a failure
         if self.speaker.say(text) == True:
             self.ui.actionSpeak.setDisabled(True)
             self.ui.actionStop.setDisabled(True)
-            QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("The current TTS driver is invalid.  Read-back is unavailable for this session."))
+            if showalert:
+                QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("The current TTS driver is invalid.  Read-back is unavailable for this session."))
 
     def disableSpeakButton(self):
         self.ui.actionSpeak.disable()
@@ -321,16 +325,22 @@ class MainApplication(QtGui.QMainWindow):
             self.wordsN = []
 
             #This is HORRIBLE of me.  Why is all this garbage down here that has nothing to do with autocorrections?
-            
-            #Display spell check suggestions in the misspelling box after a space is pressed
+
             wordraw = word
             word = re.sub('[ \t!"#$%&()*+,./:;<=>?@\[\\]^_`{|}~]', '', word)
             #word.translate(None, ' \t!"#$%&()*+,./:;<=>?@[\\]^_`{|}~')
+
+            #Read it back
+            if platformSettings.getSetting("readastyped", False):
+                if word:
+                    self.sayText(word, showalert=False)
+            
+            #Display spell check suggestions in the misspelling box after a space is pressed
             if not word:
                 if wordraw:
                     self.wl.pattern.clearLastCheckedWord()
             elif self.ui.textArea.dictionary.check(word) == False:
-                logger.log("Checking words was false" + word)
+                logger.log("Checking words was false: " + word)
                 self.wordsN = []
                 words = self.ui.textArea.dictionary.suggest(word)
                 for word in words:
@@ -460,6 +470,7 @@ class MainApplication(QtGui.QMainWindow):
                 ["k", "ch"],
                 ["l", "le"],
                 ["l", "ll"],
+                ["n", "kn"],
                 ["o", "a"],
                 ["o", "ou"],
                 ["s", "c"],

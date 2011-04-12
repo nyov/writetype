@@ -68,6 +68,8 @@ class SettingsDialogBox(QtGui.QDialog):
 
         #Other
         self.ui.grammarCheckbox.setChecked(platformSettings.getSetting("grammarcheck", True))
+        self.ui.disableFancyInterfaceCheckbox.setChecked(platformSettings.getSetting("disablefancyinterface", False))
+        self.ui.readAsTypedCheckbox.setChecked(platformSettings.getSetting("readastyped", False))
         
         i = 0
         for line in platformSettings.getSetting("customAutocorrections", "").split("\n"):
@@ -114,6 +116,8 @@ class SettingsDialogBox(QtGui.QDialog):
         platformSettings.setSetting("readingspeed", self.ui.speedSlider.value())
         platformSettings.setSetting("ttsengine", self.ui.ttsEngineBox.currentText())
         platformSettings.setSetting("grammarcheck", self.ui.grammarCheckbox.isChecked())
+        platformSettings.setSetting("disablefancyinterface", self.ui.disableFancyInterfaceCheckbox.isChecked())
+        platformSettings.setSetting("readastyped", self.ui.readAsTypedCheckbox.isChecked())
 
         if self.ui.useDefaultFont.isChecked():
             platformSettings.setSetting("defaultfont", "")

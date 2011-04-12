@@ -98,7 +98,6 @@ class WordsList:
 
     def searchMultiple(self, firstLetters, customWords=NORMAL_WORDS, sort=NOSORT):
         """Search for all the words in the firstLetters tuple"""
-        print firstLetters
         if customWords == self.CUSTOM_WORDS:
             wordsList = self.wordsCustom
         else:
