@@ -54,4 +54,6 @@ def formatLog(printlogtype=None):
     if wordslist != None:
         formattedlog += "\n\n===WORDS DUMP===\n"
         formattedlog += wordslist.dump()
+        formattedlog += "\n\n===WORD PATTERN DUMP===\n"
+        formattedlog += wordslist.pattern.dump()
     return formattedlog

@@ -211,6 +211,23 @@ class WordPattern:
     def clearLastCheckedWord(self):
         self.lastcheckedword = None
 
+    def dump(self):
+        dump = ""
+        for word in self.words:
+            dump += word.dumpToCsvLine()
+        return dump
+
+    def loadDump(self, csv):
+        lines = csv.split("\n")
+        for line in lines:
+            vals = line.split(',')
+            vals.reverse()
+            first = vals.pop()
+            while vals:
+                second = vals.pop()
+                w = int(vals.pop())
+                for i in range(0,w-1):
+                    self.insertLink(first, second)
         
 class LinkNode:
     #TODO - Clean this class up also
@@ -221,13 +238,13 @@ class LinkNode:
         self.word = word
         self.links = []
 
-    def addLink(self, node):
+    def addLink(self, node, weight=1):
         result = [(n,w) for n,w in self.links if n.word == node.word]
         if not result:
-            self.links.append((node, 1))
+            self.links.append((node, weight))
         else:
             index = self.links.index(result[0])
-            self.links[index] = (node, result[0][1]+1)
+            self.links[index] = (node, result[0][1]+weight)
 
     def getLinks(self, preappend="", i=0):
         finallist = []
@@ -235,3 +252,11 @@ class LinkNode:
         for link in [(n,w) for (n,w) in self.links if w-i>self.WORDS_THRESHOLD]:
             finallist.extend(link[0].getLinks(preappend+link[0].word+" ", i+1))
         return finallist
+
+    def dumpToCsvLine(self):
+        """Converts the object into a CSV line, in the format of:
+        word, link1, link1-weight, link2, link2-weight, etc."""
+        links = []
+        for link in self.links:
+            links += [',', link[0].word, ',', str(link[1])]
+        return ''.join([self.word] + links + ["\n"])
