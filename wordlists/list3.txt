@@ -795,7 +795,7 @@ attach
 attached
 attaching
 attachment
-attach?s
+attachés
 attack
 attacked
 attacking
@@ -1409,7 +1409,7 @@ caddy
 caddying
 caddying
 
-caf?
+café
 caffeine
 cage
 cake
@@ -1850,7 +1850,7 @@ clears
 clever
 cleverer
 cleverest
-clich?
+cliché
 click
 client
 clients

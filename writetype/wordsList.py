@@ -68,7 +68,7 @@ class WordsList:
         words = fileHandle.read().split("\n")
         finalwords = []
         for word in words:
-            finalwords.append((word, 0))
+            finalwords.append((unicode(word), 0))
         return finalwords
 
     def addCustomWord(self, word, weight=1):
@@ -119,13 +119,11 @@ class WordsList:
         for word in self.words:
             if word[1] > 0:
                 dump += ''.join([word[0], ',', str(word[1]), "\n"])
-        print dump
         return dump
 
     def loadDump(self, dump):
         """Take a csv dump file and merge it into the current words list"""
         dumplist = dump.split("\n")
-        print dumplist
         for word in dumplist:
             if word:
                 splitword = word.split(',')
@@ -212,7 +210,7 @@ class WordPattern:
         self.lastcheckedword = None
 
     def dump(self):
-        dump = ""
+        dump = u""
         for word in self.words:
             dump += word.dumpToCsvLine()
         return dump
@@ -259,4 +257,4 @@ class LinkNode:
         links = []
         for link in self.links:
             links += [',', link[0].word, ',', str(link[1])]
-        return ''.join([self.word] + links + ["\n"])
+        return u''.join([self.word] + links + ["\n"])

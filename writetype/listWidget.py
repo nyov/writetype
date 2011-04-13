@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# Copyright 2010 Max Shinn
+# Copyright 2010,2011 Max Shinn
 
 # This file is part of WriteType.
 
@@ -111,7 +111,7 @@ class ListWidget(QtGui.QWidget):
             self.emit(SIGNAL("speakWord"), self.words[hoverindex].word)
         else:
             self.activate(hoverindex)
-        logger.log("Mouse pressed for " + self.words[hoverindex].word)
+        logger.log("Mouse pressed for ", self.words[hoverindex].word)
         QtGui.QWidget.mouseReleaseEvent(self, e)
 
     def _countLines(self):
@@ -126,7 +126,7 @@ class ListWidget(QtGui.QWidget):
         else:
             self.index += 1
         self.activate(self.index)
-        logger.log("Tab event to index " + str(self.index))
+        logger.log("Tab event to index ", str(self.index))
 
     def backtabEvent(self):
         if self.index == None or self.index == 0:
@@ -134,7 +134,7 @@ class ListWidget(QtGui.QWidget):
         else:
             self.index -= 1
         self.activate(self.index)
-        logger.log("Tab event to index " + str(index))
+        logger.log("Tab event to index ", str(index))
 
     def clearSelection(self):
         """Resets the selected word index"""

@@ -17,23 +17,30 @@
 
 import inspect
 import os
-import traceback
+import traceback, sys
 
 _logs = []
-DEBUGGING_MODE = True
+_tracebacks = []
+_wordslist = None
+DEBUGGING_MODE = False
 
-wordslist = None
 
 def init(wl = None):
-    global wordslist
-    wordslist = wl
+    global _wordslist
+    _wordslist = wl
 
 def log(*args, **kargs):
     """Log whatever we find in the arguments (for performance) to the log file"""
+    global _tracebacks
     if "logtype" in kargs:
         logtype = kargs['logtype']
     else:
         logtype = "Default"
+    if "tb" in kargs:
+        if kargs["tb"] == True:
+            _tracebacks.append(traceback.format_exc())
+            if DEBUGGING_MODE == True:
+                print traceback.format_exc()
     description = ''.join(args)
     function = inspect.stack()[1][3]
     line = str(inspect.stack()[1][2])
@@ -45,15 +52,20 @@ def log(*args, **kargs):
 
 def formatLog(printlogtype=None):
     """Format the log to be saved or printed"""
-    formattedlog = ""
+    formattedlog = u""
     formattedlog += "===DEBUGGING LOG===\n"
     for logtype, function, line, filename, description in _logs:
         if logtype == logtype or printlogtype == None:
             formattedlog += ''.join([logtype, ": from ", function, " line ", line, " in ", filename, " - ", description, "\n"])
-    global wordslist
-    if wordslist != None:
+    global _wordslist
+    if _wordslist != None:
         formattedlog += "\n\n===WORDS DUMP===\n"
-        formattedlog += wordslist.dump()
+        formattedlog += _wordslist.dump()
         formattedlog += "\n\n===WORD PATTERN DUMP===\n"
-        formattedlog += wordslist.pattern.dump()
+        formattedlog += _wordslist.pattern.dump()
+    if _tracebacks:
+        formattedlog += "\n\n===TRACEBACKS===\n"
+        for tb in _tracebacks:
+            formattedlog += tb
+            
     return formattedlog

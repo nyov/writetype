@@ -81,7 +81,7 @@ class Speaker:
         self.driver = driver
         #Defaults per platform
         if not self.driver:
-            logger.log("Driver error!  Driver not found!  Selecting default.", "Info")
+            logger.log("Driver error!  Driver not found!  Selecting default.", logtype="Info")
             if system() == "Linux":
                 self.driver = "festival"
             else:
@@ -98,8 +98,8 @@ class Speaker:
                 from espeakInterface import EspeakInterface
                 self.ttsdriver = EspeakInterface(platformSettings.getPlatformSetting("pathToEspeak"))
         except ImportError:
-            from .ttsInterface import TtsInterface
+            from ttsInterface import TtsInterface
             self.ttsdriver = TtsInterface()
             self.driver = "null"
-            logger.log("Invalid TTS Driver... Running without TTS support", "Error")
+            logger.log("Invalid TTS Driver... Running without TTS support", logtype="Error", tb=True)
             

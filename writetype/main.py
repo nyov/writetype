@@ -38,6 +38,7 @@ import getopt
 import sys
 import revno
 import logger
+import codecs
 
 #Command line arguments
 parsedoptions, options = getopt.gnu_getopt(sys.argv[1:], "l:t:c?", ["lang=", "tts-engine=", "help"])
@@ -130,6 +131,7 @@ class MainApplication(QtGui.QMainWindow):
             self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
         except enchant.tokenize.Error:
             self.tokenizer = get_tokenizer("en_US")
+            logger.log("Language error, falling back to US English", logtype="Error")
         self.wlIndex = None
         self.wordsN = []
         self.lastCursorPos = 0
@@ -197,12 +199,12 @@ class MainApplication(QtGui.QMainWindow):
         if platformSettings.getSetting("autosavepath", ""):
             response = QtGui.QMessageBox.question(self, self.tr("Crash recovery"), self.tr("WriteType found unsaved work from a crash.  Would you like to recover it?"), QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
             if response == QtGui.QMessageBox.Yes:
-                text = open(platformSettings.getSetting("autosavepath", "")).read()
+                text = codecs.open(platformSettings.getSetting("autosavepath", ""), encoding='utf-8').read()
                 self.ui.textArea.setText(text)
                 self.filetitle = self.tr("Recovered file")
                 self.updateTitle()
                 #Add the words in the document to the custom words list
-                for token in self.tokenizer(str(self.ui.textArea.toPlainText())):
+                for token in self.tokenizer(unicode(self.ui.textArea.toPlainText())):
                     self.wl.addCustomWord(token[0].lower())
         #Load the file if one was specified
         global options
@@ -226,7 +228,7 @@ class MainApplication(QtGui.QMainWindow):
         """Open a file and display it"""
         if isfile(filename):
             self.filename = filename
-            text = open(self.filename).read()
+            text = codecs.open(self.filename, encoding='utf-8').read()
             self.ui.textArea.setText(text)
             self.filetitle = str(self.filename).split(sep).pop()
             self.updateTitle(False)
@@ -244,7 +246,7 @@ class MainApplication(QtGui.QMainWindow):
         """Save the current document to a prespecified file"""
         if isfile(self.filename):
             self.writeFile()
-            self.filetitle = str(self.filename).split(sep).pop()
+            self.filetitle = unicode(self.filename).split(sep).pop()
             self.updateTitle(False)
             return True
         else:
@@ -259,24 +261,25 @@ class MainApplication(QtGui.QMainWindow):
         
         self.writeFile()
 
-        self.filetitle = str(self.filename).split(sep).pop()
+        self.filetitle = unicode(self.filename).split(sep).pop()
         self.updateTitle(False)
         return True
 
     def writeFile(self):
         """Used by save functions to write the file to the disk"""
-        extension = str(self.filename).split('.').pop()
+        extension = unicode(self.filename).split('.').pop()
         try:
-            file = open(self.filename, 'w+')
+            file = codecs.open(self.filename, 'w+', encoding='utf-8')
             if extension == "html" or extension == "wtd":
                 content = self.ui.textArea.toHtml()
                 #Sort of hacky way to fix the black spots where there used to be highlighted sections
                 content = content.replace("background-color:#000000", "")
-                file.write(content)
+                file.write(unicode(content))
             else:
-                file.write(self.ui.textArea.toPlainText())
+                file.write(unicode(self.ui.textArea.toPlainText()))
             file.close()
         except:
+            logger.log("Error saving work", logtype="Error", tb=True)
             QMessageBox.warning(self, self.tr("Save error"), self.tr("WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again."))
         
     def autoSave(self):
@@ -287,8 +290,8 @@ class MainApplication(QtGui.QMainWindow):
             from tempfile import mkstemp
             path = mkstemp()[1]
             platformSettings.setSetting("autosavepath", path)
-        handle = open(path, 'w')
-        handle.write(self.ui.textArea.toHtml())
+        handle = codecs.open(path, 'w', encoding='utf-8')
+        handle.write(unicode(self.ui.textArea.toHtml()))
         handle.close()
 
     #TTS
@@ -318,6 +321,9 @@ class MainApplication(QtGui.QMainWindow):
         """Check to see if the last word typed needed to be automatically corrected.
         Unless I structure this better, it also looks to see if the last word was
         misspelled and offers suggestions in the word completion box."""
+        if word[-1:] in [".", "!", "?"]:
+            logger.log("Autosaving")
+            self.autoSave()
         if word[-1:] in ["", "\b", " ", "\t", ".", "?", ":", "!", ",", ";", ")"]:
             if self.wl.correctWord(word[:-1]) != False:
                 self.ui.textArea.replaceSelectedWord(self.wl.correctWord(word[:-1]))
@@ -367,10 +373,7 @@ class MainApplication(QtGui.QMainWindow):
 
             
         self.ui.spellingSuggestionsList.repaint()
-        if word[-1:] in [".", "!", "?"]:
-            logger.log("Autosaving")
-            self.autoSave()
-
+        
     #SPELLING SUGGESTIONS/WORD LISTS
 
     def tabEvent(self):
@@ -593,7 +596,7 @@ class MainApplication(QtGui.QMainWindow):
             else:
                 message = self.tr("Your version of WriteType is up to date.  You are using WriteType version r%1.").arg(revno.aboutrevno)
         except:
-            message = self.tr("""There was an unexpected error in establishing a connection.  Please try again later.""")
+            message = self.tr("There was an unexpected error in establishing a connection.  Please try again later.", tb=True)
         QtGui.QMessageBox.information(self, self.tr("Updates"), message)
         
     def openHelpPage(self):
@@ -604,13 +607,19 @@ class MainApplication(QtGui.QMainWindow):
         filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Log file (*.log)")
         if not filename:
             return
-#        try:
-        file = open(filename, 'w+')
-        file.write(logger.formatLog())
-        file.close()
-#        except:
-#            QMessageBox.warning(self, self.tr("Save error"), self.tr("WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again."))
-        
+        try:
+            file = codecs.open(filename, 'w+', encoding='utf-8')
+            file.write(logger.formatLog())
+            file.close()
+        except:
+            logger.log("Ironically, the log couldn't be saved.", logtype="Error", tb=True)
+            messagebox = QMessageBox(self)
+            messagebox.setDetailedText(logger.formatLog())
+            messagebox.setIcon(QMessageBox.Critical)
+            messagebox.setWindowTitle(self.tr("Save error"))
+            messagebox.setText(self.tr("WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again."))
+            messagebox.open()
+
 
     def openPrintDialog(self):
         """Print a document"""
@@ -741,7 +750,7 @@ class StatisticsWindow(QtGui.QDialog):
 
 #translation
 trans = QTranslator()
-logger.log("Language is ", platformSettings.getPlatformSetting("language"), "Info")
+logger.log("Language is ", platformSettings.getPlatformSetting("language"), logtype="Info")
 trans.load("qt_" + platformSettings.getPlatformSetting("language"), path.join(platformSettings.getPlatformSetting("basePath"), "translations"))
 application.installTranslator(trans)
 app = MainApplication()
