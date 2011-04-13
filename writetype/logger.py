@@ -20,9 +20,21 @@ import os
 import traceback
 
 _logs = []
-DEBUGGING_MODE = False
+DEBUGGING_MODE = True
 
-def log(description, logtype="Default"):
+wordslist = None
+
+def init(wl = None):
+    global wordslist
+    wordslist = wl
+
+def log(*args, **kargs):
+    """Log whatever we find in the arguments (for performance) to the log file"""
+    if "logtype" in kargs:
+        logtype = kargs['logtype']
+    else:
+        logtype = "Default"
+    description = ''.join(args)
     function = inspect.stack()[1][3]
     line = str(inspect.stack()[1][2])
     filename = inspect.stack()[1][1].split(os.sep).pop()
@@ -32,9 +44,14 @@ def log(description, logtype="Default"):
         print logtype + ": from " + function + " line " + line + " in " + filename + " - " + description
 
 def formatLog(printlogtype=None):
+    """Format the log to be saved or printed"""
     formattedlog = ""
     formattedlog += "===DEBUGGING LOG===\n"
     for logtype, function, line, filename, description in _logs:
         if logtype == logtype or printlogtype == None:
-            formattedlog += logtype + ": from " + function + " line " + line + " in " + filename + " - " + description + "\n"
+            formattedlog += ''.join([logtype, ": from ", function, " line ", line, " in ", filename, " - ", description, "\n"])
+    global wordslist
+    if wordslist != None:
+        formattedlog += "\n\n===WORDS DUMP===\n"
+        formattedlog += wordslist.dump()
     return formattedlog

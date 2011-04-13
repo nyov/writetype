@@ -66,7 +66,7 @@ class Speaker:
             self.ttsdriver.setReadingSpeed(platformSettings.getSetting("readingspeed", 0))
             self.ttsdriver.speak(text)
         else:
-            logger.log("No driver selected", "Info")
+            logger.log("No driver selected", logtype="Info")
             return True 
            
     def stop(self):

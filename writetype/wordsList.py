@@ -33,6 +33,7 @@ class WordsList:
     
 
     def __init__(self):
+        self.words = []
         self.refreshWords()
         self.refreshWordsCustom()
         self.refreshReplacementTable()
@@ -42,6 +43,7 @@ class WordsList:
 
     def refreshWords(self):
         """Reload the list of words from which suggestions are found"""
+        dump = self.dump()
         dom = minidom.parse(path.join(platformSettings.getPlatformSetting('basePath'), 'wordlists', 'wordlists.xml'))
         self.words = []
         #It will be empty if it wasn't found, just like we want
@@ -49,6 +51,7 @@ class WordsList:
             if node.getAttribute("lang") == platformSettings.getPlatformSetting("language") and node.getAttribute("id") == platformSettings.getSetting("wordlist", "4"):
                 self.words = self.loadWords(path.join(platformSettings.getPlatformSetting('basePath'), 'wordlists', node.getAttribute('file')))
                 break
+        self.loadDump(dump)
 
     def refreshWordsCustom(self):
         """Reload the words specified in the settings box, and give them a default weight of 5"""
@@ -68,15 +71,15 @@ class WordsList:
             finalwords.append((word, 0))
         return finalwords
 
-    def addCustomWord(self, word):
-        """Add a new word to the list of words, or increment the weight by 1"""
+    def addCustomWord(self, word, weight=1):
+        """Add a new word to the list of words, or increment the weight by a specified amount"""
         word = unicode(word).lower()
-        logger.log("Adding " + word + " to list of words")
+        logger.log("Adding ", word, " to list of words", logtype="Info")
         match = [(w,s) for w,s in self.words if w == word]
         if match:
             w,s = match[0]
             pos = self.words.index((w,s))
-            self.words[pos] = (w,s+1)
+            self.words[pos] = (w,s+weight)
         else:
             self.words.append((word, 1))
             self.words.sort(lambda x,y : cmp(x[0], y[0]))
@@ -108,6 +111,25 @@ class WordsList:
             return results
         results.sort(lambda x,y : cmp(x[0], y[0]))
         return results
+
+
+    def dump(self):
+        """Dump all of the words with some weight into a csv"""
+        dump = ""
+        for word in self.words:
+            if word[1] > 0:
+                dump += ''.join([word[0], ',', str(word[1]), "\n"])
+        print dump
+        return dump
+
+    def loadDump(self, dump):
+        """Take a csv dump file and merge it into the current words list"""
+        dumplist = dump.split("\n")
+        print dumplist
+        for word in dumplist:
+            if word:
+                splitword = word.split(',')
+                self.addCustomWord(splitword[0], int(splitword[1]))
 
 
     #AUTOCORRECTION
@@ -167,7 +189,7 @@ class WordPattern:
         else:
             firstNode = firstNode[0]
         firstNode.addLink(secondNode)
-        logger.log("Added link from " + first + " to " + second)
+        logger.log("Added link from ", first, " to ", second)
 
 
     def getLinks(self, word):

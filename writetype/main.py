@@ -125,6 +125,7 @@ class MainApplication(QtGui.QMainWindow):
 
         #Word list for word completion
         self.wl = WordsList()
+        logger.init(self.wl)
         try:
             self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
         except enchant.tokenize.Error:
@@ -191,7 +192,6 @@ class MainApplication(QtGui.QMainWindow):
         self.ui.editToolBar.addWidget(self.ui.sizeLabel)
         self.ui.editToolBar.addWidget(self.ui.spinBoxFontSize)
         self.ui.editToolBar.addWidget(self.ui.fontComboBox)
-
 
         #Check to see if there is unsaved work
         if platformSettings.getSetting("autosavepath", ""):
@@ -321,6 +321,7 @@ class MainApplication(QtGui.QMainWindow):
         if word[-1:] in ["", "\b", " ", "\t", ".", "?", ":", "!", ",", ";", ")"]:
             if self.wl.correctWord(word[:-1]) != False:
                 self.ui.textArea.replaceSelectedWord(self.wl.correctWord(word[:-1]))
+                word = self.wl.correctWord(word[:-1])
             self.ui.spellingSuggestionsList.clear()
             self.wordsN = []
 
@@ -330,7 +331,7 @@ class MainApplication(QtGui.QMainWindow):
             word = re.sub('[ \t!"#$%&()*+,./:;<=>?@\[\\]^_`{|}~]', '', word)
             #word.translate(None, ' \t!"#$%&()*+,./:;<=>?@[\\]^_`{|}~')
 
-            #Read it back
+            #Read back the word just typed
             if platformSettings.getSetting("readastyped", False):
                 if word:
                     self.sayText(word, showalert=False)
@@ -340,7 +341,7 @@ class MainApplication(QtGui.QMainWindow):
                 if wordraw:
                     self.wl.pattern.clearLastCheckedWord()
             elif self.ui.textArea.dictionary.check(word) == False:
-                logger.log("Checking words was false: " + word)
+                logger.log("Checking words was false: ", word)
                 self.wordsN = []
                 words = self.ui.textArea.dictionary.suggest(word)
                 for word in words:
@@ -603,12 +604,12 @@ class MainApplication(QtGui.QMainWindow):
         filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Log file (*.log)")
         if not filename:
             return
-        try:
-            file = open(filename, 'w+')
-            file.write(logger.formatLog())
-            file.close()
-        except:
-            QMessageBox.warning(self, self.tr("Save error"), self.tr("WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again."))
+#        try:
+        file = open(filename, 'w+')
+        file.write(logger.formatLog())
+        file.close()
+#        except:
+#            QMessageBox.warning(self, self.tr("Save error"), self.tr("WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again."))
         
 
     def openPrintDialog(self):
@@ -740,7 +741,7 @@ class StatisticsWindow(QtGui.QDialog):
 
 #translation
 trans = QTranslator()
-logger.log("Language is " + platformSettings.getPlatformSetting("language"), "Info")
+logger.log("Language is ", platformSettings.getPlatformSetting("language"), "Info")
 trans.load("qt_" + platformSettings.getPlatformSetting("language"), path.join(platformSettings.getPlatformSetting("basePath"), "translations"))
 application.installTranslator(trans)
 app = MainApplication()

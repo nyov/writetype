@@ -45,32 +45,32 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="144"/>
+        <location filename="main.py" line="147"/>
         <source>Untitled Document</source>
         <translation type="unfinished">Naamloos Document</translation>
     </message>
     <message>
-        <location filename="main.py" line="219"/>
+        <location filename="main.py" line="222"/>
         <source>Open file</source>
         <translation type="unfinished">Bestand openen</translation>
     </message>
     <message>
-        <location filename="main.py" line="592"/>
+        <location filename="main.py" line="603"/>
         <source>Save file</source>
         <translation type="unfinished">Bestand opslaan</translation>
     </message>
     <message>
-        <location filename="main.py" line="306"/>
+        <location filename="main.py" line="310"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Dienst niet beschikbaar</translation>
     </message>
     <message>
-        <location filename="main.py" line="306"/>
+        <location filename="main.py" line="310"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
         <translation type="unfinished">De huidige TTS driver is ongeldig.  Voorlezen is niet mogelijk voor deze sessie.</translation>
     </message>
     <message>
-        <location filename="main.py" line="572"/>
+        <location filename="main.py" line="583"/>
         <source>About this program</source>
         <translation type="unfinished">Over dit programma</translation>
     </message>
@@ -80,57 +80,57 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
         <translation type="obsolete">&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Deze software is toegankelijk onder de GNU General Public License v3 of later. Voor meer informatie over Uw rechten, zie: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="609"/>
+        <location filename="main.py" line="620"/>
         <source>Print</source>
         <translation type="unfinished">Afdrukken</translation>
     </message>
     <message>
-        <location filename="main.py" line="694"/>
+        <location filename="main.py" line="705"/>
         <source>Quit?</source>
         <translation type="unfinished">Sluiten?</translation>
     </message>
     <message>
-        <location filename="main.py" line="694"/>
+        <location filename="main.py" line="705"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation type="unfinished">Er zijn niet opgeslagen veranderingen.  Wilt U die  opslaan?</translation>
     </message>
     <message>
-        <location filename="main.py" line="682"/>
+        <location filename="main.py" line="693"/>
         <source>WriteType - </source>
         <translation type="unfinished">WriteType -(sp)</translation>
     </message>
     <message>
-        <location filename="main.py" line="195"/>
+        <location filename="main.py" line="198"/>
         <source>Crash recovery</source>
         <translation type="unfinished">Crash herstel</translation>
     </message>
     <message>
-        <location filename="main.py" line="195"/>
+        <location filename="main.py" line="198"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
         <translation type="unfinished">WriteType heeft niet opgeslagen verloren gegevens gevonden.(sp)(sp)Wilt U die opslaan?</translation>
     </message>
     <message>
-        <location filename="main.py" line="199"/>
+        <location filename="main.py" line="202"/>
         <source>Recovered file</source>
         <translation type="unfinished">Hersteld bestand</translation>
     </message>
     <message>
-        <location filename="main.py" line="535"/>
+        <location filename="main.py" line="546"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
         <translation type="unfinished">&lt;i&gt;Geen suggesties gevonden.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="544"/>
+        <location filename="main.py" line="555"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation type="unfinished">&lt;i&gt;Dictie controle compleet.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="600"/>
+        <location filename="main.py" line="611"/>
         <source>Save error</source>
         <translation type="unfinished">Fout opslaan</translation>
     </message>
     <message>
-        <location filename="main.py" line="277"/>
+        <location filename="main.py" line="280"/>
         <source>WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
         <translation type="unfinished">WriteType kan het werk niet opslaan.  Controleer de bestands-extensie, dat het bestand bewerkbaar is, en probeer het dan nog eens.</translation>
     </message>
@@ -140,32 +140,32 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
         <translation type="obsolete">&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="572"/>
+        <location filename="main.py" line="583"/>
         <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Gorka Azkarate&lt;/td&gt;&lt;td&gt;Basque Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="580"/>
+        <location filename="main.py" line="591"/>
         <source>&lt;html&gt;A new version of WriteType is available!  You are using WriteType version r%2.  Find more information about WriteType version r%3 at: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="582"/>
+        <location filename="main.py" line="593"/>
         <source>Your version of WriteType is up to date.  You are using WriteType version r%1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="584"/>
+        <location filename="main.py" line="595"/>
         <source>There was an unexpected error in establishing a connection.  Please try again later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="585"/>
+        <location filename="main.py" line="596"/>
         <source>Updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="600"/>
+        <location filename="main.py" line="611"/>
         <source>WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -535,22 +535,22 @@ p, li { white-space: pre-wrap; }(new line)
 <context>
     <name>settingsDialog</name>
     <message>
-        <location filename="settingsDialog.py" line="216"/>
+        <location filename="settingsDialog.py" line="219"/>
         <source>Settings</source>
         <translation type="unfinished">Instellingen</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="217"/>
+        <location filename="settingsDialog.py" line="220"/>
         <source>Please enter any custom words you would like to appear in the spell check, one per line.</source>
         <translation type="unfinished">Voeg Uw eigen woorden toe in de spelchecker, één per rgel.</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="218"/>
+        <location filename="settingsDialog.py" line="221"/>
         <source>Custom Words</source>
         <translation type="unfinished">Eigen Woorden</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="219"/>
+        <location filename="settingsDialog.py" line="222"/>
         <source>Please select the size of the word completion database:</source>
         <translation type="unfinished">Selecteer de grootte van de woord aanvulling database:</translation>
     </message>
@@ -580,47 +580,47 @@ p, li { white-space: pre-wrap; }(new line)
         <translation type="obsolete">Giga Enorm</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="220"/>
+        <location filename="settingsDialog.py" line="223"/>
         <source>Word lists</source>
         <translation type="unfinished">Woorden Lijst</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="221"/>
+        <location filename="settingsDialog.py" line="224"/>
         <source>View settings for the custom word completion</source>
         <translation type="unfinished">Toon instellingen voor eigen woord aanvullingen</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="222"/>
+        <location filename="settingsDialog.py" line="225"/>
         <source>Minimum letters:</source>
         <translation type="unfinished">Minimum letters:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="224"/>
+        <location filename="settingsDialog.py" line="227"/>
         <source>Try to guess misspellings</source>
         <translation type="unfinished">Spelfouten raden</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="225"/>
+        <location filename="settingsDialog.py" line="228"/>
         <source>Misspelling Settings</source>
         <translation type="unfinished">Instellingen Spelfouten</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="226"/>
+        <location filename="settingsDialog.py" line="229"/>
         <source>How many entries need to be displayed, at the minimum, before WriteType will attempt to guess the spelling?</source>
         <translation type="unfinished">Hoeveel invoeringen moeten minimaal getoond, voor Write Type gaat raden?</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="227"/>
+        <location filename="settingsDialog.py" line="230"/>
         <source>Misspelling Threshold:</source>
         <translation type="unfinished">Spelfout Drempel:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="228"/>
+        <location filename="settingsDialog.py" line="231"/>
         <source>Advanced Substitutions?</source>
         <translation type="unfinished">Geavanceerde Vervangingen?</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="229"/>
+        <location filename="settingsDialog.py" line="232"/>
         <source>Word Completion</source>
         <translation type="unfinished">Woord Aanvulling</translation>
     </message>
@@ -630,12 +630,12 @@ p, li { white-space: pre-wrap; }(new line)
         <translation type="obsolete">Gebruik auto-aanvulling</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="231"/>
+        <location filename="settingsDialog.py" line="234"/>
         <source>Auto-correction settings</source>
         <translation type="unfinished">Instellingen Automatische-spelcontrôle</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="232"/>
+        <location filename="settingsDialog.py" line="235"/>
         <source>Contractions</source>
         <translation type="unfinished">Afkortingen</translation>
     </message>
@@ -650,78 +650,83 @@ p, li { white-space: pre-wrap; }(new line)
         <translation type="obsolete">Verzend gebruiks statistieken om het programma te helpen verbeteren</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="234"/>
+        <location filename="settingsDialog.py" line="237"/>
         <source>Default Font:</source>
         <translation type="unfinished">Standaard Lettertype:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="235"/>
+        <location filename="settingsDialog.py" line="238"/>
         <source>Options:</source>
         <translation type="unfinished">Opties:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="239"/>
+        <location filename="settingsDialog.py" line="242"/>
         <source>System Default</source>
         <translation type="unfinished">Systeem Standaard</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="236"/>
+        <location filename="settingsDialog.py" line="239"/>
         <source>Reading speed:</source>
         <translation type="unfinished">Voorlees Tempo:</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="237"/>
+        <location filename="settingsDialog.py" line="240"/>
         <source>%</source>
         <translation type="unfinished">%</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="238"/>
+        <location filename="settingsDialog.py" line="241"/>
         <source>TTS Engine</source>
         <translation type="unfinished">TTS Engine</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="242"/>
+        <location filename="settingsDialog.py" line="246"/>
         <source>Other</source>
         <translation type="unfinished">Ander</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="243"/>
+        <location filename="settingsDialog.py" line="247"/>
         <source>Okay</source>
         <translation type="unfinished">Okee</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="244"/>
+        <location filename="settingsDialog.py" line="248"/>
         <source>Apply</source>
         <translation type="unfinished">Uitvoeren</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="245"/>
+        <location filename="settingsDialog.py" line="249"/>
         <source>Cancel</source>
         <translation type="unfinished">Annuleren</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="240"/>
+        <location filename="settingsDialog.py" line="243"/>
         <source>Check document for grammar mistakes</source>
         <translation type="unfinished">Controleer document op grammatica fouten</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="230"/>
+        <location filename="settingsDialog.py" line="233"/>
         <source>Use auto-correction</source>
         <translation type="unfinished">Gebruik auto-correctie</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="233"/>
+        <location filename="settingsDialog.py" line="236"/>
         <source>Auto-corrections</source>
         <translation type="unfinished">Auto-correcties</translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="223"/>
+        <location filename="settingsDialog.py" line="226"/>
         <source>Offer phrase completions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="settingsDialog.py" line="241"/>
-        <source>Use Boring Interface</source>
+        <location filename="settingsDialog.py" line="244"/>
+        <source>Use Boring Interface (requires restart)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="settingsDialog.py" line="245"/>
+        <source>Read words back as they are typed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
