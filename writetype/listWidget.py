@@ -121,6 +121,7 @@ class ListWidget(QtGui.QWidget):
         return lines
 
     def tabEvent(self):
+        """Handles tabs"""
         if self.index == None or self.index == self._countLines() - 1:
             self.index = 0
         else:
@@ -129,6 +130,7 @@ class ListWidget(QtGui.QWidget):
         logger.log("Tab event to index ", str(self.index))
 
     def backtabEvent(self):
+        """Handles backtabs"""
         if self.index == None or self.index == 0:
             self.index = self._countLines() - 1
         else:

@@ -305,10 +305,11 @@ class MainApplication(QtGui.QMainWindow):
         self.sayText(text)
 
     def sayText(self, text, showalert=True):
-        #Disable the buttons if there was a failure
+        """Speak the specified text out loud, and disable read-back buttons on failure"""
         if self.speaker.say(text) == True:
             self.ui.actionSpeak.setDisabled(True)
             self.ui.actionStop.setDisabled(True)
+            #On failure, should we show an alert?
             if showalert:
                 QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("The current TTS driver is invalid.  Read-back is unavailable for this session."))
 
@@ -604,6 +605,7 @@ class MainApplication(QtGui.QMainWindow):
         QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype/documentation"))
         
     def saveLog(self):
+        """Save the log to a file, or display it if there is an error."""
         filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Log file (*.log)")
         if not filename:
             return
