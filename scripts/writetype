@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/python /usr/share/writetype/writetype/main.py
+/usr/bin/python /usr/share/writetype/writetype/main.py $@

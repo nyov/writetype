@@ -29,7 +29,7 @@ if system() == "Windows":
 #Setup!
 setup(
     name = 'WriteType',
-    version = '1.0.98',
+    version = '1.2.130',
     description = 'A program to help young students type more easily.',
     long_description = 'WriteType is a simple word processor designed to help young students type more easily and accurately.  It offers spelling suggestions as students type, making the process easier and less frustrating.  It also provides the ability to read back text through either an eSpeak or a Festival backend.  In addition, there are special tools for teachers, and the entire application is easily translatable.',
     author = 'Max Shinn',

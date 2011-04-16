@@ -1,2 +1,2 @@
-application/x-writetype; writetype '%s'; edit=writetype '%s'; test=test "$DISPLAY" != ""; priority=2
+application/x-writetype; writetype '%s'; edit=writetype '%s'; nametemplate=%s.wtd; test=test "$DISPLAY" != ""
 

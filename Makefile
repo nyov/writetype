@@ -1,5 +1,6 @@
 DATADIR = $(DESTDIR)/usr/share/writetype
 BINDIR = $(DESTDIR)/usr/bin
+ICONDIR = $(DESTDIR)/usr/share/applications
 
 translation:
 	pylupdate4 writetype/*.py -ts translations/writetype.ts translations/qt_nl_NL.ts translations/qt_es_AR.ts translations/qt_eu_ES.ts
@@ -33,9 +34,15 @@ clean:
 install:
 	mkdir -p $(DATADIR)
 	mkdir -p $(BINDIR)
-	cp -r * $(DATADIR)/
+	cp -r writetype $(DATADIR)/
+	cp -r wordlists $(DATADIR)/
+	cp -r res $(DATADIR)/
+	cp -r translations $(DATADIR)/
+	cp platformSettings.ini $(DATADIR)/
 	cp scripts/writetype $(BINDIR)/writetype
+	cp writetype.desktop $(ICONDIR)/writetype.desktop
 
 uninstall:
 	rm -rf $(DATADIR)
 	rm -rf $(BINDIR)/writetype
+	rm -rf $(ICONDIR)/writetype.desktop

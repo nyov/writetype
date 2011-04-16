@@ -1,0 +1,15 @@
+WRITETYPE
+Software to help young students write
+
+Building Debian Packages
+========================
+
+1. Checkout a clean copy from bzr
+(http://bzr.bernsteinforpresident.com/writetype) and remove the .bzr
+directory
+
+2. Add a new entry to the changelog in the debian directory
+
+3. Enter the directory and run "debuild -us -uc"
+
+4. Tah-dah!  You're done!
