@@ -22,6 +22,7 @@ from tempfile import mkstemp
 from os import unlink
 from PyQt4.QtGui import QMessageBox
 import codecs
+from PyQt4.QtCore import QCoreApplication
 
 class EspeakInterface(TtsInterface):
     def __init__(self, executableName):
@@ -46,7 +47,7 @@ class EspeakInterface(TtsInterface):
         try:
             self.proc = subprocess.Popen(call)
         except OSError:
-            QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box."))
+            QMessageBox.warning(None, QCoreApplication.translate("EspeakInferface", "Feature unavailable"), QCoreApplication.translate("EspeakInterface", "eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box."))
         
     def stop(self):
         if self.proc:

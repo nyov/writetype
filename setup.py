@@ -22,9 +22,11 @@ if system() == "Windows":
     options_value["py2exe"] = {
                     "includes":["sip"], 
                     "bundle_files":1,
+                    "optimize":2,
                     "typelibs" : [('{C866CA3A-32F7-11D2-9602-00C04F8EE628}', 0, 5, 0)]
     }
-    windows_value += ['scripts/writetype']
+    windows_value += [{"script": 'run.py',
+                       "icon_resources": [(1, 'res/writetype.ico')]}]
 
 #Setup!
 setup(

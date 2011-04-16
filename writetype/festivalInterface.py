@@ -23,6 +23,7 @@ from os import unlink
 from platform import system
 from PyQt4.QtGui import QMessageBox
 import codecs
+from PyQt4.QtCore import QCoreApplication
 
 class FestivalInterface(TtsInterface):
     def __init__(self, executableName, libPath=None):
@@ -56,7 +57,7 @@ class FestivalInterface(TtsInterface):
         try:
             self.proc = subprocess.Popen(call)
         except OSError:
-            QMessageBox.warning(None, self.tr("Feature unavailable"), self.tr("Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box."))
+            QMessageBox.warning(None, QCoreApplication.translate("FestivalInterface", "Feature unavailable"), QCoreApplication.translate("FestivalInterface", "Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box."))
         
 #       unlink(tmpfile[1])
 

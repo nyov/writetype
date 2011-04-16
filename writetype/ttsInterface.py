@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright 2010 Max Shinn
+# Copyright 2010, 2011 Max Shinn
 
 # This file is part of WriteType.
 
@@ -17,12 +17,11 @@
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
 class TtsInterface:
-	def __init__(self):
+    def __init__(self):
             pass
 
-	def speak(self, text):
+    def speak(self, text):
             pass
 
-	def stop(self):
+    def stop(self):
             pass
-
