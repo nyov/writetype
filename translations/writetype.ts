@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1">
 <context>
-    <name>EspeakInterface</name>
+    <name>EspeakInferface</name>
     <message>
-        <location filename="espeakInterface.py" line="49"/>
+        <location filename="espeakInterface.py" line="56"/>
         <source>Feature unavailable</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>EspeakInterface</name>
     <message>
-        <location filename="espeakInterface.py" line="49"/>
+        <location filename="espeakInterface.py" line="56"/>
         <source>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16,12 +19,12 @@
 <context>
     <name>FestivalInterface</name>
     <message>
-        <location filename="festivalInterface.py" line="59"/>
+        <location filename="festivalInterface.py" line="60"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Espoken</translation>
     </message>
     <message>
-        <location filename="festivalInterface.py" line="59"/>
+        <location filename="festivalInterface.py" line="60"/>
         <source>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</source>
         <translation type="unfinished"></translation>
     </message>

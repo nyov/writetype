@@ -31,6 +31,7 @@ from PyQt4.QtGui import QFileDialog
 from PyQt4.QtGui import QTextBlockUserData
 import sip
 import sys
+import logger
 
 class spellCheckEdit(QTextEdit):
     #To support the highlighting feature
@@ -51,7 +52,11 @@ class spellCheckEdit(QTextEdit):
         try:
             self.dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
         except enchant.Error:
-            self.dictionary = enchant.DictWithPWL("en_US", None)
+            try:
+                self.dictionary = enchant.Dict()
+            except enchant.Error:
+                logger.log("Error initializing dictionary... this won't turn out well.", logtype="Error", tb=True)
+                self.dictionary = enchant.Dict(False)
         self.highlighter = Highlighter(self.document())
         self.highlighter.setDict(self.dictionary)
         self.menu = QMenu(self)

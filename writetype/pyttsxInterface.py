@@ -20,7 +20,7 @@ from ttsInterface import TtsInterface
 import pyttsx
 from threading import Thread, Event
 from PyQt4.QtGui import QMessageBox
-
+from pyttsx import drivers
 
 class PyttsxInterface(TtsInterface):
     def __init__(self, rate=0):

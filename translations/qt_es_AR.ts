@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1">
 <context>
+    <name>EspeakInferface</name>
+    <message>
+        <location filename="espeakInterface.py" line="56"/>
+        <source>Feature unavailable</source>
+        <translation type="unfinished">Característica no disponible</translation>
+    </message>
+</context>
+<context>
     <name>EspeakInterface</name>
     <message>
         <location filename="espeakInterface.py" line="49"/>
         <source>Feature unavailable</source>
-        <translation>Característica no disponible</translation>
+        <translation type="obsolete">Característica no disponible</translation>
     </message>
     <message>
-        <location filename="espeakInterface.py" line="49"/>
+        <location filename="espeakInterface.py" line="56"/>
         <source>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</source>
         <translation>eSpeak no está instalado en el equipo.  Para usar esta característica, por favor instale eSpeak o seleccione un nuevo controlador de texto a voz en la ventana de Opciones.</translation>
     </message>
@@ -16,12 +24,12 @@
 <context>
     <name>FestivalInterface</name>
     <message>
-        <location filename="festivalInterface.py" line="59"/>
+        <location filename="festivalInterface.py" line="60"/>
         <source>Feature unavailable</source>
         <translation>Característica no disponible</translation>
     </message>
     <message>
-        <location filename="festivalInterface.py" line="59"/>
+        <location filename="festivalInterface.py" line="60"/>
         <source>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</source>
         <translation>Festival no está instalado en el equipo.  Para usar esta característica, por favor instale Festival o seleccione un nuevo controlador de texto a voz en la ventana de Opciones.</translation>
     </message>

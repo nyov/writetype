@@ -20,12 +20,12 @@ if system() == "Windows":
     import enchant
     data_files_value += enchant.utils.win32_data_files()
     options_value["py2exe"] = {
-                    "includes":["sip"], 
+                    "includes":["sip", "pyttsx.drivers.sapi5"], 
                     "bundle_files":1,
                     "optimize":2,
                     "typelibs" : [('{C866CA3A-32F7-11D2-9602-00C04F8EE628}', 0, 5, 0)]
     }
-    windows_value += [{"script": 'run.py',
+    windows_value += [{"script": 'writetype/main.py',
                        "icon_resources": [(1, 'res/writetype.ico')]}]
 
 #Setup!
@@ -54,5 +54,5 @@ setup(
         'Programming Language :: Python :: 2',
         'Topic :: Education',
         ],
-    requires = ['PyQt4', 'enchant']
+    requires = ['PyQt4', 'enchant', 'pyttsx']
     )

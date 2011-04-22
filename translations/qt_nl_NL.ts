@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1">
 <context>
+    <name>EspeakInferface</name>
+    <message>
+        <location filename="espeakInterface.py" line="56"/>
+        <source>Feature unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EspeakInterface</name>
     <message>
         <location filename="" line="1836017711"/>
@@ -13,10 +21,10 @@ eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer e
     <message>
         <location filename="espeakInterface.py" line="49"/>
         <source>Feature unavailable</source>
-        <translation type="unfinished">Dienst niet beschikbaar</translation>
+        <translation type="obsolete">Dienst niet beschikbaar</translation>
     </message>
     <message>
-        <location filename="espeakInterface.py" line="49"/>
+        <location filename="espeakInterface.py" line="56"/>
         <source>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</source>
         <translation type="unfinished">eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
     </message>
@@ -32,12 +40,12 @@ eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer e
 Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
     </message>
     <message>
-        <location filename="festivalInterface.py" line="59"/>
+        <location filename="festivalInterface.py" line="60"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Dienst niet beschikbaar</translation>
     </message>
     <message>
-        <location filename="festivalInterface.py" line="59"/>
+        <location filename="festivalInterface.py" line="60"/>
         <source>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</source>
         <translation type="unfinished">Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
     </message>

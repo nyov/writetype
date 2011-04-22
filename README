@@ -13,3 +13,34 @@ directory
 3. Enter the directory and run "debuild -us -uc"
 
 4. Tah-dah!  You're done!
+
+Building a Windows Installer
+============================
+
+1. Checkout a clean copy from bzr
+(http://bzr.bernsteinforpresident.com/writetype)
+
+2. Edit writetype/main.py to import all local references from the
+"writetype" module.  For instance, instead of "import
+PlatformSettings", do "from writetype import PlatformSettings"
+
+3. Run "python setup.py py2exe"
+
+4. Go to the "dist" directory and rename "main.exe" to "writetype.exe"
+
+5. Create a new, fresh distribution directory.  Copy the "dist" folder
+into it as "bin", and also copy the translation, scripts, res, and
+wordlists folders here.
+
+6. Copy platformSettings.windows.ini into the directory as
+platformSettings.ini
+
+7. Get a copy of the VC90.CRT files (there should be four) and put
+them into a Microsoft.VC90.CRT directory in the bin directory
+
+8. Find a copy of espeak for Windows, and put it into an "espeak"
+directory so that espeak.exe can be found at "espeak/espeak.exe"
+
+9. This directory will function as a standalone version.  The
+installer can be created by copying install.nis and
+FileAssociation.nsh into this directory and compiling them.
