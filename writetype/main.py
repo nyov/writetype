@@ -675,11 +675,13 @@ class MainApplication(QtGui.QMainWindow):
         """Display only the text entry box and the word completion list in fullscreen
         mode.  Buggy on older operating systems, but who uses those anyway? :)"""
         self.distractionFree_box.ui.verticalLayout_2.addWidget(self.ui.centralwidget)
+        #Gnome compatible version of showFullScreen()
+        self.distractionFree_box.setWindowFlags(self.distractionFree_box.windowFlags() | Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
+        self.distractionFree_box.setFixedSize(application.desktop().size())
+        self.distractionFree_box.setGeometry(0, 0, self.distractionFree_box.width(), self.distractionFree_box.height())
+
         self.distractionFree_box.show()
         self.ui.distractionButton.show()
-        self.distractionFree_box.showFullScreen()
-#       self.ui.splitter.setParent(None)
-#       self.ui.splitter.showFullScreen()
 
     def closeDistractionFreeMode(self):
         """Display the normal application again"""
