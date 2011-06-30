@@ -20,6 +20,7 @@
 
 import sys
 from PyQt4 import QtCore, QtGui, Qt
+from PyQt4.QtCore import QCoreApplication
 import resources_rc
 import enchant
 from enchant.tokenize import get_tokenizer
@@ -221,7 +222,7 @@ class MainApplication(QtGui.QMainWindow):
     
     def openDialog(self):
         """Display a dialog to open a file"""
-        filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)")
+        filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)"))
         self.openFile(filename)
 
     def openFile(self, filename):
@@ -254,7 +255,7 @@ class MainApplication(QtGui.QMainWindow):
 
     def saveFileAs(self):
         """Prompt the user on where to save the current document"""
-        filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)")
+        filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)"))
         if not filename:
             return
         self.filename = filename
@@ -666,7 +667,7 @@ class MainApplication(QtGui.QMainWindow):
             readability = 4.71*(float(chars)/words) + .5*(float(words)/sentences) - 21.43
             self.statisticsDialog.ui.readabilityLabel.setText(str(round(readability, 1)))
         except ZeroDivisionError:
-            self.statisticsDialog.ui.readabilityLabel.setText("Invalid, no sentences found.")
+            self.statisticsDialog.ui.readabilityLabel.setText(QCoreApplication.translate("WriteTypeMain", "Invalid, no sentences found."))
 
         self.statisticsDialog.show()
 

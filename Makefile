@@ -3,13 +3,10 @@ BINDIR = $(DESTDIR)/usr/bin
 ICONDIR = $(DESTDIR)/usr/share/applications
 
 translation:
-	pylupdate4 writetype/*.py -ts translations/writetype.ts translations/qt_nl_NL.ts translations/qt_es_AR.ts translations/qt_eu_ES.ts
+	pylupdate4 writetype/*.py -ts translations/writetype.ts translations/qt_nl_NL.ts translations/qt_es.ts translations/qt_eu_ES.ts
 	lrelease-qt4 translations/qt_nl_NL.ts -qm translations/qt_nl_NL.qm
-	lrelease-qt4 translations/qt_es_AR.ts -qm translations/qt_es_AR.qm
+	lrelease-qt4 translations/qt_es.ts -qm translations/qt_es.qm
 	lrelease-qt4 translations/qt_eu_ES.ts -qm translations/qt_eu_ES.qm
-	#Other spanish locales too?
-	cp translations/qt_es_AR.qm translations/qt_es_ES.qm
-	cp translations/qt_es_AR.qm translations/qt_es_MX.qm
 
 revno:
 	printf "aboutrevno = `bzr revno`" > writetype/revno.py

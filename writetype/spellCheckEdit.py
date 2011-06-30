@@ -23,6 +23,7 @@ from PyQt4.Qt import QAction
 from PyQt4.Qt import QTextCharFormat
 from PyQt4.QtCore import SIGNAL
 from PyQt4 import QtCore
+from PyQt4.QtCore import QCoreApplication
 import re
 import enchant
 import enchant.checker
@@ -119,7 +120,7 @@ class spellCheckEdit(QTextEdit):
             #If that word isn't in the dictionary
             if not self.dictionary.check(text):
                 menu.addSeparator()
-                spellingMenuItem = menu.addAction("Spelling:")
+                spellingMenuItem = menu.addAction(QCoreApplication.translate("SpellCheckEdit","Spelling:"))
                 spellingMenuItem.setEnabled(False)
                 for word in self.dictionary.suggest(text):
                     action = QAction(word, menu)
@@ -128,7 +129,7 @@ class spellCheckEdit(QTextEdit):
                 if len(self.dictionary.suggest(text)) == 0:
                     noneMenuItem = menu.addAction("None")
                     noneMenuItem.setEnabled(False)
-                addToDictionary = QAction("Add to dictionary", menu)
+                addToDictionary = QAction(QCoreApplication.translate("SpellCheckEdit","Add to dictionary"), menu)
                 self.connect(addToDictionary, SIGNAL("triggered()"), lambda targ=text: self.addToDictionary(targ))
                 menu.addAction(addToDictionary)
         
@@ -382,43 +383,43 @@ class Highlighter(QSyntaxHighlighter):
 
     corrections = [
         {
-            "description": "Sentence starts without a capital letter",
+            "description": QCoreApplication.translate("SpellCheckEdit","Sentence starts without a capital letter"),
             "re": re.compile(u'([.?!])([\s]*)([a-z])'),
             "fix": lambda m: m.group(1) + m.group(2) + m.group(3).capitalize() },
         {
-            "description": "Sentence starts without a capital letter",
+            "description": QCoreApplication.translate("SpellCheckEdit","Sentence starts without a capital letter"),
             "re": re.compile(u'^[a-z]'),
             "fix": lambda m: m.group(0).capitalize() },
         {
-            "description": "No space after punctuation",
+            "description": QCoreApplication.translate("SpellCheckEdit","No space after punctuation"),
             "re": re.compile(u'([.?!,])([A-Za-z])'),
             "fix": u'\\1 \\2' },
         {
-            "description": "Too many spaces", 
+            "description": QCoreApplication.translate("SpellCheckEdit","Too many spaces"), 
             "re": re.compile(u'([^[.?!"\'])[ ]{2,}([A-Za-z])'), #This accounts for the fact that many people (myself included) use two spaces after punctuation.  However, there is a bug here that makes two spaces after a quote acceptable.  Unless it gets reported, I don't care.
             "fix": u'\\1 \\2' },
         {
-            "description": "Spaces before punctuation",
+            "description": QCoreApplication.translate("SpellCheckEdit","Spaces before punctuation"),
             "re": re.compile(u'[ ]+([.?!])'),
             "fix": u'\\1' },
         {
-            "description": "Use 'an' instead of 'a'",
+            "description": QCoreApplication.translate("SpellCheckEdit","Use 'an' instead of 'a'"),
             "re": re.compile(u' ([Aa]) ([AEIOUaeiou])'),
             "fix": ' \\1n \\2' },
         {
-            "description": "Use 'an' instead of 'a'",
+            "description": QCoreApplication.translate("SpellCheckEdit","Use 'an' instead of 'a'"),
             "re": re.compile(u'^([Aa]) ([AEIOUaeiou])'),
             "fix": '\\1n \\2' },
         {
-            "description": "Use 'a' instead of 'an'",
+            "description": QCoreApplication.translate("SpellCheckEdit","Use 'a' instead of 'an'"),
             "re": re.compile(u' ([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
             "fix": ' \\1 \\2' },
         {
-            "description": "Use 'a' instead of 'an'",
+            "description": QCoreApplication.translate("SpellCheckEdit","Use 'a' instead of 'an'"),
             "re": re.compile(u'^([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
             "fix": '\\1 \\2' },
         {
-            "description": "Word repeated",
+            "description": QCoreApplication.translate("SpellCheckEdit","Word repeated"),
             "re": re.compile(u' ([a-z]+) \\1([ .!?,:;])', re.IGNORECASE),
             "fix": ' \\1\\2' }]
     
@@ -466,7 +467,7 @@ class Highlighter(QSyntaxHighlighter):
             for word_object in re.finditer(rule["re"], text):
                 if int(word_object.start()) <= pos and pos <= int(word_object.end()):
                     results.append({
-                        "description": rule["description"],
+                        "description": QCoreApplication.translate("SpellCheckEdit",rule["description"]),
                         "left": word_object.start(),
                         "right": word_object.end(),
                         "text": word_object.group(0),

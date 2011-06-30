@@ -21,6 +21,7 @@ from os import path
 from xml.dom import minidom
 import codecs
 import logger
+from PyQt4.QtCore import QCoreApplication
 
 class WordsList:
     """Interface to the dirty work of searching for word

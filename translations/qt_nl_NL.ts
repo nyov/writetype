@@ -53,32 +53,32 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="150"/>
+        <location filename="main.py" line="151"/>
         <source>Untitled Document</source>
         <translation type="unfinished">Naamloos Document</translation>
     </message>
     <message>
-        <location filename="main.py" line="224"/>
+        <location filename="main.py" line="225"/>
         <source>Open file</source>
         <translation type="unfinished">Bestand openen</translation>
     </message>
     <message>
-        <location filename="main.py" line="609"/>
+        <location filename="main.py" line="610"/>
         <source>Save file</source>
         <translation type="unfinished">Bestand opslaan</translation>
     </message>
     <message>
-        <location filename="main.py" line="314"/>
+        <location filename="main.py" line="315"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Dienst niet beschikbaar</translation>
     </message>
     <message>
-        <location filename="main.py" line="314"/>
+        <location filename="main.py" line="315"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
         <translation type="unfinished">De huidige TTS driver is ongeldig.  Voorlezen is niet mogelijk voor deze sessie.</translation>
     </message>
     <message>
-        <location filename="main.py" line="588"/>
+        <location filename="main.py" line="589"/>
         <source>About this program</source>
         <translation type="unfinished">Over dit programma</translation>
     </message>
@@ -88,57 +88,57 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
         <translation type="obsolete">&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Deze software is toegankelijk onder de GNU General Public License v3 of later. Voor meer informatie over Uw rechten, zie: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="632"/>
+        <location filename="main.py" line="633"/>
         <source>Print</source>
         <translation type="unfinished">Afdrukken</translation>
     </message>
     <message>
-        <location filename="main.py" line="717"/>
+        <location filename="main.py" line="718"/>
         <source>Quit?</source>
         <translation type="unfinished">Sluiten?</translation>
     </message>
     <message>
-        <location filename="main.py" line="717"/>
+        <location filename="main.py" line="718"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation type="unfinished">Er zijn niet opgeslagen veranderingen.  Wilt U die  opslaan?</translation>
     </message>
     <message>
-        <location filename="main.py" line="705"/>
+        <location filename="main.py" line="706"/>
         <source>WriteType - </source>
         <translation type="unfinished">WriteType -(sp)</translation>
     </message>
     <message>
-        <location filename="main.py" line="200"/>
+        <location filename="main.py" line="201"/>
         <source>Crash recovery</source>
         <translation type="unfinished">Crash herstel</translation>
     </message>
     <message>
-        <location filename="main.py" line="200"/>
+        <location filename="main.py" line="201"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
         <translation type="unfinished">WriteType heeft niet opgeslagen verloren gegevens gevonden.(sp)(sp)Wilt U die opslaan?</translation>
     </message>
     <message>
-        <location filename="main.py" line="204"/>
+        <location filename="main.py" line="205"/>
         <source>Recovered file</source>
         <translation type="unfinished">Hersteld bestand</translation>
     </message>
     <message>
-        <location filename="main.py" line="551"/>
+        <location filename="main.py" line="552"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
         <translation type="unfinished">&lt;i&gt;Geen suggesties gevonden.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="560"/>
+        <location filename="main.py" line="561"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation type="unfinished">&lt;i&gt;Dictie controle compleet.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="621"/>
+        <location filename="main.py" line="622"/>
         <source>Save error</source>
         <translation type="unfinished">Fout opslaan</translation>
     </message>
     <message>
-        <location filename="main.py" line="283"/>
+        <location filename="main.py" line="284"/>
         <source>WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
         <translation type="unfinished">WriteType kan het werk niet opslaan.  Controleer de bestands-extensie, dat het bestand bewerkbaar is, en probeer het dan nog eens.</translation>
     </message>
@@ -148,32 +148,32 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
         <translation type="obsolete">&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="588"/>
+        <location filename="main.py" line="589"/>
         <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Gorka Azkarate&lt;/td&gt;&lt;td&gt;Basque Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="596"/>
+        <location filename="main.py" line="597"/>
         <source>&lt;html&gt;A new version of WriteType is available!  You are using WriteType version r%2.  Find more information about WriteType version r%3 at: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="598"/>
+        <location filename="main.py" line="599"/>
         <source>Your version of WriteType is up to date.  You are using WriteType version r%1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="600"/>
+        <location filename="main.py" line="601"/>
         <source>There was an unexpected error in establishing a connection.  Please try again later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="601"/>
+        <location filename="main.py" line="602"/>
         <source>Updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="622"/>
+        <location filename="main.py" line="623"/>
         <source>WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -530,6 +530,72 @@ p, li { white-space: pre-wrap; }(new line)
         <location filename="settings.py" line="67"/>
         <source>With:</source>
         <translation type="unfinished">Met:</translation>
+    </message>
+</context>
+<context>
+    <name>SpellCheckEdit</name>
+    <message>
+        <location filename="spellCheckEdit.py" line="123"/>
+        <source>Spelling:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="spellCheckEdit.py" line="132"/>
+        <source>Add to dictionary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="spellCheckEdit.py" line="390"/>
+        <source>Sentence starts without a capital letter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="spellCheckEdit.py" line="394"/>
+        <source>No space after punctuation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="spellCheckEdit.py" line="398"/>
+        <source>Too many spaces</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="spellCheckEdit.py" line="402"/>
+        <source>Spaces before punctuation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="spellCheckEdit.py" line="410"/>
+        <source>Use &apos;an&apos; instead of &apos;a&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="spellCheckEdit.py" line="418"/>
+        <source>Use &apos;a&apos; instead of &apos;an&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="spellCheckEdit.py" line="422"/>
+        <source>Word repeated</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WriteTypeMain</name>
+    <message>
+        <location filename="main.py" line="670"/>
+        <source>Invalid, no sentences found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="main.py" line="225"/>
+        <source>All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="main.py" line="258"/>
+        <source>WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
