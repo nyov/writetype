@@ -75,6 +75,7 @@ class Speaker:
             except ImportError:
                 logger.log("Error importing ", self.driver, "!  Trying the next.", logtype="Error", tb=True)
                 self.driver = availableEngines[0] #Not checking for errors, since the null driver is last in the list
+                del availableEngines[0]
                 
     def addSableMarkup(self, text):
         #Do some things to make text sound more realistic
