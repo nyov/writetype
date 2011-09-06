@@ -5,7 +5,7 @@
     <message>
         <location filename="espeakInterface.py" line="56"/>
         <source>Feature unavailable</source>
-        <translation type="unfinished">EspeakInterface#1</translation>
+        <translation type="unfinished">Aukera hori ez dago eskuragarri</translation>
     </message>
 </context>
 <context>
@@ -26,7 +26,7 @@
     <message>
         <location filename="festivalInterface.py" line="60"/>
         <source>Feature unavailable</source>
-        <translation>EspeakInterface#1</translation>
+        <translation type="unfinished">Aukera hori ez dago eskuragarri</translation>
     </message>
     <message>
         <location filename="festivalInterface.py" line="60"/>
@@ -37,87 +37,87 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="706"/>
+        <location filename="main.py" line="709"/>
         <source>WriteType - </source>
         <translation>WriteType - </translation>
     </message>
     <message>
-        <location filename="main.py" line="151"/>
+        <location filename="main.py" line="152"/>
         <source>Untitled Document</source>
         <translation>Izenbururik gabeko dokumentua</translation>
     </message>
     <message>
-        <location filename="main.py" line="201"/>
+        <location filename="main.py" line="202"/>
         <source>Crash recovery</source>
         <translation>Ezbeharrak konpontzeko tresna</translation>
     </message>
     <message>
-        <location filename="main.py" line="201"/>
+        <location filename="main.py" line="202"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
         <translation>WriteTypek topatu du gorde gabeko lan bat, ezbehar batek sortutakoa  Berreskuratu nahi duzu?</translation>
     </message>
     <message>
-        <location filename="main.py" line="205"/>
+        <location filename="main.py" line="206"/>
         <source>Recovered file</source>
         <translation>Berreskuratutako fitxategia</translation>
     </message>
     <message>
-        <location filename="main.py" line="225"/>
+        <location filename="main.py" line="226"/>
         <source>Open file</source>
         <translation>Zabaldu fitxategia</translation>
     </message>
     <message>
-        <location filename="main.py" line="610"/>
+        <location filename="main.py" line="611"/>
         <source>Save file</source>
         <translation>Gorde fitxategia</translation>
     </message>
     <message>
-        <location filename="main.py" line="315"/>
+        <location filename="main.py" line="316"/>
         <source>Feature unavailable</source>
         <translation>EspeakInterface#1</translation>
     </message>
     <message>
-        <location filename="main.py" line="315"/>
+        <location filename="main.py" line="316"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
         <translation>Oraingo TTS kontrolatzailea ez da baliagarria.  Atzera-irakurri aukera ezin da saio honetan erabili.</translation>
     </message>
     <message>
-        <location filename="main.py" line="589"/>
+        <location filename="main.py" line="590"/>
         <source>About this program</source>
         <translation>Programa honi buruz</translation>
     </message>
     <message>
-        <location filename="main.py" line="633"/>
+        <location filename="main.py" line="634"/>
         <source>Print</source>
         <translation>Inprimatu</translation>
     </message>
     <message>
-        <location filename="main.py" line="718"/>
+        <location filename="main.py" line="721"/>
         <source>Quit?</source>
         <translation>Irten?</translation>
     </message>
     <message>
-        <location filename="main.py" line="718"/>
+        <location filename="main.py" line="721"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation>Baduzu gorde gabeko lan bat.  Gorde nahi duzu?</translation>
     </message>
     <message>
-        <location filename="main.py" line="552"/>
+        <location filename="main.py" line="553"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
         <translation>&lt;i&gt;Ez dago iradokizunik.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="561"/>
+        <location filename="main.py" line="562"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation>&lt;i&gt;Ortografia zuzenketa osatua.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="622"/>
+        <location filename="main.py" line="623"/>
         <source>Save error</source>
         <translation>Gorde errorea</translation>
     </message>
     <message>
-        <location filename="main.py" line="284"/>
+        <location filename="main.py" line="285"/>
         <source>WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
         <translation>WriteTypek ezin izan du zure lana gorde.  Mesedez, aztertu fitxategiaren luzapena, ziurta zaitez hautatutako fitxategi horretan idaz daitekeela eta saia zaitez berriro.</translation>
     </message>
@@ -127,34 +127,34 @@
         <translation type="obsolete">&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;idatzihona:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Software hau eskura duzu GNU General Public License v3 batekin edo beranduagoko bertsio batekin. Zure eskubideei buruzko informazio gehiagorako, ikus: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Beste laguntzaile batzuk:&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;gorkaazk&lt;/td&gt;&lt;td&gt;Basque Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="589"/>
+        <location filename="main.py" line="590"/>
         <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Gorka Azkarate&lt;/td&gt;&lt;td&gt;Basque Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Gorka Azkarate Zubiaur&lt;/td&gt;&lt;td&gt;Basque Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="597"/>
+        <location filename="main.py" line="598"/>
         <source>&lt;html&gt;A new version of WriteType is available!  You are using WriteType version r%2.  Find more information about WriteType version r%3 at: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;WriteType programaren bertsio berria eskuragarri!  WriteType version r%2 erabiltzen ari zara.  Bila ezazu informazio gehiago WriteType version r%3 horri buruz hementxe: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="599"/>
+        <location filename="main.py" line="600"/>
         <source>Your version of WriteType is up to date.  You are using WriteType version r%1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="main.py" line="601"/>
-        <source>There was an unexpected error in establishing a connection.  Please try again later.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">WriteType bertsio eguneratua daukazu. WriteType r%1 erabiltzen ari zara.</translation>
     </message>
     <message>
         <location filename="main.py" line="602"/>
-        <source>Updates</source>
-        <translation type="unfinished"></translation>
+        <source>There was an unexpected error in establishing a connection.  Please try again later.</source>
+        <translation type="unfinished">Konexioa ezartzerakoan espero ez zitekeen errorea gertatu da. Mesedez, saia zaitez berriro beranduago.</translation>
     </message>
     <message>
-        <location filename="main.py" line="623"/>
+        <location filename="main.py" line="603"/>
+        <source>Updates</source>
+        <translation type="unfinished">Eguneraketak</translation>
+    </message>
+    <message>
+        <location filename="main.py" line="624"/>
         <source>WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">WriteTypek ezin izan du fitxategia gorde.  Mesedez, azter ezazu fitxategiaren luzapena, ziurta zaitez hautatutako fitxategi horretan idaz daitekeela eta saia zaitez berriro.</translation>
     </message>
 </context>
 <context>
@@ -462,12 +462,12 @@
     <message>
         <location filename="mainwindow.py" line="510"/>
         <source>Check for Updates</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Eguneraketak bilatu</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="511"/>
         <source>Save Debug Log</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gorde akatsen erregistroa</translation>
     </message>
 </context>
 <context>
@@ -488,65 +488,65 @@
     <message>
         <location filename="spellCheckEdit.py" line="123"/>
         <source>Spelling:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ortografia:</translation>
     </message>
     <message>
         <location filename="spellCheckEdit.py" line="132"/>
         <source>Add to dictionary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hiztegiratu</translation>
     </message>
     <message>
         <location filename="spellCheckEdit.py" line="390"/>
         <source>Sentence starts without a capital letter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Esaldia letra larriarekin hasten da</translation>
     </message>
     <message>
         <location filename="spellCheckEdit.py" line="394"/>
         <source>No space after punctuation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Espaziorik ez puntuazio markaren ostean</translation>
     </message>
     <message>
         <location filename="spellCheckEdit.py" line="398"/>
         <source>Too many spaces</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Espazio hutsune gehiegi</translation>
     </message>
     <message>
         <location filename="spellCheckEdit.py" line="402"/>
         <source>Spaces before punctuation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Espazioak puntuazio marka aurretik</translation>
     </message>
     <message>
         <location filename="spellCheckEdit.py" line="410"/>
         <source>Use &apos;an&apos; instead of &apos;a&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Use &apos;an&apos; instead of &apos;a&apos;</translation>
     </message>
     <message>
         <location filename="spellCheckEdit.py" line="418"/>
         <source>Use &apos;a&apos; instead of &apos;an&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Use &apos;a&apos; instead of &apos;an&apos;</translation>
     </message>
     <message>
         <location filename="spellCheckEdit.py" line="422"/>
         <source>Word repeated</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hitz errepikapena</translation>
     </message>
 </context>
 <context>
     <name>WriteTypeMain</name>
     <message>
-        <location filename="main.py" line="670"/>
+        <location filename="main.py" line="671"/>
         <source>Invalid, no sentences found.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Baliogabea, ez da esaldirik topatu.</translation>
     </message>
     <message>
-        <location filename="main.py" line="225"/>
+        <location filename="main.py" line="226"/>
         <source>All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bateragarriak diren fitxategi motak: (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Testu formateatua (*.html *.htm);;Edozein (*.*)</translation>
     </message>
     <message>
-        <location filename="main.py" line="258"/>
+        <location filename="main.py" line="259"/>
         <source>WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">WriteType Document (*.wtd);;Formatted Text (*.html);;Testu soila (*.txt)</translation>
     </message>
 </context>
 <context>
@@ -702,17 +702,17 @@
     <message>
         <location filename="settingsDialog.py" line="226"/>
         <source>Offer phrase completions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Eskaini esaldien amaierak</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="244"/>
         <source>Use Boring Interface (requires restart)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erabil ezazu Aspergarri pantaila (berrabiarazi beharko)</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="245"/>
         <source>Read words back as they are typed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Irakur hitzak idatzi bitartean</translation>
     </message>
 </context>
 <context>

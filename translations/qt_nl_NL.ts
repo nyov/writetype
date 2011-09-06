@@ -53,32 +53,32 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="151"/>
+        <location filename="main.py" line="152"/>
         <source>Untitled Document</source>
         <translation type="unfinished">Naamloos Document</translation>
     </message>
     <message>
-        <location filename="main.py" line="225"/>
+        <location filename="main.py" line="226"/>
         <source>Open file</source>
         <translation type="unfinished">Bestand openen</translation>
     </message>
     <message>
-        <location filename="main.py" line="610"/>
+        <location filename="main.py" line="611"/>
         <source>Save file</source>
         <translation type="unfinished">Bestand opslaan</translation>
     </message>
     <message>
-        <location filename="main.py" line="315"/>
+        <location filename="main.py" line="316"/>
         <source>Feature unavailable</source>
         <translation type="unfinished">Dienst niet beschikbaar</translation>
     </message>
     <message>
-        <location filename="main.py" line="315"/>
+        <location filename="main.py" line="316"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
         <translation type="unfinished">De huidige TTS driver is ongeldig.  Voorlezen is niet mogelijk voor deze sessie.</translation>
     </message>
     <message>
-        <location filename="main.py" line="589"/>
+        <location filename="main.py" line="590"/>
         <source>About this program</source>
         <translation type="unfinished">Over dit programma</translation>
     </message>
@@ -88,57 +88,57 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
         <translation type="obsolete">&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Deze software is toegankelijk onder de GNU General Public License v3 of later. Voor meer informatie over Uw rechten, zie: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="633"/>
+        <location filename="main.py" line="634"/>
         <source>Print</source>
         <translation type="unfinished">Afdrukken</translation>
     </message>
     <message>
-        <location filename="main.py" line="718"/>
+        <location filename="main.py" line="721"/>
         <source>Quit?</source>
         <translation type="unfinished">Sluiten?</translation>
     </message>
     <message>
-        <location filename="main.py" line="718"/>
+        <location filename="main.py" line="721"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation type="unfinished">Er zijn niet opgeslagen veranderingen.  Wilt U die  opslaan?</translation>
     </message>
     <message>
-        <location filename="main.py" line="706"/>
+        <location filename="main.py" line="709"/>
         <source>WriteType - </source>
         <translation type="unfinished">WriteType -(sp)</translation>
     </message>
     <message>
-        <location filename="main.py" line="201"/>
+        <location filename="main.py" line="202"/>
         <source>Crash recovery</source>
         <translation type="unfinished">Crash herstel</translation>
     </message>
     <message>
-        <location filename="main.py" line="201"/>
+        <location filename="main.py" line="202"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
         <translation type="unfinished">WriteType heeft niet opgeslagen verloren gegevens gevonden.(sp)(sp)Wilt U die opslaan?</translation>
     </message>
     <message>
-        <location filename="main.py" line="205"/>
+        <location filename="main.py" line="206"/>
         <source>Recovered file</source>
         <translation type="unfinished">Hersteld bestand</translation>
     </message>
     <message>
-        <location filename="main.py" line="552"/>
+        <location filename="main.py" line="553"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
         <translation type="unfinished">&lt;i&gt;Geen suggesties gevonden.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="561"/>
+        <location filename="main.py" line="562"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation type="unfinished">&lt;i&gt;Dictie controle compleet.&lt;/i&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="622"/>
+        <location filename="main.py" line="623"/>
         <source>Save error</source>
         <translation type="unfinished">Fout opslaan</translation>
     </message>
     <message>
-        <location filename="main.py" line="284"/>
+        <location filename="main.py" line="285"/>
         <source>WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
         <translation type="unfinished">WriteType kan het werk niet opslaan.  Controleer de bestands-extensie, dat het bestand bewerkbaar is, en probeer het dan nog eens.</translation>
     </message>
@@ -148,32 +148,32 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
         <translation type="obsolete">&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</translation>
     </message>
     <message>
-        <location filename="main.py" line="589"/>
+        <location filename="main.py" line="590"/>
         <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Gorka Azkarate&lt;/td&gt;&lt;td&gt;Basque Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="597"/>
+        <location filename="main.py" line="598"/>
         <source>&lt;html&gt;A new version of WriteType is available!  You are using WriteType version r%2.  Find more information about WriteType version r%3 at: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="599"/>
+        <location filename="main.py" line="600"/>
         <source>Your version of WriteType is up to date.  You are using WriteType version r%1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="601"/>
+        <location filename="main.py" line="602"/>
         <source>There was an unexpected error in establishing a connection.  Please try again later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="602"/>
+        <location filename="main.py" line="603"/>
         <source>Updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="623"/>
+        <location filename="main.py" line="624"/>
         <source>WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -583,17 +583,17 @@ p, li { white-space: pre-wrap; }(new line)
 <context>
     <name>WriteTypeMain</name>
     <message>
-        <location filename="main.py" line="670"/>
+        <location filename="main.py" line="671"/>
         <source>Invalid, no sentences found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="225"/>
+        <location filename="main.py" line="226"/>
         <source>All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="258"/>
+        <location filename="main.py" line="259"/>
         <source>WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)</source>
         <translation type="unfinished"></translation>
     </message>

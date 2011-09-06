@@ -40,6 +40,7 @@ import sys
 import revno
 import logger
 import codecs
+from PyQt4.QtCore import QLibraryInfo
 
 #Command line arguments
 parsedoptions, options = getopt.gnu_getopt(sys.argv[1:], "l:t:c?", ["lang=", "tts-engine=", "help"])
@@ -755,7 +756,10 @@ class StatisticsWindow(QtGui.QDialog):
 
 #translation
 trans = QTranslator()
+transqt = QTranslator()
 logger.log("Language is ", platformSettings.getPlatformSetting("language"), logtype="Info")
+transqt.load("qt_" + platformSettings.getPlatformSetting("language"), QLibraryInfo.location(QLibraryInfo.TranslationsPath))
+application.installTranslator(transqt)
 trans.load("qt_" + platformSettings.getPlatformSetting("language"), path.join(platformSettings.getPlatformSetting("basePath"), "translations"))
 application.installTranslator(trans)
 app = MainApplication()
