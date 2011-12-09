@@ -256,9 +256,19 @@ class MainApplication(QtGui.QMainWindow):
 
     def saveFileAs(self):
         """Prompt the user on where to save the current document"""
-        filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)"))
+        filename, filter_ = QtGui.QFileDialog.getSaveFileNameAndFilter(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)"))
         if not filename:
             return
+        if '(*.wtd)' in filter_:
+            ext = '.wtd'
+        elif '(*.html)' in filter_:
+            ext = '.html'
+        elif '(*.txt)' in filter_:
+            ext = '.txt'
+        else:
+            ext = ""
+        if ((not str(filename).endswith(ext))):
+            filename = filename + ext
         self.filename = filename
         
         self.writeFile()
@@ -604,7 +614,7 @@ class MainApplication(QtGui.QMainWindow):
         
     def openHelpPage(self):
         """Open the Bernsteinforpresident.com documentation"""
-        QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://Bernsteinforpresident.com/software/writetype/documentation"))
+        QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://writetype.Bernsteinforpresident.com"))
         
     def saveLog(self):
         """Save the log to a file, or display it if there is an error."""

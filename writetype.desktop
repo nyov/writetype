@@ -2,10 +2,11 @@
 Name=Writetype
 GenericName=WriteType
 Comment=A word processor to make typing easier
+Comment[es]=Un procesador de textos que hace más fácil escribir
 Exec=writetype
 Icon=/usr/share/writetype/res/key120x120.png
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Education;
+Categories=Application;Utility;TextEditor;Education;Qt
 MimeType=application/x-writetype;
