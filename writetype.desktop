@@ -3,6 +3,7 @@ Name=Writetype
 GenericName=WriteType
 Comment=A word processor to make typing easier
 Comment[es]=Un procesador de textos que hace más fácil escribir
+Comment[ru]=Текстовый процессор для облегчения печати
 Exec=writetype
 Icon=/usr/share/writetype/res/key120x120.png
 StartupNotify=true
