@@ -463,7 +463,7 @@ class MainApplication(QtGui.QMainWindow):
             self.ui.spellingSuggestionsList.clear()
             return
 
-        words = self.wl.search(text, self.wl.NORMAL_WORDS)
+        words = self.wl.search(text)
         for w,s in words:
             self.ui.spellingSuggestionsList.addNewItem(w, weight=s)
 
@@ -506,10 +506,11 @@ class MainApplication(QtGui.QMainWindow):
             for replacement in replacements:
                 if replacement[0] in text:
                     possibilities.append(text.replace(replacement[0], replacement[1]))
-            words = self.wl.searchMultiple(tuple(possibilities))
+            words = self.wl.search(tuple(possibilities))
             for w,s in words:
                 self.ui.spellingSuggestionsList.addNewItem(w, weight=s)
         self.ui.spellingSuggestionsList.repaint()      
+
     def keyPressEvent(self, e):
         """Overloaded keyPressEvent from QWidget to catch F-keys"""
         #F-keys select words quickly
@@ -706,8 +707,7 @@ class MainApplication(QtGui.QMainWindow):
         self.ui.actionSpeak.setDisabled(False)
         self.ui.actionStop.setDisabled(False)
 
-        self.wl.refreshWordsCustom()
-        self.wl.refreshWords()
+        self.wl.loadWords()
         self.wl.refreshReplacementTable()
         self.speaker.setDriver()
 

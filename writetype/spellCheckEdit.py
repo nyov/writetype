@@ -454,7 +454,7 @@ class Highlighter(QSyntaxHighlighter):
             for word_object in matches:
                 self.setFormat(word_object.start(), (word_object.end() - len(word_object.group(2))) - word_object.start(), self.format_spelling)
 
-        if not platformSettings.getSetting("grammarcheck", True) or not platformSettings.getSetting("language", "").startswith('en'):
+        if not platformSettings.getSetting("grammarcheck", True) or not platformSettings.getPlatformSetting("language").startswith('en'):
             return
 
         #Grammar
@@ -465,7 +465,7 @@ class Highlighter(QSyntaxHighlighter):
     def getDescriptionText(self, pos, text):
         """Given a grammar mistake, figure out what the mistake was"""
         #Quit if not English or grammar check is disabled
-        if not platformSettings.getSetting("grammarcheck", True) or not platformSettings.getSetting("language", "").startswith('en'):
+        if not platformSettings.getSetting("grammarcheck", True) or not platformSettings.getPlatformSetting("language").startswith('en'):
             return
 
         text = unicode(text)

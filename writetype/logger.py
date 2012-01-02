@@ -22,7 +22,7 @@ import traceback, sys
 _logs = []
 _tracebacks = []
 _wordslist = None
-DEBUGGING_MODE = False
+DEBUGGING_MODE = True
 
 
 def init(wl = None):

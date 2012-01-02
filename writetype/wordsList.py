@@ -1,4 +1,4 @@
-# Copyright 2010, 2011 Max Shinn
+# Copyright 2010-2012 Max Shinn
 
 # This file is part of WriteType.
 
@@ -16,7 +16,7 @@
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
 
-import platformSettings
+from platformSettings import getSetting, getPlatformSetting
 from os import path
 from xml.dom import minidom
 import codecs
@@ -34,93 +34,132 @@ class WordsList:
     
 
     def __init__(self):
+        #List of all words
         self.words = []
-        self.refreshWords()
-        self.refreshWordsCustom()
+        #List of words added during runtime
+        self.wordsCustom = []
+        #A dictionary, indexed by word, of each word's weight
+        self.weights = {}
+        #Given the letter of the index, the first word in self.words
+        #that starts with this letter
+        self.wordsIndex = {}
+        self.loadWords()
         self.refreshReplacementTable()
         self.pattern = WordPattern()
 
-    #WORD COMPLETION FUNCTIONS
-
-    def refreshWords(self):
-        """Reload the list of words from which suggestions are found"""
+    def loadWords(self):
+        """Loads the words from the list files, as well as the custom
+        words, into the self.words list.  This is a massive list in
+        the form of (word, weight), where weight is the sorting
+        weight.  A higher weight means it is sorted higher in the
+        list."""
+        #If refreshing after saving the settings dialog, keep the weights through the dump
         dump = self.dump()
-        dom = minidom.parse(path.join(platformSettings.getPlatformSetting('basePath'), 'wordlists', 'wordlists.xml'))
         self.words = []
-        #It will be empty if it wasn't found, just like we want
+        #Find the path to the wordlist file
+        filename = ""
+        dom = minidom.parse(path.join(getPlatformSetting('basePath'), 'wordlists', 'wordlists.xml'))
         for node in dom.getElementsByTagName("wordlist"):
-            if node.getAttribute("lang") == platformSettings.getPlatformSetting("language") and node.getAttribute("id") == platformSettings.getSetting("wordlist", "4"):
-                self.words = self.loadWords(path.join(platformSettings.getPlatformSetting('basePath'), 'wordlists', node.getAttribute('file')))
+            if node.getAttribute("lang") == getPlatformSetting("language") and node.getAttribute("id") == getSetting("wordlist", "3"):
+                filename = node.getAttribute('file')
                 break
+        wordspath = path.join(getPlatformSetting('basePath'), 'wordlists', filename)
+        #Load the wordlist from that file
+        logger.log("Loading words from " + wordspath)
+        fileHandle = codecs.open(wordspath, 'r', encoding='utf-8')
+        wordslist = fileHandle.read().split("\n")
+        for word in wordslist:
+            if word != u"":
+                self.words.append(unicode(word))
+                self.weights[unicode(word)] = 0
+        #Now load the words from the settings dialog
+        settingswords = getSetting("customwords", "").lower().split("\n")
+        for word in settingswords:
+            if word != "" and not word in self.words:
+                self.words.append(word)
+                self.weights[word] = int(getPlatformSetting("defaultWordWeight"))
+        self.words.sort()
+
+        #Build a dictionary of word positions, by first letter, to
+        #make searching faster.  So a=1, b=34 if the first word
+        #starting with a b occurs at position 34 in the list
+        i = 0
+        lastletter = ""
+        while i < len(self.words):
+            print self.words[0:10]
+            lastletter = self.words[i][0]
+            self.wordsIndex[lastletter] = i
+            while lastletter == self.words[i][0]:
+                i += 1
+                if i >= len(self.words)-1:
+                    break
+
         self.loadDump(dump)
 
-    def refreshWordsCustom(self):
-        """Reload the words specified in the settings box, and give them a default weight of 5"""
-        customwords = platformSettings.getSetting("customwords", "").lower().split("\n")
-        wordsfinal = []
-        for word in customwords:
-            if word != u"":
-                wordsfinal.append((word, 5)) 
-        self.words += wordsfinal
-
-    def loadWords(self, filePath):
-        """Used by loading functions to load all of the words from the wordlist into memory"""
-        logger.log("Loading words")
-        fileHandle = codecs.open(filePath, 'r', encoding='utf-8')
-        words = fileHandle.read().split("\n")
-        finalwords = []
-        for word in words:
-            finalwords.append((unicode(word), 0))
-        return finalwords
+    def _nextLetter(self, char):
+        """Return the next letter in the alphabet.  Returns "{" after "z"."""
+        return chr(ord(char.lower())+1)
 
     def addCustomWord(self, word, weight=1):
-        """Add a new word to the list of words, or increment the weight by a specified amount"""
+        """Add a new word to the list of words, or increment the weight by weight"""
         word = unicode(word).lower()
-        logger.log("Adding ", word, " to list of words", logtype="Info")
-        match = [(w,s) for w,s in self.words if w == word]
-        if match:
-            w,s = match[0]
-            pos = self.words.index((w,s))
-            self.words[pos] = (w,s+weight)
+        if word in self.words + self.wordsCustom:
+            self.weights[word] = self.weights[word] + weight
         else:
-            self.words.append((word, 1))
-            self.words.sort(lambda x,y : cmp(x[0], y[0]))
-   
-    def search(self, firstLetters, customWords=NORMAL_WORDS, sort=NOSORT):
-        """Search for a word in the list of words"""
-        if customWords == self.CUSTOM_WORDS:
-            wordsList = self.wordsCustom
-        else:
-            wordsList = self.words
-        results = []
-        #results = filter(lambda x:x[0].startswith(firstLetters.lower()), wordsList)
-        fllower = firstLetters.lower()
-        results = [(w,s) for w,s in wordsList if w.startswith(fllower)]
-        if sort == self.SORT:
-            return results
-        results.sort(lambda x,y : cmp(x[0], y[0]))
-        return results
+            self.wordsCustom.append(word)
+            self.weights[word] = weight
+            self.wordsCustom.sort()
+            
 
-    def searchMultiple(self, firstLetters, customWords=NORMAL_WORDS, sort=NOSORT):
-        """Search for all the words in the firstLetters tuple"""
-        if customWords == self.CUSTOM_WORDS:
-            wordsList = self.wordsCustom
-        else:
-            wordsList = self.words
+    #WORD COMPLETION FUNCTIONS
+
+    def search(self, firstLetters):
+        """Search through self.words for a word that starts with
+        firstLetters.  firstLetters can also be a tuple."""
         results = []
-        results = [(w,s) for w,s in wordsList if w.startswith(firstLetters)]
-        if sort == self.NOSORT:
-            return results
-        results.sort(lambda x,y : cmp(x[0], y[0]))
-        return results
+        if type(firstLetters) in [str, unicode]:
+            firstLetters = firstLetters.lower()
+            #This will speed things up in most cases, but I don't want
+            #to take up the memory to index all the unicode
+            #characters, so when it doesn't work, it will fail
+            #silenty.
+            try:
+                searchlist = self.words[self.wordsIndex[firstLetters[0]]:self.wordsIndex[self._nextLetter(firstLetters[0])]]
+            except (KeyError, IndexError):
+                searchlist = self.words
+        else:
+            #It's a tuple
+            flset = set()
+            for word in firstLetters:
+                flset.add(word[0])
+            #This will also fail for some letters.  Let's not bother
+            #with those, because the performance difference should be
+            #negligible. 
+            try:
+                searchlist = []
+                for fl in flset:
+                    searchlist += self.words[self.wordsIndex[fl]:self.wordsIndex[self._nextLetter(fl)]]
+            except (KeyError, IndexError):
+                searchlist = self.words
+
+        results = filter(lambda x:x.startswith(firstLetters), searchlist)
+        results += filter(lambda x:x.startswith(firstLetters), self.wordsCustom)
+        #results = [w for w in self.words if w.startswith(fllower)]
+        #results = += [w for w in self.wordsCustom if w.startswith(fllower)]
+        tuples = []
+        results.sort()
+        for result in results:
+            tuples.append((result, self.weights[result]))
+        return tuples
+   
 
 
     def dump(self):
         """Dump all of the words with some weight into a csv"""
         dump = ""
-        for word in self.words:
-            if word[1] > 0:
-                dump += ''.join([word[0], ',', str(word[1]), "\n"])
+        for word in self.words + self.wordsCustom:
+            if self.weights[word] > 0:
+                dump += ''.join([word, ',', unicode(self.weights[word]), "\n"])
         return dump
 
     def loadDump(self, dump):
@@ -137,15 +176,15 @@ class WordsList:
     def refreshReplacementTable(self):
         """Reload the list of autoreplacements from the settings box"""
         self.replacementTable = {}
-        if not platformSettings.getSetting('autocorrection'):
+        if not getSetting('autocorrection'):
             return
-        if platformSettings.getSetting('autocorrectioncontractions', True):
-            fileHandle = open(path.join(platformSettings.getPlatformSetting('pathToWordlists'), "replacements.txt"), 'r')
+        if getSetting('autocorrectioncontractions', True):
+            fileHandle = open(path.join(getPlatformSetting('pathToWordlists'), "replacements.txt"), 'r')
             autocorrections = fileHandle.read().split("\n")
             for line in autocorrections:
                 if not line or line == ",": continue
                 self.replacementTable[line.split(",")[0]] = line.split(",")[1]
-        for line in str(platformSettings.getSetting("customAutocorrections", "")).split("\n"):
+        for line in str(getSetting("customAutocorrections", "")).split("\n"):
             if not line or line == ",": continue
             self.replacementTable[line.split(",")[0]] = line.split(",")[1]
 
