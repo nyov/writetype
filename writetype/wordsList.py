@@ -86,7 +86,6 @@ class WordsList:
         i = 0
         lastletter = ""
         while i < len(self.words):
-            print self.words[0:10]
             lastletter = self.words[i][0]
             self.wordsIndex[lastletter] = i
             while lastletter == self.words[i][0]:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0">
+<!DOCTYPE TS><TS version="1.1">
 <context>
     <name>EspeakInferface</name>
     <message>
@@ -32,7 +32,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="main.py" line="709"/>
+        <location filename="main.py" line="719"/>
         <source>WriteType - </source>
         <translation type="unfinished"></translation>
     </message>
@@ -62,87 +62,87 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="611"/>
+        <location filename="main.py" line="622"/>
         <source>Save file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="623"/>
+        <location filename="main.py" line="634"/>
         <source>Save error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="285"/>
+        <location filename="main.py" line="295"/>
         <source>WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="316"/>
+        <location filename="main.py" line="326"/>
         <source>Feature unavailable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="316"/>
+        <location filename="main.py" line="326"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="553"/>
+        <location filename="main.py" line="564"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="562"/>
+        <location filename="main.py" line="573"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="590"/>
+        <location filename="main.py" line="601"/>
         <source>About this program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="598"/>
+        <location filename="main.py" line="609"/>
         <source>&lt;html&gt;A new version of WriteType is available!  You are using WriteType version r%2.  Find more information about WriteType version r%3 at: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="600"/>
+        <location filename="main.py" line="611"/>
         <source>Your version of WriteType is up to date.  You are using WriteType version r%1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="602"/>
+        <location filename="main.py" line="613"/>
         <source>There was an unexpected error in establishing a connection.  Please try again later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="603"/>
+        <location filename="main.py" line="614"/>
         <source>Updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="624"/>
+        <location filename="main.py" line="635"/>
         <source>WriteType was unable to save the log file.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="634"/>
+        <location filename="main.py" line="645"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="721"/>
+        <location filename="main.py" line="731"/>
         <source>Quit?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="721"/>
+        <location filename="main.py" line="731"/>
         <source>You have unsaved work.  Do you want to save?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="main.py" line="590"/>
+        <location filename="main.py" line="601"/>
         <source>&lt;h1&gt;WriteType &lt;span style=&quot;font-size: large&quot;&gt;Revision r%1&lt;/span&gt;&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;br /&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;&lt;br /&gt;&lt;h3&gt;Additional Contributions&lt;/h3&gt;&lt;table border=&quot;1&quot; width=&quot;100%&quot;&gt;&lt;tr&gt;&lt;td&gt;Emilio Lopez&lt;/td&gt;&lt;td&gt;Spanish Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Gorka Azkarate&lt;/td&gt;&lt;td&gt;Basque Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Harm Bathoorn&lt;/td&gt;&lt;td&gt;Dutch Translations&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;mailto:sbasalaev@gmail.com&quot;&gt;Sergey Basalaev&lt;/a&gt;&lt;/td&gt;&lt;td&gt;Russian Translations&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -485,46 +485,11 @@
         <source>Add to dictionary</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="spellCheckEdit.py" line="390"/>
-        <source>Sentence starts without a capital letter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="spellCheckEdit.py" line="394"/>
-        <source>No space after punctuation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="spellCheckEdit.py" line="398"/>
-        <source>Too many spaces</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="spellCheckEdit.py" line="402"/>
-        <source>Spaces before punctuation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="spellCheckEdit.py" line="410"/>
-        <source>Use &apos;an&apos; instead of &apos;a&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="spellCheckEdit.py" line="418"/>
-        <source>Use &apos;a&apos; instead of &apos;an&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="spellCheckEdit.py" line="422"/>
-        <source>Word repeated</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>WriteTypeMain</name>
     <message>
-        <location filename="main.py" line="671"/>
+        <location filename="main.py" line="682"/>
         <source>Invalid, no sentences found.</source>
         <translation type="unfinished"></translation>
     </message>

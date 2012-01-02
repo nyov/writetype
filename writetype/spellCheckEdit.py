@@ -383,43 +383,43 @@ class Highlighter(QSyntaxHighlighter):
 
     corrections = [
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","Sentence starts without a capital letter"),
+            "description": "Sentence starts without a capital letter",
             "re": re.compile(u'([.?!])([\s]*)([a-z])'),
             "fix": lambda m: m.group(1) + m.group(2) + m.group(3).capitalize() },
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","Sentence starts without a capital letter"),
+            "description": "Sentence starts without a capital letter",
             "re": re.compile(u'^[a-z]'),
             "fix": lambda m: m.group(0).capitalize() },
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","No space after punctuation"),
+            "description": "No space after punctuation",
             "re": re.compile(u'([.?!,])([A-Za-z])'),
             "fix": u'\\1 \\2' },
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","Too many spaces"), 
+            "description": "Too many spaces", 
             "re": re.compile(u'([^[.?!"\'])[ ]{2,}([A-Za-z])'), #This accounts for the fact that many people (myself included) use two spaces after punctuation.  However, there is a bug here that makes two spaces after a quote acceptable.  Unless it gets reported, I don't care.
             "fix": u'\\1 \\2' },
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","Spaces before punctuation"),
+            "description": "Spaces before punctuation",
             "re": re.compile(u'[ ]+([.?!])'),
             "fix": u'\\1' },
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","Use 'an' instead of 'a'"),
+            "description": "Use 'an' instead of 'a'",
             "re": re.compile(u' ([Aa]) ([AEIOUaeiou])'),
             "fix": ' \\1n \\2' },
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","Use 'an' instead of 'a'"),
+            "description": "Use 'an' instead of 'a'",
             "re": re.compile(u'^([Aa]) ([AEIOUaeiou])'),
             "fix": '\\1n \\2' },
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","Use 'a' instead of 'an'"),
+            "description": "Use 'a' instead of 'an'",
             "re": re.compile(u' ([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
             "fix": ' \\1 \\2' },
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","Use 'a' instead of 'an'"),
+            "description": "Use 'a' instead of 'an'",
             "re": re.compile(u'^([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
             "fix": '\\1 \\2' },
         {
-            "description": QCoreApplication.translate("SpellCheckEdit","Word repeated"),
+            "description": "Word repeated",
             "re": re.compile(u' ([a-z]+) \\1([ .!?,:;])', re.IGNORECASE),
             "fix": ' \\1\\2' }]
     
@@ -474,7 +474,7 @@ class Highlighter(QSyntaxHighlighter):
             for word_object in re.finditer(rule["re"], text):
                 if int(word_object.start()) <= pos and pos <= int(word_object.end()):
                     results.append({
-                        "description": QCoreApplication.translate("SpellCheckEdit",rule["description"]),
+                        "description": rule["description"],
                         "left": word_object.start(),
                         "right": word_object.end(),
                         "text": word_object.group(0),
