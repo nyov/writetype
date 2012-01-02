@@ -448,7 +448,7 @@ class Highlighter(QSyntaxHighlighter):
         text = unicode(text)
 
         #Spellcheck
-        if self.dict != False:
+        if self.dict != False and platformSettings.getSetting("spellingcheck", True) == True:
             words = re.finditer(self.WORDS, text)
             matches = [word_object for word_object in words if not self.dict.check(word_object.group(1))]
             for word_object in matches:

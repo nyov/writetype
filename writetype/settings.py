@@ -40,10 +40,11 @@ class SettingsDialogBox(QtGui.QDialog):
         #Don't forget to sort these by sortweight!
         for node in dom.getElementsByTagName("wordlist"):
             if node.getAttribute("lang") == platformSettings.getPlatformSetting("language"):
+                self.ui.noneAvailableLabel.setVisible(False)
                 button = QtGui.QRadioButton(node.getAttribute("name"), self.ui.tab)
                 self.ui.verticalLayout_4.addWidget(button)
                 self.wordListButtonGroup.addButton(button, int(node.getAttribute("id")))
-        
+
         #Load the radio button settings
         self.wordListButtonGroup.setExclusive(True)
         #Now actually select the correct button
@@ -52,7 +53,7 @@ class SettingsDialogBox(QtGui.QDialog):
         except IndexError:
             #self.wordListButtonGroup.buttons()[0].setChecked(True)
             pass
-        
+
         #Load the word completion settings
         self.ui.guessMisspellingsCheckbox.setChecked(platformSettings.getSetting("guessmisspellings", True))
         self.ui.thresholdSpinbox.setValue(platformSettings.getSetting("threshold", 3))
@@ -68,9 +69,10 @@ class SettingsDialogBox(QtGui.QDialog):
 
         #Other
         self.ui.grammarCheckbox.setChecked(platformSettings.getSetting("grammarcheck", True))
+        self.ui.spellingCheckbox.setChecked(platformSettings.getSetting("spellingcheck", True))
         self.ui.disableFancyInterfaceCheckbox.setChecked(platformSettings.getSetting("disablefancyinterface", False))
         self.ui.readAsTypedCheckbox.setChecked(platformSettings.getSetting("readastyped", False))
-        
+
         i = 0
         for line in platformSettings.getSetting("customAutocorrections", "").split("\n"):
             if not line: break
@@ -116,6 +118,7 @@ class SettingsDialogBox(QtGui.QDialog):
         platformSettings.setSetting("readingspeed", self.ui.speedSlider.value())
         platformSettings.setSetting("ttsengine", self.ui.ttsEngineBox.currentText())
         platformSettings.setSetting("grammarcheck", self.ui.grammarCheckbox.isChecked())
+        platformSettings.setSetting("spellingcheck", self.ui.spellingCheckbox.isChecked())
         platformSettings.setSetting("disablefancyinterface", self.ui.disableFancyInterfaceCheckbox.isChecked())
         platformSettings.setSetting("readastyped", self.ui.readAsTypedCheckbox.isChecked())
 

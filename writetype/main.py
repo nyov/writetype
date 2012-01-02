@@ -359,7 +359,7 @@ class MainApplication(QtGui.QMainWindow):
             if not word:
                 if wordraw:
                     self.wl.pattern.clearLastCheckedWord()
-            elif self.ui.textArea.spellCheckEnabled == True and self.ui.textArea.dictionary.check(word) == False:
+            elif self.ui.textArea.spellCheckEnabled == True and platformSettings.getSetting("spellingcheck", True) and self.ui.textArea.dictionary.check(word) == False:
                 logger.log("Checking words was false: ", word)
                 self.wordsN = []
                 words = self.ui.textArea.dictionary.suggest(word)
@@ -443,7 +443,7 @@ class MainApplication(QtGui.QMainWindow):
 
         #If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
         if text[0:-1] and text[-1:] in (" ", ".", ",", "!", "?", "\t"):
-            if self.ui.textArea.spellCheckEnabled == False or self.ui.textArea.dictionary.check(text[0:-1]):
+            if self.ui.textArea.spellCheckEnabled == False or platformSettings.getSetting("spellingcheck", True) == False or self.ui.textArea.dictionary.check(text[0:-1]):
                 self.wl.addCustomWord(text.lower()[0:-1])
             #return
 
