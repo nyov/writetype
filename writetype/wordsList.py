@@ -66,8 +66,13 @@ class WordsList:
         wordspath = path.join(getPlatformSetting('basePath'), 'wordlists', filename)
         #Load the wordlist from that file
         logger.log("Loading words from " + wordspath)
-        fileHandle = codecs.open(wordspath, 'r', encoding='utf-8')
-        wordslist = fileHandle.read().split("\n")
+        try:
+            fileHandle = codecs.open(wordspath, 'r', encoding='utf-8')
+            wordslist = fileHandle.read().split("\n")
+            fileHandle.close()
+        except IOError:
+            logger.log("Could not load word list.  Language not available.", logtype="Error", tb=True)
+            wordslist = ""
         for word in wordslist:
             if word != u"":
                 self.words.append(unicode(word))
