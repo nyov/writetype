@@ -50,16 +50,16 @@ class spellCheckEdit(QTextEdit):
 
     def __init__(self, *args):
         QTextEdit.__init__(self, *args)
+        self.highlighter = Highlighter(self.document())
         try:
             self.dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
+            self.spellCheckEnabled = True
+            self.highlighter.setDict(self.dictionary)
         except enchant.Error:
-            try:
-                self.dictionary = enchant.Dict()
-            except enchant.Error:
-                logger.log("Error initializing dictionary... this won't turn out well.", logtype="Error", tb=True)
-                self.dictionary = enchant.Dict(False)
-        self.highlighter = Highlighter(self.document())
-        self.highlighter.setDict(self.dictionary)
+            logger.log("Error initializing dictionary... this may not turn out well.", logtype="Error", tb=True)
+            self.dictionary = enchant.Dict(False)
+            self.highlighter.setDict(False)
+            self.spellCheckEnabled = False
         self.menu = QMenu(self)
         self.lastWord = ""
         
@@ -118,7 +118,7 @@ class spellCheckEdit(QTextEdit):
         if cursor.hasSelection():
             text = unicode(cursor.selectedText())
             #If that word isn't in the dictionary
-            if not self.dictionary.check(text):
+            if self.spellCheckEnabled and not self.dictionary.check(text):
                 menu.addSeparator()
                 spellingMenuItem = menu.addAction(QCoreApplication.translate("SpellCheckEdit","Spelling:"))
                 spellingMenuItem.setEnabled(False)
@@ -437,6 +437,7 @@ class Highlighter(QSyntaxHighlighter):
         self.dict = None
     
     def setDict(self, dict):
+        """Pass a dict, or False if spell check is to be disabled"""
         self.dict = dict
     
     def highlightBlock(self, text):
@@ -447,20 +448,26 @@ class Highlighter(QSyntaxHighlighter):
         text = unicode(text)
 
         #Spellcheck
-        words = re.finditer(self.WORDS, text)
-        matches = [word_object for word_object in words if not self.dict.check(word_object.group(1))]
-        for word_object in matches:
+        if self.dict != False:
+            words = re.finditer(self.WORDS, text)
+            matches = [word_object for word_object in words if not self.dict.check(word_object.group(1))]
+            for word_object in matches:
                 self.setFormat(word_object.start(), (word_object.end() - len(word_object.group(2))) - word_object.start(), self.format_spelling)
 
-        if not platformSettings.getSetting("grammarcheck", True):
+        if not platformSettings.getSetting("grammarcheck", True) or not platformSettings.getSetting("language", "").startswith('en'):
             return
+
         #Grammar
         for rule in self.corrections:
             for word_object in re.finditer(rule["re"], text):
-                    self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
+                self.setFormat(word_object.start(), word_object.end() - word_object.start(), self.format_grammar)
 
     def getDescriptionText(self, pos, text):
         """Given a grammar mistake, figure out what the mistake was"""
+        #Quit if not English or grammar check is disabled
+        if not platformSettings.getSetting("grammarcheck", True) or not platformSettings.getSetting("language", "").startswith('en'):
+            return
+
         text = unicode(text)
         results = []
         for rule in self.corrections:

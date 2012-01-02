@@ -59,7 +59,8 @@ class WordsList:
         customwords = platformSettings.getSetting("customwords", "").lower().split("\n")
         wordsfinal = []
         for word in customwords:
-            wordsfinal.append((word, 5)) 
+            if word != u"":
+                wordsfinal.append((word, 5)) 
         self.words += wordsfinal
 
     def loadWords(self, filePath):

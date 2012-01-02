@@ -86,7 +86,7 @@ def correctType(val, default):
     elif isinstance(default, int):
         val = val.toInt()[0]
     elif isinstance(default, str):
-        val = str(val.toString())
+        val = unicode(val.toString())
     elif isinstance(default, float):
         val = val.toFloat()
     else:
