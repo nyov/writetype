@@ -27,13 +27,13 @@ from enchant.tokenize import get_tokenizer
 from wordsList import WordsList
 import platformSettings
 from settings import SettingsDialogBox
-from distractionFree import Ui_distractionFree
+from ui_distractionfree import Ui_distractionFree
 import re
 from os import path, sep
 from speaker import Speaker
 from PyQt4.QtGui import QMessageBox
 from PyQt4.QtCore import QTranslator, QLocale, qVersion
-from statistics import Ui_statisticsDialog
+from ui_statistics import Ui_statisticsDialog
 from os.path import isfile
 import getopt
 import sys
@@ -63,7 +63,7 @@ Report bugs to <admin@bernsteinforpresident.com>"""
 
 application = QtGui.QApplication(sys.argv)
 from listWidget import *
-from mainwindow import Ui_MainWindow
+from ui_mainwindow import Ui_MainWindow
 
 
 class MainApplication(QtGui.QMainWindow):

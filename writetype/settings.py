@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with WriteType.  If not, see <http://www.gnu.org/licenses/>.
 
-from settingsDialog import Ui_settingsDialog
+from ui_settings import Ui_settingsDialog
 from xml.dom import minidom
 from PyQt4 import QtCore, QtGui, Qt
 import platformSettings

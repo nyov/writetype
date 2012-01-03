@@ -2,12 +2,15 @@ DATADIR = $(DESTDIR)/usr/share/writetype
 BINDIR = $(DESTDIR)/usr/bin
 ICONDIR = $(DESTDIR)/usr/share/applications
 
-translation:
-	pylupdate4 writetype/*.py -ts translations/writetype.ts translations/qt_nl_NL.ts translations/qt_es.ts translations/qt_eu_ES.ts translations/qt_ru.ts
-	lrelease-qt4 translations/qt_nl_NL.ts -qm translations/qt_nl_NL.qm
-	lrelease-qt4 translations/qt_es.ts -qm translations/qt_es.qm
-	lrelease-qt4 translations/qt_eu_ES.ts -qm translations/qt_eu_ES.qm
-	lrelease-qt4 translations/qt_ru.ts -qm translations/qt_ru.qm
+all: translations revno ui res changelog
+
+translations: $(foreach tsfile, $(wildcard translations/qt_*.ts), $(basename $(tsfile)).qm)
+	pylupdate4 writetype/*.py -ts translations/writetype.ts  
+
+translations/%.qm:
+	cp $(basename $@).ts translations/new_$(notdir $(basename $@)).ts
+	pylupdate4 writetype/*.py -ts translations/new_$(notdir $(basename $@)).ts
+	lrelease-qt4 $(basename $@).ts -qm $@ 
 
 revno:
 	printf "aboutrevno = `bzr revno`" > writetype/revno.py
@@ -15,19 +18,22 @@ revno:
 changelog:
 	bzr log > CHANGELOG
 
-gui:
-	pyuic4 ui/mainwindow.ui -o writetype/mainwindow.py
-	pyuic4 ui/distractionfree.ui -o writetype/distractionFree.py
-	pyuic4 ui/settings.ui -o writetype/settingsDialog.py
-	pyuic4 ui/statistics.ui -o writetype/statistics.py
+ui: $(foreach uifile, $(wildcard ui/*.ui), writetype/ui_$(basename $(notdir $(uifile))).py)
 
-rc:
+writetype/ui_%.py:
+	pyuic4 ui/$(basename $(notdir $(subst ui_, , $@))).ui -o $@
+
+res:
 	pyrcc4 res/resources.qrc -o writetype/resources_rc.py
-
-all: translation revno gui rc changelog
 
 clean:
 	rm -f writetype/*.py[co]
+	rm -f translations/new_qt_*.ts
+	rm -f translations/qt_*.qm
+	rm -f writetype/ui_*.py
+	rm -f writetype/revno.py
+	rm -f writetype/resources_rc.py
+	rm -f CHANGELOG
 
 install:
 	mkdir -p $(DATADIR)
@@ -35,7 +41,8 @@ install:
 	cp -r writetype $(DATADIR)/
 	cp -r wordlists $(DATADIR)/
 	cp -r res $(DATADIR)/
-	cp -r translations $(DATADIR)/
+	mkdir -p $(DATADIR)/translations
+	cp -r translations/*.qm $(DATADIR)/translations/
 	cp platformSettings.ini $(DATADIR)/
 	cp scripts/writetype $(BINDIR)/writetype
 	cp writetype.desktop $(ICONDIR)/writetype.desktop
@@ -44,3 +51,5 @@ uninstall:
 	rm -rf $(DATADIR)
 	rm -rf $(BINDIR)/writetype
 	rm -rf $(ICONDIR)/writetype.desktop
+
+.PHONY: translations revno ui res changelog
