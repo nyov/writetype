@@ -2,7 +2,7 @@ DATADIR = $(DESTDIR)/usr/share/writetype
 BINDIR = $(DESTDIR)/usr/bin
 ICONDIR = $(DESTDIR)/usr/share/applications
 
-all: translations revno ui res changelog
+all: ui res translations revno changelog
 
 translations: $(foreach tsfile, $(wildcard translations/qt_*.ts), $(basename $(tsfile)).qm)
 	pylupdate4 writetype/*.py -ts translations/writetype.ts  

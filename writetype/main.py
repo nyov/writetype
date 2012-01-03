@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# Copyright 2010, 2011 Max Shinn
+# Copyright 2010-2012 Max Shinn
 
 # This file is part of WriteType.
 
@@ -598,7 +598,7 @@ class MainApplication(QtGui.QMainWindow):
 
     def showAbout(self):
         """Open the about box"""
-        QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType <span style="font-size: large">Revision r%1</span></h1><h2>Copyright 2010 Max Shinn</h2><br /><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Emilio Lopez</td><td>Spanish Translations</td></tr><tr><td>Gorka Azkarate</td><td>Basque Translations</td></tr><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr><tr><td><a href="mailto:sbasalaev@gmail.com">Sergey Basalaev</a></td><td>Russian Translations</td></tr></table>""").arg(revno.aboutrevno))
+        QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType <span style="font-size: large">Revision r%1</span></h1><h3>Copyright 2010-2012 Max Shinn</h3><br /><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Emilio Lopez</td><td>Spanish Translations</td></tr><tr><td>Gorka Azkarate</td><td>Basque Translations</td></tr><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr><tr><td><a href="mailto:sbasalaev@gmail.com">Sergey Basalaev</a></td><td>Russian Translations</td></tr><tr><td><a href="mailto:topgunbg@gmail.com">Galin Petrov</a></td><td>Bulgarian Translations</td></tr></table>""").arg(revno.aboutrevno))
 
     def checkForUpdates(self):
         """Check for updates"""

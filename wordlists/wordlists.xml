@@ -16,4 +16,6 @@
 <wordlist name="Español" file="spanish.txt" lang="es_MX" id="2" />
 <wordlist name="Basque" file="basque.txt" lang="eu_ES" id="1" />
 <wordlist name="Русский" file="blank.txt" lang="ru_RU" id="1" />
+<wordlist name="български" file="blank.txt" lang="bu_BU" id="1" />
+<wordlist name="Никой" file="bulgarian.txt" lang="bu_BU" id="2" />
 </xml>
