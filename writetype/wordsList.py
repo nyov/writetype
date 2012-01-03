@@ -56,13 +56,15 @@ class WordsList:
         #If refreshing after saving the settings dialog, keep the weights through the dump
         dump = self.dump()
         self.words = []
-        #Find the path to the wordlist file
-        filename = ""
+        #Find the path to the wordlist file.  If it isn't available, find the closest size
+        filename = "blank.txt"
         dom = minidom.parse(path.join(getPlatformSetting('basePath'), 'wordlists', 'wordlists.xml'))
         for node in dom.getElementsByTagName("wordlist"):
-            if node.getAttribute("lang") == getPlatformSetting("language") and node.getAttribute("id") == getSetting("wordlist", "3"):
+            if getPlatformSetting("language").startswith(node.getAttribute("lang")):
                 filename = node.getAttribute('file')
-                break
+                if node.getAttribute("id") == getSetting("wordlist", "3"):
+                    break
+                    
         wordspath = path.join(getPlatformSetting('basePath'), 'wordlists', filename)
         #Load the wordlist from that file
         logger.log("Loading words from " + wordspath)
@@ -71,7 +73,7 @@ class WordsList:
             wordslist = fileHandle.read().split("\n")
             fileHandle.close()
         except IOError:
-            logger.log("Could not load word list.  Language not available.", logtype="Error", tb=True)
+            logger.log("Could not load word list.  Language not available.  Using a blank.", logtype="Error", tb=True)
             wordslist = ""
         for word in wordslist:
             if word != u"":

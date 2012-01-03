@@ -133,7 +133,7 @@ class MainApplication(QtGui.QMainWindow):
             self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
         except enchant.tokenize.Error:
             self.tokenizer = get_tokenizer("en_US")
-            logger.log("Language error, falling back to US English", logtype="Error")
+            logger.log("Language error, falling back to US English tokenizer", logtype="Error")
         self.wlIndex = None
         self.wordsN = []
         self.lastCursorPos = 0
