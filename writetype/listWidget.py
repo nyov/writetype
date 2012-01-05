@@ -140,7 +140,7 @@ class ListWidget(QtGui.QWidget):
         else:
             self.index -= 1
         self.activate(self.index)
-        logger.log("Tab event to index ", str(index))
+        logger.log("Tab event to index ", str(self.index))
 
     def clearSelection(self):
         """Resets the selected word index"""
