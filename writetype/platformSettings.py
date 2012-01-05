@@ -21,6 +21,7 @@ from ConfigParser import SafeConfigParser
 import os
 import sys
 import logger
+import codecs
 
 #Stupid Windows.
 if hasattr(sys, "frozen"):
@@ -36,14 +37,17 @@ if not os.path.isfile(os.path.join(prefix, "platformSettings.ini")):
 
 #Some defines
 parser = SafeConfigParser()
-parser.read(os.path.join(prefix, 'platformSettings.ini'))
+inipath = os.path.join(prefix, 'platformSettings.ini')
+parser.readfp(codecs.open(inipath, encoding='utf-8'))
 cache = {} #A dictionary for normal settings cache
 pCache = {} #Platform settings cache
-settingsHandle = QSettings("BernsteinForPresident", "WriteType")
+settingsHandle = QSettings("WriteType", "WriteType")
 
 #Global Overrides
 for key,value in parser.items("GlobalOverride"):
-    cache[str(key)] = QVariant(value)
+    #The codec "unicode-escape" seem to not support utf-8.  I'll use
+    #this instead.
+    cache[str(key)] = QVariant(value.replace("\\n", "\n")) 
 
 def getPlatformSetting(key):
     """Get a core setting, either hard-coded, dynamically created,
@@ -62,7 +66,10 @@ def getPlatformSetting(key):
         path = path.replace("[wt]", prefix)
         return path
     elif key == "language":
-        language = str(QLocale.system().name())
+        if not parser.has_option('GlobalOverride', key):
+            language = str(QLocale.system().name())
+        else:
+            language = parser.get('GlobalOverride', key)
         return language
 
     return parser.get('General', key)

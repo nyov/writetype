@@ -620,11 +620,11 @@ class MainApplication(QtGui.QMainWindow):
         
     def openHelpPage(self):
         """Open the Bernsteinforpresident.com documentation"""
-        QtGui.QDesktopServices.openUrl(QtCore.QUrl("http://writetype.Bernsteinforpresident.com"))
+        QtGui.QDesktopServices.openUrl(QtCore.QUrl(getPlatformSetting("documentationUrl")))
         
     def saveLog(self):
         """Save the log to a file, or display it if there is an error."""
-        filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), getPlatformSetting('defaultOpenDirectory'), "Log file (*.log)")
+        filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), "", "Log file (*.log)")
         if not filename:
             return
         try:

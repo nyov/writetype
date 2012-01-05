@@ -74,7 +74,7 @@ class SettingsDialogBox(QtGui.QDialog):
         self.ui.readAsTypedCheckbox.setChecked(getSetting("readastyped", False))
 
         i = 0
-        for line in getSetting("customAutocorrections", "").split("\n"):
+        for line in getSetting("customautocorrections", "").split("\n"):
             if not line: break
             self.ui.autocorrectionsTable.insertRow(i+1)
             item1 = QtGui.QTableWidgetItem(line.split(',')[0])
@@ -135,7 +135,7 @@ class SettingsDialogBox(QtGui.QDialog):
                 if cell1.text() and cell2.text():
                     autocorrectionsList += cell1.text() + "," + cell2.text() + "\n"
         print autocorrectionsList
-        setSetting("customAutocorrections", autocorrectionsList)
+        setSetting("customautocorrections", autocorrectionsList)
         
         
         self.emit(QtCore.SIGNAL("dialogSaved"))

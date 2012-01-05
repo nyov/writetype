@@ -190,7 +190,7 @@ class WordsList:
             for line in autocorrections:
                 if not line or line == ",": continue
                 self.replacementTable[line.split(",")[0]] = line.split(",")[1]
-        for line in str(getSetting("customAutocorrections", "")).split("\n"):
+        for line in str(getSetting("customautocorrections", "")).split("\n"):
             if not line or line == ",": continue
             self.replacementTable[line.split(",")[0]] = line.split(",")[1]
 
