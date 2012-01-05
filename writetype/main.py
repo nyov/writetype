@@ -283,7 +283,7 @@ class MainApplication(QtGui.QMainWindow):
         try:
             file = codecs.open(self.filename, 'w+', encoding='utf-8')
             if extension == "html" or extension == "wtd":
-                content = self.ui.textArea.toHtml()
+                content = self.ui.textArea.document().toHtml('UTF-8')
                 #Sort of hacky way to fix the black spots where there used to be highlighted sections
                 content = content.replace("background-color:#000000", "")
                 file.write(unicode(content))
