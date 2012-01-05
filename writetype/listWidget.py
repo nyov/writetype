@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# Copyright 2010,2011 Max Shinn
+# Copyright 2010-2012 Max Shinn
 
 # This file is part of WriteType.
 
@@ -122,6 +122,8 @@ class ListWidget(QtGui.QWidget):
 
     def tabEvent(self):
         """Handles tabs"""
+        if not self.words:
+            return
         if self.index == None or self.index == self._countLines() - 1:
             self.index = 0
         else:
@@ -131,6 +133,8 @@ class ListWidget(QtGui.QWidget):
 
     def backtabEvent(self):
         """Handles backtabs"""
+        if not self.words:
+            return
         if self.index == None or self.index == 0:
             self.index = self._countLines() - 1
         else:

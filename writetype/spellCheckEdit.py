@@ -1,4 +1,4 @@
-# Copyright 2010 Max Shinn
+# Copyright 2010-2012 Max Shinn
 
 # This file is part of WriteType.
 
@@ -219,8 +219,22 @@ class spellCheckEdit(QTextEdit):
         if event.key() == Qt.Key_Backtab or event.key() == Qt.Key_Up:
             self.emit(SIGNAL("tabBackEvent"))
             return
-        if event.key() == Qt.Key_Tab or event.key() == Qt.Key_Down:
+        if event.key() == Qt.Key_Down:
             self.emit(SIGNAL("tabEvent"))
+            return
+        if event.key() == Qt.Key_Tab:
+            #Check to see if we're at the beginning of a
+            #paragraph. and if the next character is not a tab.  If so, insert a tab
+            #character.
+            cur = self.textCursor()
+            pgpos = cur.position() - cur.block().position()
+            cur.movePosition(cur.NextCharacter, cur.KeepAnchor)
+            nextchar = cur.selectedText()
+            if pgpos == 0 and nextchar != "\t":
+                logger.log("Inserted tab character")
+                self.insertPlainText("\t")
+            else:
+                self.emit(SIGNAL("tabEvent"))
             return
         if event.key() == Qt.Key_Backspace:
             QTextEdit.keyPressEvent(self, event)
@@ -384,12 +398,12 @@ class Highlighter(QSyntaxHighlighter):
     corrections = [
         {
             "description": "Sentence starts without a capital letter",
-            "re": re.compile(u'([.?!])([\s]*)([a-z])'),
+            "re": re.compile(u'([.?!])([\s\t]*)([a-z])'),
             "fix": lambda m: m.group(1) + m.group(2) + m.group(3).capitalize() },
         {
             "description": "Sentence starts without a capital letter",
-            "re": re.compile(u'^[a-z]'),
-            "fix": lambda m: m.group(0).capitalize() },
+            "re": re.compile(u'^(\t*)([a-z])'),
+            "fix": lambda m: m.group(1) + m.group(2).capitalize() },
         {
             "description": "No space after punctuation",
             "re": re.compile(u'([.?!,])([A-Za-z])'),
@@ -404,24 +418,24 @@ class Highlighter(QSyntaxHighlighter):
             "fix": u'\\1' },
         {
             "description": "Use 'an' instead of 'a'",
-            "re": re.compile(u' ([Aa]) ([AEIOUaeiou])'),
-            "fix": ' \\1n \\2' },
+            "re": re.compile(u'([\t ])([Aa]) ([AEIOUaeiou])'),
+            "fix": '\\1\\2n \\3' },
         {
             "description": "Use 'an' instead of 'a'",
             "re": re.compile(u'^([Aa]) ([AEIOUaeiou])'),
             "fix": '\\1n \\2' },
         {
             "description": "Use 'a' instead of 'an'",
-            "re": re.compile(u' ([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
-            "fix": ' \\1 \\2' },
+            "re": re.compile(u'([\t ])([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
+            "fix": '\\1\\2 \\3' },
         {
             "description": "Use 'a' instead of 'an'",
             "re": re.compile(u'^([Aa])n ([BCDFGHJKLMNPQRSTVWXZbcdfghjklmnpqrstvwxz])'),
             "fix": '\\1 \\2' },
         {
             "description": "Word repeated",
-            "re": re.compile(u' ([a-z]+) \\1([ .!?,:;])', re.IGNORECASE),
-            "fix": ' \\1\\2' }]
+            "re": re.compile(u'([\t ])([a-z]+) \\2([ .!?,:;])', re.IGNORECASE),
+            "fix": '\\1\\2\\3' }]
     
     
     def __init__(self, *args):
