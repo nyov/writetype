@@ -18,7 +18,7 @@
 from ui_settings import Ui_settingsDialog
 from xml.dom import minidom
 from PyQt4 import QtCore, QtGui, Qt
-import platformSettings
+from platformSettings import *
 from os.path import join
 
 class SettingsDialogBox(QtGui.QDialog):
@@ -29,17 +29,17 @@ class SettingsDialogBox(QtGui.QDialog):
         self.ui.setupUi(self)
         
         #Load words into textarea
-        self.ui.customWordsTextEdit.setPlainText(platformSettings.getSetting("customwords", ""))
+        self.ui.customWordsTextEdit.setPlainText(getSetting("customwords", ""))
         QtCore.QObject.connect(self.ui.okayButton, QtCore.SIGNAL("clicked()"), self.okayClicked)
         QtCore.QObject.connect(self.ui.applyButton, QtCore.SIGNAL("clicked()"), self.applyClicked)
 
         #Load word list from xml
         self.wordListButtonGroup = QtGui.QButtonGroup()
-        filepath = join(platformSettings.getPlatformSetting("pathToWordlists"), "wordlists.xml")
+        filepath = join(getPlatformSetting("pathToWordlists"), "wordlists.xml")
         dom = minidom.parse(filepath)
         #Don't forget to sort these by sortweight!
         for node in dom.getElementsByTagName("wordlist"):
-            if node.getAttribute("lang") == platformSettings.getPlatformSetting("language"):
+            if node.getAttribute("lang") == getPlatformSetting("language"):
                 self.ui.noneAvailableLabel.setVisible(False)
                 button = QtGui.QRadioButton(node.getAttribute("name"), self.ui.tab)
                 self.ui.verticalLayout_4.addWidget(button)
@@ -49,32 +49,32 @@ class SettingsDialogBox(QtGui.QDialog):
         self.wordListButtonGroup.setExclusive(True)
         #Now actually select the correct button
         try:
-            self.wordListButtonGroup.buttons()[platformSettings.getSetting("wordlist", 4)-1].setChecked(True)
+            self.wordListButtonGroup.buttons()[getSetting("wordlist", 4)-1].setChecked(True)
         except IndexError:
             #self.wordListButtonGroup.buttons()[0].setChecked(True)
             pass
 
         #Load the word completion settings
-        self.ui.guessMisspellingsCheckbox.setChecked(platformSettings.getSetting("guessmisspellings", True))
-        self.ui.thresholdSpinbox.setValue(platformSettings.getSetting("threshold", 3))
-        self.ui.advancedSubstitutionsCheckbox.setChecked(platformSettings.getSetting("advancedsubstitutions", True))
-        self.ui.minimumLetters.setValue(platformSettings.getSetting("minimumletters", 0))
-        self.ui.phraseCompletionCheckbox.setChecked(platformSettings.getSetting("phrasecompletion", True))
+        self.ui.guessMisspellingsCheckbox.setChecked(getSetting("guessmisspellings", True))
+        self.ui.thresholdSpinbox.setValue(getSetting("threshold", 3))
+        self.ui.advancedSubstitutionsCheckbox.setChecked(getSetting("advancedsubstitutions", True))
+        self.ui.minimumLetters.setValue(getSetting("minimumletters", 0))
+        self.ui.phraseCompletionCheckbox.setChecked(getSetting("phrasecompletion", True))
 
         #Autocorrection
-        self.ui.autocorrectionCheckBox.setChecked(platformSettings.getSetting("autocorrection", True))
-        self.ui.contractionsCheckbox.setChecked(platformSettings.getSetting("autocorrectioncontractions", True))
+        self.ui.autocorrectionCheckBox.setChecked(getSetting("autocorrection", True))
+        self.ui.contractionsCheckbox.setChecked(getSetting("autocorrectioncontractions", True))
         self.ui.autocorrectionsTable.setHorizontalHeaderItem(0, QtGui.QTableWidgetItem(self.tr("Replace:")))
         self.ui.autocorrectionsTable.setHorizontalHeaderItem(1, QtGui.QTableWidgetItem(self.tr("With:")))
 
         #Other
-        self.ui.grammarCheckbox.setChecked(platformSettings.getSetting("grammarcheck", True))
-        self.ui.spellingCheckbox.setChecked(platformSettings.getSetting("spellingcheck", True))
-        self.ui.disableFancyInterfaceCheckbox.setChecked(platformSettings.getSetting("disablefancyinterface", False))
-        self.ui.readAsTypedCheckbox.setChecked(platformSettings.getSetting("readastyped", False))
+        self.ui.grammarCheckbox.setChecked(getSetting("grammarcheck", True))
+        self.ui.spellingCheckbox.setChecked(getSetting("spellingcheck", True))
+        self.ui.disableFancyInterfaceCheckbox.setChecked(getSetting("disablefancyinterface", False))
+        self.ui.readAsTypedCheckbox.setChecked(getSetting("readastyped", False))
 
         i = 0
-        for line in platformSettings.getSetting("customAutocorrections", "").split("\n"):
+        for line in getSetting("customAutocorrections", "").split("\n"):
             if not line: break
             self.ui.autocorrectionsTable.insertRow(i+1)
             item1 = QtGui.QTableWidgetItem(line.split(',')[0])
@@ -88,44 +88,44 @@ class SettingsDialogBox(QtGui.QDialog):
         QtCore.QObject.connect(self.ui.autocorrectionsTable, QtCore.SIGNAL("cellDoubleClicked(int,int)"), autoAddRows)
 
         #Set the correct default font
-        if platformSettings.getSetting("defaultfont", ""):
-            self.ui.defaultFont.setCurrentFont(QtGui.QFont(platformSettings.getSetting("defaultfont")))
+        if getSetting("defaultfont", ""):
+            self.ui.defaultFont.setCurrentFont(QtGui.QFont(getSetting("defaultfont")))
         else:
             self.ui.useDefaultFont.setChecked(True)
             self.ui.defaultFont.setDisabled(True)
 
         #TTS
-        self.ui.speedSlider.setValue(platformSettings.getSetting("readingspeed", 0))
-        engines = platformSettings.getPlatformSetting("ttsEngines").split(",")
+        self.ui.speedSlider.setValue(getSetting("readingspeed", 0))
+        engines = getPlatformSetting("ttsEngines").split(",")
         for engine in engines:
             self.ui.ttsEngineBox.addItem(engine)
-        currentValue = platformSettings.getSetting("ttsengine", "")
+        currentValue = getSetting("ttsengine", "")
         if currentValue in engines:
             index = engines.index(currentValue)
             self.ui.ttsEngineBox.setCurrentIndex(index)
         
         
     def applyClicked(self):
-        platformSettings.setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())
-        platformSettings.setSetting("wordlist", self.wordListButtonGroup.checkedId())
-        platformSettings.setSetting("phrasecompletion", self.ui.phraseCompletionCheckbox.isChecked())
-        platformSettings.setSetting("guessmisspellings", self.ui.guessMisspellingsCheckbox.isChecked())
-        platformSettings.setSetting("threshold", self.ui.thresholdSpinbox.value())
-        platformSettings.setSetting("advancedsubstitutions", self.ui.advancedSubstitutionsCheckbox.isChecked())
-        platformSettings.setSetting("minimumletters", self.ui.minimumLetters.value())
-        platformSettings.setSetting("autocorrection", self.ui.autocorrectionCheckBox.isChecked())
-        platformSettings.setSetting("autocorrectioncontractions", self.ui.contractionsCheckbox.isChecked())
-        platformSettings.setSetting("readingspeed", self.ui.speedSlider.value())
-        platformSettings.setSetting("ttsengine", self.ui.ttsEngineBox.currentText())
-        platformSettings.setSetting("grammarcheck", self.ui.grammarCheckbox.isChecked())
-        platformSettings.setSetting("spellingcheck", self.ui.spellingCheckbox.isChecked())
-        platformSettings.setSetting("disablefancyinterface", self.ui.disableFancyInterfaceCheckbox.isChecked())
-        platformSettings.setSetting("readastyped", self.ui.readAsTypedCheckbox.isChecked())
+        setSetting("customwords", self.ui.customWordsTextEdit.toPlainText())
+        setSetting("wordlist", self.wordListButtonGroup.checkedId())
+        setSetting("phrasecompletion", self.ui.phraseCompletionCheckbox.isChecked())
+        setSetting("guessmisspellings", self.ui.guessMisspellingsCheckbox.isChecked())
+        setSetting("threshold", self.ui.thresholdSpinbox.value())
+        setSetting("advancedsubstitutions", self.ui.advancedSubstitutionsCheckbox.isChecked())
+        setSetting("minimumletters", self.ui.minimumLetters.value())
+        setSetting("autocorrection", self.ui.autocorrectionCheckBox.isChecked())
+        setSetting("autocorrectioncontractions", self.ui.contractionsCheckbox.isChecked())
+        setSetting("readingspeed", self.ui.speedSlider.value())
+        setSetting("ttsengine", self.ui.ttsEngineBox.currentText())
+        setSetting("grammarcheck", self.ui.grammarCheckbox.isChecked())
+        setSetting("spellingcheck", self.ui.spellingCheckbox.isChecked())
+        setSetting("disablefancyinterface", self.ui.disableFancyInterfaceCheckbox.isChecked())
+        setSetting("readastyped", self.ui.readAsTypedCheckbox.isChecked())
 
         if self.ui.useDefaultFont.isChecked():
-            platformSettings.setSetting("defaultfont", "")
+            setSetting("defaultfont", "")
         else:
-            platformSettings.setSetting("defaultfont", self.ui.defaultFont.currentFont())
+            setSetting("defaultfont", self.ui.defaultFont.currentFont())
 
         autocorrectionsList = ""
         for i in range(0, self.ui.autocorrectionsTable.rowCount()):
@@ -135,7 +135,7 @@ class SettingsDialogBox(QtGui.QDialog):
                 if cell1.text() and cell2.text():
                     autocorrectionsList += cell1.text() + "," + cell2.text() + "\n"
         print autocorrectionsList
-        platformSettings.setSetting("customAutocorrections", autocorrectionsList)
+        setSetting("customAutocorrections", autocorrectionsList)
         
         
         self.emit(QtCore.SIGNAL("dialogSaved"))

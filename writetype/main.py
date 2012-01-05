@@ -25,7 +25,7 @@ import resources_rc
 import enchant
 from enchant.tokenize import get_tokenizer
 from wordsList import WordsList
-import platformSettings
+from platformSettings import *
 from settings import SettingsDialogBox
 from ui_distractionfree import Ui_distractionFree
 import re
@@ -46,9 +46,9 @@ from PyQt4.QtCore import QLibraryInfo
 parsedoptions, options = getopt.gnu_getopt(sys.argv[1:], "l:t:c?", ["lang=", "tts-engine=", "help"])
 for optionname, optionvalue in parsedoptions:
     if optionname == "-l" or optionname == "--lang":
-        platformSettings.setPSettingTmp("language", optionvalue)
+        setPSettingTmp("language", optionvalue)
     elif optionname == "-t" or optionname == "--tts-engine":
-        platformSettings.setSettingTmp("ttsengine", optionvalue)
+        setSettingTmp("ttsengine", optionvalue)
     elif optionname == "-?" or optionname == "--help":
         print """Usage: writetype [OPTION] ... FILE
 Open FILE when the application starts.
@@ -113,7 +113,7 @@ class MainApplication(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("cursorPositionChanged()"), self.updateFontSizeSpinBoxValue)
         QtCore.QObject.connect(self.ui.fontComboBox, QtCore.SIGNAL("currentFontChanged(const QFont&)"), self.ui.textArea.setFont)
         self.ui.textArea.setStyleSheet("/*background-image: url(:/res/background.png);*/ font: 12pt;")
-        if not platformSettings.getSetting("disablefancyinterface", False):
+        if not getSetting("disablefancyinterface", False):
             QtGui.QFontDatabase.addApplicationFont(":/res/ArchitectsDaughter.ttf")
             self.ui.menubar.setStyleSheet("font-family: \"Architects Daughter\"; font-size: 12pt;")
         else:
@@ -130,7 +130,7 @@ class MainApplication(QtGui.QMainWindow):
         self.wl = WordsList()
         logger.init(self.wl)
         try:
-            self.tokenizer = get_tokenizer(platformSettings.getPlatformSetting('language'))
+            self.tokenizer = get_tokenizer(getPlatformSetting('language'))
         except enchant.tokenize.Error:
             self.tokenizer = get_tokenizer("en_US")
             logger.log("Language error, falling back to US English tokenizer", logtype="Error")
@@ -175,7 +175,7 @@ class MainApplication(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.nextButton, QtCore.SIGNAL("clicked()"), self.nextDictionError)
         QtCore.QObject.connect(self.ui.actionDiction_Check, QtCore.SIGNAL("triggered()"), self.dictionCheckModeEnable)
         QtCore.QObject.connect(self.ui.dictionCloseButton, QtCore.SIGNAL("clicked()"), self.dictionCheckModeDisable)
-        if platformSettings.getPlatformSetting("language") != "en_US":
+        if getPlatformSetting("language") != "en_US":
             self.ui.actionDiction_Check.setVisible(False)
 
         ## #images
@@ -189,8 +189,8 @@ class MainApplication(QtGui.QMainWindow):
         #self.ui.actionSingleSpace.setVisible(False)
         
         #Apply some settings
-        if platformSettings.getSetting("defaultfont", ""):
-            self.ui.fontComboBox.setCurrentFont(QtGui.QFont(platformSettings.getSetting("defaultfont")))
+        if getSetting("defaultfont", ""):
+            self.ui.fontComboBox.setCurrentFont(QtGui.QFont(getSetting("defaultfont")))
         
         #Add some more widgets to the toolbar
         self.ui.editToolBar.addWidget(self.ui.sizeLabel)
@@ -198,10 +198,10 @@ class MainApplication(QtGui.QMainWindow):
         self.ui.editToolBar.addWidget(self.ui.fontComboBox)
 
         #Check to see if there is unsaved work
-        if platformSettings.getSetting("autosavepath", ""):
+        if getSetting("autosavepath", ""):
             response = QtGui.QMessageBox.question(self, self.tr("Crash recovery"), self.tr("WriteType found unsaved work from a crash.  Would you like to recover it?"), QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
             if response == QtGui.QMessageBox.Yes:
-                text = codecs.open(platformSettings.getSetting("autosavepath", ""), encoding='utf-8').read()
+                text = codecs.open(getSetting("autosavepath", ""), encoding='utf-8').read()
                 self.ui.textArea.setText(text)
                 self.filetitle = self.tr("Recovered file")
                 self.updateTitle()
@@ -223,7 +223,7 @@ class MainApplication(QtGui.QMainWindow):
     
     def openDialog(self):
         """Display a dialog to open a file"""
-        filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)"))
+        filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)"))
         self.openFile(filename)
 
     def openFile(self, filename):
@@ -256,7 +256,7 @@ class MainApplication(QtGui.QMainWindow):
 
     def saveFileAs(self):
         """Prompt the user on where to save the current document"""
-        filename, filter_ = QtGui.QFileDialog.getSaveFileNameAndFilter(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)"))
+        filename, filter_ = QtGui.QFileDialog.getSaveFileNameAndFilter(self, self.tr("Save file"), getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)"))
         if not filename:
             return
         if '(*.wtd)' in filter_:
@@ -297,11 +297,11 @@ class MainApplication(QtGui.QMainWindow):
     def autoSave(self):
         """Autosave the current document whenever called"""
         #This function should be called whenever an autosave is desired
-        path = platformSettings.getSetting("autosavepath", "")
+        path = getSetting("autosavepath", "")
         if not path:
             from tempfile import mkstemp
             path = mkstemp()[1]
-            platformSettings.setSetting("autosavepath", path)
+            setSetting("autosavepath", path)
         handle = codecs.open(path, 'w', encoding='utf-8')
         handle.write(unicode(self.ui.textArea.toHtml()))
         handle.close()
@@ -351,7 +351,7 @@ class MainApplication(QtGui.QMainWindow):
             #word.translate(None, ' \t!"#$%&()*+,./:;<=>?@[\\]^_`{|}~')
 
             #Read back the word just typed
-            if platformSettings.getSetting("readastyped", False):
+            if getSetting("readastyped", False):
                 if word:
                     self.sayText(word, showalert=False)
             
@@ -359,7 +359,7 @@ class MainApplication(QtGui.QMainWindow):
             if not word:
                 if wordraw:
                     self.wl.pattern.clearLastCheckedWord()
-            elif self.ui.textArea.spellCheckEnabled == True and platformSettings.getSetting("spellingcheck", True) and self.ui.textArea.dictionary.check(word) == False:
+            elif self.ui.textArea.spellCheckEnabled == True and getSetting("spellingcheck", True) and self.ui.textArea.dictionary.check(word) == False:
                 logger.log("Checking words was false: ", word)
                 self.wordsN = []
                 words = self.ui.textArea.dictionary.suggest(word)
@@ -368,7 +368,7 @@ class MainApplication(QtGui.QMainWindow):
                 for word in self.wordsN:
                     item = ListWidgetItem(word[0], mode=MODE_REPLACE, colorfg=Qt.red)
                     self.ui.spellingSuggestionsList.addItem(item)
-            elif platformSettings.getSetting("phrasecompletion", True):
+            elif getSetting("phrasecompletion", True):
                 #This is still HORRIBLE of me.  Still nothing to do with autocorrections.
                 links = self.wl.pattern.getLinks(word)
                 if links:
@@ -443,7 +443,7 @@ class MainApplication(QtGui.QMainWindow):
 
         #If the user typed a word + delimiter, add it to the custom word list and don't display any more suggestions after the delimiter
         if text[0:-1] and text[-1:] in (" ", ".", ",", "!", "?", "\t"):
-            if self.ui.textArea.spellCheckEnabled == False or platformSettings.getSetting("spellingcheck", True) == False or self.ui.textArea.dictionary.check(text[0:-1]):
+            if self.ui.textArea.spellCheckEnabled == False or getSetting("spellingcheck", True) == False or self.ui.textArea.dictionary.check(text[0:-1]):
                 self.wl.addCustomWord(text.lower()[0:-1])
             #return
 
@@ -453,7 +453,7 @@ class MainApplication(QtGui.QMainWindow):
         
         self.ui.spellingSuggestionsList.clear()
         
-        if len(text) <= platformSettings.getSetting("minimumletters", 0):
+        if len(text) <= getSetting("minimumletters", 0):
             return
 
         if not text:
@@ -467,7 +467,7 @@ class MainApplication(QtGui.QMainWindow):
         for w,s in words:
             self.ui.spellingSuggestionsList.addNewItem(w, weight=s)
 
-        if platformSettings.getSetting("guessmisspellings", True) and len(self.ui.spellingSuggestionsList.words) <= platformSettings.getSetting("threshold", 0):
+        if getSetting("guessmisspellings", True) and len(self.ui.spellingSuggestionsList.words) <= getSetting("threshold", 0):
             replacements = [
                 ["a", "e"],
                 ["a", "o"],
@@ -528,7 +528,7 @@ class MainApplication(QtGui.QMainWindow):
         #Load these into memory only if we need to
         if self.dictionReplacements == None:
             logger.log("Loading resources for diction check")
-            filepath = path.join(platformSettings.getPlatformSetting('pathToWordlists'),  "diction.txt")
+            filepath = path.join(getPlatformSetting('pathToWordlists'),  "diction.txt")
             fileHandle = open(filepath, 'r')
             lines = fileHandle.read().split("\n")
             self.dictionReplacements = []
@@ -604,9 +604,9 @@ class MainApplication(QtGui.QMainWindow):
         """Check for updates"""
         from urllib2 import urlopen
         try:
-            version = urlopen(platformSettings.getPlatformSetting("updateServer")).read()
+            version = urlopen(getPlatformSetting("updateServer")).read()
             if int(version) > int(revno.aboutrevno):
-                message = self.tr("""<html>A new version of WriteType is available!  You are using WriteType version r%2.  Find more information about WriteType version r%3 at: <a href="%1">%1</a></html>""").arg(platformSettings.getPlatformSetting("updateUrl")).arg(revno.aboutrevno).arg(version)
+                message = self.tr("""<html>A new version of WriteType is available!  You are using WriteType version r%2.  Find more information about WriteType version r%3 at: <a href="%1">%1</a></html>""").arg(getPlatformSetting("updateUrl")).arg(revno.aboutrevno).arg(version)
             else:
                 message = self.tr("Your version of WriteType is up to date.  You are using WriteType version r%1.").arg(revno.aboutrevno)
         except:
@@ -619,7 +619,7 @@ class MainApplication(QtGui.QMainWindow):
         
     def saveLog(self):
         """Save the log to a file, or display it if there is an error."""
-        filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), platformSettings.getPlatformSetting('defaultOpenDirectory'), "Log file (*.log)")
+        filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), getPlatformSetting('defaultOpenDirectory'), "Log file (*.log)")
         if not filename:
             return
         try:
@@ -739,10 +739,10 @@ class MainApplication(QtGui.QMainWindow):
                 event.ignore()
                 return
         #Purge the autosaves
-        path = platformSettings.getSetting("autosavepath", "")
+        path = getSetting("autosavepath", "")
         if path:
             from os import unlink
-            platformSettings.setSetting("autosavepath", "")
+            setSetting("autosavepath", "")
             try:
                 unlink(path)
             except Exception:
@@ -767,10 +767,10 @@ class StatisticsWindow(QtGui.QDialog):
 #translation
 trans = QTranslator()
 transqt = QTranslator()
-logger.log("Language is ", platformSettings.getPlatformSetting("language"), logtype="Info")
-transqt.load("qt_" + platformSettings.getPlatformSetting("language"), QLibraryInfo.location(QLibraryInfo.TranslationsPath))
+logger.log("Language is ", getPlatformSetting("language"), logtype="Info")
+transqt.load("qt_" + getPlatformSetting("language"), QLibraryInfo.location(QLibraryInfo.TranslationsPath))
 application.installTranslator(transqt)
-trans.load("qt_" + platformSettings.getPlatformSetting("language"), path.join(platformSettings.getPlatformSetting("basePath"), "translations"))
+trans.load("qt_" + getPlatformSetting("language"), path.join(getPlatformSetting("basePath"), "translations"))
 application.installTranslator(trans)
 app = MainApplication()
 app.show()

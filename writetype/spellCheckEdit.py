@@ -27,7 +27,7 @@ from PyQt4.QtCore import QCoreApplication
 import re
 import enchant
 import enchant.checker
-import platformSettings
+from platformSettings import getSetting, getPlatformSetting
 from PyQt4.QtGui import QFileDialog
 from PyQt4.QtGui import QTextBlockUserData
 import sip
@@ -52,7 +52,7 @@ class spellCheckEdit(QTextEdit):
         QTextEdit.__init__(self, *args)
         self.highlighter = Highlighter(self.document())
         try:
-            self.dictionary = enchant.Dict(platformSettings.getPlatformSetting('language'))
+            self.dictionary = enchant.Dict(getPlatformSetting('language'))
             self.spellCheckEnabled = True
             self.highlighter.setDict(self.dictionary)
         except enchant.Error:
@@ -349,7 +349,7 @@ class spellCheckEdit(QTextEdit):
             cursor.mergeCharFormat(format_highlight)
 
     ## def insertImage(self):
-    ##  imageurl = QFileDialog.getOpenFileName(self, "Insert image", platformSettings.getPlatformSetting('defaultOpenDirectory'), "Image file (*.jpg *.jpeg *.gif *.png)")
+    ##  imageurl = QFileDialog.getOpenFileName(self, "Insert image", getPlatformSetting('defaultOpenDirectory'), "Image file (*.jpg *.jpeg *.gif *.png)")
     ##  self.insertImageByUrl(imageurl)
 
     ## def insertImageByUrl(self, url):
@@ -448,13 +448,13 @@ class Highlighter(QSyntaxHighlighter):
         text = unicode(text)
 
         #Spellcheck
-        if self.dict != False and platformSettings.getSetting("spellingcheck", True) == True:
+        if self.dict != False and getSetting("spellingcheck", True) == True:
             words = re.finditer(self.WORDS, text)
             matches = [word_object for word_object in words if not self.dict.check(word_object.group(1))]
             for word_object in matches:
                 self.setFormat(word_object.start(), (word_object.end() - len(word_object.group(2))) - word_object.start(), self.format_spelling)
 
-        if not platformSettings.getSetting("grammarcheck", True) or not platformSettings.getPlatformSetting("language").startswith('en'):
+        if not getSetting("grammarcheck", True) or not getPlatformSetting("language").startswith('en'):
             return
 
         #Grammar
@@ -465,7 +465,7 @@ class Highlighter(QSyntaxHighlighter):
     def getDescriptionText(self, pos, text):
         """Given a grammar mistake, figure out what the mistake was"""
         #Quit if not English or grammar check is disabled
-        if not platformSettings.getSetting("grammarcheck", True) or not platformSettings.getPlatformSetting("language").startswith('en'):
+        if not getSetting("grammarcheck", True) or not getPlatformSetting("language").startswith('en'):
             return
 
         text = unicode(text)
