@@ -223,7 +223,9 @@ class MainApplication(QtGui.QMainWindow):
     
     def openDialog(self):
         """Display a dialog to open a file"""
-        filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)"))
+        filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), getSetting('lastdir', ''), QCoreApplication.translate("WriteTypeMain", "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)"))
+        if filename:
+            setSetting("lastdir", path.dirname(unicode(filename))+sep)
         self.openFile(filename)
 
     def openFile(self, filename):
@@ -256,9 +258,12 @@ class MainApplication(QtGui.QMainWindow):
 
     def saveFileAs(self):
         """Prompt the user on where to save the current document"""
-        filename, filter_ = QtGui.QFileDialog.getSaveFileNameAndFilter(self, self.tr("Save file"), getPlatformSetting('defaultOpenDirectory'), QCoreApplication.translate("WriteTypeMain", "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)"))
+        filename, filter_ = QtGui.QFileDialog.getSaveFileNameAndFilter(self, self.tr("Save file"), getSetting('lastdir', ''), QCoreApplication.translate("WriteTypeMain", "WriteType Document (*.wtd);;Formatted Text (*.html);;Plain Text (*.txt)"))
         if not filename:
             return
+
+        setSetting("lastdir", path.dirname(unicode(filename))+sep)
+
         if '(*.wtd)' in filter_:
             ext = '.wtd'
         elif '(*.html)' in filter_:
