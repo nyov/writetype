@@ -86,7 +86,8 @@ class MainApplication(QtGui.QMainWindow):
         QtCore.QObject.connect(self.ui.actionAlignLeft, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignLeft)
         QtCore.QObject.connect(self.ui.actionAlignCenter, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignCenter)
         QtCore.QObject.connect(self.ui.actionAlignRight, QtCore.SIGNAL("triggered()"), self.ui.textArea.alignRight)
-        if '4.8.' in qVersion(): #only for the new unreleased QT, unfortunately
+        # Removing this functionality for now.  Apparently this doesn't work in Qt 4.8?
+        if True == False and '4.8.' in qVersion(): #only for the new unreleased QT, unfortunately
             QtCore.QObject.connect(self.ui.actionDoubleSpace, QtCore.SIGNAL("triggered()"), self.ui.textArea.doubleSpace)
             QtCore.QObject.connect(self.ui.actionSingleSpace, QtCore.SIGNAL("triggered()"), self.ui.textArea.singleSpace)
         else:
