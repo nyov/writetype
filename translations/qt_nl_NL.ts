@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS>
+<TS version="2.0" language="en_US">
 <context>
     <name>EspeakInferface</name>
     <message>
@@ -11,7 +12,7 @@
 <context>
     <name>EspeakInterface</name>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="espeakInterface.py" line="1836017711"/>
         <source>Feature unavailable</source>
         <comment>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</comment>
         <translation type="obsolete">Dienst niet beschikbaar.
@@ -26,13 +27,14 @@ eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer e
     <message>
         <location filename="espeakInterface.py" line="56"/>
         <source>eSpeak is not installed on this computer.  To use this feature, please install eSpeak or select a new TTS driver in the Settings box.</source>
-        <translation type="unfinished">eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
+        <translatorcomment>eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translatorcomment>
+        <translation>eSpeak is niet op deze computer geïnstalleerd. Installeer eSpeak of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
     </message>
 </context>
 <context>
     <name>FestivalInterface</name>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="espeakInterface.py" line="1836017711"/>
         <source>Feature unavailable</source>
         <comment>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</comment>
         <translation type="obsolete">Dienst niet beschikbaar.
@@ -42,12 +44,12 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
     <message>
         <location filename="festivalInterface.py" line="60"/>
         <source>Feature unavailable</source>
-        <translation type="unfinished">Dienst niet beschikbaar</translation>
+        <translation>Dienst niet beschikbaar</translation>
     </message>
     <message>
         <location filename="festivalInterface.py" line="60"/>
         <source>Festival is not installed on this computer.  To use this feature, please install Festival or select a new TTS driver in the Settings box.</source>
-        <translation type="unfinished">Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
+        <translation>Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecteer een andere TTS driver bij &quot;Instellingen&quot; om deze dienst te kunnen gebruiken.</translation>
     </message>
 </context>
 <context>
@@ -55,92 +57,92 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
     <message>
         <location filename="main.py" line="152"/>
         <source>Untitled Document</source>
-        <translation type="unfinished">Naamloos Document</translation>
+        <translation>Naamloos Document</translation>
     </message>
     <message>
         <location filename="main.py" line="226"/>
         <source>Open file</source>
-        <translation type="unfinished">Bestand openen</translation>
+        <translation>Bestand openen</translation>
     </message>
     <message>
         <location filename="main.py" line="622"/>
         <source>Save file</source>
-        <translation type="unfinished">Bestand opslaan</translation>
+        <translation>Bestand opslaan</translation>
     </message>
     <message>
         <location filename="main.py" line="326"/>
         <source>Feature unavailable</source>
-        <translation type="unfinished">Dienst niet beschikbaar</translation>
+        <translation>Dienst niet beschikbaar</translation>
     </message>
     <message>
         <location filename="main.py" line="326"/>
         <source>The current TTS driver is invalid.  Read-back is unavailable for this session.</source>
-        <translation type="unfinished">De huidige TTS driver is ongeldig.  Voorlezen is niet mogelijk voor deze sessie.</translation>
+        <translation>De huidige TTS driver is ongeldig.  Voorlezen is niet mogelijk voor deze sessie.</translation>
     </message>
     <message>
         <location filename="main.py" line="601"/>
         <source>About this program</source>
-        <translation type="unfinished">Over dit programma</translation>
+        <translation>Over dit programma</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="main.py" line="1836017711"/>
         <source>&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;</source>
         <translation type="obsolete">&lt;h1&gt;WriteType&lt;/h1&gt;&lt;h2&gt;Copyright 2010 Max Shinn&lt;/h2&gt;&lt;a href=&quot;mailto:admin@bernsteinforpresident.com&quot;&gt;admin@BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;&lt;a href=&quot;http://bernsteinforpresident.com&quot;&gt;http://BernsteinForPresident.com&lt;/a&gt; &lt;br /&gt;Deze software is toegankelijk onder de GNU General Public License v3 of later. Voor meer informatie over Uw rechten, zie: &lt;a href=&quot;http://www.gnu.org/licenses/gpl.html&quot;&gt;http://www.gnu.org/licenses/gpl.html&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="main.py" line="645"/>
         <source>Print</source>
-        <translation type="unfinished">Afdrukken</translation>
+        <translation>Afdrukken</translation>
     </message>
     <message>
         <location filename="main.py" line="731"/>
         <source>Quit?</source>
-        <translation type="unfinished">Sluiten?</translation>
+        <translation>Sluiten?</translation>
     </message>
     <message>
         <location filename="main.py" line="731"/>
         <source>You have unsaved work.  Do you want to save?</source>
-        <translation type="unfinished">Er zijn niet opgeslagen veranderingen.  Wilt U die  opslaan?</translation>
+        <translation>Er zijn niet opgeslagen veranderingen.  Wilt U die  opslaan?</translation>
     </message>
     <message>
         <location filename="main.py" line="719"/>
         <source>WriteType - </source>
-        <translation type="unfinished">WriteType -(sp)</translation>
+        <translation>WriteType -(sp)</translation>
     </message>
     <message>
         <location filename="main.py" line="202"/>
         <source>Crash recovery</source>
-        <translation type="unfinished">Crash herstel</translation>
+        <translation>Crash herstel</translation>
     </message>
     <message>
         <location filename="main.py" line="202"/>
         <source>WriteType found unsaved work from a crash.  Would you like to recover it?</source>
-        <translation type="unfinished">WriteType heeft niet opgeslagen verloren gegevens gevonden.(sp)(sp)Wilt U die opslaan?</translation>
+        <translation>WriteType heeft niet opgeslagen verloren gegevens gevonden.(sp)(sp)Wilt U die opslaan?</translation>
     </message>
     <message>
         <location filename="main.py" line="206"/>
         <source>Recovered file</source>
-        <translation type="unfinished">Hersteld bestand</translation>
+        <translation>Hersteld bestand</translation>
     </message>
     <message>
         <location filename="main.py" line="564"/>
         <source>&lt;i&gt;No suggestion available.&lt;/i&gt;</source>
-        <translation type="unfinished">&lt;i&gt;Geen suggesties gevonden.&lt;/i&gt;</translation>
+        <translation>&lt;i&gt;Geen suggesties gevonden.&lt;/i&gt;</translation>
     </message>
     <message>
         <location filename="main.py" line="573"/>
         <source>&lt;i&gt;Diction check completed.&lt;/i&gt;</source>
-        <translation type="unfinished">&lt;i&gt;Dictie controle compleet.&lt;/i&gt;</translation>
+        <translation>&lt;i&gt;Dictie controle compleet.&lt;/i&gt;</translation>
     </message>
     <message>
         <location filename="main.py" line="634"/>
         <source>Save error</source>
-        <translation type="unfinished">Fout opslaan</translation>
+        <translation>Fout opslaan</translation>
     </message>
     <message>
         <location filename="main.py" line="295"/>
         <source>WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again.</source>
-        <translation type="unfinished">WriteType kan het werk niet opslaan.  Controleer de bestands-extensie, dat het bestand bewerkbaar is, en probeer het dan nog eens.</translation>
+        <translation>WriteType kan het werk niet opslaan.  Controleer de bestands-extensie, dat het bestand bewerkbaar is, en probeer het dan nog eens.</translation>
     </message>
     <message>
         <location filename="main.py" line="493"/>
@@ -183,15 +185,15 @@ Festival is niet op deze computer geïnstalleerd. Installeer Festival of selecte
     <message>
         <location filename="mainwindow.py" line="444"/>
         <source>MainWindow</source>
-        <translation type="unfinished">HoofdVenster</translation>
+        <translation>HoofdVenster</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="mainwindow.py" line="1836017711"/>
         <source>Size:</source>
         <translation type="obsolete">Formaat:</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="mainwindow.py" line="1836017711"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -206,307 +208,307 @@ p, li { white-space: pre-wrap; }(new line)
     <message>
         <location filename="mainwindow.py" line="447"/>
         <source>Go Back </source>
-        <translation type="unfinished">Ga Terug </translation>
+        <translation>Ga Terug </translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="455"/>
         <source>Edit</source>
-        <translation type="unfinished">Bewerken</translation>
+        <translation>Bewerken</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="448"/>
         <source>View</source>
-        <translation type="unfinished">Beeld</translation>
+        <translation>Beeld</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="449"/>
         <source>Toolbars</source>
-        <translation type="unfinished">Werkbalken</translation>
+        <translation>Werkbalken</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="452"/>
         <source>Help</source>
-        <translation type="unfinished">Help</translation>
+        <translation>Help</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="454"/>
         <source>File</source>
-        <translation type="unfinished">Bestand</translation>
+        <translation>Bestand</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="mainwindow.py" line="1836017711"/>
         <source>toolBar</source>
         <translation type="obsolete">WerkBalk</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="mainwindow.py" line="1836017711"/>
         <source>toolBar_2</source>
         <translation type="obsolete">WerkBalk_2</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="457"/>
         <source>Save</source>
-        <translation type="unfinished">Opslaan</translation>
+        <translation>Opslaan</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="458"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished">Ctrl+S</translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="459"/>
         <source>Save As...</source>
-        <translation type="unfinished">Opslaan als...</translation>
+        <translation>Opslaan als...</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="460"/>
         <source>Close</source>
-        <translation type="unfinished">Sluiten</translation>
+        <translation>Sluiten</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="461"/>
         <source>Open</source>
-        <translation type="unfinished">Openen</translation>
+        <translation>Openen</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="462"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished">Ctrl+O</translation>
+        <translation>Ctrl+O</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="463"/>
         <source>Settings</source>
-        <translation type="unfinished">Instellingen</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="465"/>
         <source>Bold</source>
-        <translation type="unfinished">Vet</translation>
+        <translation>Vet</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="466"/>
         <source>Ctrl+B</source>
-        <translation type="unfinished">Ctrl+B</translation>
+        <translation>Ctrl+B</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="468"/>
         <source>Italic</source>
-        <translation type="unfinished">Schuin</translation>
+        <translation>Schuin</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="469"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished">Ctrl+I</translation>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="471"/>
         <source>Underline</source>
-        <translation type="unfinished">Onderstrepen</translation>
+        <translation>Onderstrepen</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="472"/>
         <source>Ctrl+U</source>
-        <translation type="unfinished">Ctrl+U</translation>
+        <translation>Ctrl+U</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="473"/>
         <source>Speak</source>
-        <translation type="unfinished">Voorlezen</translation>
+        <translation>Voorlezen</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="474"/>
         <source>Speak Text</source>
-        <translation type="unfinished">Lees Tekst voor</translation>
+        <translation>Lees Tekst voor</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="476"/>
         <source>Undo</source>
-        <translation type="unfinished">Terugdraaien</translation>
+        <translation>Terugdraaien</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="477"/>
         <source>Ctrl+Z</source>
-        <translation type="unfinished">Ctrl+Z</translation>
+        <translation>Ctrl+Z</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="479"/>
         <source>Redo</source>
-        <translation type="unfinished">Opnieuw</translation>
+        <translation>Opnieuw</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="480"/>
         <source>Ctrl+Y</source>
-        <translation type="unfinished">Ctrl+Y</translation>
+        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="481"/>
         <source>File Toolbar</source>
-        <translation type="unfinished">Bestand Werkbalk</translation>
+        <translation>Bestand Werkbalk</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="482"/>
         <source>Enable File Toolbar</source>
-        <translation type="unfinished">Toon Bestand Werkbalk</translation>
+        <translation>Toon Bestand Werkbalk</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="483"/>
         <source>Edit Toolbar</source>
-        <translation type="unfinished">Bewerken Werkbalk</translation>
+        <translation>Bewerken Werkbalk</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="484"/>
         <source>Enable Edit Toolbar</source>
-        <translation type="unfinished">Toon Bewerken Werkbalk</translation>
+        <translation>Toon Bewerken Werkbalk</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="485"/>
         <source>Speaker Toolbar</source>
-        <translation type="unfinished">Voorlees Werkbalk</translation>
+        <translation>Voorlees Werkbalk</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="486"/>
         <source>Enable Speaker Toolbar</source>
-        <translation type="unfinished">Toon Voorlees Werkbalk</translation>
+        <translation>Toon Voorlees Werkbalk</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="487"/>
         <source>Documentation</source>
-        <translation type="unfinished">Documentatie</translation>
+        <translation>Documentatie</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="489"/>
         <source>About WriteType</source>
-        <translation type="unfinished">Over Write Type</translation>
+        <translation>Over Write Type</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="490"/>
         <source>About Qt</source>
-        <translation type="unfinished">Over Qt</translation>
+        <translation>Over Qt</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="492"/>
         <source>Print</source>
-        <translation type="unfinished">Afdrukken</translation>
+        <translation>Afdrukken</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="493"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished">Ctrl+P</translation>
+        <translation>Ctrl+P</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="495"/>
         <source>Highlight Mode</source>
-        <translation type="unfinished">Uitlicht Modus</translation>
+        <translation>Uitlicht Modus</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="497"/>
         <source>Highlight</source>
-        <translation type="unfinished">Uitlichten</translation>
+        <translation>Uitlichten</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="498"/>
         <source>Distraction Free</source>
-        <translation type="unfinished">Afleidings Vrij</translation>
+        <translation>Afleidings Vrij</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="499"/>
         <source>Distraction Free Mode</source>
-        <translation type="unfinished">Afleidings Vrije Modus</translation>
+        <translation>Afleidings Vrije Modus</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="500"/>
         <source>Insert Image</source>
-        <translation type="unfinished">Afbeelding Invoegen</translation>
+        <translation>Afbeelding Invoegen</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="501"/>
         <source>Align Image Left</source>
-        <translation type="unfinished">Afbeelding Links</translation>
+        <translation>Afbeelding Links</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="502"/>
         <source>Align Image Right</source>
-        <translation type="unfinished">Afbeelding Rechts</translation>
+        <translation>Afbeelding Rechts</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="503"/>
         <source>Image Toolbar</source>
-        <translation type="unfinished">Afbeelding Werkbalk</translation>
+        <translation>Afbeelding Werkbalk</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="504"/>
         <source>Stop</source>
-        <translation type="unfinished">Stop</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="505"/>
         <source>Align Left</source>
-        <translation type="unfinished">Links-bondig</translation>
+        <translation>Links-bondig</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="506"/>
         <source>Align Center</source>
-        <translation type="unfinished">Gecentreerd</translation>
+        <translation>Gecentreerd</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="507"/>
         <source>Align Right</source>
-        <translation type="unfinished">Vertaling</translation>
+        <translation>Vertaling</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="508"/>
         <source>Double Space</source>
-        <translation type="unfinished">Dubbele Spatie</translation>
+        <translation>Dubbele Spatie</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="509"/>
         <source>Single Space</source>
-        <translation type="unfinished">Enkele Spatie</translation>
+        <translation>Enkele Spatie</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="445"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="446"/>
         <source>Next</source>
-        <translation type="unfinished">Volgende</translation>
+        <translation>Volgende</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="451"/>
         <source>Tools</source>
-        <translation type="unfinished">Werktuigen</translation>
+        <translation>Werktuigen</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="510"/>
         <source>Statistics</source>
-        <translation type="unfinished">Statistieken</translation>
+        <translation>Statistieken</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="511"/>
         <source>Diction Check</source>
-        <translation type="unfinished">Dictie controle</translation>
+        <translation>Dictie controle</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="512"/>
         <source>Cut</source>
-        <translation type="unfinished">Snijden</translation>
+        <translation>Snijden</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="513"/>
         <source>Copy</source>
-        <translation type="unfinished">Kopieren</translation>
+        <translation>Kopieren</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="514"/>
         <source>Paste</source>
-        <translation type="unfinished">Plakken</translation>
+        <translation>Plakken</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="456"/>
         <source>Speak text</source>
-        <translation type="unfinished">Tekst uitspreken</translation>
+        <translation>Tekst uitspreken</translation>
     </message>
     <message>
         <location filename="mainwindow.py" line="515"/>
@@ -524,12 +526,12 @@ p, li { white-space: pre-wrap; }(new line)
     <message>
         <location filename="settings.py" line="67"/>
         <source>Replace:</source>
-        <translation type="unfinished">Vervang:</translation>
+        <translation>Vervang:</translation>
     </message>
     <message>
         <location filename="settings.py" line="68"/>
         <source>With:</source>
-        <translation type="unfinished">Met:</translation>
+        <translation>Met:</translation>
     </message>
 </context>
 <context>
@@ -568,7 +570,7 @@ p, li { white-space: pre-wrap; }(new line)
     <message>
         <location filename="distractionFree.py" line="37"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialoog</translation>
+        <translation>Dialoog</translation>
     </message>
 </context>
 <context>
@@ -576,182 +578,182 @@ p, li { white-space: pre-wrap; }(new line)
     <message>
         <location filename="settingsDialog.py" line="231"/>
         <source>Settings</source>
-        <translation type="unfinished">Instellingen</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="248"/>
         <source>Please enter any custom words you would like to appear in the spell check, one per line.</source>
-        <translation type="unfinished">Voeg Uw eigen woorden toe in de spelchecker, één per rgel.</translation>
+        <translation>Voeg Uw eigen woorden toe in de spelchecker, één per rgel.</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="249"/>
         <source>Custom Words</source>
-        <translation type="unfinished">Eigen Woorden</translation>
+        <translation>Eigen Woorden</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="232"/>
         <source>Please select the size of the word completion database:</source>
-        <translation type="unfinished">Selecteer de grootte van de woord aanvulling database:</translation>
+        <translation>Selecteer de grootte van de woord aanvulling database:</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="settingsDialog.py" line="1836017711"/>
         <source>Big</source>
         <translation type="obsolete">Groot</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="settingsDialog.py" line="1836017711"/>
         <source>Really Big</source>
         <translation type="obsolete">Heel Groot</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="settingsDialog.py" line="1836017711"/>
         <source>Huge</source>
         <translation type="obsolete">Enorm</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="settingsDialog.py" line="1836017711"/>
         <source>Super Huge</source>
         <translation type="obsolete">Super Enorm</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="settingsDialog.py" line="1836017711"/>
         <source>Ginormous</source>
         <translation type="obsolete">Giga Enorm</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="238"/>
         <source>Word lists</source>
-        <translation type="unfinished">Woorden Lijst</translation>
+        <translation>Woorden Lijst</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="239"/>
         <source>View settings for the custom word completion</source>
-        <translation type="unfinished">Toon instellingen voor eigen woord aanvullingen</translation>
+        <translation>Toon instellingen voor eigen woord aanvullingen</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="240"/>
         <source>Minimum letters:</source>
-        <translation type="unfinished">Minimum letters:</translation>
+        <translation>Minimum letters:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="242"/>
         <source>Try to guess misspellings</source>
-        <translation type="unfinished">Spelfouten raden</translation>
+        <translation>Spelfouten raden</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="243"/>
         <source>Misspelling Settings</source>
-        <translation type="unfinished">Instellingen Spelfouten</translation>
+        <translation>Instellingen Spelfouten</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="244"/>
         <source>How many entries need to be displayed, at the minimum, before WriteType will attempt to guess the spelling?</source>
-        <translation type="unfinished">Hoeveel invoeringen moeten minimaal getoond, voor Write Type gaat raden?</translation>
+        <translation>Hoeveel invoeringen moeten minimaal getoond, voor Write Type gaat raden?</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="245"/>
         <source>Misspelling Threshold:</source>
-        <translation type="unfinished">Spelfout Drempel:</translation>
+        <translation>Spelfout Drempel:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="246"/>
         <source>Advanced Substitutions?</source>
-        <translation type="unfinished">Geavanceerde Vervangingen?</translation>
+        <translation>Geavanceerde Vervangingen?</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="247"/>
         <source>Word Completion</source>
-        <translation type="unfinished">Woord Aanvulling</translation>
+        <translation>Woord Aanvulling</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="settingsDialog.py" line="1836017711"/>
         <source>Use auto-completion</source>
         <translation type="obsolete">Gebruik auto-aanvulling</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="251"/>
         <source>Auto-correction settings</source>
-        <translation type="unfinished">Instellingen Automatische-spelcontrôle</translation>
+        <translation>Instellingen Automatische-spelcontrôle</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="252"/>
         <source>Contractions</source>
-        <translation type="unfinished">Afkortingen</translation>
+        <translation>Afkortingen</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="settingsDialog.py" line="1836017711"/>
         <source>Auto-completions</source>
         <translation type="obsolete">Auto-aanvullingen</translation>
     </message>
     <message>
-        <location filename="" line="1836017711"/>
+        <location filename="settingsDialog.py" line="1836017711"/>
         <source>Send usage statistics to help improve the program</source>
         <translation type="obsolete">Verzend gebruiks statistieken om het programma te helpen verbeteren</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="254"/>
         <source>Default Font:</source>
-        <translation type="unfinished">Standaard Lettertype:</translation>
+        <translation>Standaard Lettertype:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="255"/>
         <source>Options:</source>
-        <translation type="unfinished">Opties:</translation>
+        <translation>Opties:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="259"/>
         <source>System Default</source>
-        <translation type="unfinished">Systeem Standaard</translation>
+        <translation>Systeem Standaard</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="256"/>
         <source>Reading speed:</source>
-        <translation type="unfinished">Voorlees Tempo:</translation>
+        <translation>Voorlees Tempo:</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="257"/>
         <source>%</source>
-        <translation type="unfinished">%</translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="258"/>
         <source>TTS Engine</source>
-        <translation type="unfinished">TTS Engine</translation>
+        <translation>TTS Engine</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="264"/>
         <source>Other</source>
-        <translation type="unfinished">Ander</translation>
+        <translation>Ander</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="265"/>
         <source>Okay</source>
-        <translation type="unfinished">Okee</translation>
+        <translation>Okee</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="266"/>
         <source>Apply</source>
-        <translation type="unfinished">Uitvoeren</translation>
+        <translation>Uitvoeren</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="267"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annuleren</translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="262"/>
         <source>Check document for grammar mistakes</source>
-        <translation type="unfinished">Controleer document op grammatica fouten</translation>
+        <translation>Controleer document op grammatica fouten</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="250"/>
         <source>Use auto-correction</source>
-        <translation type="unfinished">Gebruik auto-correctie</translation>
+        <translation>Gebruik auto-correctie</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="253"/>
         <source>Auto-corrections</source>
-        <translation type="unfinished">Auto-correcties</translation>
+        <translation>Auto-correcties</translation>
     </message>
     <message>
         <location filename="settingsDialog.py" line="241"/>
@@ -788,7 +790,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="statistics.py" line="79"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialoog</translation>
+        <translation>Dialoog</translation>
     </message>
     <message>
         <location filename="statistics.py" line="80"/>
@@ -797,7 +799,7 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Document Statistics&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;(new line)
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;(new line)
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;(new line)
 p, li { white-space: pre-wrap; }(new line)
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;(new line)
@@ -806,7 +808,7 @@ p, li { white-space: pre-wrap; }(new line)
     <message>
         <location filename="statistics.py" line="85"/>
         <source>Filename: </source>
-        <translation type="unfinished">Bestandsnaam: </translation>
+        <translation>Bestandsnaam: </translation>
     </message>
     <message>
         <location filename="statistics.py" line="86"/>

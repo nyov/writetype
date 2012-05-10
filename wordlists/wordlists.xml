@@ -1,21 +1,19 @@
 <xml>
-<wordlist name="None" file="blank.txt" lang="en_US" id="1" />
-<wordlist name="Big" file="list1.txt" lang="en_US" id="2" />
-<wordlist name="Really Big" file="list2.txt" lang="en_US" id="3" />
-<wordlist name="Huge" file="list3.txt" lang="en_US" id="4" />
-<wordlist name="Super Huge" file="list4.txt" lang="en_US" id="5" />
-<wordlist name="Ginormous" file="list5.txt" lang="en_US" id="6" />
-<wordlist name="Geen" file="blank.txt" lang="nl_NL" id="1" />
-<wordlist name="Groot" file="dutch.txt" lang="nl_NL" id="2" />
-<wordlist name="Enorm" file="dutch_big.txt" lang="nl_NL" id="3" />
-<wordlist name="Nada" file="blank.txt" lang="es_AR" id="1" />
-<wordlist name="Nada" file="blank.txt" lang="es_ES" id="1" />
-<wordlist name="Nada" file="blank.txt" lang="es_MX" id="1" />
-<wordlist name="Español" file="spanish.txt" lang="es_AR" id="2" />
-<wordlist name="Español" file="spanish.txt" lang="es_ES" id="2" />
-<wordlist name="Español" file="spanish.txt" lang="es_MX" id="2" />
-<wordlist name="Basque" file="basque.txt" lang="eu_ES" id="1" />
-<wordlist name="Русский" file="blank.txt" lang="ru_RU" id="1" />
-<wordlist name="български" file="blank.txt" lang="bg_BG" id="1" />
-<wordlist name="Никой" file="bulgarian.txt" lang="bg_BG" id="2" />
+<wordlist name="None" file="blank.txt" lang="en" id="1" />
+<wordlist name="Big" file="list1.txt" lang="en" id="2" />
+<wordlist name="Really Big" file="list2.txt" lang="en" id="3" />
+<wordlist name="Huge" file="list3.txt" lang="en" id="4" />
+<wordlist name="Super Huge" file="list4.txt" lang="en" id="5" />
+<wordlist name="Ginormous" file="list5.txt" lang="en" id="6" />
+<wordlist name="Geen" file="blank.txt" lang="nl" id="1" />
+<wordlist name="Groot" file="dutch.txt" lang="nl" id="2" />
+<wordlist name="Enorm" file="dutch_big.txt" lang="nl" id="3" />
+<wordlist name="Nada" file="blank.txt" lang="es" id="1" />
+<wordlist name="Español" file="spanish.txt" lang="es" id="2" />
+<wordlist name="Basque" file="basque.txt" lang="eu" id="1" />
+<wordlist name="Русский" file="blank.txt" lang="ru" id="1" />
+<wordlist name="български" file="blank.txt" lang="bg" id="1" />
+<wordlist name="Никой" file="bulgarian.txt" lang="bg" id="2" />
+<wordlist name="Nessuna" file="blank.txt" lang="it" id="1" />
+<wordlist name="Italiano" file="italian.txt" lang="it" id="2" />
 </xml>

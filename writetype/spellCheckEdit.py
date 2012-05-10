@@ -61,7 +61,7 @@ class spellCheckEdit(QTextEdit):
             self.highlighter.setDict(False)
             self.spellCheckEnabled = False
         self.menu = QMenu(self)
-        self.lastWord = ""
+        self.lastWord = "" # Contains the last word selected from the list of words
         
     def mousePressEvent(self, event):
         """Move the cursor to the appropriate position"""

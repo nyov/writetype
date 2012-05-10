@@ -39,7 +39,7 @@ class SettingsDialogBox(QtGui.QDialog):
         dom = minidom.parse(filepath)
         #Don't forget to sort these by sortweight!
         for node in dom.getElementsByTagName("wordlist"):
-            if node.getAttribute("lang") == getPlatformSetting("language"):
+            if getPlatformSetting("language").startswith(node.getAttribute("lang")):
                 self.ui.noneAvailableLabel.setVisible(False)
                 button = QtGui.QRadioButton(node.getAttribute("name"), self.ui.tab)
                 self.ui.verticalLayout_4.addWidget(button)
