@@ -590,9 +590,8 @@ class MainApplication(QtGui.QMainWindow):
     def updateFontSizeSpinBoxValue(self):
         """Update the font size spinbox when the cursor moves"""
         if not self.ui.textArea.textCursor().selectedText():
-            self.ui.spinBoxFontSize.setValue(int(self.ui.textArea.fontPointSize()))
-        if self.ui.spinBoxFontSize.value() == 0:
-            self.ui.spinBoxFontSize.setValue(12)
+            if int(self.ui.textArea.fontPointSize()) > .1:
+                self.ui.spinBoxFontSize.setValue(int(self.ui.textArea.fontPointSize()))
 
     def updateFontComboBoxValue(self):
         """Update the font family combobox when the cursor moves"""
