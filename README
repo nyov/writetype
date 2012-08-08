@@ -1,24 +1,39 @@
 WRITETYPE
 Software to help young students write
 
+Installing WriteType (GNU/Linux)
+================================
+
+1. Be sure you have the following packages installed:
+    - Qt4
+    - Python 2.7 or higher
+    - PyQt4
+    - pyenchant
+    - Festival or eSpeak
+
+2. Type "make", followed by "make install".  
+
+3. To uninstall at a later time, type "make uninstall".  
+
+
 Building Debian Packages
 ========================
 
-1. Checkout a clean copy from bzr
-(http://bzr.bernsteinforpresident.com/writetype) and remove the .bzr
+1. Checkout a clean copy from bzr (lp:writetype) and remove the .bzr
 directory
 
-2. Add a new entry to the changelog in the debian directory
+2. Dowload the "debian" directory from the Debian VC:
+http://packages.qa.debian.org/w/writetype.html
 
-3. Enter the directory and run "debuild -us -uc"
+3. Build the package
 
-4. Tah-dah!  You're done!
 
 Building a Windows Installer
 ============================
 
-1. Checkout a clean copy from bzr
-(http://bzr.bernsteinforpresident.com/writetype)
+1. Checkout a clean copy from bzr (lp:writetype) on a GNU/Linux
+computer, run "make", and then copy the resulting directory to a
+Windows computer.
 
 2. Edit writetype/main.py to import all local references from the
 "writetype" module.  For instance, instead of "import
