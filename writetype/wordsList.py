@@ -104,7 +104,7 @@ class WordsList:
 
     def _nextLetter(self, char):
         """Return the next letter in the alphabet.  Returns "{" after "z"."""
-        return chr(ord(char.lower())+1)
+        return unichr(ord(char.lower())+1)
 
     def addCustomWord(self, word, weight=1):
         """Add a new word to the list of words, or increment the weight by weight"""

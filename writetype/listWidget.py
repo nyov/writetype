@@ -169,6 +169,7 @@ class ListWidget(QtGui.QWidget):
     def activate(self, index):
         """Set a particular list item as active"""
         self.index = index
+        if len(self.words) <= index: return
         self.emit(SIGNAL("wordPressed"), unicode(self.words[index].word), self.words[index].mode)
         self.repaint()
 
