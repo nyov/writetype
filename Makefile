@@ -31,7 +31,6 @@ clean:
 	rm -f translations/new_qt_*.ts
 	rm -f translations/qt_*.qm
 	rm -f writetype/ui_*.py
-	rm -f writetype/revno.py
 	rm -f writetype/resources_rc.py
 	rm -f CHANGELOG
 
