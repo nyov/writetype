@@ -16,4 +16,6 @@
 <wordlist name="Никой" file="bulgarian.txt" lang="bg" id="2" />
 <wordlist name="Nessuna" file="blank.txt" lang="it" id="1" />
 <wordlist name="Italiano" file="italian.txt" lang="it" id="2" />
+<wordlist name="Aucun" file="blank.txt" lang="fr" id="1" />
+<wordlist name="Français" file="french.txt" lang="fr" id="2" />
 </xml>
