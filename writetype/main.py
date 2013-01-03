@@ -68,7 +68,7 @@ from ui_mainwindow import Ui_MainWindow
 
 class MainApplication(QtGui.QMainWindow):
     """The main application class"""
-    
+
     def __init__(self, parent=None):
         QtGui.QMainWindow.__init__(self, parent)
         self.ui = Ui_MainWindow()
@@ -146,12 +146,12 @@ class MainApplication(QtGui.QMainWindow):
 
         #Autocorrect
         QtCore.QObject.connect(self.ui.textArea, QtCore.SIGNAL("wordEdited"), self.checkForAutocorrection)
-        
+
         #printer
         QtCore.QObject.connect(self.ui.actionPrint, QtCore.SIGNAL("triggered()"), self.openPrintDialog)
         self.filename = ""
         self.filetitle = self.tr("Untitled Document")
-        
+
         #settings dialog box
         self.settings_box = SettingsDialogBox(self)
         QtCore.QObject.connect(self.ui.actionSettings, QtCore.SIGNAL("triggered()"), self.settings_box.show)
@@ -188,11 +188,11 @@ class MainApplication(QtGui.QMainWindow):
         self.ui.actionEnableImageToolbar.setVisible(False)
         #self.ui.actionDoubleSpace.setVisible(False)
         #self.ui.actionSingleSpace.setVisible(False)
-        
+
         #Apply some settings
         if getSetting("defaultfont", ""):
             self.ui.fontComboBox.setCurrentFont(QtGui.QFont(getSetting("defaultfont")))
-        
+
         #Add some more widgets to the toolbar
         self.ui.editToolBar.addWidget(self.ui.sizeLabel)
         self.ui.editToolBar.addWidget(self.ui.spinBoxFontSize)
@@ -213,7 +213,7 @@ class MainApplication(QtGui.QMainWindow):
         global options
         if len(options) >= 1:
             self.openFile(options[0])
-                
+
 
     def __del__(self):
         print "destructor"
@@ -221,7 +221,7 @@ class MainApplication(QtGui.QMainWindow):
 
 
     #FILE OPENING/SAVING
-    
+
     def openDialog(self):
         """Display a dialog to open a file"""
         filename = QtGui.QFileDialog.getOpenFileName(self, self.tr("Open file"), getSetting('lastdir', ''), QCoreApplication.translate("WriteTypeMain", "All Compatible Files (*.wtd *.htm *.html *.txt);;WriteType Document (*.wtd);;Formatted Text (*.html *.htm);;All Files (*.*)"))
@@ -237,7 +237,7 @@ class MainApplication(QtGui.QMainWindow):
             self.ui.textArea.setText(text)
             self.filetitle = str(self.filename).split(sep).pop()
             self.updateTitle(False)
-            
+
             #Add the words in the document to the custom words list
             for token in self.tokenizer(unicode(self.ui.textArea.toPlainText())):
                 self.wl.addCustomWord(token[0].lower())
@@ -276,7 +276,7 @@ class MainApplication(QtGui.QMainWindow):
         if ((not str(filename).endswith(ext))):
             filename = filename + ext
         self.filename = filename
-        
+
         self.writeFile()
 
         self.filetitle = unicode(self.filename).split(sep).pop()
@@ -299,7 +299,7 @@ class MainApplication(QtGui.QMainWindow):
         except:
             logger.log("Error saving work", logtype="Error", tb=True)
             QMessageBox.warning(self, self.tr("Save error"), self.tr("WriteType was unable to save your work.  Please check the file extension, ensure that the selected file is writable, and try again."))
-        
+
     def autoSave(self):
         """Autosave the current document whenever called"""
         #This function should be called whenever an autosave is desired
@@ -360,7 +360,7 @@ class MainApplication(QtGui.QMainWindow):
             if getSetting("readastyped", False):
                 if word:
                     self.sayText(word, showalert=False)
-            
+
             #Display spell check suggestions in the misspelling box after a space is pressed
             if not word:
                 if wordraw:
@@ -390,9 +390,9 @@ class MainApplication(QtGui.QMainWindow):
                         item = ListWidgetItem(word[0], bgcolor=bgcolor)
                         self.ui.spellingSuggestionsList.addItem(item)
 
-            
+
         self.ui.spellingSuggestionsList.repaint()
-        
+
     #SPELLING SUGGESTIONS/WORD LISTS
 
     def tabEvent(self):
@@ -415,7 +415,7 @@ class MainApplication(QtGui.QMainWindow):
         """Tab backwards through words in the spelling completion box"""
         if not self.wordsN:
             return
-        if self.wlIndex == None: 
+        if self.wlIndex == None:
             self.wlIndex = 0
         elif self.wlIndex == 0:
             self.wlIndex = len(self.wordsN)-1
@@ -456,9 +456,9 @@ class MainApplication(QtGui.QMainWindow):
         #This way, the word list won't keep changing if the user tabs to select a new word
         if self.ui.spellingSuggestionsList.index != None:
             return
-        
+
         self.ui.spellingSuggestionsList.clear()
-        
+
         if len(text) <= getSetting("minimumletters", 0):
             return
 
@@ -515,7 +515,7 @@ class MainApplication(QtGui.QMainWindow):
             words = self.wl.search(tuple(possibilities))
             for w,s in words:
                 self.ui.spellingSuggestionsList.addNewItem(w, weight=s)
-        self.ui.spellingSuggestionsList.repaint()      
+        self.ui.spellingSuggestionsList.repaint()
 
     def keyPressEvent(self, e):
         """Overloaded keyPressEvent from QWidget to catch F-keys"""
@@ -581,7 +581,7 @@ class MainApplication(QtGui.QMainWindow):
                     #self.ui.prevButton.setDisabled(True)
                     self.ui.textArea.selectTextByPosition(0, 0)
                     break
-    
+
     def nextDictionError(self):
         """Go to the next diction error"""
         logger.log("going to diction check")
@@ -598,12 +598,30 @@ class MainApplication(QtGui.QMainWindow):
         if not self.ui.textArea.textCursor().selectedText():
             self.ui.fontComboBox.setCurrentFont(self.ui.textArea.currentFont())
         self.ui.textArea.setFocus()
-        
+
     #DIALOGS
 
     def showAbout(self):
         """Open the about box"""
-        QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""<h1>WriteType <span style="font-size: large">Revision r%1</span></h1><h3>Copyright 2010-2012 Max Shinn</h3><br /><a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br /><a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />This software is made available under the GNU General Public License v3 or later. For more information about your rights, see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br /><h3>Additional Contributions</h3><table border="1" width="100%"><tr><td>Emilio Lopez</td><td>Spanish Translations</td></tr><tr><td>Gorka Azkarate</td><td>Basque Translations</td></tr><tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr><tr><td><a href="mailto:sbasalaev@gmail.com">Sergey Basalaev</a></td><td>Russian Translations</td></tr><tr><td><a href="mailto:topgunbg@gmail.com">Galin Petrov</a></td><td>Bulgarian Translations</td></tr><tr><td>Agnese Dal Borgo</td><td>Italian Translations</td></tr><tr><td>Riccardo Murri</td><td>Italian Translations</td></tr></table>""").arg(revno.aboutrevno))
+        QtGui.QMessageBox.about(self, self.tr("About this program"), self.tr("""
+        <h1>WriteType <span style="font-size: large">Revision r%1</span></h1>
+        <h3>Copyright 2010-2012 Max Shinn</h3><br />
+        <a href="mailto:admin@bernsteinforpresident.com">admin@BernsteinForPresident.com</a> <br />
+        <a href="http://bernsteinforpresident.com">http://BernsteinForPresident.com</a> <br />
+        This software is made available under the GNU General Public
+        License v3 or later. For more information about your rights,
+        see: <a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a><br />
+        <h3>Additional Contributions</h3>
+        <table border="1" width="100%">
+        <tr><td>Emilio Lopez</td><td>Spanish Translations</td></tr>
+        <tr><td>Gorka Azkarate</td><td>Basque Translations</td></tr>
+        <tr><td>Harm Bathoorn</td><td>Dutch Translations</td></tr>
+        <tr><td><a href="mailto:sbasalaev@gmail.com">Sergey Basalaev</a></td><td>Russian Translations</td></tr>
+        <tr><td><a href="mailto:topgunbg@gmail.com">Galin Petrov</a></td><td>Bulgarian Translations</td></tr>
+        <tr><td>Agnese Dal Borgo</td><td>Italian Translations</td></tr>
+        <tr><td>Riccardo Murri</td><td>Italian Translations</td></tr>
+        <tr><td>Clm</td><td>French Translations</td></tr>
+        </table>""").arg(revno.aboutrevno))
 
     def checkForUpdates(self):
         """Check for updates"""
@@ -617,11 +635,11 @@ class MainApplication(QtGui.QMainWindow):
         except:
             message = self.tr("There was an unexpected error in establishing a connection.  Please try again later.", tb=True)
         QtGui.QMessageBox.information(self, self.tr("Updates"), message)
-        
+
     def openHelpPage(self):
         """Open the Bernsteinforpresident.com documentation"""
         QtGui.QDesktopServices.openUrl(QtCore.QUrl(getPlatformSetting("documentationUrl")))
-        
+
     def saveLog(self):
         """Save the log to a file, or display it if there is an error."""
         filename = QtGui.QFileDialog.getSaveFileName(self, self.tr("Save file"), "", "Log file (*.log)")
@@ -658,7 +676,7 @@ class MainApplication(QtGui.QMainWindow):
             self.ui.textArea.document().print_(printer)
             self.ui.textArea.highlighter.format_grammar.setUnderlineColor(currentGrammarColor)
             self.ui.textArea.highlighter.format_grammar.setUnderlineColor(currentSpellingColor)
-            self.ui.textArea.highlighter.rehighlight()          
+            self.ui.textArea.highlighter.rehighlight()
 
     def showStatisticsDialog(self):
         """Show document statistics"""
@@ -706,7 +724,7 @@ class MainApplication(QtGui.QMainWindow):
         self.ui.centralwidget.setParent(self)
         self.setCentralWidget(self.ui.centralwidget)
         self.ui.distractionButton.hide()
-            
+
     def refreshAfterSettingsDialogClosed(self):
         """Reload the settings that were changed in the settings dialog"""
         self.ui.actionSpeak.setDisabled(False)
