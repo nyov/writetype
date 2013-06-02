@@ -43,7 +43,6 @@ class SettingsDialogBox(QtGui.QDialog):
             self.ui.noneAvailableLabel.setVisible(False) # Hide the text that says none are available
             button = QtGui.QRadioButton(node.getAttribute("name"), self.ui.tab)
             button.setIcon(QIcon(":/res/" + node.getAttribute("lang") + ".png"))
-            print ":/res/" + node.getAttribute("lang") + ".png"
             button.setProperty("lang", node.getAttribute("lang"))
             self.ui.verticalLayout_10.addWidget(button)
             self.wordListButtonGroup.addButton(button, int(node.getAttribute("id")))

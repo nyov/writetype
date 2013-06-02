@@ -684,23 +684,23 @@ class MainApplication(QtGui.QMainWindow):
         self.statisticsDialog.ui.filenameLabel.setText(self.filename)
         #Only alpha-numerics
         chars = 0
-        for char in str(self.ui.textArea.toPlainText()):
+        for char in unicode(self.ui.textArea.toPlainText()):
             if char in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890":
                 chars += 1
         self.statisticsDialog.ui.charactersLabel.setText(str(chars))
         #Stupid tokenizer, doesn't work with len()
         words = 0
-        for x in self.tokenizer(str(self.ui.textArea.toPlainText())):
+        for x in self.tokenizer(unicode(self.ui.textArea.toPlainText())):
             words += 1
-        self.statisticsDialog.ui.wordsLabel.setText(str(words))
+        self.statisticsDialog.ui.wordsLabel.setText(unicode(words))
         sentences = len(re.findall('[A-Z][^A-Z]*[.!?]', unicode(self.ui.textArea.toPlainText())))
-        self.statisticsDialog.ui.sentencesLabel.setText(str(sentences))
+        self.statisticsDialog.ui.sentencesLabel.setText(unicode(sentences))
         paragraphs = self.ui.textArea.document().blockCount()
-        self.statisticsDialog.ui.paragraphsLabel.setText(str(paragraphs))
+        self.statisticsDialog.ui.paragraphsLabel.setText(unicode(paragraphs))
         #Automated Readability Index - this is the easiest to implement :)
         try:
             readability = 4.71*(float(chars)/words) + .5*(float(words)/sentences) - 21.43
-            self.statisticsDialog.ui.readabilityLabel.setText(str(round(readability, 1)))
+            self.statisticsDialog.ui.readabilityLabel.setText(unicode(round(readability, 1)))
         except ZeroDivisionError:
             self.statisticsDialog.ui.readabilityLabel.setText(QCoreApplication.translate("WriteTypeMain", "Invalid, no sentences found."))
 
