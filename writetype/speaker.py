@@ -20,6 +20,8 @@ import re
 from platform import system
 import logger
 
+# This serves as a common interface to all of the text to speech
+# backend drivers.
 class Speaker:
     def __init__(self, text):
         self.setDriver()
@@ -82,7 +84,7 @@ class Speaker:
         while text.find('"') != text.rfind('"'):
             text = text.replace('"', "<PITCH BASE='20%'>", 1)
             text = text.replace('"', "</PITCH>", 1)
-        text = '<LANGUAGE ID="' + platformSettings.getPlatformSetting("language")[0:2] + '">' + text + '</LANGUAGE>'
+        text = '<LANGUAGE ID="' + platformSettings.getSetting("spellchecklang", platformSettings.getPlatformSetting("language"))[0:2] + '">' + text + '</LANGUAGE>'
         text = text.replace("\n", '<BREAK LEVEL="large" />')
         text = re.sub(re.compile(re.escape("writetype"), re.I), '<PRON SUB="right type">writetype</PRON>', text, 0)
         #Set the speed to the user preference
@@ -100,7 +102,7 @@ class Speaker:
         #Set the speed to the user preference
         speed = platformSettings.getSetting("readingspeed", 0)
         text = unicode('<prosody rate="' + unicode(speed) + '%">' + text + "</prosody>")
-        return "<speak xml:lang=\""+platformSettings.getPlatformSetting("language").replace('_', '-')+"\">"+text+"</speak>"
+        return "<speak xml:lang=\""+platformSettings.getSetting("spellchecklang", platformSettings.getPlatformSetting("language")).replace('_', '-')+"\">"+text+"</speak>"
     
     def installDriver(self, driver):
         logger.log("Trying TTS driver ", driver)

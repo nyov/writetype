@@ -730,6 +730,7 @@ class MainApplication(QtGui.QMainWindow):
         self.ui.actionSpeak.setDisabled(False)
         self.ui.actionStop.setDisabled(False)
 
+        self.ui.textArea.setUpDictionary()
         self.wl.loadWords()
         self.wl.refreshReplacementTable()
         self.speaker.setDriver()

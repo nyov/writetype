@@ -51,8 +51,18 @@ class spellCheckEdit(QTextEdit):
     def __init__(self, *args):
         QTextEdit.__init__(self, *args)
         self.highlighter = Highlighter(self.document())
+        self.setUpDictionary()
+        
+        self.menu = QMenu(self)
+        self.lastWord = "" # Contains the last word selected from the list of words
+        
+    # This function initializes (or reinitialized) the spell check
+    # dictionary with the current spell check language. The spell
+    # check language should be the same as the current word list
+    # language, but it could be different than the interface language.
+    def setUpDictionary(self):
         try:
-            self.dictionary = enchant.Dict(getPlatformSetting('language'))
+            self.dictionary = enchant.Dict(getSetting('spellchecklang', getPlatformSetting("language")))
             self.spellCheckEnabled = True
             self.highlighter.setDict(self.dictionary)
         except enchant.Error:
@@ -60,9 +70,7 @@ class spellCheckEdit(QTextEdit):
             self.dictionary = enchant.Dict(False)
             self.highlighter.setDict(False)
             self.spellCheckEnabled = False
-        self.menu = QMenu(self)
-        self.lastWord = "" # Contains the last word selected from the list of words
-        
+
     def mousePressEvent(self, event):
         """Move the cursor to the appropriate position"""
         if event.button() == Qt.RightButton:

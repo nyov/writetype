@@ -66,6 +66,13 @@ p, li { white-space: pre-wrap; }
          </property>
         </spacer>
        </item>
+       <item>
+        <widget class="QCheckBox" name="showAllLangsCheckBox">
+         <property name="text">
+          <string>Show all languages</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="wordCompletionTab">

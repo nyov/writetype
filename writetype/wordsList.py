@@ -60,11 +60,9 @@ class WordsList:
         filename = "blank.txt"
         dom = minidom.parse(path.join(getPlatformSetting('basePath'), 'wordlists', 'wordlists.xml'))
         for node in dom.getElementsByTagName("wordlist"):
-            if getPlatformSetting("language").startswith(node.getAttribute("lang")):
+            if node.getAttribute("id") == getSetting("wordlist", "3"):
                 filename = node.getAttribute('file')
-                if node.getAttribute("id") == getSetting("wordlist", "3"):
-                    break
-                    
+
         wordspath = path.join(getPlatformSetting('basePath'), 'wordlists', filename)
         #Load the wordlist from that file
         logger.log("Loading words from " + wordspath)
