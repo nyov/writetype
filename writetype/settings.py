@@ -18,6 +18,7 @@
 from ui_settings import Ui_settingsDialog
 from xml.dom import minidom
 from PyQt4 import QtCore, QtGui, Qt
+from PyQt4.QtGui import QIcon
 from platformSettings import *
 from os.path import join
 
@@ -41,10 +42,13 @@ class SettingsDialogBox(QtGui.QDialog):
         for node in dom.getElementsByTagName("wordlist"):
             self.ui.noneAvailableLabel.setVisible(False) # Hide the text that says none are available
             button = QtGui.QRadioButton(node.getAttribute("name"), self.ui.tab)
-            button.icon = node.getAttribute("lang") + ".png"
+            button.setIcon(QIcon(":/res/" + node.getAttribute("lang") + ".png"))
+            print ":/res/" + node.getAttribute("lang") + ".png"
             button.setProperty("lang", node.getAttribute("lang"))
-            self.ui.verticalLayout_4.addWidget(button)
+            self.ui.verticalLayout_10.addWidget(button)
             self.wordListButtonGroup.addButton(button, int(node.getAttribute("id")))
+        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.ui.verticalLayout_10.addSpacerItem(spacerItem)
         self.hideOtherLanguageCheckboxes()
         QtCore.QObject.connect(self.ui.showAllLangsCheckBox, QtCore.SIGNAL("toggled(bool)"), self.languageCheckboxToggled)
 
