@@ -18,4 +18,6 @@
 <wordlist name="Italiano" file="italian.txt" lang="it" id="17" />
 <wordlist name="Aucun" file="blank.txt" lang="fr" id="18" />
 <wordlist name="Français" file="french.txt" lang="fr" id="19" />
+<wordlist name="Kein" file="blank.txt" lang="de" id="20" />
+<wordlist name="Deutsch" file="german.txt" lang="de" id="21" />
 </xml>

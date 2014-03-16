@@ -621,6 +621,7 @@ class MainApplication(QtGui.QMainWindow):
         <tr><td>Agnese Dal Borgo</td><td>Italian Translations</td></tr>
         <tr><td>Riccardo Murri</td><td>Italian Translations</td></tr>
         <tr><td>Clm</td><td>French Translations</td></tr>
+        <tr><td>Thomas  Weber</td><td>German Translations</td></tr>
         </table>""").arg(revno.aboutrevno))
 
     def checkForUpdates(self):

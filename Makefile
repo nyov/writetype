@@ -6,6 +6,7 @@ all: ui res translations revno changelog
 
 translations: $(foreach tsfile, $(wildcard translations/qt_*.ts), $(basename $(tsfile)).qm)
 	pylupdate4 writetype/*.py -ts translations/writetype.ts  
+	lconvert -of po -o translations/new_qt_eu_ES.po translations/new_qt_eu_ES.ts
 
 translations/%.qm:
 	cp $(basename $@).ts translations/new_$(notdir $(basename $@)).ts
