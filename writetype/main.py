@@ -789,14 +789,18 @@ class StatisticsWindow(QtGui.QDialog):
         self.ui = Ui_statisticsDialog()
         self.ui.setupUi(self)
 
-#translation
+# Translations.
 trans = QTranslator()
 transqt = QTranslator()
-logger.log("Language is ", getPlatformSetting("language"), logtype="Info")
-transqt.load("qt_" + getPlatformSetting("language"), QLibraryInfo.location(QLibraryInfo.TranslationsPath))
+# We only use the first two chararcters of the language (by saying
+# [0:2]) because we don't have multiple translations from the same
+# language.
+logger.log("Language is ", getPlatformSetting("language")[0:2], logtype="Info")
+transqt.load("qt_" + getPlatformSetting("language")[0:2], QLibraryInfo.location(QLibraryInfo.TranslationsPath))
 application.installTranslator(transqt)
-trans.load("qt_" + getPlatformSetting("language"), path.join(getPlatformSetting("basePath"), "translations"))
+trans.load("qt_" + getPlatformSetting("language")[0:2], path.join(getPlatformSetting("basePath"), "translations"))
 application.installTranslator(trans)
+
 app = MainApplication()
 app.show()
 application.exec_()
